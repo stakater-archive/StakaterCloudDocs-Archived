@@ -1,44 +1,25 @@
-# 1. Pre-Requisistes
+# Introduction
 
-This section provides the pre-requisite steps for this workshop
+Vault is a tool for securely accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. 
+Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log.
 
-[[toc]]
+When you create a secret in kubernetes it is stored in etcd as plain text, also the secret is accessible to anyone that has access to your cluster.
 
-## 1.1 Fork Repository
+## Limitations of kubernetes secrets
+1. They are not encrypted at rest.
+2. By default, cluster admins can see all the secrets of all the tenants.
+3. When in use (i.e. mounted as tempfs in the node that runs the pod that is using them), they can be seen by a node administrator.
+4. When in use, they can be seen by anyone who has the ability to remote shell into the container.
 
-::: details Go to the following URL and fork the repo
+Vault solves this issue by providing a central secret management store that provides an additional layer of security using it's
+authentication methods. Secrets are only accessible when you provide a corresponding token. Vault is an application written in GO with a with a REST and CLI interface support. For access of secrets vault uses tokens.
+Tokens are created on demand with a specified expiry time and can be revoked at any given time. 
 
-[Stakater-nordmart-inventory Repository](https://github.com/stakater-lab/stakater-nordmart-inventory) 
+## Key features of Vault
+1. Centralization
+2. Audit Control
+3. Dynamic Secrets
+4. Encryption as a Service
+5. Leasing, Renewal and Revocation
 
-![repo-fork](./images/fork-repo.png)
-:::
-
-## 1.2 Create Personal Access Token
-
-A Personal Access Token would be required to perform steps in a Tekton Pipeline
-
-::: details Login to your Gihub account and generate a Personal Access Token via this follwoing URL:
-
-`https://github.com/settings/tokens/new`
-
-Access needed for the token are:
-- `repo`
-- `admin:repo_hook`
-
-![token1](./images/token-access.png)
-:::
-
-## 1.3 Deploy Inventory Microservice
-
-Save the manifest, will be used going forward, and deploy inventory microservice in your namespace
-
-::: details 1.3.1 Download Manifest
-
-[Inventory Manifest](https://raw.githubusercontent.com/stakater-lab/stakater-nordmart-inventory/master/deployment/manifests/application/inventory.yaml) 
-:::
-
-::: details 1.3.2 Apply Manifest
-```bash
- kubectl apply -f simple-taskrun-example.yaml -n <NAMESPACE_NAME>
-```
-:::
+For detailed documentation: [Vault Documentation](https://learn.hashicorp.com/vault#getting-started)  

@@ -22,7 +22,9 @@ module.exports = {
             {
                 title: 'Vault',
                 children: [
-                    '/content/sre/vault/vault'
+                    '/content/sre/vault/vault',
+                    '/content/sre/vault/vault-setup',
+                    '/content/sre/vault/vault-usage-example'
                 ]
             }
         ]
