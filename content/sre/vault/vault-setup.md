@@ -20,13 +20,13 @@ On your local machine you should have curl, jq, [vault cli](https://www.vaultpro
  
 [[toc]]
 
-### 1 Make vault service accessible
+### Make vault service accessible
 
 Run `oc port-forward -n stakater-vault service/vault 8200:8200 &` to access vault service at https://127.0.0.1:8200
 Alternatively, you can create a route/ingress for the service as well but that is not recommended since we are not exposing our
 vault for the external world or services, no access outside the cluster.
 
-### 2 Run the following commands
+### Run the following commands
 
 ```shell script
 
