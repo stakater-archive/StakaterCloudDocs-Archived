@@ -7,6 +7,17 @@ containers for populating secrets and managing token lifecycle.
 
 Let's go through a demonstration:
 
+## Make vault accessible and set environment variables
+
+```shell script
+oc port-forward -n stakater-vault service/vault 8200:8200 &`
+
+export VAULT_ADDR=https://127.0.0.1:8200
+export KEYS=`cat vault-secrets/unseal-key`
+export ROOT_TOKEN=`cat vault-secrets/root-token`
+export VAULT_TOKEN=$ROOT_TOKEN
+```
+
 ## Create namespace
 
 Create a namespace to deploy our sample application that consumes secret stored in vault. We need to label the namespace

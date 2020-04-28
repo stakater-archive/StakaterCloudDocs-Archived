@@ -102,4 +102,9 @@ vault kv put -tls-skip-verify secret/helloworld ttl=1m username=test-user passwo
 vault kv get -tls-skip-verify secret/dummysecret
 ```
 
-At this point vault is up and ready to use
+At this point vault is up and ready to use.
+
+# Important
+
+`vault-secrets/root-token` and `vault-secrets/unseal-keys` are used for communication with vault via CLI and they should
+be stored somewhere safe.
