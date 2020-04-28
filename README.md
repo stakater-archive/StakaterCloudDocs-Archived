@@ -1,0 +1,2 @@
+# StakaterCloudDocs
+Stakater Cloud Documentation
