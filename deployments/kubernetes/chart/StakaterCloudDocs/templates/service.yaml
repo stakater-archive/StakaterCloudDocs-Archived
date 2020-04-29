@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+{{ include "stakater-cloud-docs.labels.stakater" . | indent 4 }}
+{{ include "stakater-cloud-docs.labels.chart" . | indent 4 }}
+    expose: {{ .Values.stakaterclouddocs.service.labels.expose | quote }}
+  name: {{ .Values.stakaterclouddocs.service.name | quote }}
+{{ if .Values.stakaterclouddocs.service.annotations }}
+  annotations:
+{{ toYaml .Values.stakaterclouddocs.service.annotations | indent 4 }}
+{{ end }}
+spec:
+  selector:
+{{ toYaml .Values.stakaterclouddocs.deployment.podLabels | indent 4 }}
+  ports:
+  - name: web
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
