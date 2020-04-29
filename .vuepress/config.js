@@ -8,7 +8,8 @@ module.exports = {
         [
             '@vuepress/active-header-links',
             '@vuepress/medium-zoom',
-            '@vuepress/back-to-top'
+            '@vuepress/back-to-top',
+            'vuepress-plugin-container'
         ],
     ],
     markdown: {
