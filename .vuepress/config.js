@@ -28,9 +28,9 @@ module.exports = {
                     '/content/sre/vault/vault-usage-example'
                 ]
             }
-        ]
-    },
-    repo: 'stakater/stakaterclouddocs',
-    editLinks: true,
-    editLinkText: 'Help us improve this page!'
+        ],
+        repo: 'stakater/stakaterclouddocs',
+        editLinks: true,
+        editLinkText: 'Help us improve this page!'
+    }
 }
