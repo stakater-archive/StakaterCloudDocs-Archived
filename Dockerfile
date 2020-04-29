@@ -1,4 +1,4 @@
-FROM stakater/pipeline-tools:1.15.0
+FROM stakater/pipeline-tools:v2.1.2
 
 LABEL name="Stakater Cloud Docs" \
       maintainer="Stakater <hello@stakater.com" \
