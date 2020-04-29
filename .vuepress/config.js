@@ -30,7 +30,7 @@ module.exports = {
             }
         ]
     },
-    repo: 'stakater/StakaterCloudDocs',
+    repo: 'stakater/stakaterclouddocs',
     editLinks: true,
     editLinkText: 'Help us improve this page!'
 }
