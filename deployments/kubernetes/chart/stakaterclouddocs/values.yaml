@@ -4,7 +4,7 @@ stakaterclouddocs:
     provider: stakater
     version: 1.0.0    
   service:
-    name: "stakaterclouddocs"
+    name: "cloud-docs"
     annotations:
       xposer.stakater.com/annotations: |-
         kubernetes.io/ingress.class: external-ingress
