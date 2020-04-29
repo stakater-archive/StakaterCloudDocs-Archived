@@ -1,2 +1,3 @@
-# Stakater Cloud Docs
-Stakater Cloud Documentation
+# Stakater Cloud Documentation
+
+Detailed walkthrough of stakater cloud offering
