@@ -3,5 +3,5 @@
 
 appWithDockerfileBuildRelease {
     dockerRepositoryURL = 'docker-delivery.stakater.com:443'
-    deployApp = false
+    deployApp = true
 }
