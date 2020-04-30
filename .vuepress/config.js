@@ -27,6 +27,14 @@ module.exports = {
                     '/content/sre/vault/vault-setup',
                     '/content/sre/vault/vault-usage-example'
                 ]
+            },
+            {
+                title: 'Openshift Pipelines',
+                children: [
+                    '/content/sre/openshift-pipelines/openshift-pipelines.md',
+                    '/content/sre/openshift-pipelines/deploying-delivery-pipeline.md',
+                    '/content/sre/openshift-pipelines/deploying-cicd-pipeline.md'
+                ]
             }
         ],
         repo: 'stakater/stakaterclouddocs',
