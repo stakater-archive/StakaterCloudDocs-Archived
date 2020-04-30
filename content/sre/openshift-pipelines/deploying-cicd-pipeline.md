@@ -1,4 +1,4 @@
-# Deploying Sample CI/CD Pipeline
+# Deploying CI/CD Pipeline
 
 # Workflow
 
