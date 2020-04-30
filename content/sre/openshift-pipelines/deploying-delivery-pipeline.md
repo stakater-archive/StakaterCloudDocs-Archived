@@ -139,7 +139,7 @@ Verify that the new image is available in your registry
 
 
 ## Verify new Tags
-::: Verify forked repository to new newly pushed tag
+::: details Verify forked repository to new newly pushed tag
 
 ![Forked Repository](./images/stakater-nordmart-inventory-tag.png)
 :::
