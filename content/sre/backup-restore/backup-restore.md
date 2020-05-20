@@ -6,7 +6,7 @@ For production clusters, regular maintenance should include routine backup opera
 
 # Velero
 
-TBD
+As a production-ready solution, SRO provides the Velero addon by default, to support backup and restore operations for your SRO cluster and persistent volumes.
 
 # Regular backup operations
 
