@@ -43,6 +43,12 @@ module.exports = {
                     '/content/sre/networking/route-sharding',
                     '/content/sre/networking/external-dns'
                 ]
+            },
+            {
+                title: 'Backup & Restore',
+                children: [
+                    '/content/sre/backup-restore/backup-restore.md'
+                ]                
             }
         ],
         repo: 'stakater/stakaterclouddocs',
