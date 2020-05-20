@@ -35,6 +35,14 @@ module.exports = {
                     '/content/sre/openshift-pipelines/deploying-delivery-pipeline.md',
                     '/content/sre/openshift-pipelines/deploying-cicd-pipeline.md'
                 ]
+            },
+            {
+                title: 'Networking',
+                children: [
+                    '/content/sre/networking/routes',
+                    '/content/sre/networking/route-sharding',
+                    '/content/sre/networking/external-dns'
+                ]
             }
         ],
         repo: 'stakater/stakaterclouddocs',
