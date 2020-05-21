@@ -99,7 +99,7 @@ vault write -tls-skip-verify auth/kubernetes/role/default-role \
 vault kv put -tls-skip-verify secret/helloworld ttl=1m username=test-user password=dummy-pass
 
 # Retrieve to verify that it worked
-vault kv get -tls-skip-verify secret/dummysecret
+vault kv get -tls-skip-verify secret/helloworld
 ```
 
 At this point vault is up and ready to use.
