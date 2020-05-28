@@ -59,17 +59,17 @@ spec:
 
 ### 3. Create route
 
-### 3.1. Create a new project
+#### 3.1. Create a new project
 
 `oc new-project route-demo`
 
-### 3.2. Use the oc new-app command to create a service
+#### 3.2. Use the oc new-app command to create a service
 
 ```shell script
 oc new-app https://github.com/openshift/ruby-hello-world
 ```
 
-### 3.3. Create a route
+#### 3.3. Create a route
 
 ```yaml
 kind: Route
@@ -96,3 +96,18 @@ spec:
     insecureEdgeTerminationPolicy: Redirect
   wildcardPolicy: None
 ```
+
+### 4. Add DNS entry
+
+Add DNS entry for [hello-world-app.custom-domain.com](hello-world-app.custom-domain.com) that points to the router's provisioned
+loadbalancer IP in your DNS provider. 
+
+To retrieve the loadbalancer IP: 
+```shell script
+oc get svc -n openshift-ingress router-internal --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```
+
+Another option is to add a wildcard entry for *.custom-domain.com to loadbalancer IP. In that way you won't have to add a separate
+DNS entry for each route, in turn only a single DNS entry would be required per router.
+
+NOTE: In case you have restricted access(not cluster administrator), launch a support ticket to get the loadbalancer IP. 
