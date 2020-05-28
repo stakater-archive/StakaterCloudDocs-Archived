@@ -107,7 +107,7 @@ To retrieve the loadbalancer IP:
 oc get svc -n openshift-ingress router-internal --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
-Another option is to add a wildcard entry for *.custom-domain.com to loadbalancer IP. In that way you won't have to add a separate entry
+Another option is to add a wildcard entry for *.custom-domain.com to loadbalancer IP. In that way you won't have to add a separate
 DNS entry for each route, in turn only a single DNS entry would be required per router.
 
 NOTE: In case you have restricted access(not cluster administrator), launch a support ticket to get the loadbalancer IP. 
