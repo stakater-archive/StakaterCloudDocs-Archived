@@ -59,17 +59,17 @@ spec:
 
 ### 3. Create route
 
-### 3.1. Create a new project
+#### 3.1. Create a new project
 
 `oc new-project route-demo`
 
-### 3.2. Use the oc new-app command to create a service
+#### 3.2. Use the oc new-app command to create a service
 
 ```shell script
 oc new-app https://github.com/openshift/ruby-hello-world
 ```
 
-### 3.3. Create a route
+#### 3.3. Create a route
 
 ```yaml
 kind: Route
@@ -97,7 +97,7 @@ spec:
   wildcardPolicy: None
 ```
 
-### 3.3. Add DNS entry
+### 4. Add DNS entry
 
 Add DNS entry for [hello-world-app.custom-domain.com](hello-world-app.custom-domain.com) that points to the router's provisioned
 loadbalancer IP in your DNS provider. 
