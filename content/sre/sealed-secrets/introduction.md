@@ -21,10 +21,9 @@ SealedSecrets is composed of two components:
 * `Controller`: A cluster-side component for data decryption.
 * `Kubeseal`: A client-side utility for data encryption. It uses asymmetric cryptography methods for data encryption.
 
-[![SealedSecret Architecture Diagram](../image/sealed-secret.png)](https://engineering.bitnami.com/articles/sealed-secrets.html)
+[![SealedSecret Architecture Diagram](./images/sealed-secret.png)](https://engineering.bitnami.com/articles/sealed-secrets.html)
 
 [Source](https://engineering.bitnami.com/articles/sealed-secrets.html)
-
 
 ### Terms
 
