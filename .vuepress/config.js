@@ -49,6 +49,15 @@ module.exports = {
                 children: [
                     '/content/sre/backup-restore/backup-restore.md'
                 ]                
+            },
+            {
+                title: 'Sealed Secrets',
+                children: [
+                    '/content/sre/sealed-secrets/introduction',
+                    '/content/sre/sealed-secrets/workshop',
+                    '/content/sre/sealed-secrets/management',
+                    '/content/sre/sealed-secrets/caveats'
+                ]
             }
         ],
         repo: 'stakater/stakaterclouddocs',
