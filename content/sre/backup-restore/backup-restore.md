@@ -2,33 +2,17 @@
 
 Back up and restore applications on SRO (Stakater Red Hat OpenShift)
 
-For production clusters, regular maintenance should include routine backup operations on a regular basis to ensure data integrity and reduce the risk of data loss due to unexpected events. Back up operations should include the cluster state, application state, and the running configuration of both stateless and stateful applications in the cluster.
+## Backup
 
-## Velero
+Stakater takes backup of  all kubernetes resources(manifests) and volumes. The backups are stored in your cloud account. By default, backups are taken after every 4 hours and are retained for 3 days. To enable more frequent, resource specific or varying retention, please contact Stakater Support.
 
-As a production-ready solution, SRO provides the Velero addon by default, to support backup and restore operations for your SRO cluster and persistent volumes.
+## Restore
 
-## Regular backup operations
+Resources can be restored on demand. Please contact support and specify the following 
 
-For production clusters, you should be familiar with the following basic administrative functions Velero provides:
-
-- Set a backup schedules
-- Fetch backup archives
-- Run on-demand backups
-- Restore from a backup archive
-
-### Set a backup schedule
-
-TBD
-
-### Fetch backup archives
-
-TBD
-
-### Run on-demand backups
-
-TBD
-
-### Restore from a backup archive
-
-TBD
+- Time to restore back to.
+- Namespaces to include/exclude from backup
+- Resources to include/exclude from backup
+- LabelSelector to filter objects to restore
+- Whether to include cluster resources or not
+- Whether to restore PVs or not

@@ -58,6 +58,12 @@ module.exports = {
                     '/content/sre/sealed-secrets/management',
                     '/content/sre/sealed-secrets/caveats'
                 ]
+            },
+            {
+                title: 'User Management',
+                children: [
+                    '/content/sre/user-management/giving-access-to-oauth-users'
+                ]
             }
         ],
         repo: 'stakater/stakaterclouddocs',
