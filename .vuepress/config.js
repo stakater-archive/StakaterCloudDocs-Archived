@@ -21,6 +21,12 @@ module.exports = {
     themeConfig: {
         sidebar: [
             {
+                title: 'Cloud Provider',
+                children: [
+                    '/content/sre/cloud-provider/azure'
+                ]                
+            },
+            {
                 title: 'Vault',
                 children: [
                     '/content/sre/vault/vault',
