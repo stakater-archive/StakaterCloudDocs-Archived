@@ -16,3 +16,6 @@ Running an upgrade should be a safe process to run and should not disrupt cluste
 
 Planned maintenance is not prescheduled with the customer. Notifications may be sent via email if communication to the customer is required.
 
+### How will the host operating systems and OpenShift software be updated?
+
+The host operating systems and OpenShift software are updated through our general upgrade process.
