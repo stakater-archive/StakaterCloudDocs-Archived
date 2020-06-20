@@ -36,4 +36,12 @@ You need to open a support case; until the feature is added to portal
 
 An administrative user has the ability to add/remove users and projects, manage project quotas, view cluster usage statistics, and change the default project template. Admins can also scale a cluster up or down, and even delete an existing cluster.
 
-You need to open a support case; until we allow customers to have admin users in the clusters.
+You need to open a support case; until we allow customers to have cluster admins.
+
+### Can logs of underlying VMs be streamed out to a customer log analysis system?
+
+Syslog, CRI-O logs, journal, and dmesg are handled by the managed service and are not exposed to customers.
+
+### Can logs of applications streamed out to a customer log analysis system?
+
+Yes they can be stream out.
