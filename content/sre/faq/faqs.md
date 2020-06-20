@@ -19,3 +19,7 @@ Planned maintenance is not prescheduled with the customer. Notifications may be 
 ### How will the host operating systems and OpenShift software be updated?
 
 The host operating systems and OpenShift software are updated through our general upgrade process.
+
+### Which UNIX rights (in IaaS) are available for Masters/Infra/Worker Nodes?
+
+Node access is forbidden.
