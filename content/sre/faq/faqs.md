@@ -27,3 +27,7 @@ The host operating systems and OpenShift software are updated through our genera
 ### Which UNIX rights (in IaaS) are available for Masters/Infra/Worker Nodes?
 
 Node access is forbidden.
+
+### How to add new worker nodes to the cluster?
+
+You need to open a support case; until the feature is added to portal
