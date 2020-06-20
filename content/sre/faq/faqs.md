@@ -62,7 +62,7 @@ No. In order to maintain our ability to provide seamless updates to your cluster
 
 ### Which Red Hat OpenShift Container Platform rights do we have? Cluster-admin? Project-admin?
 
-Project-admin credentials are provided to you when you order your cluster.
+Project-admin credentials are provided to you when you order your cluster. In future releases we will support Cluster-admin as well.
 
 ### What virtual machine sizes can I use?
 
