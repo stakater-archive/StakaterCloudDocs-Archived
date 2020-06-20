@@ -31,3 +31,9 @@ Node access is forbidden.
 ### How to add new worker nodes to the cluster?
 
 You need to open a support case; until the feature is added to portal
+
+### How do I make configuration changes to my cluster?
+
+An administrative user has the ability to add/remove users and projects, manage project quotas, view cluster usage statistics, and change the default project template. Admins can also scale a cluster up or down, and even delete an existing cluster.
+
+You need to open a support case; until we allow customers to have admin users in the clusters.
