@@ -2,6 +2,10 @@
 
 ## Operations
 
+### Which services are performed by Stakater Operations?
+
+Stakater is responsible for provisioning, managing, and upgrading the Red Hat OpenShift (container) platform as well as monitoring the core cluster infrastructure for availability. And Stakater is not responsible for managing the application lifecycle of applications that run on the platform.
+
 ### What is the Stakater Kubernetes Service (SKS) maintenance process?
 
 There are three types of maintenance for SKS: upgrades, backup and restoration of etcd data, and cloud provider-initiated maintenance.
