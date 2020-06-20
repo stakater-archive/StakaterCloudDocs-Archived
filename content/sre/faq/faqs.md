@@ -9,3 +9,10 @@ There are three types of maintenance for SKS: upgrades, backup and restoration o
 - Upgrades include software upgrades and CVEs.
 - Backup and management of etcd data is an automated process that may require cluster downtime depending on the action. If the etcd database is being restored from a backup there will be downtime. We back up etcd hourly and retain the last 6 hours of backups.
 - Cloud provider-initiated maintenance includes network, storage, and regional outages. The maintenance is dependent on the cloud provider and relies on provider-supplied updates.
+
+### What is the general upgrade process?
+
+Running an upgrade should be a safe process to run and should not disrupt cluster services. The SRE can trigger the upgrade process when new versions are available or CVEs are outstanding. Available updates are tested in a staging environment and then applied to production clusters. Following best practices helps ensure minimal to no downtime. 
+
+Planned maintenance is not prescheduled with the customer. Notifications may be sent via email if communication to the customer is required.
+
