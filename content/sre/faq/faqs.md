@@ -6,8 +6,8 @@
 
 There is i no difference; just two different product offerings name.
 
-SKS - Stakater Kubernetes Service
-SRO - Stakater Red Hat OpenShift
+- SKS: Stakater Kubernetes Service
+- SRO: Stakater Red Hat OpenShift
 
 ### Which clouds are supported by SKS/SRO?
 
@@ -140,3 +140,10 @@ A number of Red Hat JBoss Middleware Services are available as add-ons for Staka
 - Red Hat JBoss Data Virtualization
 - Red Hat JBoss Fuse Integration Services
 - Red Hat Single Sign-On.
+
+### Are IBM Cloud Paks available on Stakater Red Hat OpenShift (SRO)?
+
+A number of IBM Cloud Paks are available as add-ons for Stakater Red Hat OpenShift (SRO), including:
+
+- IBM Cloud Pak for Integration
+- IBM Cloud Pak for Application
