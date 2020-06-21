@@ -74,7 +74,7 @@ module.exports = {
             {
                 title: 'Frequently Asked Questions',
                 children: [
-                    '/content/sre/faq/faq'
+                    '/content/sre/faq/faqs'
                 ]
             }
         ],
