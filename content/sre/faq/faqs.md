@@ -2,6 +2,13 @@
 
 ## Product
 
+### What is difference between SKS & SRO?
+
+There is i no difference; just two different product offerings name.
+
+SKS - Stakater Kubernetes Service
+SRO - Stakater Red Hat OpenShift
+
 ### Which clouds are supported by SKS/SRO?
 
 We currently support Azure, AWS and Google
