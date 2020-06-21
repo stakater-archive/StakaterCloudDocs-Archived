@@ -70,6 +70,12 @@ module.exports = {
                 children: [
                     '/content/sre/user-management/giving-access-to-oauth-users'
                 ]
+            },
+            {
+                title: 'Frequently Asked Questions',
+                children: [
+                    '/content/sre/faq/faq'
+                ]
             }
         ],
         repo: 'stakater/stakaterclouddocs',
