@@ -11,6 +11,10 @@ There is i no difference; just two different product offerings name.
 
 We currently support Azure, AWS and Google
 
+### When is support for VMWare and OpenStack coming?
+
+The support will be added by Q4 2020
+
 ### What does Stakater Red Hat OpenShift (SRO) include?
 
 Each SRO (Stakater Red Hat OpenShift) cluster comes with a fully-managed control plane (master nodes), infra nodes and application nodes. Installation, management, maintenance, and upgrades are performed by Stakater SRE. Operational services (such as logging, metrics, monitoring, etc.) are available as well and are fully managed by Stakater SRE.
