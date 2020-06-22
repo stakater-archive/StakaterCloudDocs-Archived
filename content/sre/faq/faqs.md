@@ -1,6 +1,4 @@
-# Frequently asked questions
-
-## Product
+# Product
 
 ### What is difference between SKS & SRO?
 
@@ -29,7 +27,7 @@ Stakater Red Hat OpenShift (SRO) uses the same code base as Red Hat OpenShift Co
 
 Each Stakater Red Hat OpenShift cluster is dedicated to a given customer and lives within the customer's subscription/account.
 
-## Operations
+# Operations
 
 ### Which services are performed by Stakater Operations?
 
@@ -75,7 +73,7 @@ Syslog, CRI-O logs, journal, and dmesg are handled by the managed service and ar
 
 Yes they can be stream out.
 
-## Customization
+# Customization
 
 ### What authentication mechanisms are supported?
 
@@ -97,7 +95,7 @@ Project-admin credentials are provided to you when you order your cluster. In fu
 
 You are free to choose the types of virtual machine when ordering the cluster.
 
-## Purchasing
+# Purchasing
 
 ### Is Stakater Red Hat OpenShift (SRO) available for purchase in all countries?
 
@@ -119,7 +117,7 @@ Customers will be directly billed by Stakater only.
 
 No, you don’t need to sign a contract with Red Hat. Customers will be billed by Stakater only.
 
-## Developers
+# Developers
 
 ### Can end users utilize images/containers that require root user privileges?
 
