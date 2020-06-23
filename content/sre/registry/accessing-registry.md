@@ -11,7 +11,7 @@ For access from within the cluster, service account is the recommended approach.
 
 ## Authorization
 
-### Pulling Images:
+### Pulling Images
 
 For pulling images from image registry, user/serviceAccount must have the `registry-viewer` role
 ```shell script
