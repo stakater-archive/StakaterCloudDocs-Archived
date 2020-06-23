@@ -62,6 +62,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'Application Monitoring',
+                children: [
+                    '/content/sre/application-monitoring/application-alerts.md'
+                ]
+            },
+            {
                 title: 'Sealed Secrets',
                 children: [
                     '/content/sre/sealed-secrets/introduction',
