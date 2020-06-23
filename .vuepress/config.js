@@ -35,7 +35,7 @@ module.exports = {
                 ]
             },
             {
-                title: 'Openshift Pipelines',
+                title: 'Pipelines',
                 children: [
                     '/content/sre/openshift-pipelines/openshift-pipelines.md',
                     '/content/sre/openshift-pipelines/deploying-delivery-pipeline.md',
@@ -63,6 +63,13 @@ module.exports = {
                     '/content/sre/sealed-secrets/workshop',
                     '/content/sre/sealed-secrets/management',
                     '/content/sre/sealed-secrets/caveats'
+                ]
+            },
+            {
+                title: 'Registry',
+                children: [
+                    '/content/sre/registry/registry.md',
+                    '/content/sre/registry/accessing-registry.md'
                 ]
             },
             {
