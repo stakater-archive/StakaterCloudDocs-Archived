@@ -1,5 +1,3 @@
-# Introducing SKS (Stakater Kubernetes Service)
-
 Organizations have adopted containers and Kubernetes to automate their applications operations and make their business applications portable, secure, easy to manage and scalable. While booting a Kubernetes cluster is fairly painless, a production grade Kubernetes environment can be complex, and require significant expertise to operate. Additionally managing an application platform on top of that is considerably challenging. Companies not only require an application stack for running their business processes, they need such an application stack to be configurable yet consistent and auditable, upgradable and devops enabled yet upgradable and cost-effective.
 
 Companies require a solution with a justifiable return on their investment.
@@ -12,7 +10,7 @@ With Stakater Red Hat Openshift (SRO), Stakater builds and manages your OpenShif
 
 ![SRO](./images/image-2.png)
 
-## Why it makes sense for companies
+## Why SRO?
 
 - Quicker return on investment > Get up and running quickly
 - Reduce Operational Overhead > Fully managed from infrastructure to day to day operations
@@ -20,7 +18,7 @@ With Stakater Red Hat Openshift (SRO), Stakater builds and manages your OpenShif
 - Empower Developer productivity > Focus on developing apps that add value to the business
 - Flexible consumption based pricing >Optimize costs with ﬂexible pay-as-you-go pricing model (monthly binding)
 
-## Solution Overview
+## SRO Overview
 
 With Stakater Red Hat OpenShift you can deploy a containerized, hybrid environment to meet digital business needs for running your mission critical systems.
 
@@ -72,7 +70,7 @@ With Stakater Red Hat OpenShift you can deploy a containerized, hybrid environme
 
 ![SRO Matrix](./images/image-1.png)
 
-## Key Differentiators for Stakater Red Hat Openshift (SRO)
+## SRO Key Differentiators
 
 Stakater Red Hat Openshift (SRO) is a true hybrid-cloud enabler. All components of SRO use common standards which can run on any cloud service, so it is easy for you to run in a hybrid environment, as well as migrate from one cloud to another. We don’t just run the platform, we enable it for you, giving you substantial Return on your Investment
 - We support infra nodes, i.e. we fully manage nodes that run any operational services of your choice.
