@@ -4,13 +4,13 @@ Organizations have adopted containers and Kubernetes to automate their applicati
 
 Companies require a solution with a justifiable return on their investment.
 
-![SRO](./images/image-1.jpg)
+![SRO](./images/image 1.jpg)
 
 Built by open source leaders, Red Hat® OpenShift® is the leading enterprise Kubernetes platform. Stakater Red Hat OpenShift (SRO) is a fully managed enterprise Kubernetes platform hosted on AWS, Google, Azure, VMWare, OpenStack & Stakater Cloud. With Stakater Red Hat OpenShift (SRO), innovators can focus on what matters, stay competitive, and outpace rising customer expectations without worrying about managing the underlying infrastructure.
 
 With Stakater Red Hat Openshift (SRO), Stakater builds and manages your OpenShift clusters, allowing you to focus on your business. We offer SRO for on-premises or your choice of public cloud allowing you to optimize your multi-cloud strategy that best suits your needs. SRO enables your teams across your organizations to consume OpenShift as a Service.
 
-![SRO](./images/image-2.jpg)
+![SRO](./images/image 2.jpg)
 
 ## Why it makes sense for companies
 
@@ -70,7 +70,7 @@ With Stakater Red Hat OpenShift you can deploy a containerized, hybrid environme
 - Performance and capacity management
 - Image and registry management
 
-![SRO Matrix](./images/image-3.jpg)
+![SRO Matrix](./images/image 3.jpg)
 
 ## Key Differentiators for Stakater Red Hat Openshift (SRO)
 
