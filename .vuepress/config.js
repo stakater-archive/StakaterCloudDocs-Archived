@@ -23,7 +23,11 @@ module.exports = {
             {
                 title: 'Introduction',
                 children: [
-                    '/content/sre/introduction/introduction'
+                    '/content/sre/introduction/introduction',
+                    '/content/sre/introduction/why-sro',
+                    '/content/sre/introduction/sro-overview',
+                    '/content/sre/introduction/sro-features',                  
+                    '/content/sre/introduction/sro-key-differentiators'                    
                 ]
             },            {
                 title: 'Backup & Restore',
