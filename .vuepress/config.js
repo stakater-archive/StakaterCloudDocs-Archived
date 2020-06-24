@@ -21,6 +21,11 @@ module.exports = {
     themeConfig: {
         sidebar: [
             {
+                title: 'Introduction',
+                children: [
+                    '/content/sre/introduction/introduction'
+                ]
+            },            {
                 title: 'Backup & Restore',
                 children: [
                     '/content/sre/backup-restore/backup-restore.md'
