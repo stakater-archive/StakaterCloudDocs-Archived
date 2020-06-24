@@ -21,25 +21,21 @@ module.exports = {
     themeConfig: {
         sidebar: [
             {
+                title: 'Backup & Restore',
+                children: [
+                    '/content/sre/backup-restore/backup-restore.md'
+                ]
+            },
+            {
                 title: 'Cloud Provider',
                 children: [
                     '/content/sre/cloud-provider/azure'
                 ]                
             },
             {
-                title: 'Vault',
+                title: 'Ingress Monitor Controller',
                 children: [
-                    '/content/sre/vault/vault',
-                    '/content/sre/vault/vault-setup',
-                    '/content/sre/vault/vault-usage-example'
-                ]
-            },
-            {
-                title: 'Openshift Pipelines',
-                children: [
-                    '/content/sre/openshift-pipelines/openshift-pipelines.md',
-                    '/content/sre/openshift-pipelines/deploying-delivery-pipeline.md',
-                    '/content/sre/openshift-pipelines/deploying-cicd-pipeline.md'
+                    '/content/sre/imc/ingress-monitor-controller.md'
                 ]
             },
             {
@@ -51,10 +47,25 @@ module.exports = {
                 ]
             },
             {
-                title: 'Backup & Restore',
+                title: 'Pipelines',
                 children: [
-                    '/content/sre/backup-restore/backup-restore.md'
-                ]                
+                    '/content/sre/openshift-pipelines/openshift-pipelines.md',
+                    '/content/sre/openshift-pipelines/deploying-delivery-pipeline.md',
+                    '/content/sre/openshift-pipelines/deploying-cicd-pipeline.md'
+                ]
+            },
+            {
+                title: 'Registry',
+                children: [
+                    '/content/sre/registry/registry.md',
+                    '/content/sre/registry/accessing-registry.md'
+                ]
+            },
+            {
+                title: 'Application Monitoring',
+                children: [
+                    '/content/sre/application-monitoring/application-alerts.md'
+                ]
             },
             {
                 title: 'Sealed Secrets',
@@ -69,6 +80,24 @@ module.exports = {
                 title: 'User Management',
                 children: [
                     '/content/sre/user-management/giving-access-to-oauth-users'
+                ]
+            },
+            {
+                title: 'Vault',
+                children: [
+                    '/content/sre/vault/vault',
+                    '/content/sre/vault/vault-setup',
+                    '/content/sre/vault/vault-usage-example'
+                ]
+            },
+            {
+                title: 'Frequently Asked Questions',
+                children: [
+                    '/content/sre/faq/product',
+                    '/content/sre/faq/operations',
+                    '/content/sre/faq/purchasing',
+                    '/content/sre/faq/customization',
+                    '/content/sre/faq/developers'                    
                 ]
             }
         ],
