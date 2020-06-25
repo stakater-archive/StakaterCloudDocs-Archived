@@ -114,7 +114,7 @@ module.exports = {
             {
                 title: 'Support',
                 children: [
-                    '/content/sre/support/intro'
+                    '/content/sre/support/support'
                 ]
             }
         ],
