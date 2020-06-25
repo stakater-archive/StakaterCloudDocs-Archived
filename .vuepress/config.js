@@ -21,6 +21,16 @@ module.exports = {
     themeConfig: {
         sidebar: [
             {
+                title: 'Introduction',
+                children: [
+                    '/content/sre/introduction/introduction',
+                    '/content/sre/introduction/why-sro',
+                    '/content/sre/introduction/sro-overview',
+                    '/content/sre/introduction/sro-features',                  
+                    '/content/sre/introduction/sro-key-differentiators'                    
+                ]
+            },            
+            {
                 title: 'Backup & Restore',
                 children: [
                     '/content/sre/backup-restore/backup-restore.md'
