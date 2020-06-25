@@ -29,7 +29,8 @@ module.exports = {
                     '/content/sre/introduction/sro-features',                  
                     '/content/sre/introduction/sro-key-differentiators'                    
                 ]
-            },            {
+            },            
+            {
                 title: 'Backup & Restore',
                 children: [
                     '/content/sre/backup-restore/backup-restore.md'
