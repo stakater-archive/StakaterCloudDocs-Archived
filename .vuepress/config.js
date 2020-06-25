@@ -62,9 +62,10 @@ module.exports = {
                 ]
             },
             {
-                title: 'Application Monitoring',
+                title: 'Application Workloads',
                 children: [
-                    '/content/sre/application-monitoring/application-alerts.md'
+                    '/content/sre/application/application-alerts.md',
+                    '/content/sre/application/autoscaling.md'
                 ]
             },
             {
