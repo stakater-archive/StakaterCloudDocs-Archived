@@ -110,6 +110,12 @@ module.exports = {
                     '/content/sre/faq/customization',
                     '/content/sre/faq/developers'                    
                 ]
+            },
+            {
+                title: 'Support',
+                children: [
+                    '/content/sre/support/support'
+                ]
             }
         ],
         repo: 'stakater/stakaterclouddocs',
