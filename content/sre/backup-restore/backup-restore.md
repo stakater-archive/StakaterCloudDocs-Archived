@@ -4,7 +4,7 @@ Back up and restore applications on SRO (Stakater Red Hat OpenShift)
 
 ## Backup
 
-Stakater takes backup of  all kubernetes resources(manifests) and volumes. The backups are stored in your cloud account. By default, backups are taken after every 4 hours and are retained for 3 days. To enable more frequent, resource specific or varying retention, please contact Stakater Support.
+Stakater takes automatic backup of all kubernetes resources(manifests) and volumes. The backups are stored in your cloud account. By default, backups are taken after every 1 hour and are retained for 24 hours. To enable more frequent, resource specific or varying retention, please contact Stakater Support.
 
 ## Restore
 
