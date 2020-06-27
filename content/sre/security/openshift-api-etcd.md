@@ -29,6 +29,15 @@ TODO - add image
         <ul><li><strong>ETCD data store:</strong> Stores all Kubernetes resources of a cluster, such as `Services`, `Deployments`, and `Pods`. Kubernetes `ConfigMaps` and `Secrets` are app data that is stored as key value pairs so that they can be used by an app that runs in a pod. Data in etcd is stored on the local disk of the OpenShift master and is regularly backed up. Data is encrypted during transit and at rest.</li>
           <li><strong>openshift-api:</strong> Serves as the main entry point for all cluster management requests from the worker node to the OpenShift master. The API server validates and processes requests that change the state of cluster resources, such as pods or services, and stores this state in the etcd data store.</li>
           <li><strong>openshift-controller:</strong> Watches for newly created pods and decides where to deploy them based on capacity, performance needs, policy constraints, anti-affinity specifications, and workload requirements. If no worker node can be found that matches the requirements, the pod is not deployed in the cluster. The controller also watches the state of cluster resources, such as replica sets. When the state of a resource changes, for example if a pod in a replica set goes down, the controller manager initiates correcting actions to achieve the required state. </li>
-            <li><strong>cloud-controller-manager:</strong> The cloud controller manager manages cloud provider-specific components such as the cloud load balancer. </li>
+            <li><strong>cloud-controller-manager:</strong> The cloud controller manager manages cloud provider-specific components such as the cloud load balancer.</li>
+    </tr>
+    <tr>
+    <td>Continuous monitoring by Stakater Site Reliability Engineers (SREs)</td>
+    <td>The OpenShift master, including all the master components, compute, networking, and storage resources are continuously monitored by Stakater Site Reliability Engineers (SREs). The SREs apply the latest security standards, detect and remediate malicious activities, and work to ensure reliability and availability of Red Hat OpenShift. </td>
+    </tr>
+    <tr>
+      <td>CIS Kubernetes master benchmark</td>
+      <td>To configure Red Hat OpenShift, Stakater engineers follow relevant cybersecurity practices from the Kubernetes master benchmark that is published by the [Center of Internet Security (CIS)](https://www.cisecurity.org/benchmark/kubernetes/). The cluster master and all worker nodes are deployed with images that meet the benchmark.</td>
+    </tr>          
   </tbody>
 </table>
