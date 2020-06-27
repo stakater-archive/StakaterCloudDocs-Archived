@@ -1,4 +1,4 @@
-# OpenShift API server and etcd
+# OpenShift API Server and ETCD
 
 The OpenShift API server and etcd data store are the most sensitive components that run in your OpenShift master. If an unauthorized user or system gets access to your OpenShift API server, the user or system can change settings, manipulate, or take control of your cluster, which puts your cluster at risk for malicious attacks.
 
