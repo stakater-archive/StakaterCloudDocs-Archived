@@ -39,5 +39,14 @@ TODO - add image
       <td>CIS Kubernetes master benchmark</td>
       <td>To configure Red Hat OpenShift, Stakater engineers follow relevant cybersecurity practices from the Kubernetes master benchmark that is published by the [Center of Internet Security (CIS)](https://www.cisecurity.org/benchmark/kubernetes/). The cluster master and all worker nodes are deployed with images that meet the benchmark.</td>
     </tr>          
-  </tbody>
+    <tr>
+      <td>IP Whitelisting</td>
+      <td>OpenShift API is private and can be accessed only on whitelisted ip's. Stakater SRE's use companies VPN to connect with the servers and customers will need to whitelist their IPs in order to access OpenShift API</td>
+    </tr>         
+    <tr>
+      <td>Fine grained access control</td>
+      <td>Only Stakater SRE's have the cluster-admin access; customer users only get project level admin access</td>
+    </tr>         
+</tbody>
 </table>
+
