@@ -17,7 +17,6 @@ The following image shows the default cluster security settings that address aut
 TODO - add image
 
 <table>
-<caption>OpenShift API Server and ETCD Security</caption>
   <thead>
   <th>Security feature</th>
   <th>Description</th>
@@ -50,3 +49,9 @@ TODO - add image
 </tbody>
 </table>
 
+### What else can I do to secure my OpenShift API server?
+
+We highly recommend following:
+
+- Enable MFA for all access to the OpenShift API Server
+- IP whitelisting; allow API to be accessed from whitelisted IPs only
