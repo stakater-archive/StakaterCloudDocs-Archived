@@ -11,6 +11,7 @@ Cloud security and the protection of your systems, infrastructure, and data agai
 These components include:
 
 - OpenShift API Server and ETCD
+- OpenShift Console
 - Worker nodes
 - Network
 - Persistent storage
