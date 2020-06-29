@@ -79,7 +79,7 @@ module.exports = {
                 ]
             },
             {
-                title: 'Secrets',
+                title: 'Secrets Management',
                 children: [
                     '/content/sre/secrets/introduction',
                     '/content/sre/secrets/sealed-secrets',
