@@ -1,3 +1,3 @@
 # SRO Documentation
 
-Detailed walkthrough of Stakater Redhat Openshift offering
+Detailed walkthrough of Stakater Red Hat Openshift offering
