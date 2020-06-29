@@ -1,3 +1,3 @@
-# Stakater Cloud Documentation
+# SRO Documentation
 
-Detailed walkthrough of stakater cloud offering
+Detailed walkthrough of Stakater Redhat Openshift offering
