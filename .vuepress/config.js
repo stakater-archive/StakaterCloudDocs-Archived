@@ -54,8 +54,8 @@ module.exports = {
             {
                 title: 'Monitoring',
                 children: [
-                    '/content/sre/monitoring/ingress-monitor-controller',
-                    '/content/sre/monitoring/application-alerts'
+                    '/content/sre/monitoring/app-uptime',
+                    '/content/sre/monitoring/app-alerts'
                 ]
             },
             {
