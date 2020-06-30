@@ -39,9 +39,22 @@ module.exports = {
             {
                 title: 'Pipelines',
                 children: [
-                    '/content/sre/openshift-pipelines/openshift-pipelines.md',
-                    '/content/sre/openshift-pipelines/deploying-delivery-pipeline.md',
-                    '/content/sre/openshift-pipelines/deploying-cicd-pipeline.md'
+                    '/content/sre/pipelines/introduction.md',
+                    {
+                        title: 'Jenkins',
+                        children: [
+                            '/content/sre/pipelines/jenkins/jenkins.md',
+                            '/content/sre/pipelines/jenkins/jenkins-pipeline.md'
+                        ]
+                    },
+                    {
+                        title: 'Openshift Pipelines',
+                        children: [
+                            '/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md',
+                            '/content/sre/pipelines/openshift-pipelines/deploying-delivery-pipeline.md',
+                            '/content/sre/pipelines/openshift-pipelines/deploying-cicd-pipeline.md'
+                        ]
+                    }
                 ]
             },
             {
