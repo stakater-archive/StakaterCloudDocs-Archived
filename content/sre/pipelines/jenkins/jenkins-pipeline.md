@@ -73,7 +73,7 @@ source of truth and using it for CI/CD workflows of all our applications.
 
 Pipeline Library makes pipelines declarative, re-usable, easy to understand and maintain. Following is a production ready
 pipeline that we are using for a sample application [Stakater Nordmart Inventory](https://github.com/stakater-lab/stakater-nordmart-inventory) 
-that we wrote as part of our [Nordmart](https://playbook.stakater.com/content/workshop/nordmart/nordmart-ci-cd.html)
+that we wrote as part of our [Nordmart](https://playbook.stakater.com/content/nordmart/nordmart-intro.html)
 pool. 
 
 ```groovy
