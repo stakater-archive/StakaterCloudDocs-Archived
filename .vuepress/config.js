@@ -68,13 +68,15 @@ module.exports = {
                 title: 'Monitoring',
                 children: [
                     '/content/sre/monitoring/app-uptime',
-                    '/content/sre/monitoring/app-alerts'
+                    '/content/sre/monitoring/app-alerts',
+                    '/content/sre/monitoring/goldilocks',
+                    '/content/sre/monitoring/kube-resource-report'
                 ]
             },
             {
-                title: 'Application Workloads',
+                title: 'Autoscaling',
                 children: [
-                    '/content/sre/application/autoscaling.md'
+                    '/content/sre/autoscaling/autoscaling.md'
                 ]
             },
             {
