@@ -26,7 +26,7 @@ You can set the default behavior for VPA creation using some flags. When specifi
 - `--include-namespaces` - create VPAs in these namespaces, in addition to any that are labeled
 - `--exclude-namespaces` - when `--on-by-default` is set, exclude this comma-separated list of namespaces
 
-# Excluding containers
+## Excluding containers
 
 Containers can be excluded for individual deployments by applying a label to deployment. The label value should be a list of comma separated container names. The label value will be combined with any values provided through the `--exclude-containers` argument provided in the dashboard deployment. 
 
@@ -34,6 +34,6 @@ This option can be useful for hiding recommendations for sidecar containers for 
 
 In order to exclude containers from the `app deployment`, simply add the label with the comma separated names of the containers to exclude like this: `goldilocks.fairwinds.com/exclude-containers=linkerd-proxy,istio-proxy`
 
-# Useful Links
+## Useful Links
 
 - [Github Repo](https://github.com/FairwindsOps/goldilocks)

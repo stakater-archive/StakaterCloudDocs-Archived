@@ -4,7 +4,6 @@ The primary goal of Kube Resource Report is to help optimize Kubernetes resource
 
 `Slack` is the difference between resource requests and resource usage/recommendation, e.g. requesting 2 GiB of memory and only using 200 MiB would mean 1.8 GiB of memory slack — i.e. 1.8 GiB of memory capacity are blocked (and paid for), but unused.
 
-                                                Slack = Requests - Utilization
 ![Full Page View](./images/page-view.png)
 
 ## How it works
@@ -38,13 +37,12 @@ Recommendations for reource allocations can suggested for each pod via two metho
 ## Cost Estimation
 On the basis of current utilization and Slack Kube resource report can estimate how much cost can be saved if the recommendations are to be applied.
 
-Curently only AWS and Google Clouds are supported
+Curently only `AWS` and `Google Cloud` is supported
 
 `AWS`: AWS EC2 (all regions, On Demand, Linux)
+
 `GKE`: All machine types (all regions, On Demand, without sustained discount)
 
 ## Useful Links
 
 - [Github Repo](https://github.com/hjacobs/kube-resource-report)
-
-

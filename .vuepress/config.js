@@ -55,7 +55,9 @@ module.exports = {
                 title: 'Monitoring',
                 children: [
                     '/content/sre/monitoring/app-uptime',
-                    '/content/sre/monitoring/app-alerts'
+                    '/content/sre/monitoring/app-alerts',
+                    '/content/sre/monitoring/goldilocks',
+                    '/content/sre/monitoring/kube-resource-report'
                 ]
             },
             {
