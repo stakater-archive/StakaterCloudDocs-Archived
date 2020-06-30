@@ -80,7 +80,6 @@ pool.
 #!/usr/bin/env groovy
 @Library('github.com/stakater/stakater-pipeline-library@v2.16.31') _
 
-// For usage details: https://github.com/stakater/stakater-pipeline-library/blob/v2.16.31/docs/releaseApplication.md
 //Pipeline Steps:
 // 1. Create version and generate new tag
 // 2. Build application based on `appType` and `goal` using `builderImage`
@@ -114,6 +113,8 @@ releaseApplication {
     commitToManifestsRepo = true
 }
 ```
+
+For usage details and more features refer to [stakater-pipeline-library](https://github.com/stakater/stakater-pipeline-library/tree/master/docs)
 
 ## Useful Resources
 
