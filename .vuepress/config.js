@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Stakater Cloud Documentation',
-    description: 'Stakater Cloud Documentation',
+    title: 'Stakater Red Hat Openshift Documentation',
+    description: 'Stakater Red Hat Openshift Documentation',
     head: [
         ['link', { rel: 'icon', href: '/favicon.png' }]
     ],
@@ -29,31 +29,11 @@ module.exports = {
                     '/content/sre/introduction/sro-features',                  
                     '/content/sre/introduction/sro-key-differentiators'                    
                 ]
-            },            
-            {
-                title: 'Backup & Restore',
-                children: [
-                    '/content/sre/backup-restore/backup-restore.md'
-                ]
             },
             {
                 title: 'Cloud Provider',
                 children: [
                     '/content/sre/cloud-provider/azure'
-                ]                
-            },
-            {
-                title: 'Ingress Monitor Controller',
-                children: [
-                    '/content/sre/imc/ingress-monitor-controller.md'
-                ]
-            },
-            {
-                title: 'Networking',
-                children: [
-                    '/content/sre/networking/routes',
-                    '/content/sre/networking/route-sharding',
-                    '/content/sre/networking/external-dns'
                 ]
             },
             {
@@ -74,8 +54,8 @@ module.exports = {
             {
                 title: 'Monitoring',
                 children: [
-                    '/content/sre/monitoring/application-alerts.md',
-
+                    '/content/sre/monitoring/app-uptime',
+                    '/content/sre/monitoring/app-alerts'
                 ]
             },
             {
@@ -85,26 +65,25 @@ module.exports = {
                 ]
             },
             {
-                title: 'Sealed Secrets',
+                title: 'Backup & Restore',
                 children: [
-                    '/content/sre/sealed-secrets/introduction',
-                    '/content/sre/sealed-secrets/workshop',
-                    '/content/sre/sealed-secrets/management',
-                    '/content/sre/sealed-secrets/caveats'
+                    '/content/sre/backup-restore/backup-restore.md'
                 ]
             },
             {
-                title: 'User Management',
+                title: 'Networking',
                 children: [
-                    '/content/sre/user-management/giving-access-to-oauth-users'
+                    '/content/sre/networking/routes',
+                    '/content/sre/networking/route-sharding',
+                    '/content/sre/networking/external-dns'
                 ]
             },
             {
-                title: 'Vault',
+                title: 'Secrets Management',
                 children: [
-                    '/content/sre/vault/vault',
-                    '/content/sre/vault/vault-setup',
-                    '/content/sre/vault/vault-usage-example'
+                    '/content/sre/secrets/introduction',
+                    '/content/sre/secrets/sealed-secrets',
+                    '/content/sre/secrets/vault'
                 ]
             },
             {
@@ -114,7 +93,7 @@ module.exports = {
                     '/content/sre/faq/operations',
                     '/content/sre/faq/purchasing',
                     '/content/sre/faq/customization',
-                    '/content/sre/faq/developers'                    
+                    '/content/sre/faq/developers'
                 ]
             },
             {

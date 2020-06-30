@@ -2,11 +2,11 @@
   "name": "docs",
   "version": "0.0.1",
   "private": false,
-  "description": "Stakater Cloud Documentation",
+  "description": "Stakater Red Hat Openshift Documentation",
   "keywords": [
     "documentation",
     "stakater",
-    "cloud",
+    "Red Hat",
     "openshift"
   ],
   "homepage": "https://github.com/stakater/StakaterCloudDocs#stakaterclouddocs",
