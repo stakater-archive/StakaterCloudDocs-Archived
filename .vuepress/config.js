@@ -37,6 +37,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'Application Dashboard',
+                children: [
+                    '/content/sre/forecastle/forecastle'
+                ]
+            },
+            {
                 title: 'Pipelines',
                 children: [
                     '/content/sre/pipelines/introduction.md',
