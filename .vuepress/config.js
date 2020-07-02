@@ -37,7 +37,7 @@ module.exports = {
                 ]
             },
             {
-                title: 'Application Control Plane',
+                title: 'Application Dashboard',
                 children: [
                     '/content/sre/forecastle/forecastle'
                 ]
