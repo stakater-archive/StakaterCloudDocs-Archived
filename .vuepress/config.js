@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Stakater Cloud Documentation',
-    description: 'Stakater Cloud Documentation',
+    title: 'Stakater Red Hat Openshift Documentation',
+    description: 'Stakater Red Hat Openshift Documentation',
     head: [
         ['link', { rel: 'icon', href: '/favicon.png' }]
     ],
@@ -29,23 +29,66 @@ module.exports = {
                     '/content/sre/introduction/sro-features',                  
                     '/content/sre/introduction/sro-key-differentiators'                    
                 ]
-            },            
-            {
-                title: 'Backup & Restore',
-                children: [
-                    '/content/sre/backup-restore/backup-restore.md'
-                ]
             },
             {
                 title: 'Cloud Provider',
                 children: [
                     '/content/sre/cloud-provider/azure'
-                ]                
+                ]
             },
             {
-                title: 'Ingress Monitor Controller',
+                title: 'Application Dashboard',
                 children: [
-                    '/content/sre/imc/ingress-monitor-controller.md'
+                    '/content/sre/forecastle/forecastle'
+                ]
+            },
+            {
+                title: 'Pipelines',
+                children: [
+                    '/content/sre/pipelines/introduction.md',
+                    {
+                        title: 'Jenkins',
+                        children: [
+                            '/content/sre/pipelines/jenkins/jenkins.md',
+                            '/content/sre/pipelines/jenkins/jenkins-pipeline.md'
+                        ]
+                    },
+                    {
+                        title: 'Openshift Pipelines',
+                        children: [
+                            '/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md',
+                            '/content/sre/pipelines/openshift-pipelines/deploying-delivery-pipeline.md',
+                            '/content/sre/pipelines/openshift-pipelines/deploying-cicd-pipeline.md'
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'Registry',
+                children: [
+                    '/content/sre/registry/registry.md',
+                    '/content/sre/registry/accessing-registry.md'
+                ]
+            },
+            {
+                title: 'Monitoring',
+                children: [
+                    '/content/sre/monitoring/app-uptime',
+                    '/content/sre/monitoring/app-alerts',
+                    '/content/sre/monitoring/goldilocks',
+                    '/content/sre/monitoring/kube-resource-report'
+                ]
+            },
+            {
+                title: 'Autoscaling',
+                children: [
+                    '/content/sre/autoscaling/autoscaling.md'
+                ]
+            },
+            {
+                title: 'Backup & Restore',
+                children: [
+                    '/content/sre/backup-restore/backup-restore.md'
                 ]
             },
             {
@@ -57,48 +100,11 @@ module.exports = {
                 ]
             },
             {
-                title: 'Pipelines',
+                title: 'Secrets Management',
                 children: [
-                    '/content/sre/openshift-pipelines/openshift-pipelines.md',
-                    '/content/sre/openshift-pipelines/deploying-delivery-pipeline.md',
-                    '/content/sre/openshift-pipelines/deploying-cicd-pipeline.md'
-                ]
-            },
-            {
-                title: 'Registry',
-                children: [
-                    '/content/sre/registry/registry.md',
-                    '/content/sre/registry/accessing-registry.md'
-                ]
-            },
-            {
-                title: 'Application Workloads',
-                children: [
-                    '/content/sre/application/application-alerts.md',
-                    '/content/sre/application/autoscaling.md'
-                ]
-            },
-            {
-                title: 'Sealed Secrets',
-                children: [
-                    '/content/sre/sealed-secrets/introduction',
-                    '/content/sre/sealed-secrets/workshop',
-                    '/content/sre/sealed-secrets/management',
-                    '/content/sre/sealed-secrets/caveats'
-                ]
-            },
-            {
-                title: 'User Management',
-                children: [
-                    '/content/sre/user-management/giving-access-to-oauth-users'
-                ]
-            },
-            {
-                title: 'Vault',
-                children: [
-                    '/content/sre/vault/vault',
-                    '/content/sre/vault/vault-setup',
-                    '/content/sre/vault/vault-usage-example'
+                    '/content/sre/secrets/introduction',
+                    '/content/sre/secrets/sealed-secrets',
+                    '/content/sre/secrets/vault'
                 ]
             },
             {
@@ -108,7 +114,7 @@ module.exports = {
                     '/content/sre/faq/operations',
                     '/content/sre/faq/purchasing',
                     '/content/sre/faq/customization',
-                    '/content/sre/faq/developers'                    
+                    '/content/sre/faq/developers'
                 ]
             },
             {
