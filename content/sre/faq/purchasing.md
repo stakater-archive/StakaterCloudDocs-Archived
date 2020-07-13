@@ -13,6 +13,10 @@ Stakater Red Hat OpenShift can be purchased by sending an email to hello@stakate
 
 Stakater Red Hat OpenShift (SRO) is available on a pay-as-you-go basis. At the moment we do not offer a free trial or a proof of concept (PoC) for Stakater Red Hat OpenShift (SRO).
 
+### Is there any free trial?
+
+Yes we offer 30 days free trial with premium support on major public clouds Azure, Amzaon and Google
+
 ### Will I receive an invoice from Stakater?
 
 Customers will be directly billed by Stakater only.
