@@ -58,7 +58,7 @@ For Continuous Integration/Delivery we can use triggers and webhooks:
 ![trigger-workflow](./images/trigger-workflow.png)
 
 
-## Tekton Catalog For Tasks
+## Openshift Pipelines Catalog - Reusable Tasks
 
 - [Official](https://github.com/tektoncd/catalog)
 - [Kabanero-io](https://github.com/kabanero-io/kabanero-pipelines/tree/master/pipelines)
