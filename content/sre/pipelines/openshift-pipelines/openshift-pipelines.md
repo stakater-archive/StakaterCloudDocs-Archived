@@ -56,3 +56,20 @@ For Continuous Integration/Delivery we can use triggers and webhooks:
 ### Trigger Workflow
 
 ![trigger-workflow](./images/trigger-workflow.png)
+
+
+## Tekton Catalog For Tasks
+
+- [Official](https://github.com/tektoncd/catalog)
+- [Kabanero-io](https://github.com/kabanero-io/kabanero-pipelines/tree/master/pipelines)
+- [Openshift](https://github.com/openshift/pipelines-catalog)
+- [Open-toolchain](https://github.com/open-toolchain/tekton-catalog)
+- [Redhat-developer-demos](https://github.com/redhat-developer-demos/pipelines-catalog)
+
+## Useful Resources
+
+- [Tektoncd](https://github.com/tektoncd)
+- [Openshift Pipelines](https://github.com/openshift-pipelines)
+- [Pipeline Examples](https://github.com/tektoncd/pipeline/tree/master/examples)
+- [Katacoda Course](https://www.katacoda.com/openshift/courses/middleware/pipelines)
+- [Visual Studio Code Tekton Pipelines Extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-tekton-pipelines)
