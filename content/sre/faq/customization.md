@@ -4,7 +4,7 @@
 
 All supported mechanisms for authentication that are supported by OpenShift Container Platform are supported.
 
-### Can I bring my own VPC/VNet?
+### Can I bring my own VPC/VNet ?
 
 No. Currently it's not supported
 
