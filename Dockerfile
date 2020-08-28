@@ -1,4 +1,6 @@
-FROM stakater/pipeline-tools:v2.1.2
+FROM registry.access.redhat.com/ubi8/nodejs-10
+
+USER root
 
 LABEL name="Stakater Cloud Docs" \
       maintainer="Stakater <hello@stakater.com" \
