@@ -33,6 +33,8 @@ ex:
   spec:
     config:
       region: eu-central-1
+    objectStorage:
+      bucket: *********
     provider: aws
 ~~~
 - VolumeSnapshotlocation CR
@@ -41,8 +43,6 @@ ex:
   spec:
     config:
       region: eu-central-1
-    objectStorage:
-      bucket: managed-velero-backups-f3a694fe-bf44-4d91-8c5c-b7b84612eda2
     provider: aws
 ~~~
 Then schedule the backup by using the backup locations and specifying the various filters for backup target.
