@@ -8,5 +8,7 @@ keywords:
   - openshift
 home: https://github.com/stakater/stakaterclouddocs
 maintainers:
-- name: Stakater
-  email: hello@stakater.com
+  - name: Stakater
+    email: hello@stakater.com
+  - name: Waleed Malik
+    email: waleed@stakater.com
