@@ -77,11 +77,13 @@ metadata:
   selfLink: ""
 ~~~
 #### backup target Filters
+You can use [resource filtering](https://velero.io/docs/main/resource-filtering/) options to backup specific resources. Typical ones are following;
 - labelSelector: Specify the labels for the backup target resources
    MatchExpression has several operators such as In, NotIn, Exists and DoesNotExist.
 - includeClusterResources:(Boolean) Set true to include PV
 - includedNamespaces: Specify the namespaces in which backup target resources are included
 - includedResources: Specify the resource types for the backup target resources
+**NOTE**: You have to select the resource filters properly. For example, if the target application has cluster-scope resources, then you cannot use `--include-namespaces` only.
 #### backup destination
 - snapshotVolumes:(Boolean) Set true for volume snapshotting
 - storageLocation: Backupstoragelocation CR name
@@ -102,11 +104,7 @@ Create a restore with your most recent Velero Backup:
 ~~~
 velero restore create --from-backup <SCHEDULE NAME>-<TIMESTAMP>
 ~~~
-If you want to restore specific resources, you can use [resource filtering](https://velero.io/docs/main/resource-filtering/).
-For example, you can restore resources in `web` namespace:
-```
-velero restore create --from-backup <SCHEDULE NAME>-<TIMESTAMP> --include-namespaces web
-```
+
 When ready, revert your backup storage location to read-write mode:
 ~~~
 kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
@@ -114,3 +112,11 @@ kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
    --type merge \
    --patch '{"spec":{"accessMode":"ReadWrite"}}'
 ~~~
+
+#### restore target filter
+If you want to restore specific resources, you can use [resource filtering](https://velero.io/docs/main/resource-filtering/).
+For example, you can restore resources in `web` namespace:
+```
+velero restore create --from-backup <SCHEDULE NAME>-<TIMESTAMP> --include-namespaces web
+```
+**NOTE**: You have to select the resource filters properly. For example, if the target application has cluster-scope resources, then you cannot use `--include-namespaces` only.
