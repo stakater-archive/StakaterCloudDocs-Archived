@@ -102,6 +102,11 @@ Create a restore with your most recent Velero Backup:
 ~~~
 velero restore create --from-backup <SCHEDULE NAME>-<TIMESTAMP>
 ~~~
+If you want to restore specific resources, you can use [resource filtering](https://velero.io/docs/main/resource-filtering/).
+For example, you can restore resources in `web` namespace:
+```
+velero restore create --from-backup <SCHEDULE NAME>-<TIMESTAMP> --include-namespaces web
+```
 When ready, revert your backup storage location to read-write mode:
 ~~~
 kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
