@@ -5,9 +5,9 @@
 
 Currently, we do not allow users to run processes within containers that require root user privileges for security reasons [see here](https://docs.docker.com/engine/security/security/).
 
-### Are Red Hat JBoss Middleware services available on Stakater Red Hat OpenShift (SRO)?
+### Are Red Hat JBoss Middleware services available on Stakater Agility Platform?
 
-A number of Red Hat JBoss Middleware Services are available as add-ons for Stakater Red Hat OpenShift (SRO), including:
+A number of Red Hat JBoss Middleware Services are available as add-ons for Stakater Agility Platform, including:
 
 - Red Hat JBoss Enterprise Application Platform
 - Red Hat JBoss Web Server (included)
@@ -21,9 +21,9 @@ A number of Red Hat JBoss Middleware Services are available as add-ons for Staka
 - Red Hat JBoss Fuse Integration Services
 - Red Hat Single Sign-On.
 
-### Are IBM Cloud Paks available on Stakater Red Hat OpenShift (SRO)?
+### Are IBM Cloud Paks available on Stakater Agility Platform?
 
-A number of IBM Cloud Paks are available as add-ons for Stakater Red Hat OpenShift (SRO), including:
+A number of IBM Cloud Paks are available as add-ons for Stakater Agility Platform, including:
 
 - IBM Cloud Pak for Integration
 - IBM Cloud Pak for Application
