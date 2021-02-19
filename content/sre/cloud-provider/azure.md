@@ -1,6 +1,6 @@
 # Azure
 
-SRO supports provisioning clusters on Azure.
+Stakater Agility Platform supports provisioning clusters on Azure.
 
 ## Subscription
 

@@ -1,17 +1,17 @@
 
 # Purchasing
 
-### Is Stakater Red Hat OpenShift (SRO) available for purchase in all countries?
+### Is Stakater Agility Platform available for purchase in all countries?
 
-Stakater Red Hat OpenShift (SRO) is available for purchase in all countries where Azure, AWS or Google is commercially available.
+Stakater Agility Platform is available for purchase in all countries where Azure, AWS or Google is commercially available.
 
-### How can I purchase Stakater Red Hat OpenShift (SRO)?
+### How can I purchase Stakater Agility Platform?
 
-Stakater Red Hat OpenShift can be purchased by sending an email to hello@stakater.com and someone from our sales team will contact you.
+Stakater Agility Platform can be purchased by sending an email to sales@stakater.com and someone from our sales team will contact you.
 
-### Can I try Stakater Red Hat OpenShift (SRO) before I buy?
+### Can I try Stakater Agility Platform before I buy?
 
-Stakater Red Hat OpenShift (SRO) is available on a pay-as-you-go basis. At the moment we do not offer a free trial or a proof of concept (PoC) for Stakater Red Hat OpenShift (SRO).
+Stakater Agility Platform is available on a pay-as-you-go basis. Yes we offer one month guided trial!
 
 ### Is there any free trial?
 

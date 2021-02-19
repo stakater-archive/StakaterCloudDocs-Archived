@@ -1,5 +1,5 @@
 
-# Why SRO?
+# Why Stakater Agility Platform?
 
 - Quicker return on investment > Get up and running quickly
 - Reduce Operational Overhead > Fully managed from infrastructure to day to day operations

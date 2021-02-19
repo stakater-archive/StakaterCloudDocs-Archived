@@ -1,6 +1,6 @@
 # Backup and Restore
 
-Back up and restore applications on SRO (Stakater Red Hat OpenShift)
+Back up and restore applications on Stakater Agility Platform
 
 ## Service viewpoint
 ### Backup
@@ -19,7 +19,7 @@ Resources can be restored on demand. Please contact support and specify the foll
 - Whether to restore PVs or not
 
 ## Technical viewpoint
-SRO uses managed velero operator to provision the velero server. https://github.com/openshift/managed-velero-operator
+Stakater Agility Platform uses managed velero operator to provision the velero server. https://github.com/openshift/managed-velero-operator
 This backup and restore process can be used for both disaster recovery and cluster migration.
 
 ### Backup

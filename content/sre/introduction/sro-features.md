@@ -1,4 +1,4 @@
-# SRO Features
+# Stakater Agility Platform Features
 
 ### Fully managed enterprise Kubernetes
 - Professionally managed infrastructure
@@ -28,4 +28,4 @@
 - Performance and capacity management
 - Image and registry management
 
-![SRO Matrix](./images/image-1.png)
+![Stakater Agility Platform Matrix](./images/image-1.png)

@@ -1,3 +1,3 @@
-# SRO Documentation
+# Stakater Agility Platform Documentation
 
-Detailed walkthrough of Stakater Red Hat Openshift offering
+Detailed walkthrough of Stakater Agility Platform offering
