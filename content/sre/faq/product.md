@@ -1,32 +1,21 @@
 # Product
 
-### What is difference between SKS & SRO?
+### Which clouds are supported by Stakater Agility Platform?
 
-There is i no difference; just two different product offerings name.
+We currently support Azure, AWS, Google, OpenStack and VMWare.
 
-- SKS: Stakater Kubernetes Service
-- SRO: Stakater Red Hat OpenShift
+### What does Stakater Agility Platform include?
 
-### Which clouds are supported by SKS/SRO?
+Each Stakater Agility Platform cluster comes with a fully-managed control plane (master nodes), infra nodes and application nodes. Installation, management, maintenance, and upgrades are performed by Stakater SRE. Operational services (such as logging, metrics, monitoring, etc.) are available as well and are fully managed by Stakater SRE.
 
-We currently support Azure, AWS and Google
+### What is the current version of Red Hat OpenShift running in Stakater Agility Platform?
 
-### When is support for VMWare and OpenStack coming?
+OpenShift Container Platform 4.6+
 
-The support will be added by Q4 2020
+### How is Stakater Agility Platform different than Red Hat OpenShift Container Platform?
 
-### What does Stakater Red Hat OpenShift (SRO) include?
+Stakater Agility Platform uses the same code base as Red Hat OpenShift Container Platform, but is installed in an opinionated way—optimized for performance, scalability, and security. Stakater Agility Platform is hosted on Microsoft Azure, AWS and/or Google public cloud managed by Stakater. Some options and administrative functions are restricted or unavailable on Stakater Agility Platform.
 
-Each SRO (Stakater Red Hat OpenShift) cluster comes with a fully-managed control plane (master nodes), infra nodes and application nodes. Installation, management, maintenance, and upgrades are performed by Stakater SRE. Operational services (such as logging, metrics, monitoring, etc.) are available as well and are fully managed by Stakater SRE.
+### Is there any element in Stakater Agility Platform shared with other customers? Or is everything independent?
 
-### What is the current version of Red Hat OpenShift running in Stakater Red Hat OpenShift (SRO)?
-
-OpenShift Container Platform 4.4
-
-### How is Stakater Red Hat OpenShift (SRO) different than Red Hat OpenShift Container Platform?
-
-Stakater Red Hat OpenShift (SRO) uses the same code base as Red Hat OpenShift Container Platform, but is installed in an opinionated way—optimized for performance, scalability, and security. Stakater Red Hat OpenShift (SRO) is hosted on Microsoft Azure, AWS and/or Google public cloud managed by Stakater. Some options and administrative functions are restricted or unavailable on Azure Red Hat OpenShift. A Red Hat OpenShift Container Platform subscription entitles you to host and manage the software on your own infrastructure.
-
-### Is there any element in SRO shared with other customers? Or is everything independent?
-
-Each Stakater Red Hat OpenShift cluster is dedicated to a given customer and lives within the customer's subscription/account.
+Each Stakater Agility Platform cluster is dedicated to a given customer and lives within the customer's subscription/account.
