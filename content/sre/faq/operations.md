@@ -4,9 +4,9 @@
 
 Stakater is responsible for provisioning, managing, and upgrading the Red Hat OpenShift (container) platform as well as monitoring the core cluster infrastructure for availability. And Stakater is not responsible for managing the application lifecycle of applications that run on the platform.
 
-### What is the Stakater Kubernetes Service (SKS) maintenance process?
+### What is the Stakater Agility Platform maintenance process?
 
-There are three types of maintenance for SKS: upgrades, backup and restoration of etcd data, and cloud provider-initiated maintenance.
+There are three types of maintenance for Stakater Agility Platform: upgrades, backup and restoration of etcd data, and cloud provider-initiated maintenance.
 
 - Upgrades include software upgrades and CVEs.
 - Backup and management of etcd data is an automated process that may require cluster downtime depending on the action. If the etcd database is being restored from a backup there will be downtime. We back up etcd hourly and retain the last 6 hours of backups.
