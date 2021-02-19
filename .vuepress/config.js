@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Stakater Red Hat Openshift Documentation',
-    description: 'Stakater Red Hat Openshift Documentation',
+    title: 'Stakater Agility Platform Documentation',
+    description: 'Stakater Agility Platform Documentation',
     head: [
         ['link', { rel: 'icon', href: '/favicon.png' }]
     ],
