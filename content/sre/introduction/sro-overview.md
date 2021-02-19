@@ -1,7 +1,7 @@
 
-# SRO Overview
+# Stakater Agility Platform Overview
 
-With Stakater Red Hat OpenShift you can deploy a containerized, hybrid environment to meet digital business needs for running your mission critical systems.
+With Stakater Agility Platform you can deploy a containerized, hybrid environment to meet digital business needs for running your mission critical systems.
 
 ### Primary Capabilities
 - Supported, integrated, and automated architecture with a validated cluster deployment
