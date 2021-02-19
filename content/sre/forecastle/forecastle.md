@@ -15,7 +15,7 @@ Forecastle gives you access to a control panel where you can see your running ap
 
 ### Configuration
 
-Forecastle is already configured for SRO users and it uses Openshift Authentication for SSO. Although, users can setup a
+Forecastle is already configured for Stakater Agility Platform users and it uses Openshift Authentication for SSO. Although, users can setup a
 separate instance of forecastle as well by following [Deploying Forecaslte](https://github.com/stakater/forecastle#deploying-to-kubernetes)
 
 ### Usage
