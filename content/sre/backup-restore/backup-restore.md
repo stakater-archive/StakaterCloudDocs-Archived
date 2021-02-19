@@ -1,6 +1,6 @@
 # Backup and Restore
 
-Back up and restore applications on SRO (Stakater Red Hat OpenShift)
+Back up and restore applications on Stakater Agility Platform
 
 ## Service viewpoint
 ### Backup
