@@ -23,26 +23,26 @@ module.exports = {
             {
                 title: 'Introduction',
                 children: [
-                    '/content/sre/introduction/introduction',
-                    '/content/sre/introduction/why-sro',
-                    '/content/sre/introduction/sro-overview',
-                    '/content/sre/introduction/sro-features',                  
-                    '/content/sre/introduction/sro-key-differentiators'                    
+                    '/content/sre/introduction/introduction.md',
+                    '/content/sre/introduction/why-sro.md',
+                    '/content/sre/introduction/sro-overview.md',
+                    '/content/sre/introduction/sro-features.md',                  
+                    '/content/sre/introduction/sro-key-differentiators.md'                    
                 ]
             },
             {
                 title: 'Cloud Provider',
                 children: [
-                    '/content/sre/cloud-provider/azure',
-                    '/content/sre/cloud-provider/aws', 
-                    '/content/sre/cloud-provider/google',
-                    '/content/sre/cloud-provider/binero'                    
+                    '/content/sre/cloud-provider/azure.md',
+                    '/content/sre/cloud-provider/aws.md', 
+                    '/content/sre/cloud-provider/google.md',
+                    '/content/sre/cloud-provider/binero.md'                    
                 ]
             },
             {
                 title: 'Application Dashboard',
                 children: [
-                    '/content/sre/forecastle/forecastle'
+                    '/content/sre/forecastle/forecastle.md'
                 ]
             },
             {
@@ -60,25 +60,31 @@ module.exports = {
                 ]
             },
             {
-                title: 'Registry',
+                title: 'Artifact Management',
                 children: [
                     '/content/sre/registry/registry.md',
                     '/content/sre/registry/accessing-registry.md'
                 ]
             },
             {
+                title: 'Code Quality',
+                children: [
+                    '/content/sre/code-quality/sonarqube.md'
+                ]
+            },            
+            {
                 title: 'Monitoring',
                 children: [
-                    '/content/sre/monitoring/app-uptime',
-                    '/content/sre/monitoring/app-alerts',
-                    '/content/sre/monitoring/goldilocks',
-                    '/content/sre/monitoring/kube-resource-report'
+                    '/content/sre/monitoring/app-uptime.md',
+                    '/content/sre/monitoring/app-alerts.md',
+                    '/content/sre/monitoring/goldilocks.md',
+                    '/content/sre/monitoring/kube-resource-report.md'
                 ]
             },
             {
                 title: 'Logging',
                 children: [
-                    '/content/sre/logging/logging'
+                    '/content/sre/logging/logging.md'
                 ]
             },            
             {
@@ -96,34 +102,34 @@ module.exports = {
             {
                 title: 'Networking',
                 children: [
-                    '/content/sre/networking/routes',
-                    '/content/sre/networking/route-sharding',
-                    '/content/sre/networking/external-dns'
+                    '/content/sre/networking/routes.md',
+                    '/content/sre/networking/route-sharding.md',
+                    '/content/sre/networking/external-dns.md'
                 ]
             },
             {
                 title: 'Secrets Management',
                 children: [
-                    '/content/sre/secrets/introduction',
-                    '/content/sre/secrets/sealed-secrets',
-                    '/content/sre/secrets/vault'
+                    '/content/sre/secrets/introduction.md',
+                    '/content/sre/secrets/sealed-secrets.md',
+                    '/content/sre/secrets/vault.md'
                 ]
             },
 
             {
                 title: 'Support',
                 children: [
-                    '/content/sre/support/support'
+                    '/content/sre/support/support.md'
                 ]
             },
             {
                 title: 'Frequently Asked Questions',
                 children: [
-                    '/content/sre/faq/product',
-                    '/content/sre/faq/operations',
-                    '/content/sre/faq/purchasing',
-                    '/content/sre/faq/customization',
-                    '/content/sre/faq/developers'
+                    '/content/sre/faq/product.md',
+                    '/content/sre/faq/operations.md',
+                    '/content/sre/faq/purchasing.md',
+                    '/content/sre/faq/customization.md',
+                    '/content/sre/faq/developers.md'
                 ]
             }            
         ],
