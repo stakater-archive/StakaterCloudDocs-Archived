@@ -33,7 +33,10 @@ module.exports = {
             {
                 title: 'Cloud Provider',
                 children: [
-                    '/content/sre/cloud-provider/azure'
+                    '/content/sre/cloud-provider/azure',
+                    '/content/sre/cloud-provider/aws', 
+                    '/content/sre/cloud-provider/google',
+                    '/content/sre/cloud-provider/binero'                    
                 ]
             },
             {
@@ -107,6 +110,13 @@ module.exports = {
                     '/content/sre/secrets/vault'
                 ]
             },
+
+            {
+                title: 'Support',
+                children: [
+                    '/content/sre/support/support'
+                ]
+            },
             {
                 title: 'Frequently Asked Questions',
                 children: [
@@ -116,13 +126,7 @@ module.exports = {
                     '/content/sre/faq/customization',
                     '/content/sre/faq/developers'
                 ]
-            },
-            {
-                title: 'Support',
-                children: [
-                    '/content/sre/support/support'
-                ]
-            }
+            }            
         ],
         repo: 'stakater/stakaterclouddocs',
         editLinks: true,
