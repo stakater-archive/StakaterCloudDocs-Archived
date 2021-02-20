@@ -50,7 +50,7 @@ module.exports = {
                 children: [
                     '/content/sre/pipelines/introduction.md',
                     {
-                        title: 'Openshift Pipelines',
+                        title: 'Tekton',
                         children: [
                             '/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md',
                             '/content/sre/pipelines/openshift-pipelines/deploying-delivery-pipeline.md',
