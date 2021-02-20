@@ -50,13 +50,6 @@ module.exports = {
                 children: [
                     '/content/sre/pipelines/introduction.md',
                     {
-                        title: 'Jenkins',
-                        children: [
-                            '/content/sre/pipelines/jenkins/jenkins.md',
-                            '/content/sre/pipelines/jenkins/jenkins-pipeline.md'
-                        ]
-                    },
-                    {
                         title: 'Openshift Pipelines',
                         children: [
                             '/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md',
@@ -82,6 +75,12 @@ module.exports = {
                     '/content/sre/monitoring/kube-resource-report'
                 ]
             },
+            {
+                title: 'Logging',
+                children: [
+                    '/content/sre/logging/logging'
+                ]
+            },            
             {
                 title: 'Autoscaling',
                 children: [
