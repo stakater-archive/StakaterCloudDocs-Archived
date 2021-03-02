@@ -46,6 +46,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'Authentication and Authorization',
+                children: [
+                    '/content/sre/authentication-authorization/google-idp.md'
+                ]                
+            },
+            {
                 title: 'Pipelines',
                 children: [
                     '/content/sre/pipelines/introduction.md',
