@@ -12,7 +12,6 @@ To enable login with Google you first have to create a project and a client in t
 
 2. Then navigate to the `APIs & Services` section in the Google Developer Console. On that screen, navigate to `Credentials` administration. select `OAuth client ID` under the `Create credentials` button.
 
-
 3. You will then be brought to the `Create OAuth client ID` page. Select `Web application` as the application type. Specify the name you want for your client. In `Redirect URI` (**This will be provided by Stakater Support**) click the Create button.
 
 ![Google Oauth screen](./images/google-create-oauth-id.png)
