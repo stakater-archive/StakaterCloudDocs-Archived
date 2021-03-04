@@ -38,8 +38,11 @@ There are 2 kinds of secrets in the vault.
   Users can create/delete/update/read secrets on the `TENANT_NAME/*` path.
 
 Users can manage secrets via vault UI or vault CLI.
+
 ## Using Vault UI
+
 Once the user is included in any tenants, he can access to the Vault UI using OIDC authentication.
+
 **Step**
 * Access https://stakater-vault-openshift-stakater-vault.CLUSTER_DOMAIN
 * Select `OIDC` method on `Sing in to Vault` page.
@@ -53,12 +56,24 @@ Users can do all actions on the path `TENANT_NAME/*`.
 - Create/update/get/list/delete secrets
 
 ## Using Vault CLI
+
 To use vault CLI, the token is required. Users can get/renew/revoke the token on the UI. (Click the user account Avatar.)
 ```bash
 vault login token=${TOKEN}
 ```
 
-## Inject vault secrets in pods
+## Consuming vault secrets in pods
+
+There are different ways to consume vault secrets in a pod
+
+1. Vault API
+2. Inject secrets via sidecar
+
+### Vault API
+
+TBD
+
+### Inject vault secrets in pods
 
 For consuming secrets that are stored in vault, we leverage on vault agent. Vault agent adds init containers and side-car
 containers for populating secrets and managing token lifecycle.
@@ -67,7 +82,7 @@ containers for populating secrets and managing token lifecycle.
 
 Let's go through a demonstration:
 
-### Make vault accessible and set environment variables
+#### Make vault accessible and set environment variables
 
 ```shell script
 oc port-forward -n stakater-vault service/vault 8200:8200 &`
@@ -78,7 +93,7 @@ export ROOT_TOKEN=`cat vault-secrets/root-token`
 export VAULT_TOKEN=$ROOT_TOKEN
 ```
 
-### Create namespace
+#### Create namespace
 
 Create a namespace to deploy our sample application that consumes secret stored in vault. We need to label the namespace
  with `vault.hashicorp.com/agent-webhook=enabled` to enable the injection of vault sidecars.
@@ -92,7 +107,7 @@ metadata:
     vault.hashicorp.com/agent-webhook: enabled
 ```
 
-### Create service account
+#### Create service account
 
 ```yaml
 apiVersion: v1
@@ -104,7 +119,7 @@ metadata:
     app: vault-agent-demo
 ```
 
-### Create a role in vault for authentication
+#### Create a role in vault for authentication
 
 ```shell script
 # Create a role for binding the policy to a service account
@@ -115,14 +130,14 @@ vault write -tls-skip-verify auth/kubernetes/role/stakater-vault-demo-role \
         ttl=24h
 ```
 
-### Create a secret
+#### Create a secret
 
 ```shell script
 # Write sample secret
 vault kv put -tls-skip-verify secret/helloworld ttl=1m username=test-user password=dummy-pass
 ```
 
-### Required Annotations
+#### Add Required Annotations
 
 To inject secrets, we must use the following annotations:
 
@@ -135,7 +150,7 @@ To inject secrets, we must use the following annotations:
 - `vault.hashicorp.com/agent-inject-template-{path-to-secret}`: Specify template to use for rendering the secrets 
 
 
-### Deploy the application
+#### Deploy the application
 
 ```yaml
 apiVersion: apps/v1
@@ -178,6 +193,6 @@ spec:
               cat /vault/secrets/helloworld
 ```
 
-### Verify 
+#### Verify 
 
 You can verify the workflow through logs of the application pod.
