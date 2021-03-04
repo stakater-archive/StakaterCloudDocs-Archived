@@ -53,6 +53,12 @@ module.exports = {
                 ]                
             },
             {
+                title: 'Alerting',
+                children: [
+                    '/content/sre/alerting/slack.md',                 
+                ]                
+            },
+            {
                 title: 'Pipelines',
                 children: [
                     '/content/sre/pipelines/introduction.md',
