@@ -3,7 +3,7 @@
 - Create a git repo `gitops-config`
 - Enable branch protection; `Settings > Branches > Branch protection rules` and then click `Add rule` and select following only
 
-TBD
+![main-branch-protection-rule](./images/main-branch-protection.png)
 
 - Add the Stakater bot user as collaborator with `Admin` permissions (ask Stakater team about the bot user id); `Settings > Manage access > Invite people or team`
 
