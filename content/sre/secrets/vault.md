@@ -40,6 +40,9 @@ There are 2 kinds of secrets in the vault.
 Users can manage secrets via vault UI or vault CLI.
 ## Using Vault UI
 Once the user is included in any tenants, he can access to the Vault UI using OIDC authentication.
+
+![vault-oidc-login](./images/vault_oidc_login.png)
+
 **Step**
 * Access https://stakater-vault-openshift-stakater-vault.CLUSTER_DOMAIN
 * Select `OIDC` method on `Sing in to Vault` page.
@@ -54,6 +57,14 @@ Users can do all actions on the path `TENANT_NAME/*`.
 
 ## Using Vault CLI
 To use vault CLI, the token is required. Users can get/renew/revoke the token on the UI. (Click the user account Avatar.)
+
+![vault-token](./images/vault_token.png)
+
+Once token is fetched, users can use the CLI provided by UI. So there is no need to install vault CLI.
+
+![vault-cli](./images/vault_cli.png)
+
+
 ```bash
 vault login token=${TOKEN}
 ```
