@@ -69,11 +69,11 @@ There are different ways to consume vault secrets in a pod
 1. Vault API
 2. Inject secrets via sidecar
 
-### Vault API
+### 1. Vault API
 
 TBD
 
-### Inject vault secrets in pods
+### 2. Inject vault secrets in pods
 
 For consuming secrets that are stored in vault, we leverage on vault agent. Vault agent adds init containers and side-car
 containers for populating secrets and managing token lifecycle.
