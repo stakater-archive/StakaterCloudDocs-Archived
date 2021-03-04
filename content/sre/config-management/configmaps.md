@@ -50,3 +50,31 @@ A config map is similar to a secret, but designed to more conveniently support w
 ### The Kubelet only supports the use of a config map for pods it gets from the API server.
 
 This includes any pods created by using the CLI, or indirectly from a replication controller. It does not include pods created by using the OpenShift Container Platform node’s --manifest-url flag, its --config flag, or its REST API because these are not common ways to create pods.
+
+## Creating a config map
+
+### Creating a config map from a directory
+
+_TBD_
+
+### Creating a ConfigMap from a file
+
+_TBD_
+
+### Creating a config map from literal values
+
+_TBD_
+
+## Use Cases: Consuming ConfigMaps in pods
+
+### Populating environment variables in containers by using config maps
+
+_TBD_
+
+### Setting command-line arguments for container commands with ConfigMaps
+
+_TBD_
+
+### Injecting content into a volume by using config maps
+
+_TBD_
