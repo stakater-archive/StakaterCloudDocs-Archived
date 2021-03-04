@@ -48,7 +48,9 @@ module.exports = {
             {
                 title: 'GitOps',
                 children: [
-                    '/content/sre/gitops/github.md'
+                    '/content/sre/gitops/introduction.md',                    
+                    '/content/sre/gitops/github.md',
+                    '/content/sre/gitops/faqs.md'                    
                 ]
             },
             {
