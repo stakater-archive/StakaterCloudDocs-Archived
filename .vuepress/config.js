@@ -46,6 +46,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'GitOps',
+                children: [
+                    '/content/sre/gitops/github.md'
+                ]
+            },
+            {
                 title: 'Authentication and Authorization',
                 children: [
                     '/content/sre/authentication-authorization/google-idp.md',
