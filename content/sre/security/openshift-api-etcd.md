@@ -44,7 +44,7 @@ TODO - add image
     </tr>         
     <tr>
       <td>Fine grained access control</td>
-      <td>Only Stakater SRE's have the cluster-admin access; customer users only get project level admin access</td>
+      <td>Only Stakater SRE's have time-limited cluster-admin access; customer users only get project level admin access</td>
     </tr>         
 </tbody>
 </table>
