@@ -21,3 +21,7 @@ As a software organization, I would like to:
 * Separate application source code (Java/Go) from deployment manifests i.e the application source code and the GitOps configuration reside in separate git repositories.
 * Deployment manifests are standard Kubernetes (k8s) manifests i.e Kubernetes manifests in the GitOps repository can be simply applied with nothing more than a `oc apply`.
 * Helm for defining the differences between environments.
+
+## How?
+
+![CI & CD Workflow](./images/CI & CD Workflow.png)
