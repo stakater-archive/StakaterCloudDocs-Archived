@@ -24,4 +24,4 @@ As a software organization, I would like to:
 
 ## How?
 
-![CI & CD Workflow](./images/CI & CD Workflow.png)
+![CI and CD Workflow](./images/ci-cd-workflow.png)
