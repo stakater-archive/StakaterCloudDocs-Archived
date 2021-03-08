@@ -35,7 +35,8 @@ There are 2 kinds of secrets in the vault.
   Users only have read permission.
   The path is `managed-addons/*`.
 * Tenant specific secrets.
-  Users can create/delete/update/read secrets on the `TENANT_NAME/*` path.
+  A `KV` v2 secret engine is enabled on `TENANT_NAME/kv` path in default. Even though users delete that path, it is created automatically so please don't remove that.
+  Users can enable/disable secret engines on `TENANT_NAME/*` paths and create/delete/update/read secrets in them.
 
 Users can manage secrets via vault UI or vault CLI.
 
