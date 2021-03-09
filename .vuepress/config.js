@@ -61,12 +61,6 @@ module.exports = {
                 ]                
             },
             {
-                title: 'Alerting',
-                children: [
-                    '/content/sre/alerting/slack.md',                 
-                ]                
-            },
-            {
                 title: 'Pipelines',
                 children: [
                     '/content/sre/pipelines/introduction.md',
@@ -92,7 +86,13 @@ module.exports = {
                 children: [
                     '/content/sre/code-quality/sonarqube.md'
                 ]
-            },            
+            },
+            {
+                title: 'Logging',
+                children: [
+                    '/content/sre/logging/logging.md'
+                ]
+            },                        
             {
                 title: 'Monitoring',
                 children: [
@@ -103,10 +103,10 @@ module.exports = {
                 ]
             },
             {
-                title: 'Logging',
+                title: 'Alerting',
                 children: [
-                    '/content/sre/logging/logging.md'
-                ]
+                    '/content/sre/alerting/downtime-notifications-uptimerobot.md',                 
+                ]                
             },            
             {
                 title: 'Autoscaling',
