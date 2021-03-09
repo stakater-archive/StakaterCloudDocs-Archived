@@ -46,17 +46,18 @@ module.exports = {
                 ]
             },
             {
+                title: 'GitOps',
+                children: [
+                    '/content/sre/gitops/introduction.md',                    
+                    '/content/sre/gitops/github.md',
+                    '/content/sre/gitops/faqs.md'                    
+                ]
+            },
+            {
                 title: 'Authentication and Authorization',
                 children: [
                     '/content/sre/authentication-authorization/google-idp.md',
                     '/content/sre/authentication-authorization/keycloak-idp.md'                    
-                ]                
-            },
-            {
-                title: 'Alerting',
-                children: [
-                    '/content/sre/alerting/downtime-alerts.md',
-                    '/content/sre/alerting/log-alerts.md'                 
                 ]                
             },
             {
@@ -85,7 +86,13 @@ module.exports = {
                 children: [
                     '/content/sre/code-quality/sonarqube.md'
                 ]
-            },            
+            },
+            {
+                title: 'Logging',
+                children: [
+                    '/content/sre/logging/logging.md'
+                ]
+            },                        
             {
                 title: 'Monitoring',
                 children: [
@@ -96,10 +103,11 @@ module.exports = {
                 ]
             },
             {
-                title: 'Logging',
+                title: 'Alerting',
                 children: [
-                    '/content/sre/logging/logging.md'
-                ]
+                    '/content/sre/alerting/downtime-alerts.md',
+                    '/content/sre/alerting/log-alerts.md'
+                ]                
             },            
             {
                 title: 'Autoscaling',

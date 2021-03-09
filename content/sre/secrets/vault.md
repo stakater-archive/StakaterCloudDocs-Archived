@@ -35,27 +35,37 @@ There are 2 kinds of secrets in the vault.
   Users only have read permission.
   The path is `managed-addons/*`.
 * Tenant specific secrets.
-  Users can create/delete/update/read secrets on the `TENANT_NAME/*` path.
+  A `KV` v2 secret engine is enabled on `TENANT_NAME/kv` path in default. Even though users delete that path, it is created automatically so please don't remove that.
+  Users can enable/disable secret engines on `TENANT_NAME/*` paths and create/delete/update/read secrets in them.
 
 Users can manage secrets via vault UI or vault CLI.
 
 ## Using Vault UI
 
-Once the user is included in any tenants, he can access to the Vault UI using OIDC authentication.
+Users included in any tenants can access to the Vault UI using OIDC authentication.
 
+Once login, users can do all actions on the path `TENANT_NAME/*`.
+
+- Enable/disable any kinds of secret engines
+
+- Create/update/get/list/delete secrets
+
+**Authentication**
 ![vault-oidc-login](./images/vault_oidc_login.png)
-
-**Step**
 * Access https://stakater-vault-openshift-stakater-vault.CLUSTER_DOMAIN
 * Select `OIDC` method on `Sing in to Vault` page.
 * Keep `Role` as default.
 * Click `Sign in with OIDC Provider` and sign in to the proper IdP.
 
-Users can do all actions on the path `TENANT_NAME/*`.
+**Enable secret engines**
 
-- Enable/disable any kinds of secret engines
+![select_secret_engine](./images/select_secret_engine.png)
 
-- Create/update/get/list/delete secrets
+![configure_secret_engine](./images/configure_secret_engine.png)
+
+**Create secrets**
+
+![create_secret](./images/create_secret.png)
 
 ## Using Vault CLI
 
