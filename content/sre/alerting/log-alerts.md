@@ -6,7 +6,6 @@ Application alerting consist of two sets of configuration:
 1. Configuring the Webhook in Slack
 2. Configuring `FluentdConfigAnnotation` in Application chart
 
-
 ## Configuring the Incoming Webhook in Slack 
 
 - While in your Slack workspace, left-click the name of your workspace, and pick `Administration` > `Manage Apps` from the dropdown Menu.
@@ -19,17 +18,20 @@ Application alerting consist of two sets of configuration:
 ## Configuring FluentdConfigAnnotation in Application chart
 The configuration to parse/match/send logs can be specified in the [Application Chart](https://github.com/stakater-charts/application).
 
-- `.Values.deployment.fluentdConfigAnnotations.notifications.slack` specify slack *webhookURL* and *channelName*
-- `.Values.deployment.fluentdConfigAnnotations.key` specify log field to match the regex
-- `.Values.deployment.fluentdConfigAnnotations.pattern` specify regex to be matched.
+| Parameter | Description |
+|:---|:---|
+|.Values.deployment.fluentdConfigAnnotations.notifications.slack|specify slack *webhookURL* and *channelName*|
+|.Values.deployment.fluentdConfigAnnotations.key|specify log field to match the regex|
+|.Values.deployment.fluentdConfigAnnotations.pattern|specify regex to be matched|
 
 ### Additional config For Non JSON Log formats
 Additionally you can parse your application logs if they are not in JSON format by specifying regexes as described below:
 
-- `.Values.deployment.fluentdConfigAnnotations.regexFirstLine` specify the regex to match the first line of the log
-- `.Values.deployment.fluentdConfigAnnotations.regex` specify the regex to parse the complete log entry
-- `.Values.deployment.fluentdConfigAnnotations.timeFormat` specify the regex to parse time
-
+| Parameter | Description |
+|:---|:---|
+|.Values.deployment.fluentdConfigAnnotations.regexFirstLine|specify the regex to match the first line of the log|
+|.Values.deployment.fluentdConfigAnnotations.regex|specify the regex to parse the complete log entry|
+|.Values.deployment.fluentdConfigAnnotations.timeFormat|specify the regex to parse time|
 
 ## Examples
 
@@ -45,4 +47,7 @@ fluentdConfigAnnotations:
   pattern: "(ERROR|ERR|error|E[A-Z0-9]{4})"
 ```
 **Log entry sent to slack channel:**
+
+```
 {"timestamp":"2021-03-09 15:03:44.405",**"level":"ERROR"**,"thread":"failedEventListener-0-C-1","logger":"org.apache.kafka.clients.consumer.internals.ConsumerCoordinator","message":"[Consumer instanceId=qwertyapp-54f646c54c-9bblt-0, clientId=consumer-app-54f646c54c-9bblt-0, groupId=qwertyapp-consumer] Setting offset for partition qwertyapp.failed-events-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[qwertyapp-kafka-0.qwertyapp-kafka-brokers.team-dev.svc:9092 (id: 0 rack: null)], epoch=0}}","context":"default"}
+```
