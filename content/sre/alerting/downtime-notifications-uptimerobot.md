@@ -1,3 +1,4 @@
+
 # Downtime Notifications via UptimeRobot
 
 Stakater Agility Platform provides downtime notifications for Applications via [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which out of the box integrates with [UptimeRobot](https://uptimerobot.com). These alerts land on Slack channel(s) so that any downtime event can be responded immediately.

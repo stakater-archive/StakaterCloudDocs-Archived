@@ -13,3 +13,10 @@ In the realm you want to provide access, create a new Client:
 - Redirect URI: Ask Stakater Support team to provide the redirect URI
 
 Now on the newly created `Client`; go to `Credentials` tab and copy the `Secret` mentioned there. That is the secret Stakater team will be needing in order to authenticate your keycloak.
+
+## Items provided by Stakater Support
+- `Redirect URIs`
+
+## Items to be provided to Stakater Support
+- `Client ID`
+- `client Secret`
