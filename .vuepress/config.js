@@ -55,7 +55,8 @@ module.exports = {
             {
                 title: 'Alerting',
                 children: [
-                    '/content/sre/alerting/slack.md',                 
+                    '/content/sre/alerting/downtime-alerts.md',
+                    '/content/sre/alerting/log-alerts.md'                 
                 ]                
             },
             {
