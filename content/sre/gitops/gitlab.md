@@ -5,4 +5,4 @@
 
 ![gitlab-pat](./images/gitlab-pat.png)
 
-- Provide the PAT to stakater support team via vault
+- Copy the generated `PAT` and send to the stakater support team.
