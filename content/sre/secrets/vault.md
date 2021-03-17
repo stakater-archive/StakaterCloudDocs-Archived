@@ -51,11 +51,16 @@ Once login, users can do all actions on the path `TENANT_NAME/*`.
 - Create/update/get/list/delete secrets
 
 **Authentication**
+
 ![vault-oidc-login](./images/vault_oidc_login.png)
+
 * Access https://stakater-vault-openshift-stakater-vault.CLUSTER_DOMAIN
 * Select `OIDC` method on `Sing in to Vault` page.
 * Keep `Role` as default.
-* Click `Sign in with OIDC Provider` and sign in to the proper IdP.
+* Click `Sign in with OIDC Provider`
+* Then login on popup authentication dialog. The browser should allow the popup dialog.
+
+![vault-login_popup](./images/login_popup.png)
 
 **Enable secret engines**
 
