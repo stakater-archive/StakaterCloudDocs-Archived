@@ -131,6 +131,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'Configs Management',
+                children: [
+                    '/content/sre/config-management/configmaps.md'
+                ]
+            },            
+            {
                 title: 'Secrets Management',
                 children: [
                     '/content/sre/secrets/introduction.md',
@@ -138,7 +144,6 @@ module.exports = {
                     '/content/sre/secrets/vault.md'
                 ]
             },
-
             {
                 title: 'Support',
                 children: [
