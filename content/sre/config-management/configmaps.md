@@ -27,6 +27,7 @@ binaryData:
 ```
 
 (1) Contains the configuration data.
+
 (2) Points to a file that contains non-UTF8 data, for example, a binary Java keystore file. Enter the file data in Base 64. You can use the binaryData field when you create a config map from a binary file, such as an image.
 
 Configuration data can be consumed in pods in a variety of ways. A config map can be used to:
