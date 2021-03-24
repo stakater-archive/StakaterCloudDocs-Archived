@@ -1,4 +1,4 @@
-# Stakater Agility Platform Features
+# Stakater App Agility Platform Features
 
 ### Fully managed enterprise Kubernetes
 - Professionally managed infrastructure
@@ -28,4 +28,4 @@
 - Performance and capacity management
 - Image and registry management
 
-![Stakater Agility Platform Matrix](./images/image-1.png)
+![Stakater App Agility Platform Matrix](./images/image-1.png)
