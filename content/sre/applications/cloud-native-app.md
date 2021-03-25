@@ -1,3 +1,3 @@
-# DNA of Cloud Native Apps
+# DNA of Kubernetes Friendly Apps
 
 _TODO_
