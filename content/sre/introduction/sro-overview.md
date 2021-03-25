@@ -1,7 +1,7 @@
 
-# Stakater Agility Platform Overview
+# Stakater App Agility Platform Overview
 
-With Stakater Agility Platform you can deploy a containerized, hybrid environment to meet digital business needs for running your mission critical systems.
+With Stakater App Agility Platform you can deploy a containerized, hybrid environment to meet digital business needs for running your mission critical systems.
 
 ### Primary Capabilities
 - Supported, integrated, and automated architecture with a validated cluster deployment

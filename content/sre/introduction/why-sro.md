@@ -1,5 +1,5 @@
 
-# Why Stakater Agility Platform?
+# Why Stakater App Agility Platform?
 
 - Quicker return on investment > Get up and running quickly
 - Reduce Operational Overhead > Fully managed from infrastructure to day to day operations
