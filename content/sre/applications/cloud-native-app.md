@@ -105,6 +105,51 @@ API first frees organizations from the waterfall, deliberately engineered system
 
 Live, eat, and breathe the API-first lifestyle, and your investment will pay off exponentially.
 
+## 4. Design, build, release, and run
+
+### Desgin
+
+In the world of waterfall application development, we spend an inordinate amount of time designing an application before a single line of code is written. This type of software development life cycle is not well suited to the demands of modern applications that need to be released as frequently as possible.
+
+However, this doesn’t mean that we don’t design at all. Instead, it means we design small features that get released, and we have a high-level design that is used to inform everything we do; but we also know that designs change, and small amounts of design are part of every iteration rather than being done entirely up front.
+
+The application developer best understands the application dependencies, and it is during the design phase that arrangements are made to declare dependencies as well as the means by which those dependencies are vendored, or bundled, with the application. In other words, the developer decides what libraries the application is going to use, and how those libraries are eventually going to be bundled into an immutable release.
+
+### Build
+
+### Release
+
+### Run
+
+## 5. Configuration, credentials, and code
+
+### What?
+
+Treat configuration, credentials, and code as volatile substances that explode when combined.
+
+That may sound a bit harsh, but failing to follow this rule will likely cause you untold frustration that will only escalate the closer you get to production with your application.
+
+In order to be able to keep configuration separate from code and credentials, we need a very clear definition of configuration. Configuration refers to any value that can vary across deployments (e.g., developer workstation, QA, and production). This could include:
+
+• URLs and other information about backing services, such as web services, and SMTP servers
+• Information necessary to locate and connect to databases
+• Credentials to third-party services such as Amazon AWS or APIs like Google Maps, Twitter, and Facebook
+• Information that might normally be bundled in properties files or configuration XML, or YML
+
+Configuration does not include internal information that is part of the application itself. Again, if the value remains the same across all deployments (it is intentionally part of your immutable build artifact), then it isn’t configuration.
+
+Credentials are extremely sensitive information and have absolutely no business in a codebase. Oftentimes, developers will extract credentials from the compiled source code and put them in properties files or XML configuration, but this hasn’t actually solved the problem. Bundled resources, including XML and properties files, are still part of the codebase. This means credentials bundled in resource files that ship with your application are still violating this rule.
+
+If the general public were to have access to your code, have you exposed sensitive information about the resources or services on which your application relies? Can people see internal URLs, credentials to backing services, or other information that is either sensitive or irrelevant to people who don’t work in your target environments?
+
+If you can open source your codebase without exposing sensitive or environment-specific information, then you’ve probably done a good job isolating your code, configuration, and credentials.
+
+It should be immediately obvious why we don’t want to expose credentials, but the need for external configuration is often not as obvious. External configuration supports our ability to deploy immutable builds to multiple environments automatically via CD pipelines and helps us maintain development/production environment parity.
+
+### How?
+
+
+
 # Acknowledgements
 
 - https://www.cdta.org/sites/default/files/awards/beyond_the_12-factor_app_pivotal.pdf
