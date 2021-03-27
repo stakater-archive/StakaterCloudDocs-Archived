@@ -31,7 +31,7 @@ This document describes the following facets of kubernetes-native applications:
 3. Contract first, API first
 4. Design, build, release, and run
 5. Configuration, credentials, and code
-6. Logs
+6. Liveness and readiness probes
 7. Disposability
 8. Backing services
 9. Environment parity
@@ -42,7 +42,7 @@ This document describes the following facets of kubernetes-native applications:
 14. Telemetry
 15. Authentication and authorization
 16. Dependencies initialization
-17. Liveness and readiness probes
+17. Logging
 18. Declarative Syntax to Manage Kubernetes State
 
 ## 1. One codebase, one application
@@ -147,6 +147,16 @@ If you can open source your codebase without exposing sensitive or environment-s
 It should be immediately obvious why we don’t want to expose credentials, but the need for external configuration is often not as obvious. External configuration supports our ability to deploy immutable builds to multiple environments automatically via CD pipelines and helps us maintain development/production environment parity.
 
 ### How?
+
+## 6. Liveness and readiness probes
+
+Kubernetes includes a great deal of out-of-the-box functionality for managing component life cycles and ensuring that your applications are always healthy and available. However, to take advantage of these features, Kubernetes has to understand how it should monitor and interpret your application's health. To do so, Kubernetes allows you to define liveness and readiness probes.
+
+Liveness probes allow Kubernetes to determine whether an application within a container is alive and actively running. Kubernetes can periodically run commands within the container to check basic application behavior or can send HTTP or TCP network requests to a designated location to determine if the process is available and able to respond as expected. If a liveness probe fails, Kubernetes restarts the container to attempt to reestablish functionality within the pod.
+
+Readiness probes are a similar tool used to determine whether a pod is ready to serve traffic. Applications within a container may need to perform initialization procedures before they are ready to accept client requests or they may need to reload upon being notified of a new configuration. When a readiness probe fails, instead of restarting the container, Kubernetes stops sending requests to the pod temporarily. This allows the pod to complete its initialization or maintenance routines without impacting the health of the group as a whole.
+
+By combining liveness and readiness probes, you can instruct Kubernetes to automatically restart pods or remove them from backend groups. Configuring your infrastructure to take advantage of these capabilities allows Kubernetes to manage the availability and health of your applications without additional operations work.
 
 
 
