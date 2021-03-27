@@ -32,7 +32,7 @@ This document describes the following facets of kubernetes-native applications:
 4. Design, build, release, and run
 5. Configuration, credentials, and code
 6. Liveness and readiness probes
-7. Disposability
+7. Logging
 8. Backing services
 9. Environment parity
 10. Administrative processes
@@ -42,7 +42,7 @@ This document describes the following facets of kubernetes-native applications:
 14. Telemetry
 15. Authentication and authorization
 16. Dependencies initialization
-17. Logging
+17. Disposability
 18. Declarative Syntax to Manage Kubernetes State
 
 ## 1. One codebase, one application
@@ -166,7 +166,29 @@ Readiness probes are a similar tool used to determine whether a pod is ready to 
 
 By combining liveness and readiness probes, you can instruct Kubernetes to automatically restart pods or remove them from backend groups. Configuring your infrastructure to take advantage of these capabilities allows Kubernetes to manage the availability and health of your applications without additional operations work.
 
+## 7. Logging
 
+### What?
+
+Logs should be treated as event streams, that is, logs are a sequence of events emitted from an application in time-ordered sequence. The key point about dealing with logs in a cloud-native fashion is, as the original 12 factors indicate, a truly cloud-native application never concerns itself with routing or storage of its output stream.
+
+Sometimes this concept takes a little bit of getting used to. Application developers, especially those working in large enterprises, are often accustomed to rigidly controlling the shape and destination of their logs. Configuration files or config-related code set up the location on disk where the log files go, log rotation and rollover policies to deal with log file size and countless other minutiae.
+
+Cloud applications can make no assumptions about the file system on which they run, other than the fact that it is ephemeral. A cloudnative application writes all of its log entries to stdout and stderr. This might scare a lot of people, fearing the loss of control that this implies.
+
+You should consider the aggregation, processing, and storage of logs as a nonfunctional requirement that is satisfied not by your application, but by your cloud provider or some other tool suite running in cooperation with your platform. You can use tools like the ELK stack (ElasticSearch, Logstash, and Kibana), Splunk, Sumologic, or any number of other tools to capture and analyze your log emissions.
+
+Embracing the notion that your application has less work to do in the cloud than it does in the enterprise can be a liberating experience.
+
+When your applications are decoupled from the knowledge of log storage, processing, and analysis, your code becomes simpler, and you can rely on industry-standard tools and stacks to deal with logs. Moreover, if you need to change the way in which you store and process logs, you can do so without modifying the application.
+
+One of the many reasons your application should not be controlling the ultimate destiny of its logs is due to elastic scalability. When you have a fixed number of instances on a fixed number of servers, storing logs on disk seems to make sense. However, when your application can dynamically go from 1 running instance to 100, and you have no idea where those instances are running, you need your cloud provider to deal with aggregating those logs on your behalf.
+
+Simplifying your application’s log emission process allows you to reduce your codebase and focus more on your application’s core business value.
+
+### How?
+
+It is recommended application logs as JSON.
 
 # Acknowledgements
 
