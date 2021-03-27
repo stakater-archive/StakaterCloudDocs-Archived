@@ -131,10 +131,10 @@ That may sound a bit harsh, but failing to follow this rule will likely cause yo
 
 In order to be able to keep configuration separate from code and credentials, we need a very clear definition of configuration. Configuration refers to any value that can vary across deployments (e.g., developer workstation, QA, and production). This could include:
 
-• URLs and other information about backing services, such as web services, and SMTP servers
-• Information necessary to locate and connect to databases
-• Credentials to third-party services such as Amazon AWS or APIs like Google Maps, Twitter, and Facebook
-• Information that might normally be bundled in properties files or configuration XML, or YML
+- URLs and other information about backing services, such as web services, and SMTP servers
+- Information necessary to locate and connect to databases
+- Credentials to third-party services such as Amazon AWS or APIs like Google Maps, Twitter, and Facebook
+- Information that might normally be bundled in properties files or configuration XML, or YML
 
 Configuration does not include internal information that is part of the application itself. Again, if the value remains the same across all deployments (it is intentionally part of your immutable build artifact), then it isn’t configuration.
 
@@ -147,6 +147,14 @@ If you can open source your codebase without exposing sensitive or environment-s
 It should be immediately obvious why we don’t want to expose credentials, but the need for external configuration is often not as obvious. External configuration supports our ability to deploy immutable builds to multiple environments automatically via CD pipelines and helps us maintain development/production environment parity.
 
 ### How?
+
+While application configuration can be baked into container images, it's best to make your components configurable at runtime to support deployment in multiple contexts and allow more flexible administration. To manage runtime configuration parameters, Kubernetes offers two objects called ConfigMaps and Secrets.
+
+ConfigMaps are a mechanism used to store data that can be exposed to pods and other objects at runtime. Data stored within ConfigMaps can be presented as environment variables or mounted as files in the pod. By designing your applications to read from these locations, you can inject the configuration at runtime using ConfigMaps and modify the behavior of your components without having to rebuild the container image.
+
+Secrets are a similar Kubernetes object type used to securely store sensitive data and selectively allow pods and other components access as needed. Secrets are a convenient way of passing sensitive material to applications without storing them as plain text in easily accessible locations in your normal configuration. Functionally, they work in much the same way as ConfigMaps, so applications can consume data from ConfigMaps and Secrets using the same mechanisms.
+
+ConfigMaps and Secrets help you avoid putting configuration directly in Kubernetes object definitions. You can map the configuration key instead of the value, allowing you to update configuration on the fly by modifying the ConfigMap or Secret. This gives you the opportunity to alter the active runtime behavior of pods and other Kubernetes objects without modifying the Kubernetes definitions of the resources.
 
 ## 6. Liveness and readiness probes
 
