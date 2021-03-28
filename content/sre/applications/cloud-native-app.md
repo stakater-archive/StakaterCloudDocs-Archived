@@ -45,6 +45,7 @@ This document describes the following facets of kubernetes-native applications:
 17. Disposability
 18. Declarative Syntax to Manage Kubernetes State
 19. Secrets handling
+20. Tracing instrumentation
 
 ## 1. One codebase, one application
 
