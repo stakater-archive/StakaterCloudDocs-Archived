@@ -34,16 +34,17 @@ This document describes the following facets of kubernetes-native applications:
 6. Liveness and readiness probes
 7. Logging
 8. Backing services
-9. Environment parity
+9. Telemetry
 10. Administrative processes
 11. Port binding
 12. Stateless processes
 13. Concurrency
-14. Telemetry
+14. Environment parity
 15. Authentication and authorization
 16. Dependencies initialization
 17. Disposability
 18. Declarative Syntax to Manage Kubernetes State
+19. Secrets handling
 
 ## 1. One codebase, one application
 
@@ -190,6 +191,44 @@ Simplifying your application’s log emission process allows you to reduce your 
 
 It is recommended application logs as JSON.
 
+## 8. Backing services
+
+### What?
+
+A backing service is any service on which your application relies for its functionality. This is a fairly broad definition, and its wide scope is intentional. Some of the most common types of backing services include data stores, messaging systems, caching systems, and any number of other types of service, including services that perform line-of-business functionality or security.
+
+When building applications designed to run in a cloud environment where the filesystem must be considered ephemeral, you also need to treat file storage or disk as a backing service. You shouldn’t be reading to or writing from files on disk like you might with regular enterprise applications. Instead, file storage should be a backing service that is bound to your application as a resource.
+
+A bound resource is really just a means of connecting your application to a backing service. A resource binding for a database might include a username, a password, and a URL that allows your application to consume that resource.
+
+I mentioned earlier we should have externalized configuration (separated from credentials and code) and that our release products must be immutable. Applying these other rules to the way in which an application consumes backing services, we end up with a few rules for resource binding:
+
+- An application should declare its need for a given backing service but allow the cloud environment to perform the actual resource binding.
+- The binding of an application to its backing services should be done via external configuration.
+- It should be possible to attach and detach backing services from an application at will, without re-deploying the application.
+
+As an example, assume that you have an application that needs to communicate with an Oracle database. You code your application such that its reliance on a particular Oracle database is declared (the means of this declaration is usually specific to a language or toolset). The source code to the application assumes that the configuration of the resource binding takes place external to the application.
+
+This means that there is never a line of code in your application that tightly couples the application to a specific backing service. Likewise, you might also have a backing service for sending email, so you know you will communicate with it via SMTP. But the exact implementation of the mail server should have no impact on your application, nor should your application ever rely on that SMTP server existing at a certain location or with specific credentials.
+
+Finally, one of the biggest advantages to treating backing services as bound resources is that when you develop an application with this in mind, it becomes possible to attach and detach bound resources at will.
+
+Let’s say one of the databases on which your application relies is not responding. This causes a cascading failure effect and endangers your application. A classic enterprise application would be helpless and at the mercy of the flailing database.
+
+#### Circuit Breakers
+
+There is a pattern supported by libraries and cloud offerings called the circuit breaker that will allow your code to simply stop communicating with misbehaving backing services, providing a fallback or failsafe path. Since a circuit breaker often resides in the binding area between an application and its backing services, you must first embrace backing services before you can take advantage of circuit breakers.
+
+A cloud-native application that has embraced the bound-resource aspect of backing services has options. An administrator who notices that the database is in its death throes can bring up a fresh instance of that database and then change the binding of your application to point to this new database.
+
+This kind of flexibility, resilience, and loose coupling with backing services is one of the hallmarks of a truly modern, cloud-native application.
+
+### How?
+
+Externalize all configurations as Kubernetes configmaps or secrets for the backing services.
+
 # Acknowledgements
+
+Most of the text has been copied from these awesome resources; and copyrights belong to them:
 
 - https://www.cdta.org/sites/default/files/awards/beyond_the_12-factor_app_pivotal.pdf
