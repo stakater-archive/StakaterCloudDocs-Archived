@@ -225,7 +225,7 @@ This kind of flexibility, resilience, and loose coupling with backing services i
 
 ### How?
 
-Externalize all configurations as Kubernetes configmaps or secrets for the backing services.
+Externalize all configurations (URLs, username, pwds, etc.) as Kubernetes configmaps or secrets for the backing services.
 
 # Acknowledgements
 
