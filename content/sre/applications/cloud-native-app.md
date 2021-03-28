@@ -118,6 +118,14 @@ The application developer best understands the application dependencies, and it 
 
 ### Build
 
+#### What?
+
+
+#### How?
+
+- Add Dockerfile for building the application
+- Add Dockerfile for running the application
+
 ### Release
 
 ### Run
