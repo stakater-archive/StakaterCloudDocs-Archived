@@ -35,7 +35,7 @@ This document describes the following facets of kubernetes-native applications:
 7. Logging
 8. Backing services
 9. Telemetry / Metric instrumentation
-10. Administrative processes
+10. Graceful Shutdown
 11. Port binding
 12. Stateless processes
 13. Concurrency
@@ -46,6 +46,7 @@ This document describes the following facets of kubernetes-native applications:
 18. Declarative Syntax to Manage Kubernetes State
 19. Secrets handling
 20. Tracing instrumentation
+21. Administrative processes
 
 ## 1. One codebase, one application
 
@@ -253,6 +254,16 @@ Code and libraries used in your code to expose metrics.
 ### Why?
 
 Allows measuring operation of application and enables many more advanced use cases.
+
+## 10. Graceful Shutdown
+
+### What?
+
+Applications respond to SIGTERM correctly.
+
+### Why?
+
+This is how Kubernetes will tell your application to end.
 
 # Acknowledgements
 
