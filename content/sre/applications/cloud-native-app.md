@@ -265,6 +265,38 @@ Applications respond to SIGTERM correctly.
 
 This is how Kubernetes will tell your application to end.
 
+## 12. Single stateless processes
+
+Applications should execute as a single, stateless process. We have a strong opinion about the use of administrative and secondary processes, and modern cloud-native applications should each consist of a single, stateless process.
+
+### A Practical Definition of Stateless
+
+One question that we field on a regular basis stems from confusion around the concept of statelessness. People wonder how they can build a process that maintains no state. After all, every application needs some kind of state, right? Even the simplest of application leaves some bit of data floating around, so how can you ever have a truly stateless process?
+
+A stateless application makes no assumptions about the contents of memory prior to handling a request, nor does it make assumptions about memory contents after handling that request. The application can create and consume transient state in the middle of handling a request or processing a transaction, but that data should all be gone by the time the client has been given a response.
+
+To put it as simply as possible, all long-lasting state must be external to the application, provided by backing services. So the concept isn’t that state cannot exist; it is that it cannot be maintained within your application.
+
+As an example, a microservice that exposes functionality for user management must be stateless, so the list of all users is maintained in a backing service (an Oracle or MongoDB database, for instance). For obvious reasons, it would make no sense for a database to be stateless.
+
+### The Share-Nothing Pattern
+
+Processes often communicate with each other by sharing common resources. Even without considering the move to the cloud, there are a number of benefits to be gained from adopting the sharenothing pattern. Firstly, anything shared among processes is a liability that makes all of those processes more brittle. In many high-availability patterns, processes will share data through a wide variety of techniques to elect cluster leaders, to decide on whether a process is a primary or backup, and so on.
+
+All of these options need to be avoided when running in the cloud. Your processes can vanish at a moment’s notice with no warning, and that’s a good thing. Processes come and go, scale horizontally and vertically, and are highly disposable. This means that anything shared among processes could also vanish, potentially causing a cascading failure.
+
+It should go without saying, but the filesystem is not a backing service. This means that you cannot consider files a means by which applications can share data. Disks in the cloud are ephemeral and, in some cases, even read-only.
+
+If processes need to share data, like session state for a group of processes forming a web farm, then that session state should be externalized and made available through a true backing service.
+
+### Data Caching
+
+A common pattern, especially among long-running, containerbased web applications, is to cache frequently used data during process startup. This book has already mentioned that processes need to start and stop quickly, and taking a long time to fill an in-memory cache violates this principle.
+
+Worse, storing an in-memory cache that your application thinks is always available can bloat your application, making each of your instances (which should be elastically scalable) take up far more RAM than is necessary.
+
+There are dozens of third-party caching products, including Gemfire and Redis, and all of them are designed to act as a backing service cache for your applications. They can be used for session state, but they can also be used to cache data your processes may need during startup and to avoid tightly coupled data sharing among processes.
+
 ## 13. Concurrency
 
 Concurrency, advises us that cloud-native applications should scale out using the process model. There was a time when, if an application reached the limit of its capacity, the solution was to increase its size. If an application could only handle some number of requests per minute, then the preferred solution was to simply make the application bigger.
