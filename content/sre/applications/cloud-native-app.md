@@ -197,6 +197,8 @@ Simplifying your application’s log emission process allows you to reduce your 
 
 ### How?
 
+Output logs in a machine readable format to facilitate searching & indexing. Trace what went wrong when something does.
+
 It is recommended application logs as JSON.
 
 ## 8. Backing services
