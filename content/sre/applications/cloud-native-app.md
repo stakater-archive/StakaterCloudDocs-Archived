@@ -217,7 +217,7 @@ Let’s say one of the databases on which your application relies is not respond
 
 #### Circuit Breakers
 
-There is a pattern supported by libraries and cloud offerings called the circuit breaker that will allow your code to simply stop communicating with misbehaving backing services, providing a fallback or failsafe path. Since a circuit breaker often resides in the binding area between an application and its backing services, you must first embrace backing services before you can take advantage of circuit breakers.
+_There is a pattern supported by libraries and cloud offerings called the circuit breaker that will allow your code to simply stop communicating with misbehaving backing services, providing a fallback or failsafe path. Since a circuit breaker often resides in the binding area between an application and its backing services, you must first embrace backing services before you can take advantage of circuit breakers._
 
 A cloud-native application that has embraced the bound-resource aspect of backing services has options. An administrator who notices that the database is in its death throes can bring up a fresh instance of that database and then change the binding of your application to point to this new database.
 
