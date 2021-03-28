@@ -265,6 +265,18 @@ Applications respond to SIGTERM correctly.
 
 This is how Kubernetes will tell your application to end.
 
+## 13. Concurrency
+
+Concurrency, advises us that cloud-native applications should scale out using the process model. There was a time when, if an application reached the limit of its capacity, the solution was to increase its size. If an application could only handle some number of requests per minute, then the preferred solution was to simply make the application bigger.
+
+Adding CPUs, RAM, and other resources (virtual or physical) to a single monolithic application is called vertical scaling, and this type of behavior is typically frowned upon in civilized society these days.
+
+A much more modern approach, one ideal for the kind of elastic scalability that the cloud supports, is to scale out, or horizontally. Rather than making a single big process even larger, you create multiple processes, and then distribute the load of your application among those processes.
+
+Most cloud providers have perfected this capability to the point where you can even configure rules that will dynamically scale the number of instances of your application based on load or other runtime telemetry available in a system.
+
+If you are building disposable, stateless, share-nothing processes then you will be well positioned to take full advantage of horizontal scaling and running multiple, concurrent instances of your application so that it can truly thrive in the cloud.
+
 # Acknowledgements
 
 Most of the text has been copied from these awesome resources; and copyrights belong to them:
