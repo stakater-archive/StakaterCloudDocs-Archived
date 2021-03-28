@@ -34,7 +34,7 @@ This document describes the following facets of kubernetes-native applications:
 6. Liveness and readiness probes
 7. Logging
 8. Backing services
-9. Telemetry
+9. Telemetry / Metric instrumentation
 10. Administrative processes
 11. Port binding
 12. Stateless processes
@@ -167,6 +167,8 @@ ConfigMaps and Secrets help you avoid putting configuration directly in Kubernet
 
 ## 6. Liveness and readiness probes
 
+### What?
+
 Kubernetes includes a great deal of out-of-the-box functionality for managing component life cycles and ensuring that your applications are always healthy and available. However, to take advantage of these features, Kubernetes has to understand how it should monitor and interpret your application's health. To do so, Kubernetes allows you to define liveness and readiness probes.
 
 Liveness probes allow Kubernetes to determine whether an application within a container is alive and actively running. Kubernetes can periodically run commands within the container to check basic application behavior or can send HTTP or TCP network requests to a designated location to determine if the process is available and able to respond as expected. If a liveness probe fails, Kubernetes restarts the container to attempt to reestablish functionality within the pod.
@@ -174,6 +176,10 @@ Liveness probes allow Kubernetes to determine whether an application within a co
 Readiness probes are a similar tool used to determine whether a pod is ready to serve traffic. Applications within a container may need to perform initialization procedures before they are ready to accept client requests or they may need to reload upon being notified of a new configuration. When a readiness probe fails, instead of restarting the container, Kubernetes stops sending requests to the pod temporarily. This allows the pod to complete its initialization or maintenance routines without impacting the health of the group as a whole.
 
 By combining liveness and readiness probes, you can instruct Kubernetes to automatically restart pods or remove them from backend groups. Configuring your infrastructure to take advantage of these capabilities allows Kubernetes to manage the availability and health of your applications without additional operations work.
+
+### How?
+
+It is recommended to add `health` endpoint to your application
 
 ## 7. Logging
 
@@ -236,6 +242,16 @@ This kind of flexibility, resilience, and loose coupling with backing services i
 ### How?
 
 Externalize all configurations (URLs, username, pwds, etc.) as Kubernetes configmaps or secrets for the backing services.
+
+## 9. Telemetry / Metric instrumentation
+
+### What?
+
+Code and libraries used in your code to expose metrics.
+
+### Why?
+
+Allows measuring operation of application and enables many more advanced use cases.
 
 # Acknowledgements
 
