@@ -42,7 +42,7 @@ Resources can be restored on demand. Please contact support and specify the foll
 | Vault                      |    Every 6 hrs   |   Last 1 Backup(s)   | 
 | Sonarqube                  |    Every 6 hrs   |   Last 1 Backup(s)   | 
 | CodeReadyWorkspaces        |    Every 6 hrs   |   Last 1 Backup(s)   | 
-| Redhat SSO                 |    Every 6 hrs   |   Last 1 Backup(s)   | 
+| RHSSO (KeyCloak)           |    Every 6 hrs   |   Last 1 Backup(s)   | 
 | ArgoCD                     |    Every 6 hrs   |   Last 1 Backup(s)   | 
 
 If you want to change backup frequency/retention times for your specific needs, contact support.
