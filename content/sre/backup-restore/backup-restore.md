@@ -27,7 +27,7 @@ Resources can be restored on demand. Please contact support and specify the foll
 
 | Namespaces       | Backup Frequency | Backup Retention |
 | ---------------- | ---------------- | ---------------- |
-|  All Namespaces  |    Every 6 hrs   | Last 12 Backups   | 
+|  All Namespaces  |    Every 6 hrs   | Last 12 Backup(s)   | 
 
 
 ### Volume Backup Details
