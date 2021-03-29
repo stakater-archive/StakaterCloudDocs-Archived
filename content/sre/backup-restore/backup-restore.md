@@ -23,15 +23,13 @@ Resources can be restored on demand. Please contact support and specify the foll
 - Whether to include cluster resources or not
 - Whether to restore PVs or not
 
-### Kubernetes Resources
+### Manifests Backup
 
 | Namespaces       | Backup Frequency | Backup Retention |
 | ---------------- | ---------------- | ---------------- |
 |  All Namespaces  |    Every 6 hrs   | Last 12 Backup(s)   | 
 
-
-### Volume Backup Details
-
+### Volumes Backup
 
 | Tool                       | Backup Frequency |   Backup Retention   |
 | -------------------------- | ---------------- | -------------------- |
@@ -46,7 +44,6 @@ Resources can be restored on demand. Please contact support and specify the foll
 | ArgoCD                     |    Every 6 hrs   |   Last 1 Backup(s)   | 
 
 If you want to change backup frequency/retention times for your specific needs, contact support.
-
 
 ## Technical viewpoint
 Stakater Agility Platform uses managed velero operator to provision the velero server. https://github.com/openshift/managed-velero-operator
