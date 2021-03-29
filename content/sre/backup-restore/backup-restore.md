@@ -5,7 +5,12 @@ Back up and restore applications on Stakater Agility Platform
 ## Service viewpoint
 ### Backup
 
-Stakater takes automatic backup of all kubernetes resources(manifests) and volumes. The backups are stored in your cloud account. By default, backups are taken after every 1 hour and are retained for 24 hours. To enable more frequent, resource specific or varying retention, please contact Stakater Support.
+Stakater Agility Platforms offers Two kinds of Backups.
+
+1. Kubernetes Resources (Including Stakater AP and non Stakater AP namespaces)
+2. Volume Backups (Only Stakater AP namespaces)
+
+These Manifests and Volume Backups are stored on the Cloud Provider under your account.
 
 ### Restore
 
@@ -17,6 +22,31 @@ Resources can be restored on demand. Please contact support and specify the foll
 - LabelSelector to filter objects to restore
 - Whether to include cluster resources or not
 - Whether to restore PVs or not
+
+### Kubernetes Resources
+
+| Namespaces       | Backup Frequency | Backup Retention |
+| ---------------- | ---------------- | ---------------- |
+|  All Namespaces  |    Every 6 hrs   | Last 12 Backups   | 
+
+
+### Volume Backup Details
+
+
+| Tool                       | Backup Frequency |   Backup Retention   |
+| -------------------------- | ---------------- | -------------------- |
+| Nexus                      |    Every 6 hrs   |   Last 1 Backup(s)   | 
+| Prometheus (Cluster)       |    Every 6 hrs   |   Last 1 Backup(s)   |
+| Promehteus (Applications)  |    Every 6 hrs   |   Last 1 Backup(s)   |
+| Elasticsearch              |    Every 6 hrs   |   Last 1 Backup(s)   |
+| Vault                      |    Every 6 hrs   |   Last 1 Backup(s)   | 
+| Sonarqube                  |    Every 6 hrs   |   Last 1 Backup(s)   | 
+| CodeReadyWorkspaces        |    Every 6 hrs   |   Last 1 Backup(s)   | 
+| Redhat SSO                 |    Every 6 hrs   |   Last 1 Backup(s)   | 
+| ArgoCD                     |    Every 6 hrs   |   Last 1 Backup(s)   | 
+
+If you want to change backup frequency/retention times for your specific needs, contact support.
+
 
 ## Technical viewpoint
 Stakater Agility Platform uses managed velero operator to provision the velero server. https://github.com/openshift/managed-velero-operator
