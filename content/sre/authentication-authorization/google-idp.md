@@ -10,7 +10,7 @@ To enable login with Google you first have to create a project and a client in t
 
 ![Project Dashboard](./images/google-dashboard.png)
 
-3. Google requires some basic information about the product before creating any secrets for it. For a new project, you have first to configure `OAuth consent screen`. Fill in `OAuth consent screen` details. Under **Authorized domains** put the hosted domain(s) which you want to allow. e.g if Authorized domain is `stakater.com` then `bob@stakater.com` will be allowed
+3. Google requires some basic information about the product before creating any secrets for it. For a new project, you have first to configure `OAuth consent screen`. Fill in `OAuth consent screen` details. Keep the **Application Type** `Internal`. Add the `email`, `profile` and `openid` in the allowed **Scopes**. Under **Authorized domains** add `kubeapp.cloud` alongwith any hosted domain(s) which you want to allow. e.g if Authorized domain is `xyz.com` then `bob@xyz.com` will be allowed
 ![Google Oauth consent screen](./images/google-oauth-consent-screen.png)
 
 4. Then navigate to the `APIs & Services` section in the Google Developer Console. On that screen, navigate to `Credentials` administration. select `OAuth client ID` under the `Create credentials` button.
