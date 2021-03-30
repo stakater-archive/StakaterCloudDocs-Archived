@@ -284,6 +284,26 @@ Allows measuring operation of application and enables many more advanced use cas
 
 Applications respond to SIGTERM correctly.
 
+#### The app doesn't shut down on SIGTERM, but it gracefully terminates connections
+
+It might take some time before a component such as kube-proxy or the Ingress controller is notified of the endpoint changes.
+
+Hence, traffic might still flow to the Pod despite it being marked as terminated.
+
+The app should stop accepting new requests on all remaining connections, and close these once the outgoing queue is drained.
+
+If you need a refresher on how endpoints are propagated in your cluster, [read this article on how to handle client requests properly](https://freecontent.manning.com/handling-client-requests-properly-with-kubernetes/).
+
+#### The app still processes incoming requests in the grace period
+
+You might want to consider using the container lifecycle events such as the preStop handler to customize what happened before a Pod is deleted.
+
+#### The CMD in the Dockerfile forwards the SIGTERM to the process
+
+You can be notified when the Pod is about to be terminated by capturing the SIGTERM signal in your app.
+
+You should also pay attention to [forwarding the signal to the right process in your container](https://pracucci.com/graceful-shutdown-of-kubernetes-pods.html).
+
 ### Why?
 
 This is how Kubernetes will tell your application to end.
