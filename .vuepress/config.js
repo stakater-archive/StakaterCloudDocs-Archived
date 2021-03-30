@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Stakater Agility Platform Documentation',
-    description: 'Stakater Agility Platform Documentation',
+    title: 'Stakater App Agility Platform Documentation',
+    description: 'Stakater App Agility Platform Documentation',
     head: [
         ['link', { rel: 'icon', href: '/favicon.png' }]
     ],
@@ -138,7 +138,12 @@ module.exports = {
                     '/content/sre/secrets/vault.md'
                 ]
             },
-
+            {
+                title: 'Cluster Configuration',
+                children: [
+                    '/content/sre/cluster-configuration/node-configuration.md',
+                ]
+            },
             {
                 title: 'Support',
                 children: [
