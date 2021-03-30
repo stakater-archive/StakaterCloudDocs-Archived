@@ -1,4 +1,4 @@
-# DNA of Cloud (Kubernetes) Native Apps
+# DNA of Cloud Native / Kubernetes Apps
 
 Whether you are building new applications for the Kubernetes or seeking to migrate existing applications, DNA of Kubernetes Native App is an essential guide that should be on the shelf of every developer and architect targeting the Kubernetes.
 
