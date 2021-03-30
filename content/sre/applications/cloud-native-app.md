@@ -309,6 +309,16 @@ Most cloud providers have perfected this capability to the point where you can e
 
 If you are building disposable, stateless, share-nothing processes then you will be well positioned to take full advantage of horizontal scaling and running multiple, concurrent instances of your application so that it can truly thrive in the cloud.
 
+## 15. Authentication and authorization
+
+Security is a vital part of any application and cloud environment. Security should never be an afterthought. All too often, we are so focused on getting the functional requirements of an application out the door that we neglect one of the most important aspects of delivering any application, regardless of whether that app is destined for an enterprise, a mobile device, or the cloud.
+
+A cloud-native application is a secure application. Your code, whether compiled or raw, is transported across many data centers, executed within multiple containers, and accessed by countless clients some legitimate, most nefarious. Even if the only reason you implement security in your application is so you have an audit trail of which user made which data change, that alone is benefit enough to justify the relatively small amount of time and effort it takes to secure your application’s endpoints.
+
+In an ideal world, all cloud-native applications would secure all of their endpoints with RBAC (role-based access control). Every request for an application’s resources should know who is making the request, and the roles to which that consumer belongs. These roles dictate whether the calling client has sufficient permission for the application to honor the request.
+
+With tools like OAuth2, OpenID Connect, various SSO servers and standards, as well as a near infinite supply of language-specific authentication and authorization libraries, security should be something that is baked into the application’s development from day one, and not added as a bolt-on project after an application is running in production.
+
 # Acknowledgements
 
 Most of the text has been copied from these awesome resources; and copyrights belong to them:
