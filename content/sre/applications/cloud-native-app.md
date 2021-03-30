@@ -249,6 +249,29 @@ Externalize all configurations (URLs, username, pwds, etc.) as Kubernetes config
 
 ### What?
 
+When it comes to monitoring your application, there are generally a few different categories of data:
+
+- Application performance monitoring (APM)
+- Domain-specific telemetry
+- Health and system logs
+
+The first of these, APM, consists of a stream of events that can be used by tools outside the cloud to keep tabs on how well your application is performing. This is something that you are responsible for, as the definition and watermarks of performance are specific to your application and standards. The data used to supply APM dashboards is usually fairly generic and can come from multiple applications across multiple lines of business.
+
+The second, domain-specific telemetry, is also up to you. This refers to the stream of events and data that makes sense to your business that you can use for your own analytics and reporting. This type of event stream is often fed into a “big data” system for warehousing, analysis, and forecasting.
+
+The difference between APM and domain-specific telemetry may not be immediately obvious. Think of it this way: APM might provide you the average number of HTTP requests per second an application is processing, while domain-specific telemetry might tell you the number of widgets sold to people on iPads within the last 20
+minutes.
+
+Finally, health and system logs are something that should be provided by your cloud provider. They make up a stream of events, such as application start, shutdown, scaling, web request tracing, and the results of periodic health checks.
+
+The cloud makes many things easy, but monitoring and telemetry are still difficult, probably even more difficult than traditional, enterprise application monitoring. When you are staring down the firehose at a stream that contains regular health checks, request audits, business-level events, and tracking data, and performance metrics, that is an incredible amount of data.
+
+When planning your monitoring strategy, you need to take into account how much information you’ll be aggregating, the rate at which it comes in, and how much of it you’re going to store. If your application dynamically scales from 1 instance to 100, that can also result in a hundredfold increase in your log traffic.
+
+Auditing and monitoring cloud applications are often overlooked but are perhaps some of the most important things to plan and do properly for production deployments. If you wouldn’t blindly launch a satellite into orbit with no way to monitor it, you shouldn’t do the same to your cloud application.
+
+Getting telemetry done right can mean the difference between success and failure in the cloud.
+
 Code and libraries used in your code to expose metrics.
 
 ### Why?
