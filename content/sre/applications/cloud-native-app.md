@@ -52,6 +52,7 @@ This document describes the following facets of kubernetes-native applications:
 24. Backup & restore (optional)
 25. Certificates (optional)
 26. Forecastle
+27. Dashboard
 
 ## 1. One codebase, one application
 
@@ -394,6 +395,20 @@ You need to know when your service degrades.
 ### How?
 
 Platform includes a managed Prometheus; just define a PrometheusRule.
+
+## 27. Dashboard
+
+### What?
+
+View metrics.
+
+### Why?
+
+You need to make sense out of the data.	
+
+### How?
+
+Add grafana dashboard
 
 # Acknowledgements
 
