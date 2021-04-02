@@ -48,6 +48,10 @@ This document describes the following facets of kubernetes-native applications:
 20. Tracing instrumentation
 21. Administrative processes
 22. Requests & limits
+23. Alerts
+24. Backup & restore (optional)
+25. Certificates (optional)
+26. Forecastle
 
 ## 1. One codebase, one application
 
@@ -376,6 +380,20 @@ Allows Kubernetes to make good scheduling decisions.
 ### How?
 
 Stakater application helm chart always sets default requests and limits: https://github.com/stakater-charts/application/blob/master/application/values.yaml#L142 but ofcourse each application can individually override them
+
+## 23. Alerts
+
+### What?
+
+Automated notifications on defined trigger.
+
+### Why?
+
+You need to know when your service degrades.
+
+### How?
+
+Platform includes a managed Prometheus; just define a PrometheusRule.
 
 # Acknowledgements
 
