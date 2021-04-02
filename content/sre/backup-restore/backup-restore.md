@@ -46,7 +46,7 @@ Resources can be restored on demand. Please contact support and specify the foll
 - Resources to include/exclude from backup
 - LabelSelector to filter objects to restore
 - Whether to include cluster resources or not
-- Whether to restore PVs or not
+- Whether to restore PVs or not (Not applicable on Object Only Backups)
 
 ## Technical viewpoint
 
@@ -56,11 +56,16 @@ Stakater App Agility Platform uses managed velero operator to provision the vele
 
 Using Schedules and Read-Only Backup Storage Locations & Volume Snapshot Locations.
 
-First things first, create needed backup locations.
-These are including the backup destination storage information(address and credentials)
+First things first, Velero needs a backupStorageLocation where backups can be stored
+These are including the backup destination storage information
 - Backupstoragelocation CR
 ex:
 ~~~
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: default
+  namespace: openshift-velero
   spec:
     config:
       region: eu-central-1
@@ -68,9 +73,14 @@ ex:
       bucket: *********
     provider: aws
 ~~~
-- VolumeSnapshotlocation CR
+- VolumeSnapshotlocation CR (Not needed when using CSI Plugin for backups)
 ex:
 ~~~
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: default
+  namespace: openshift-velero
   spec:
     config:
       region: eu-central-1
@@ -80,6 +90,11 @@ Then schedule the backup by using the backup locations and specifying the variou
 - Create Shedule CR
 ex:
 ~~~
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: backup-schedule
+  namespace: openshift-velero
   spec:
     schedule: 0 */6 * * *
     template:
@@ -99,22 +114,49 @@ ex:
       ttl: 24h0m0s
       volumeSnapshotLocations:
       - default
-  status:
-    lastBackup: "2020-10-09T06:00:11Z"
-    phase: Enabled
-kind: List
-metadata:
-  resourceVersion: ""
-  selfLink: ""
 ~~~
+Or you can specify a single Backup using a backup CR.
+- Create a Backup CR
+ex:
+~~~
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: data-backup
+  namespace: openshift-velero
+spec:
+  includedNamespaces:
+  - openshift-stakater-3scale
+  includedResources:
+  - '*'
+  storageLocation: default
+  ttl: 72h0m0s
+  volumeSnapshotLocations:
+  - default
+~~~
+##### Different Schedule Definitons and their meanings
+Changing some parameters in Schedule CR, changes the backup behavior
+- snapshotVolumes: (boolean)
+  - true (makes velero to take native volume snapshots)
+  - false (no native velero snapshots taken)
+  - Not Specify (Defaults to auto behavior define within velero)
+  Note: You don't specify this parameter with velero CSI plugin
 
-#### backup target Filters
+- includeClusterResources: (boolea)
+  - true (includes all cluster level resource, snapshotVolumes needs to be true to take PV snapshots)
+  - false (exclude cluster level resources, including PVs. So there will be no snapshots)
+
+- Excluding both `snapshotVolumes` and `includeClusterResources` will have default behavior of taking snapshots of only included namespaces PVs.
+
+#### Backup target Filters
 You can use [resource filtering](https://velero.io/docs/main/resource-filtering/) options to backup specific resources. Typical ones are following;
 - labelSelector: Specify the labels for the backup target resources
    MatchExpression has several operators such as In, NotIn, Exists and DoesNotExist.
-- includeClusterResources:(Boolean) Set true to include PV
+- includeClusterResources:(Boolean) Set true to include cluster level resources like PV etc.
 - includedNamespaces: Specify the namespaces in which backup target resources are included
 - includedResources: Specify the resource types for the backup target resources
+- excludeNamespaces: Specify the namespaces to exlcude from backup
+- excludeResources: Specify the resource types to exclude from backup
 **NOTE**: You have to select the resource filters properly. For example, if the target application has cluster-scope resources, then you cannot use `--include-namespaces` only.
 
 #### backup destination
