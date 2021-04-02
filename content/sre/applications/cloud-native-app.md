@@ -47,6 +47,7 @@ This document describes the following facets of kubernetes-native applications:
 19. Secrets handling
 20. Tracing instrumentation
 21. Administrative processes
+22. Requests & limits
 
 ## 1. One codebase, one application
 
@@ -361,6 +362,20 @@ A cloud-native application is a secure application. Your code, whether compiled 
 In an ideal world, all cloud-native applications would secure all of their endpoints with RBAC (role-based access control). Every request for an application’s resources should know who is making the request, and the roles to which that consumer belongs. These roles dictate whether the calling client has sufficient permission for the application to honor the request.
 
 With tools like OAuth2, OpenID Connect, various SSO servers and standards, as well as a near infinite supply of language-specific authentication and authorization libraries, security should be something that is baked into the application’s development from day one, and not added as a bolt-on project after an application is running in production.
+
+## 22. Requests & limits
+
+### What?
+
+Explicit resource allocation for pods.
+
+### Why?
+
+Allows Kubernetes to make good scheduling decisions.
+
+### How?
+
+Stakater application helm chart always sets default requests and limits: https://github.com/stakater-charts/application/blob/master/application/values.yaml#L142 but ofcourse each application can individually override them
 
 # Acknowledgements
 
