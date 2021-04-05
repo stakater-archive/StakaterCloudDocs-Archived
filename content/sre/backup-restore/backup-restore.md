@@ -146,7 +146,7 @@ Changing some parameters in Schedule CR, changes the backup behavior
   - true (includes all cluster level resource, snapshotVolumes needs to be true to take PV snapshots)
   - false (exclude cluster level resources, including PVs. So there will be no snapshots)
 
-- Excluding both `snapshotVolumes` and `includeClusterResources` will have default behavior of taking snapshots of only included namespaces PVs.
+- Excluding both `snapshotVolumes` and `includeClusterResources` will have default behavior of taking snapshots for only included namespaces PVs.
 
 #### Backup target Filters
 You can use [resource filtering](https://velero.io/docs/main/resource-filtering/) options to backup specific resources. Typical ones are following;
@@ -179,7 +179,7 @@ kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
 ~~~
 Create a restore with your most recent Velero Backup:
 ~~~
-velero restore create --from-backup <SCHEDULE NAME>-<TIMESTAMP>
+velero restore create --from-backup <BACKUP NAME>
 ~~~
 
 When ready, revert your backup storage location to read-write mode:
@@ -195,6 +195,6 @@ kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
 If you want to restore specific resources, you can use [resource filtering](https://velero.io/docs/main/resource-filtering/).
 For example, you can restore resources in `web` namespace:
 ```
-velero restore create --from-backup <SCHEDULE NAME>-<TIMESTAMP> --include-namespaces web
+velero restore create --from-backup <BACKUP NAME> --include-namespaces web
 ```
 **NOTE**: You have to select the resource filters properly. For example, if the target application has cluster-scope resources, then you cannot use `--include-namespaces` only.
