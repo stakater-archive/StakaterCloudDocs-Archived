@@ -1,5 +1,8 @@
 # Backup and Restore a Stateful App using Velero
 
+## Prerequisite
+---------
+You need velero CLI setup, follow the velero-cli [doc](./velero-cli.md)
 ## Prepare manifests for app
 ---------
 You will need the following manifest to deploy the sample app.

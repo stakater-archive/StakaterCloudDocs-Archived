@@ -2,6 +2,9 @@
 
 Back up and restore applications on Stakater App Agility Platform (AAP)
 
+## Prerequisite
+You need velero CLI setup, follow the velero-cli [doc](./velero-cli.md)
+
 ## Service viewpoint
 
 ### Backup
@@ -12,12 +15,6 @@ Stakater App Agility Platforms divides backups into two:
 2. Volumes backup
 
 These Manifests and Volume Backups are stored on the Cloud Provider under your account.
-
-#### Manifests Backup
-
-| Namespaces       | Backup Frequency | Backup Retention |
-| ---------------- | ---------------- | ---------------- |
-|  All Namespaces  |    Every 6 hrs   | Last 12 Backup(s)   | 
 
 #### Volumes Backup
 
