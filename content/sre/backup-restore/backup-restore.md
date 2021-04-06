@@ -11,26 +11,35 @@ You need velero CLI setup, follow the velero-cli [doc](./velero-cli.md)
 
 Stakater App Agility Platforms divides backups into two:
 
-1. Manifests backup
-2. Volumes backup
+1. Customer backups
+2. Platform Tools backups
 
-These Manifests and Volume Backups are stored on the Cloud Provider under your account.
+These Backups are stored on the Cloud Provider under your account.
+#### Customer Backups
 
-#### Volumes Backup
+There are 3 default backup schedules for customers that are deployed with offered velero tool
+
+| Schedule                       | Backup Frequency |   Backup Retention   | Backup Scope |
+| -------------------------- | ---------------- | -------------------- | ---------------- |
+| Daily Customer Workload Backup | Every 24 hrs |   Last 7 Backup(s) | Objects + PV Snapshots |
+| Hourly Full Cluster Object Backup | Every hour | Last 24 Backup(s) | Objects |
+| Weekly Full Backup | Once Every week | Last 4 Backup(s)   | Objects + PV Snapshots |
+
+#### Platform Tools backups
 
 Stakater only takes backups of the managed applications:
 
 | Tool                       | Backup Frequency |   Backup Retention   |
 | -------------------------- | ---------------- | -------------------- |
-| Nexus                      |    Every 6 hrs   |   Last 1 Backup(s)   | 
-| Prometheus (Cluster)       |    Every 6 hrs   |   Last 1 Backup(s)   |
-| Promehteus (Applications)  |    Every 6 hrs   |   Last 1 Backup(s)   |
-| Elasticsearch              |    Every 6 hrs   |   Last 1 Backup(s)   |
-| Vault                      |    Every 6 hrs   |   Last 1 Backup(s)   | 
-| Sonarqube                  |    Every 6 hrs   |   Last 1 Backup(s)   | 
-| CodeReadyWorkspaces        |    Every 6 hrs   |   Last 1 Backup(s)   | 
-| RHSSO (KeyCloak)           |    Every 6 hrs   |   Last 1 Backup(s)   | 
-| ArgoCD                     |    Every 6 hrs   |   Last 1 Backup(s)   | 
+| Nexus                      |    Every 24 hrs   |   Last 3 Backup(s)   | 
+| Prometheus (Cluster)       |    Every 24 hrs   |   Last 3 Backup(s)   |
+| Promehteus (Applications)  |    Every 24 hrs   |   Last 3 Backup(s)   |
+| Elasticsearch              |    Every 24 hrs   |   Last 3 Backup(s)   |
+| Vault                      |    Every 24 hrs   |   Last 3 Backup(s)   | 
+| Sonarqube                  |    Every 24 hrs   |   Last 3 Backup(s)   | 
+| CodeReadyWorkspaces        |    Every 24 hrs   |   Last 3 Backup(s)   | 
+| RHSSO (KeyCloak)           |    Every 24 hrs   |   Last 3 Backup(s)   | 
+| ArgoCD                     |    Every 24 hrs   |   Last 3 Backup(s)   | 
 
 If you want to change backup frequency/retention times for your specific needs, contact support.
 
