@@ -201,6 +201,6 @@ kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
 If you want to restore specific resources, you can use [resource filtering](https://velero.io/docs/main/resource-filtering/).
 For example, you can restore resources in `web` namespace:
 ```
-velero restore create --from-backup <BACKUP NAME> --include-namespaces web
+velero restore create --from-backup <BACKUP NAME> --include-namespaces web --namespace <VELERO_NAMESAPCE>
 ```
 **NOTE**: You have to select the resource filters properly. For example, if the target application has cluster-scope resources, then you cannot use `--include-namespaces` only.

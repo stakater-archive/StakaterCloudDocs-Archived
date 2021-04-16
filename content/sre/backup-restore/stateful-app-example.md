@@ -204,7 +204,7 @@ If everything goes well, your output should resemble to the one record above.
 
 To take velero backup, use velero command:
 ~~~
-velero backup create cassandra-backup --include-namespaces cassandra-app
+velero backup create cassandra-backup --include-namespaces cassandra-app --namespace <VELERO_NAMESAPCE>
 ~~~
 or you can use Backup CR:
 ~~~
@@ -229,7 +229,7 @@ Now delete the app namespace `cassandra-app` and this should delete everything i
 
 To perform a velero restore, use velero command:
 ~~~
-velero restore create --from-backup cassandra-backup
+velero restore create --from-backup cassandra-backup --namespace <VELERO_NAMESAPCE>
 ~~~
 Or we can use Restore CR to perform a restore:
 ~~~
