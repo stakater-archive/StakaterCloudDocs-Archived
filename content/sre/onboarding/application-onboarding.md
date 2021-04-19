@@ -37,6 +37,7 @@ type: application
 version: 0.1.0
 ```
 - values.yaml
+
 you can configure helm values as per your application requirement. We use [stakater application](https://github.com/stakater-charts/application/tree/master/application) chart as our main chart.
 ```yaml
 application:
@@ -96,8 +97,6 @@ application:
 Simply setting the webhook_url is sufficient to have Tekton build the application.
 
 To deploy, you'll need to add following files to the gitops repository.
-
-Replace the angle brackets and their content with your team,environment and project specific names. 
 
 Templates for the files: 
 - \<env>\/apps/\<team>/dev/helm-values/\<application>.yaml: 
