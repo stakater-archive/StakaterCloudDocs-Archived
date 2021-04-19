@@ -15,10 +15,14 @@ In application repo, you need to configure helm chart for the application. you n
 
 you can configure helm chart by having mere 2 files in ***deploy*** folder
 
+
+Replace <application> with name of git repository of application in the following templates.
+
+
 - Chart.yaml
 ```yaml 
 apiVersion: v2
-name: <repo-name>
+name: <application>
 description: A Helm chart for Kubernetes
 dependencies:
 - name: application
@@ -33,12 +37,12 @@ version: 0.1.0
 you can configure helm values as per your application requirement. We use [stakater application](https://github.com/stakater-charts/application/tree/master/application) chart as our main chart.
 ```yaml
 application:
-  applicationName: <app-name>
+  applicationName: <application>
   space:
     enabled: true
   deployment:
     image:
-      repository: "DOCKER_REPOSITORY_URL"
+      repository: DOCKER_REPOSITORY_URL
       tag: IMAGE_TAG
     imagePullSecrets: "nexus-docker-config-forked"
     # Resource request/limits
@@ -84,11 +88,11 @@ application:
       targetPort: 8080
   # Openshift Routes
 ```
-### 2. GitOps Config:
+### 2. GitOps-Config Repo
 
 Simply setting the webhook_url is sufficient to have Tekton build the application.
 
-To deploy, you'll need to add 3 files to the gitops repository.
+To deploy, you'll need to add following files to the gitops repository.
 
 Replace the angle brackets and their content with your team,environment and project specific names. 
 
