@@ -88,7 +88,7 @@ application:
 
 Simply setting the webhook_url is sufficient to have Tekton build the application.
 
-To deploy, you'll need to add 3 files to the gitops repository.
+To deploy, you'll need to add 3 files to the `gitops-config` repository.
 
 Replace the angle brackets and their content with your team,environment and project specific names. 
 
