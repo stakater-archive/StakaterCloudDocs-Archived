@@ -7,6 +7,13 @@ This quick guide covers the steps to set up a new project in the Stakater App Ag
 
 To onboard application in stakater app agility platform, you need to configure application and gitops repository. Following are the changes you need to make in order to on-board application.
 
+Replace angle brackets with following values in below templates:
+  - \<team> : Name of the team
+  - \<application> : Name of git repository of the application
+  - \<env>:  Environment name
+  - \<gitops-repo>:  url of your gitops repo
+  - \<nexus-repo>: url of nexus repository
+
 ### 1. Application Repo
 
 
@@ -14,10 +21,6 @@ In application repo, you need to configure helm chart for the application. you n
 
 
 you can configure helm chart by having mere 2 files in ***deploy*** folder
-
-
-Replace <application> with name of git repository of application in the following templates.
-
 
 - Chart.yaml
 ```yaml 
@@ -97,7 +100,7 @@ To deploy, you'll need to add following files to the gitops repository.
 Replace the angle brackets and their content with your team,environment and project specific names. 
 
 Templates for the files: 
-- <env>/apps/\<team>/dev/helm-values/\<application>.yaml: 
+- \<env>\/apps/\<team>/dev/helm-values/\<application>.yaml: 
 
 ``` yaml
 <application>:
@@ -110,7 +113,7 @@ Templates for the files:
         tag: v0.0.1
 ```
 
-- <env>/config/argocd/\<team>/\<application>.yaml 
+- \<env>\/config/argocd/\<team>/\<application>.yaml 
 
 ``` yaml
 apiVersion: argoproj.io/v1alpha1
