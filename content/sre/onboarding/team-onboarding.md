@@ -5,6 +5,7 @@ This quick guide covers the steps to set up a new project in the Stakater App Ag
 
 ### Building and deploying your application
 
+To onboard application in stakater app agility platform, you need to configure application and gitops repository. Following are the changes you need to make in order to on-board application.
 
 ### 1. Application Repo
 
@@ -33,6 +34,8 @@ you can configure helm values as per your application requirement. We use [staka
 ```yaml
 application:
   applicationName: <app-name>
+  space:
+    enabled: true
   deployment:
     image:
       repository: "DOCKER_REPOSITORY_URL"
@@ -85,7 +88,7 @@ application:
 
 Simply setting the webhook_url is sufficient to have Tekton build the application.
 
-To deploy, you'll need to add 7 files to the gitops repository.
+To deploy, you'll need to add 3 files to the gitops repository.
 
 Replace the angle brackets and their content with your team,environment and project specific names. 
 
@@ -129,76 +132,6 @@ spec:
       selfHeal: true
 ```
 
-- <env>/config/argocd/\<team>/\<team>-dev.yaml 
-
-``` yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: <application>-dev
-  namespace: openshift-stakater-argocd
-spec:
-  destination:
-    namespace: <team>-dev
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: <env>/apps/<team>/dev/
-    repoURL: '<gitops-config>'
-    targetRevision: HEAD
-  project: <team>
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-```
-
-- <env>/config/argocd/\<team>/\<team>-pr.yaml 
-
-``` yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: <application>-pr
-  namespace: openshift-stakater-argocd
-spec:
-  destination:
-    namespace: <team>-pr
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: <env>/apps/<team>/pr/
-    repoURL: '<gitops-config>'
-    targetRevision: HEAD
-  project: <team>
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-```
-
-- <env>/config/argocd/\<team>/argo-project.yaml
-``` yaml
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: <team>
-  namespace: openshift-stakater-argocd
-  # Finalizer that ensures that project is not deleted until it is not referenced by any application
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  description: <teamDescription>
-  # Allow manifests to deploy from any Git repos
-  sourceRepos:
-  - '*'
-  # Only permit applications to deploy to the guestbook namespace in the same cluster
-  destinations:
-  - namespace: "*"
-    server: https://kubernetes.default.svc
-  clusterResourceWhitelist:
-  - group: "*"
-    kind: "*"
-```
-
 - common/helm/\<team>/\<application>/Chart.yaml 
 
 ``` yaml
@@ -216,57 +149,4 @@ version: 0.1.0
 
 appVersion: 1.0.0
 
-```
-
-- gitops-config/<env>/config/tenants/\<application>.yaml
-``` yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Tenant
-metadata:
-  name: <team>
-spec:
-  users:
-## add the team members' email addresses.
-  - <member-id>
-  quota: small
----
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
-metadata:
-  name: <team>-build
-  labels:
-    team: <team>
-    kind: build
-    app: <application>
-    stakater.com/workload-monitoring: 'true'
-  annotations:
-    openshift.io/node-selector: node-role.kubernetes.io/worker=
-spec:
-  tenant: <team>
----
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
-metadata:
-  name: <team>-dev
-  labels:
-    team: <team>
-    kind: dev
-    stakater.com/workload-monitoring: 'true'
-  annotations:
-    openshift.io/node-selector: node-role.kubernetes.io/worker=
-spec:
-  tenant: <team>
----
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
-metadata:
-  name: <team>-pr
-  labels:
-    team: <team>
-    kind: pr
-    stakater.com/workload-monitoring: 'true'
-  annotations:
-    openshift.io/node-selector: node-role.kubernetes.io/worker=
-spec:
-  tenant: <team>
 ```
