@@ -84,7 +84,7 @@ application:
       targetPort: 8080
   # Openshift Routes
 ```
-### 2. GitOps Config:
+### 2. GitOps-Config Repo
 
 Simply setting the webhook_url is sufficient to have Tekton build the application.
 
