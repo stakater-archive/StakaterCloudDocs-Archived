@@ -50,8 +50,7 @@ module.exports = {
                 children: [
                     '/content/sre/gitops/introduction.md',                    
                     '/content/sre/gitops/github.md',
-                    '/content/sre/gitops/gitlab.md',
-                    '/content/sre/'                    
+                    '/content/sre/gitops/gitlab.md',       
                     '/content/sre/gitops/faqs.md'                    
                 ]
             },
