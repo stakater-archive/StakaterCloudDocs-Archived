@@ -50,8 +50,15 @@ module.exports = {
                 children: [
                     '/content/sre/gitops/introduction.md',                    
                     '/content/sre/gitops/github.md',
-                    '/content/sre/gitops/gitlab.md',                    
+                    '/content/sre/gitops/gitlab.md',       
                     '/content/sre/gitops/faqs.md'                    
+                ]
+            },
+            {
+                title: 'Onboarding',
+                children: [
+                  '/content/sre/onboarding/team-onboarding.md',
+                  '/content/sre/onboarding/application-onboarding.md'                   
                 ]
             },
             {
