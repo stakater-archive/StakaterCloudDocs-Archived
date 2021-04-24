@@ -53,7 +53,7 @@ This document describes the following facets of kubernetes-native applications:
 25. Certificates (optional)
 26. Forecastle
 27. Dashboard
-28. Able to run with multiple replicas.
+28. Multiple replicas
 
 ## 1. One codebase, one application
 
@@ -415,7 +415,11 @@ You need to make sense out of the data.
 
 Add grafana dashboard
 
-## 28. Able to run with multiple replicas.
+## 28. Multiple replicas
+
+### What?
+
+Always have at-least 2 replicas (instances) of every service you deploy.
 
 ### Why?
 
@@ -424,6 +428,8 @@ In a Kubernetes environment, workloads are moved around based on needs of the pl
 ### How?
 
 Set replicas > 1
+
+## 29. 
 
 # Acknowledgements
 
