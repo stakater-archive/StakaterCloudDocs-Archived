@@ -435,7 +435,10 @@ Stakater application helm chart always sets default requests and limits: https:/
 
 ### What?
 
-Automated notifications on defined trigger.
+Automated notifications on defined trigger. Alerts should be raised
+
+- on application downtime
+- on error in logs
 
 ### Why?
 
