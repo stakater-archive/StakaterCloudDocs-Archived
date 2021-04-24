@@ -186,9 +186,13 @@ Readiness probes are a similar tool used to determine whether a pod is ready to 
 
 By combining liveness and readiness probes, you can instruct Kubernetes to automatically restart pods or remove them from backend groups. Configuring your infrastructure to take advantage of these capabilities allows Kubernetes to manage the availability and health of your applications without additional operations work.
 
+### Why?
+
+Readiness probes allow your application to report when it should start receiving traffic. This is always what marks a pod ‘Ready’ in the cluster.
+
 ### How?
 
-It is recommended to add `health` endpoint to your application
+Add `health` endpoint to your application; which can be used for liveness and readiness probes; they could be separate endpoints as well based on the need.
 
 ## 7. Logging
 
