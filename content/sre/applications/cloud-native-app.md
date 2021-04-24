@@ -92,13 +92,13 @@ One Application == One Microserivce == One Git Repository
 
 ## 2. Dependency management
 
+### What?
+
 Management of application dependencies: how, where, and when they are managed.
 
-Most contemporary programming languages have some facility for managing application dependencies. Maven and Gradle are two of the most popular tools in the Java world, while NuGet is popular for .NET developers, Bundler is popular for Ruby, and godeps is available for Go programmers. Regardless of the tool, these utilities all provide one set of common functionality: they allow developers to declare dependencies and let the tool be responsible for ensuring that those dependencies are satisfied.
-
-Many of these tools also have the ability to isolate dependencies. This is done by analyzing the declared dependencies and bundling (also called vendoring) those dependencies into some sub-structure beneath or within the application artifact itself.
-
 A cloud-native application never relies on implicit existence of system-wide packages. For Java, this means that your applications cannot assume that a container will be managing the classpath on the server. For .NET, this means that your application cannot rely on facilities like the Global Assembly Cache. Ruby developers cannot rely on gems existing in a central location. Regardless of language, your code cannot rely on the pre-existence of dependencies on a deployment target.
+
+### Why?
 
 Not properly isolating dependencies can cause untold problems. In some of the most common dependency-related problems, you could have a developer working on version X of some dependent library on his workstation, but version X+1 of that library has been installed in a central location in production. This can cause everything from runtime failures all the way up to insidious and difficult to diagnose subtle failures. If left untreated, these types of failures can bring down an entire server or cost a company millions through undiagnosed data corruption.
 
@@ -108,9 +108,19 @@ However, for some enterprises, it just isn’t practical (or possible, even) to 
 
 Applying discipline to dependency management will bring your applications one step closer to being able to thrive in cloud environments.
 
+### How?
+
+Most contemporary programming languages have some facility for managing application dependencies. Maven and Gradle are two of the most popular tools in the Java world, while NuGet is popular for .NET developers, Bundler is popular for Ruby, and godeps is available for Go programmers. Regardless of the tool, these utilities all provide one set of common functionality: they allow developers to declare dependencies and let the tool be responsible for ensuring that those dependencies are satisfied.
+
+Many of these tools also have the ability to isolate dependencies. This is done by analyzing the declared dependencies and bundling (also called vendoring) those dependencies into some sub-structure beneath or within the application artifact itself.
+
 ## 3. Contract first, API first
 
+### What?
+
 Recognize your API as a first-class artifact of the development process, API first gives teams the ability to work against each other’s public contracts without interfering with internal development processes.
+
+### Why?
 
 Even if you’re not planning on building a service as part of a larger ecosystem, the discipline of starting all of your development at the API level still pays enough dividends to make it worth your time.
 
@@ -123,6 +133,8 @@ There is absolutely no excuse for claiming that API first is a difficult or unsu
 This pattern is an extension of the contract-first development pattern, where developers concentrate on building the edges or seams of their application first. With the integration points tested continuously via CI servers, teams can work on their own services and still maintain reasonable assurance that everything will work together properly.
 
 API first frees organizations from the waterfall, deliberately engineered system that follows a preplanned orchestration pattern, and allows products to evolve into organic, self-organizing ecosystems that can grow to handle new and unforeseen demands.
+
+### How?
 
 Live, eat, and breathe the API-first lifestyle, and your investment will pay off exponentially.
 
@@ -166,6 +178,8 @@ In order to be able to keep configuration separate from code and credentials, we
 - Information that might normally be bundled in properties files or configuration XML, or YML
 
 Configuration does not include internal information that is part of the application itself. Again, if the value remains the same across all deployments (it is intentionally part of your immutable build artifact), then it isn’t configuration.
+
+### Why?
 
 Credentials are extremely sensitive information and have absolutely no business in a codebase. Oftentimes, developers will extract credentials from the compiled source code and put them in properties files or XML configuration, but this hasn’t actually solved the problem. Bundled resources, including XML and properties files, are still part of the codebase. This means credentials bundled in resource files that ship with your application are still violating this rule.
 
@@ -221,6 +235,8 @@ You should consider the aggregation, processing, and storage of logs as a nonfun
 
 Embracing the notion that your application has less work to do in the cloud than it does in the enterprise can be a liberating experience.
 
+### Why?
+
 When your applications are decoupled from the knowledge of log storage, processing, and analysis, your code becomes simpler, and you can rely on industry-standard tools and stacks to deal with logs. Moreover, if you need to change the way in which you store and process logs, you can do so without modifying the application.
 
 One of the many reasons your application should not be controlling the ultimate destiny of its logs is due to elastic scalability. When you have a fixed number of instances on a fixed number of servers, storing logs on disk seems to make sense. However, when your application can dynamically go from 1 running instance to 100, and you have no idea where those instances are running, you need your cloud provider to deal with aggregating those logs on your behalf.
@@ -238,6 +254,8 @@ It is recommended application logs as JSON.
 ### What?
 
 A backing service is any service on which your application relies for its functionality. This is a fairly broad definition, and its wide scope is intentional. Some of the most common types of backing services include data stores, messaging systems, caching systems, and any number of other types of service, including services that perform line-of-business functionality or security.
+
+### Why?
 
 When building applications designed to run in a cloud environment where the filesystem must be considered ephemeral, you also need to treat file storage or disk as a backing service. You shouldn’t be reading to or writing from files on disk like you might with regular enterprise applications. Instead, file storage should be a backing service that is bound to your application as a resource.
 
@@ -286,7 +304,9 @@ The second, domain-specific telemetry, is also up to you. This refers to the str
 The difference between APM and domain-specific telemetry may not be immediately obvious. Think of it this way: APM might provide you the average number of HTTP requests per second an application is processing, while domain-specific telemetry might tell you the number of widgets sold to people on iPads within the last 20
 minutes.
 
-Finally, health and system logs are something that should be provided by your cloud provider. They make up a stream of events, such as application start, shutdown, scaling, web request tracing, and the results of periodic health checks.
+Finally, health and system logs are something that should be provided by your cloud provider. They make up a stream of events, such as application start, shutdown, scaling, web request tracing, and the results of periodic health checks. (this is covered thoroughly under logging section)
+
+### Why?
 
 The cloud makes many things easy, but monitoring and telemetry are still difficult, probably even more difficult than traditional, enterprise application monitoring. When you are staring down the firehose at a stream that contains regular health checks, request audits, business-level events, and tracking data, and performance metrics, that is an incredible amount of data.
 
@@ -296,11 +316,11 @@ Auditing and monitoring cloud applications are often overlooked but are perhaps 
 
 Getting telemetry done right can mean the difference between success and failure in the cloud.
 
-Code and libraries used in your code to expose metrics.
-
-### Why?
-
 Allows measuring operation of application and enables many more advanced use cases.
+
+### How?
+
+Use code and libraries your code to expose metrics.
 
 ## 10. Graceful Shutdown
 
@@ -331,6 +351,9 @@ You should also pay attention to [forwarding the signal to the right process in 
 ### Why?
 
 This is how Kubernetes will tell your application to end.
+
+### How?
+
 
 ## 12. Single stateless processes
 
@@ -366,15 +389,23 @@ There are dozens of third-party caching products, including Gemfire and Redis, a
 
 ## 13. Concurrency
 
+### What?
+
 Concurrency, advises us that cloud-native applications should scale out using the process model. There was a time when, if an application reached the limit of its capacity, the solution was to increase its size. If an application could only handle some number of requests per minute, then the preferred solution was to simply make the application bigger.
 
 Adding CPUs, RAM, and other resources (virtual or physical) to a single monolithic application is called vertical scaling, and this type of behavior is typically frowned upon in civilized society these days.
 
 A much more modern approach, one ideal for the kind of elastic scalability that the cloud supports, is to scale out, or horizontally. Rather than making a single big process even larger, you create multiple processes, and then distribute the load of your application among those processes.
 
+### Why?
+
 Most cloud providers have perfected this capability to the point where you can even configure rules that will dynamically scale the number of instances of your application based on load or other runtime telemetry available in a system.
 
 If you are building disposable, stateless, share-nothing processes then you will be well positioned to take full advantage of horizontal scaling and running multiple, concurrent instances of your application so that it can truly thrive in the cloud.
+
+### How?
+
+Have multiple replicas of your application
 
 ## 15. Authentication and authorization
 
