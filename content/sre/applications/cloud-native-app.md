@@ -54,8 +54,11 @@ This document describes the following facets of kubernetes-native applications:
 26. Forecastle
 27. Dashboard
 28. Multiple replicas
+29. Important state does not persist in container filesystem
 
 ## 1. One codebase, one application
+
+### What?
 
 When managing myriad aspects of a development team, the organization of code, artifacts, and other apparent minutia is often considered a minor detail or outright neglected. However, proper application of discipline and organization can mean the difference between a one-month production lead time and a one-day lead time.
 
@@ -78,6 +81,14 @@ When looking at your application and deciding on opportunities to reorganize the
 In other words, one codebase, one application does not mean you’re not allowed to share code across multiple applications; it just means that the shared code is yet another codebase.
 
 This also doesn’t mean that all shared code needs to be a microservice. Rather, you should evaluate whether the shared code should be considered a separately released product that can then be vendored into your application as a dependency.
+
+### Why?
+
+Makes it nearly impossible to automate the build and deploy phases of your application’s life cycle.
+
+### How?
+
+One Application == One Microserivce == One Git Repository
 
 ## 2. Dependency management
 
@@ -189,6 +200,8 @@ By combining liveness and readiness probes, you can instruct Kubernetes to autom
 ### Why?
 
 Readiness probes allow your application to report when it should start receiving traffic. This is always what marks a pod ‘Ready’ in the cluster.
+
+Health checks (often custom HTTP endpoints) help orchestrators, like Kubernetes, perform automated actions to maintain overall system health. These can be a simple HTTP route that returns meaningful values, or a command that can be executed from within the container.
 
 ### How?
 
@@ -377,11 +390,11 @@ With tools like OAuth2, OpenID Connect, various SSO servers and standards, as we
 
 ### What?
 
-Explicit resource allocation for pods.
+Explicit resource allocation for pods. Applications should claim the CPU, memory, and other resources they require.
 
 ### Why?
 
-Allows Kubernetes to make good scheduling decisions.
+Allows Kubernetes to make good scheduling decisions. This allows the scheduler to know the best place to run the application based on resources available. 
 
 ### How?
 
@@ -429,7 +442,19 @@ In a Kubernetes environment, workloads are moved around based on needs of the pl
 
 Set replicas > 1
 
-## 29. 
+## 29. Important state does not persist in container filesystem
+
+### What?
+
+If you need data persistence for your application, work with your platform team to understand how to request a persistent volume.
+
+### Why?
+
+Your application’s container filesystem is considered ephemeral. Meaning it will not move with the workload. This ephemeral storage is typically resource constrained and should not be used for anything more than small write needs, where loss of data is not a concern. 
+
+### How?
+
+Use persistent volumes.
 
 # Acknowledgements
 
