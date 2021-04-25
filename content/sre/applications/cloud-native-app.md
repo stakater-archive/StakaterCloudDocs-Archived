@@ -357,9 +357,11 @@ This is how Kubernetes will tell your application to end.
 
 ## 12. Single stateless processes
 
+### What?
+
 Applications should execute as a single, stateless process. We have a strong opinion about the use of administrative and secondary processes, and modern cloud-native applications should each consist of a single, stateless process.
 
-### A Practical Definition of Stateless
+#### A Practical Definition of Stateless
 
 One question that we field on a regular basis stems from confusion around the concept of statelessness. People wonder how they can build a process that maintains no state. After all, every application needs some kind of state, right? Even the simplest of application leaves some bit of data floating around, so how can you ever have a truly stateless process?
 
@@ -369,7 +371,7 @@ To put it as simply as possible, all long-lasting state must be external to the 
 
 As an example, a microservice that exposes functionality for user management must be stateless, so the list of all users is maintained in a backing service (an Oracle or MongoDB database, for instance). For obvious reasons, it would make no sense for a database to be stateless.
 
-### The Share-Nothing Pattern
+#### The Share-Nothing Pattern
 
 Processes often communicate with each other by sharing common resources. Even without considering the move to the cloud, there are a number of benefits to be gained from adopting the sharenothing pattern. Firstly, anything shared among processes is a liability that makes all of those processes more brittle. In many high-availability patterns, processes will share data through a wide variety of techniques to elect cluster leaders, to decide on whether a process is a primary or backup, and so on.
 
@@ -379,13 +381,19 @@ It should go without saying, but the filesystem is not a backing service. This m
 
 If processes need to share data, like session state for a group of processes forming a web farm, then that session state should be externalized and made available through a true backing service.
 
-### Data Caching
+#### Data Caching
 
 A common pattern, especially among long-running, containerbased web applications, is to cache frequently used data during process startup. This book has already mentioned that processes need to start and stop quickly, and taking a long time to fill an in-memory cache violates this principle.
 
 Worse, storing an in-memory cache that your application thinks is always available can bloat your application, making each of your instances (which should be elastically scalable) take up far more RAM than is necessary.
 
 There are dozens of third-party caching products, including Gemfire and Redis, and all of them are designed to act as a backing service cache for your applications. They can be used for session state, but they can also be used to cache data your processes may need during startup and to avoid tightly coupled data sharing among processes.
+
+### Why?
+
+
+### How?
+
 
 ## 13. Concurrency
 
