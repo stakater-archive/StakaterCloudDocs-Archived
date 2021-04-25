@@ -137,8 +137,8 @@ metadata:
 spec:
   users:
 ## add the team members' email addresses.
-  - rasheed.amir@uc.se
-  - <xx.yy@uc.se>
+  - r.amir@cloud.com
+  - <xx.yy@cloud.com>
   quota: small
 ---
 apiVersion: tenantoperator.stakater.com/v1alpha1
