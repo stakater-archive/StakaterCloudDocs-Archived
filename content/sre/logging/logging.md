@@ -17,16 +17,16 @@ Conside the following example of a one line event by a java application:
 This will be parsed as follows:
 ```json
 {
-    "parsed.timestamp":"2021-04-15 11:41:01.427",
-    "parsed.level":"WARN",
-    "parsed.thread":"http-nio-8080-exec-4",
-    "parsed.mdc.breadcrumbId":"441ce707-8096-4aba-a927-0afa8c34802b-by-BOKE",
-    "parsed.mdc.user":"service-account-boke",
-    "parsed.logger":"org.zalando.logbook.Logbook",
-    "parsed.message":"{\"origin\":\"local\",\"type\":\"response\",\"correlation\":\"ef4f3737f2bcf856\"}",
-    "parsed_message.origin": "local",
-    "parsed_message.type": "response",
-    "parsed_message.correlation": "ef4f3737f2bcf856"
+    "timestamp":"2021-04-15 11:41:01.427",
+    "level":"WARN",
+    "thread":"http-nio-8080-exec-4",
+    "mdc.breadcrumbId":"441ce707-8096-4aba-a927-0afa8c34802b-by-BOKE",
+    "mdc.user":"service-account-boke",
+    "logger":"org.zalando.logbook.Logbook",
+    "message":"{\"origin\":\"local\",\"type\":\"response\",\"correlation\":\"ef4f3737f2bcf856\"}",
+    "origin": "local",
+    "type": "response",
+    "correlation": "ef4f3737f2bcf856"
 }
 ```
 
