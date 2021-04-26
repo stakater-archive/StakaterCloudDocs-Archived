@@ -362,7 +362,6 @@ This is how Kubernetes will tell your application to end.
 
 ### How?
 
-
 ## 12. Single stateless processes
 
 ### What?
@@ -455,6 +454,46 @@ With tools like OAuth2, OpenID Connect, various SSO servers and standards, as we
 
 ### How?
 
+## 17. Disposability
+
+### What?
+
+### Why?
+
+### How?
+
+## 18. Declarative Syntax to Manage Kubernetes State
+
+### What?
+
+### Why?
+
+### How?
+
+## 19. Secrets handling
+
+### What?
+
+### Why?
+
+### How?
+
+## 20. Tracing instrumentation
+
+### What?
+
+### Why?
+
+### How?
+
+## 21. Administrative processes
+
+### What?
+
+### Why?
+
+### How?
+
 ## 22. Requests & limits
 
 ### What?
@@ -485,6 +524,30 @@ You need to know when your service degrades.
 ### How?
 
 Platform includes a managed Prometheus; just define a PrometheusRule.
+
+## 24. Backup & restore (optional)
+
+### What?
+
+### Why?
+
+### How?
+
+## 25. Certificates (optional)
+
+### What?
+
+### Why?
+
+### How?
+
+## 26. Forecastle
+
+### What?
+
+### Why?
+
+### How?
 
 ## 27. Dashboard
 
