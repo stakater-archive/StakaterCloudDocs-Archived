@@ -128,7 +128,8 @@ module.exports = {
                 children: [
                     '/content/sre/backup-restore/velero-cli.md',
                     '/content/sre/backup-restore/backup-restore.md',
-                    '/content/sre/backup-restore/stateful-app-example.md'
+                    '/content/sre/backup-restore/stateful-app-example.md',
+                    '/content/sre/backup-restore/restore-with-gitops.md'
                 ]
             },
             {
