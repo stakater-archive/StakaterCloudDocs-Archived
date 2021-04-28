@@ -62,6 +62,6 @@ Enable self heal so argocd start managing resources again.
   syncPolicy:
     automated:
       prune: true
-      selfHeal: false
+      selfHeal: true
 
 ```
