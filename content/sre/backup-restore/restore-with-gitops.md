@@ -22,8 +22,13 @@ Disalbe self heal in argocd application that is managing PVC so it does not recr
 
 Delete the PVC and statefulset in which you want to restore data so that its created again by velero.
 
-``` oc delete pvc <pvc-name> -n <namespace> ```
-``` oc delete statefulset <statefulset-name> -n <namespace> ```
+``` 
+oc delete pvc <pvc-name> -n <namespace> 
+```
+
+```
+ oc delete statefulset <statefulset-name> -n <namespace> 
+```
 
 ## Restore Velero Backup
 
@@ -57,7 +62,6 @@ After a successful restore, you should be able to see pod up and running with re
 
 Enable self heal so argocd start managing resources again. 
 
-```
 ```
   syncPolicy:
     automated:
