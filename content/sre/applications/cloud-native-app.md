@@ -523,7 +523,8 @@ You need to know when your service degrades.
 
 ### How?
 
-Platform includes a managed Prometheus; just define a PrometheusRule.
+- Platform includes a managed Prometheus; just define a PrometheusRule.
+- Platform also includes [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which can send downtime alerts when application degrades.
 
 ## 24. Backup & restore (optional)
 
