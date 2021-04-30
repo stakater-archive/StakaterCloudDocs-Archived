@@ -396,11 +396,15 @@ Worse, storing an in-memory cache that your application thinks is always availab
 
 There are dozens of third-party caching products, including Gemfire and Redis, and all of them are designed to act as a backing service cache for your applications. They can be used for session state, but they can also be used to cache data your processes may need during startup and to avoid tightly coupled data sharing among processes.
 
+The principle of Processes, which can be more accurately termed stateless processes, asserts that an application developed under The 12 Factor App structure will run as a collection of stateless processes. This means that no single process keeps track of the state of another process and that no process keeps track of information such as session or workflow status.
+
 ### Why?
 
+A stateless process makes scaling easier. When a process is stateless, instances can be added and removed to address a particular load burden at a given point in time. Since each process operates independently, statelessness prevents unintended side effects.
 
 ### How?
 
+Run each process as a pod or deployment.
 
 ## 13. Concurrency
 
@@ -418,17 +422,39 @@ Most cloud providers have perfected this capability to the point where you can e
 
 If you are building disposable, stateless, share-nothing processes then you will be well positioned to take full advantage of horizontal scaling and running multiple, concurrent instances of your application so that it can truly thrive in the cloud.
 
+The principle of Concurrency recommends organizing processes according to their purpose and then separating those processes so that they can be scaled up and down according to need. As shown in the illustration above, an application is exposed to the network via web servers that operate behind a load balancer. The group of web servers behind the load balancer, in turn, uses business logic that is in Business Service processes that operate behind their own load balancer. Should the burden on the web servers increase, that group can be scaled up in an isolated manner to meet the demands at hand. However, should a bottleneck occur due to a burden placed on the Business Service, that layer can be scaled up independently.
+
+Supporting concurrency means that different parts of an application can be scaled up to meet the need at hand. Otherwise, when concurrency is not supported, architectures have little choice but to scale up the application in its entirety.
+
 ### How?
 
 Have multiple replicas of your application
 
-## 14. Environment parity
+## 14. Environment (Dev/Prod) parity
 
 ### What?
 
+Keep development, staging, and production as similar as possible
+
+The cloud-native app is designed for continuous deployment by keeping the gap between development and production small. Looking at the three main gaps:
+
+- Make the time gap small: a developer may write code and have it deployed hours or even just minutes later.
+- Make the personnel gap small: developers who wrote code are closely involved in deploying it and watching its behavior in production.
+- Make the tools gap small: keep development and production as similar as possible.
+
 ### Why?
 
+The Environment Parity principle means all deployment paths are similar yet independent and that no deployment "leapfrogs" into another deployment target.
+
+Backing services, such as the app’s database, queueing system, or cache, is one area where dev/prod parity is important. Many languages offer libraries which simplify access to the backing service, including adapters to different types of services.
+
+Developers sometimes find great appeal in using a lightweight backing service in their local environments, while a more serious and robust backing service will be used in production. For example, using SQLite locally and PostgreSQL in production; or local process memory for caching in development and Memcached in production.
+
+The cloud-native developer resists the urge to use different backing services between development and production, even when adapters theoretically abstract away any differences in backing services. Differences between backing services mean that tiny incompatibilities crop up, causing code that worked and passed tests in development or staging to fail in production. These types of errors create friction that disincentivizes continuous deployment. The cost of this friction and the subsequent dampening of continuous deployment is extremely high when considered in aggregate over the lifetime of an application.
+
 ### How?
+
+Use kubernetes namespaces to represent different environments and then deploy applications in similiar way with approaches like GitOps
 
 ## 15. Authentication and authorization
 
@@ -458,9 +484,40 @@ With tools like OAuth2, OpenID Connect, various SSO servers and standards, as we
 
 ### What?
 
+The principle of Disposability asserts that applications should start and stop gracefully. This means doing all the required "housekeeping" before an application is made accessible to consumers. For example, a graceful startup will ensure that all database connections and access to other network resources are operational. Also, any other configuration work that needs to take place has taken place.
+
+In terms of shutdown, disposability advocates ensuring that all database connections and other network resources are terminated properly and that all shutdown activity is logged, as shown in the code example shown above.
+
 ### Why?
 
+Maximize robustness with fast startup and graceful shutdown
+
 ### How?
+
+e.g.
+
+```
+const shutdown = async (signal) => {
+   logger.info(`Disconnecting message broker at ${new Date()}`);
+   messageBroker.disconnect();
+
+   logger.info(`Disconnecting database at ${new Date()}`);
+   database.disconnect();
+
+   let shutdownMessage;
+
+   if (!signal) {
+       shutdownMessage = (`MyCool service shutting down at ${new Date()}`);
+   } else {
+       shutdownMessage = (`Signal ${signal} : MyCool service shutting down at ${new Date()}`);
+   }
+   const obj = {status: "SHUTDOWN", shutdownMessage, pid: process.pid};
+   await server.close(() => {
+       console.log(obj);
+       process.exit(0);
+   });
+};
+```
 
 ## 18. Declarative Syntax to Manage Kubernetes State
 
@@ -597,3 +654,4 @@ Use persistent volumes.
 Most of the text has been copied from these awesome resources; and copyrights belong to them:
 
 - https://www.cdta.org/sites/default/files/awards/beyond_the_12-factor_app_pivotal.pdf
+- https://www.redhat.com/architect/12-factor-app
