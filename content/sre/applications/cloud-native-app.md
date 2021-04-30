@@ -358,9 +358,41 @@ This is how Kubernetes will tell your application to end.
 
 ### What?
 
+In non-cloud environments, web apps are often written to run in app containers such as GlassFish, Apache Tomcat, and Apache HTTP Server. In contrast, twelve-factor apps don't rely on external app containers. Instead, they bundle the webserver library as a part of the app itself.
+
+It's an architectural best practices for services to expose a port number, specified by the PORT environment variable.
+
+Apps that export port binding are able to consume port binding information externally (as environment variables) when using the platform-as-a-service model.
+
+In these services, a routing layer routes requests from a public-facing hostname to your port-bound web processes. For example, when you deploy your apps to App Engine, you declare dependencies to add a webserver library to the app, such as Express (for Node.js), Flask and Gunicorn (for Python), or Jetty (for Java).
+
+You should not hard-code port numbers in your code. Instead, you should provide the port numbers in the environment, such as in an environment variable. This makes your apps portable when you run them on App Agility Platform.
+
+Because Kubernetes has built-in service discovery, in Kubernetes you can abstract port bindings by mapping service ports to containers. Service discovery is accomplished using internal DNS names.
+
+Instead of hard-coding the port that the webserver listens on, the configuration uses an environment variable. The following code snippet from an App Engine app shows how to accept a port value that's passed in an environment variable.
+
 ### Why?
 
+This makes your apps portable when you run them on App Agility Platform.
+
+An application developed to allow externalized, runtime port binding can act as a backing service for another application. This type of flexibility, coupled with all the other benefits of running on a cloud, is extremely powerful.
+
 ### How?
+
+```
+const express = require('express')
+const request = require('got')
+
+const app = express()
+app.enable('trust proxy')
+
+const PORT = process.env.PORT || 8080
+app.listen(PORT, () => {
+  console.log('App listening on port ${PORT}')
+  console.log('Press Ctrl+C to quit.')
+})
+```
 
 ## 12. Single stateless processes
 
