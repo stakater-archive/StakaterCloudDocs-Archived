@@ -357,6 +357,8 @@ Use code and libraries your code to expose metrics.
 
 ### What?
 
+For apps that run on cloud infrastructure, you should treat them and the underlying infrastructure as disposable resources. Your apps should be able to handle the temporary loss of underlying infrastructure and should be able to gracefully shut down and restart.
+
 Applications respond to SIGTERM correctly.
 
 #### 1. The app doesn't shut down on SIGTERM, but it gracefully terminates connections
@@ -384,6 +386,27 @@ You should also pay attention to [forwarding the signal to the right process in 
 This is how Kubernetes will tell your application to end.
 
 ### How?
+
+Use the SIGTERM signal (when it's available) to initiate a clean shutdown.
+
+The following snippet shows you how you can intercept the SIGTERM signal to close open database connections.
+
+```
+const express = require('express')
+const dbConnection = require('./db')
+
+// Other business logic related code
+
+app.listen(PORT, () => {
+  console.log('App listening on port ${PORT}')
+  console.log('Press Ctrl+C to quit.')
+})
+
+process.on('SIGTERM', () => {
+  console.log('App Shutting down')
+  dbConnection.close()  // Other closing of database connection
+})
+```
 
 ## 11. Port binding
 
