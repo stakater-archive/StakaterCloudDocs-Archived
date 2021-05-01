@@ -184,6 +184,9 @@ Ultimately, the goal of this guidance is to maximize your delivery speed while k
 
 ### Why?
 
+Strictly separate build and run stages.
+
+The key to Design, Build, Release, and Run is that the process is completely ephemeral. Should anything in the pipeline be destroyed, all artifacts and environments can be reconstituted from scratch using assets stored in the source code repository.
 
 ### How?
 
