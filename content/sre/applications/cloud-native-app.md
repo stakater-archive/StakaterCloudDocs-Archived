@@ -240,6 +240,8 @@ Secrets are a similar Kubernetes object type used to securely store sensitive da
 
 ConfigMaps and Secrets help you avoid putting configuration directly in Kubernetes object definitions. You can map the configuration key instead of the value, allowing you to update configuration on the fly by modifying the ConfigMap or Secret. This gives you the opportunity to alter the active runtime behavior of pods and other Kubernetes objects without modifying the Kubernetes definitions of the resources.
 
+Stakater App Agility Platform includes fully managed Vault for secrets management.
+
 ## 6. Liveness and readiness probes
 
 ### What?
@@ -373,6 +375,8 @@ Allows measuring operation of application and enables many more advanced use cas
 ### How?
 
 Use code and libraries your code to expose metrics.
+
+Stakater App Agility Platform includes fully managed Istio for tracing and instrumentation.
 
 ## 10. Graceful Shutdown
 
@@ -660,9 +664,15 @@ const shutdown = async (signal) => {
 
 ### What?
 
+Use GitOps based approach to deploy applications.
+
 ### Why?
 
+For reproducibility and auditability.
+
 ### How?
+
+Stakater team has helm [application chart](https://github.com/stakater-charts/application) which can be used for application deployment.
 
 ## 19. Secrets handling
 
