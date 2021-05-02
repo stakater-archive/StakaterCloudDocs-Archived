@@ -139,7 +139,7 @@ API first frees organizations from the waterfall, deliberately engineered system
 
 Live, eat, and breathe the API-first lifestyle, and your investment will pay off exponentially.
 
-On Stakater App Agility Platform you can buy fully managed 3Scale API Gateway which helps you manage the entire lifecycle of your APIs from design, to build, to publish.
+Stakater App Agility Platform offers a fully managed 3Scale API Gateway add-on to manage the entire lifecycle of your APIs from design, to build, to publish.
 
 ## 4. Design, build, release, and run
 
