@@ -12,7 +12,7 @@ Containers and container orchestrators such as Kubernetes provide many new primi
 
 Containers and cloud-native platforms bring tremendous benefits to your distributed applications, but if all you put into containers is rubbish, you will get distributed rubbish at scale. Figure below shows the mixture of the skills required for creating good cloud-native applications.
 
-_TODO ADD IMAGE HERE_
+![Good Cloud Native Applications](./images/cloud-native-applications.jpg)
 
 At a high level, there are multiple abstraction levels in a cloud-native application that require different design considerations:
 
