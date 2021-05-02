@@ -230,6 +230,11 @@ Secrets are a similar Kubernetes object type used to securely store sensitive da
 
 ConfigMaps and Secrets help you avoid putting configuration directly in Kubernetes object definitions. You can map the configuration key instead of the value, allowing you to update configuration on the fly by modifying the ConfigMap or Secret. This gives you the opportunity to alter the active runtime behavior of pods and other Kubernetes objects without modifying the Kubernetes definitions of the resources.
 
+- Well-defined process to build (e.g. compile) the application and start it (e.g. a Makefile)
+- Dockerfile defines ENTRYPOINT to run the application
+- Docker composition (docker-compose.yml) can bring up the environment for automated testing
+- Cut releases on merge to master (preferred, not required); use semver
+
 ## 6. Liveness and readiness probes
 
 ### What?
@@ -279,6 +284,10 @@ Simplifying your application’s log emission process allows you to reduce your 
 Output logs in a machine readable format to facilitate searching & indexing. Trace what went wrong when something does.
 
 It is recommended application logs as JSON.
+
+- Logs are emitted to stdout
+- Events are structured event streams (e.g. JSON)
+- Do not write logs to disk (to mitigate the need for log rotation)
 
 ## 8. Backing services
 
@@ -447,6 +456,10 @@ app.listen(PORT, () => {
   console.log('Press Ctrl+C to quit.')
 })
 ```
+
+- Dockerfiles define a PORT definition
+- Services should listen on a preconfigured bind-address and port (e.g. 0.0.0.0:8000)
+- Should listen on non-privileged ports (> 1024)
 
 ## 12. Single stateless processes
 
@@ -639,9 +652,21 @@ const shutdown = async (signal) => {
 
 ### What?
 
+Administrative processes usually consist of one-off tasks or timed, repeatable tasks such as generating reports, executing batch scripts, starting database backups, and migrating schemas. The admin processes factor in the twelve-factor manifesto was written with one-off tasks in mind. For cloud-native apps, this factor becomes more relevant when you're creating repeatable tasks, and the guidance in this section is oriented towards tasks like those.
+
+Timed triggers are often built as cron jobs and handled inherently by the apps themselves. This model works, but it introduces logic that's tightly coupled to the app and that requires maintenance and coordination, especially if your apps are distributed across time zones.
+
 ### Why?
 
+Run admin/management tasks as one-off processes
+
+The principle of Admin Processes states that admin processes are first-class citizens in the software development lifecycle and need to be treated as such.
+
 ### How?
+
+Within Kubernetes, the Job controller allows you to create Pods that are run once or on a schedule to perform various activities. A Job might implement business logic, but because Kubernetes mounts API tokens into the Pod, you can also use them for interacting with the Kubernetes orchestrator as well.
+
+For running apps on Kubernetes, start separate containers for admin tasks. You can take advantage of CronJobs in Kubernetes. CronJobs run in ephemeral containers and let you control the timing, execution frequency, and retries if jobs fail or if they take too long to complete.
 
 ## 22. Requests & limits
 
@@ -747,3 +772,5 @@ Most of the text has been copied from these awesome resources; and copyrights be
 
 - https://www.cdta.org/sites/default/files/awards/beyond_the_12-factor_app_pivotal.pdf
 - https://www.redhat.com/architect/12-factor-app
+- https://12factor.net/
+- https://cloud.google.com/architecture/twelve-factor-app-development-on-gcp
