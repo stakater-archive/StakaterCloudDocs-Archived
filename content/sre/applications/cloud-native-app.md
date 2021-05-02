@@ -561,11 +561,15 @@ The cloud-native developer resists the urge to use different backing services be
 
 Use kubernetes namespaces to represent different environments and then deploy applications in similiar way with approaches like GitOps
 
-## 15. Authentication and authorization
+## 15. Security (Authentication and authorization)
 
 ### What?
 
 Security is a vital part of any application and cloud environment. Security should never be an afterthought. All too often, we are so focused on getting the functional requirements of an application out the door that we neglect one of the most important aspects of delivering any application, regardless of whether that app is destined for an enterprise, a mobile device, or the cloud.
+
+The realm of security is wide, and includes operating systems, networks and firewalls, data and database security, app security, and identity and access management. It's of paramount importance to address all the dimensions of security in an enterprise's ecosystem.
+
+From an app's point of view, APIs provide access to the apps in your enterprise ecosystem. You should therefore ensure that these building blocks address security considerations during the app design and build process.
 
 ### Why?
 
@@ -575,7 +579,13 @@ In an ideal world, all cloud-native applications would secure all of their endpo
 
 ### How?
 
-With tools like OAuth2, OpenID Connect, various SSO servers and standards, as well as a near infinite supply of language-specific authentication and authorization libraries, security should be something that is baked into the application’s development from day one, and not added as a bolt-on project after an application is running in production.
+Considerations for helping to protect access to your app include the following:
+
+- With tools like OAuth2, OpenID Connect, various SSO servers and standards, as well as a near infinite supply of language-specific authentication and authorization libraries, security should be something that is baked into the application’s development from day one, and not added as a bolt-on project after an application is running in production.
+- Transport Layer Security (TLS). Use TLS to help protect data in transit. You might want to use mutual TLS for your business apps; this is made easier if you use service meshes like Istio on Kubernetes. It's also common for some use cases to create allow lists and deny lists based on IP addresses as an additional layer of security. Transport security also involves protecting your services against DDoS and bot attacks.
+- App and end-user security. Transport security helps provide security for data in transit and establishes trust. But it's a best practice to add app-level security to control access to your app based on who the consumer of the app is. The consumers can be other apps, employees, partners, or your enterprise's end customers. You can enforce security using API keys (for consuming apps), certification-based authentication and authorization, JSON Web Tokens (JWTs) exchange, or Security Assertion Markup Language (SAML).
+- 
+The security landscape constantly evolves within an enterprise, making it harder for you to code security constructs in your apps
 
 ## 16. Dependencies initialization
 
