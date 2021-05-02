@@ -327,6 +327,11 @@ This kind of flexibility, resilience, and loose coupling with backing services i
 
 Externalize all configurations (URLs, username, pwds, etc.) as Kubernetes configmaps or secrets for the backing services.
 
+- Use object storage where files are needed (not local storage)
+- Use external databases (e.g. Postgres, MySQL, Redis, etc) to persist state
+- Use environment variables for configuration (e.g. timeouts, endpoints, etc)
+- Use configurable timeouts on connections, responses from backends
+
 ## 9. Telemetry / Metric instrumentation
 
 ### What?
@@ -646,17 +651,31 @@ const shutdown = async (signal) => {
 
 ### What?
 
+The secrets must be handled with care.
+
 ### Why?
 
+Vanilla kubernetes secrets are only base64 encoded so, they can't be pused to SCM as they are readable.
+
 ### How?
+
+Stakater App Agility Platform has secrets handling support with Sealed Secrets and Vault.
 
 ## 20. Tracing instrumentation
 
 ### What?
 
+Consider using Distributed Tracing in complex multi-service architectures. It can help with detection of cascading failures in service calls, optimization of Database requests, latency problems etc.
+
+Instrumentation to send request processing details to a collection service.
+
 ### Why?
 
+Sometimes the only way of figuring out where latency is coming from
+
 ### How?
+
+Stakater App Agility Platform has built in managed Istio to support instrumentation.
 
 ## 21. Administrative processes
 
@@ -714,27 +733,45 @@ You need to know when your service degrades.
 
 ### What?
 
+Schedule regular backups of data.
+
 ### Why?
 
+To restore operations in case on disaster.
+
 ### How?
+
+Stakater App Agility Platform has built in backup and restore available with Velero; which can be configured on stateful applications.
 
 ## 25. Certificates (optional)
 
 ### What?
 
+Certificates handling can be quite cumbersome including rotation etc.
+
 ### Why?
+
+Ease of management for certificates handling for mTLS communication between services/applications.
 
 ### How?
 
-## 26. Forecastle
+Stakater App Agility Platform includes managed cert-manager for certificates management and also it includes managed istio which can be used as well.
+
+## 26. Easily discoverable URLs (optional)
 
 ### What?
 
+Single plane of glass to find endpoints of deployed applications.
+
 ### Why?
+
+It should be simple and ease to find the endpoints of the deployed applications.
 
 ### How?
 
-## 27. Dashboard
+Stakater App Agility Platform includes managed [Forecastle](https://github.com/stakater/Forecastle) which can dynamically discover and list endpoints.
+
+## 27. Grafana Dashboard (optional)
 
 ### What?
 
@@ -746,7 +783,7 @@ You need to make sense out of the data.
 
 ### How?
 
-Add grafana dashboard
+Add grafana dashboard as code.
 
 ## 28. Multiple replicas
 
