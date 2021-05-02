@@ -55,6 +55,7 @@ This document describes the following facets of kubernetes-native applications:
 27. Grafana Dashboard (optional)
 28. Multiple replicas
 29. Important state does not persist in container filesystem
+30. Testing
 
 ## 1. One codebase, one application
 
@@ -816,6 +817,12 @@ Your application’s container filesystem is considered ephemeral. Meaning it wi
 ### How?
 
 Use persistent volumes.
+
+## 30. Testing
+
+Write tests at different layer to ensure high quality code.
+
+![Testig Strategies](./images/testing.jpg)
 
 # Acknowledgements
 
