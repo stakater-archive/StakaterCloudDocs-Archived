@@ -528,6 +528,12 @@ The cloud-native app is designed for continuous deployment by keeping the gap be
 - Make the personnel gap small: developers who wrote code are closely involved in deploying it and watching its behavior in production.
 - Make the tools gap small: keep development and production as similar as possible.
 
+Enterprise apps move across different environments during their development lifecycle. Typically, these environments are development, testing and staging, and production. It's a good practice to keep these environments as similar as possible.
+
+Environment parity is a feature that most developers consider a given. Nonetheless, as enterprises grow and their IT ecosystems evolve, environment parity becomes more difficult to maintain.
+
+Maintaining environment parity has become easier in the last few years because developers have embraced source control, configuration management, and templated configuration files. This makes it easier to deploy an app to multiple environments consistently. As an example, using Docker and Docker Compose, you can ensure that the app stack retains its shape and instrumentation across environments.
+
 ### Why?
 
 The Environment Parity principle means all deployment paths are similar yet independent and that no deployment "leapfrogs" into another deployment target.
