@@ -260,6 +260,8 @@ Readiness probes allow your application to report when it should start receiving
 
 Health checks (often custom HTTP endpoints) help orchestrators, like Kubernetes, perform automated actions to maintain overall system health. These can be a simple HTTP route that returns meaningful values, or a command that can be executed from within the container.
 
+If the health check function is not configured, a pod cannot detect service exceptions or automatically restart the service to restore it. This results in a situation where the pod status is normal but the service in the pod is abnormal.
+
 ### How?
 
 Add `health` endpoint to your application; which can be used for liveness and readiness probes; they could be separate endpoints as well based on the need.
@@ -734,6 +736,8 @@ Explicit resource allocation for pods. Applications should claim the CPU, memory
 
 Allows Kubernetes to make good scheduling decisions. This allows the scheduler to know the best place to run the application based on resources available. 
 
+When multiple applications are deployed on the same node, if the upper and lower resource limits are not set for an application, resource leakage occurs. As a result, resources cannot be allocated to other applications, and the application monitoring information will be inaccurate.
+
 ### How?
 
 Stakater application helm chart always sets default requests and limits: https://github.com/stakater-charts/application/blob/master/application/values.yaml#L142 but ofcourse each application can individually override them
@@ -753,8 +757,8 @@ You need to know when your service degrades.
 
 ### How?
 
-- Platform includes a managed Prometheus; just define a PrometheusRule.
-- Platform also includes [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which can send downtime alerts when application degrades.
+- Stakater App Agility Platform includes a managed Prometheus; just define a PrometheusRule.
+- Stakater App Agility Platform also includes [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which can send downtime alerts when application degrades.
 
 ## 24. Backup & restore (optional)
 
@@ -812,6 +816,8 @@ You need to make sense out of the data.
 
 Add grafana dashboard as code.
 
+Stakater App Agility Platform includes fully managed customer workload monitoring stack with prometheus and grafana.
+
 ## 28. Multiple replicas
 
 ### What?
@@ -821,6 +827,8 @@ Always have at-least 2 replicas (instances) of every service you deploy.
 ### Why?
 
 In a Kubernetes environment, workloads are moved around based on needs of the platform. This means a workload could be deleted and recreated from time to time. With this and general HA practices in mind, your workload should be able to run with more than one replica.
+
+For example, if the number of replicas of a single pod is set, the service will be abnormal when the node or pod is abnormal. To ensure that your pods can be successfully scheduled, ensure that the node has idle resources for container scheduling after you set the scheduling rule.
 
 ### How?
 
