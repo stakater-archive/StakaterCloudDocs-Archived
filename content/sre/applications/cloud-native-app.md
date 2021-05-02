@@ -193,6 +193,11 @@ The key to Design, Build, Release, and Run is that the process is completely eph
 - Add Dockerfile for building the application
 - Add Dockerfile for running the application
 
+- Well-defined process to build (e.g. compile) the application and start it (e.g. a Makefile)
+- Dockerfile defines ENTRYPOINT to run the application
+- Docker composition (docker-compose.yml) can bring up the environment for automated testing
+- Cut releases on merge to master (preferred, not required); use semver
+
 ## 5. Configuration, credentials, and code
 
 ### What?
@@ -229,11 +234,6 @@ ConfigMaps are a mechanism used to store data that can be exposed to pods and ot
 Secrets are a similar Kubernetes object type used to securely store sensitive data and selectively allow pods and other components access as needed. Secrets are a convenient way of passing sensitive material to applications without storing them as plain text in easily accessible locations in your normal configuration. Functionally, they work in much the same way as ConfigMaps, so applications can consume data from ConfigMaps and Secrets using the same mechanisms.
 
 ConfigMaps and Secrets help you avoid putting configuration directly in Kubernetes object definitions. You can map the configuration key instead of the value, allowing you to update configuration on the fly by modifying the ConfigMap or Secret. This gives you the opportunity to alter the active runtime behavior of pods and other Kubernetes objects without modifying the Kubernetes definitions of the resources.
-
-- Well-defined process to build (e.g. compile) the application and start it (e.g. a Makefile)
-- Dockerfile defines ENTRYPOINT to run the application
-- Docker composition (docker-compose.yml) can bring up the environment for automated testing
-- Cut releases on merge to master (preferred, not required); use semver
 
 ## 6. Liveness and readiness probes
 
