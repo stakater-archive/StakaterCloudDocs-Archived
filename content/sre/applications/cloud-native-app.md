@@ -51,8 +51,8 @@ This document describes the following facets of kubernetes-native applications:
 23. Alerts
 24. Backup & restore (optional)
 25. Certificates (optional)
-26. Forecastle
-27. Dashboard
+26. Forecastle (optional)
+27. Grafana Dashboard (optional)
 28. Multiple replicas
 29. Important state does not persist in container filesystem
 
