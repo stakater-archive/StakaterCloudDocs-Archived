@@ -89,7 +89,7 @@ Makes it nearly impossible to automate the build and deploy phases of your appli
 
 ### How?
 
-One Application == One Microserivce == One Git Repository
+One Application == One Microserivce == One Git/SCM Repository
 
 ## 2. Dependency management
 
@@ -201,6 +201,8 @@ The key to Design, Build, Release, and Run is that the process is completely eph
 - Docker composition (docker-compose.yml) can bring up the environment for automated testing
 - Cut releases on merge to master (preferred, not required); use semver
 
+Stakater App Agility Platform includes managed Tekton and ArgoCD to support all sorts of CI&CD workflows.
+
 ## 5. Configuration, credentials, and code
 
 ### What?
@@ -291,6 +293,8 @@ It is recommended application logs as JSON.
 - Logs are emitted to stdout
 - Events are structured event streams (e.g. JSON)
 - Do not write logs to disk (to mitigate the need for log rotation)
+
+Stakater App Agility Platform includes fully managed logging stack based on ElasticSearch, Fluentd and Kibana.
 
 ## 8. Backing services
 
@@ -601,9 +605,17 @@ Stakater App Agility Platform offers KeyCloak as fully managed IAM solution to c
 
 ### What?
 
+The problem is very common—the new version of your app uses a slightly different database schema to the previous version. When you deploy your app, you need to also update the database. Theses are commonly called database migrations, and are a reality for any evolving application.
+
 ### Why?
 
+Zero-downtime deployments, and ensures that the new application code doesn't have to work against old versions of the database.
+
 ### How?
+
+The database migration solution with Kubernetes Jobs and init containers.
+
+_This does still require you to be thoughtful with your database migrations so as to not break your application in the period after running migrations but before your application code is fully updated._
 
 ## 17. Disposability
 
