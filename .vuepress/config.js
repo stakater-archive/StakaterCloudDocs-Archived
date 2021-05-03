@@ -40,8 +40,9 @@ module.exports = {
                 ]
             },
             {
-                title: 'Application Dashboard',
+                title: 'Applications',
                 children: [
+                    '/content/sre/applications/cloud-native-app.md',
                     '/content/sre/forecastle/forecastle.md'
                 ]
             },
