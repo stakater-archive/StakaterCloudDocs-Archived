@@ -72,7 +72,7 @@ autoscaling:
 
 ## Autoscaling with GitOps
 
-If you are using gitOps way of working and managing your applications across clusters, you need to ignore the difference for replica count to make autoscaling work.
+If you are using gitOps to manage your applications across clusters, you need to ignore the difference for replica count to make autoscaling work.
 
 **Problem:**
 When your hpa will try to increase the number of pods, at the same time your gitOps tool will also try to maintain the original state of your application and it will terminate the newly created pods after autoscaling.
