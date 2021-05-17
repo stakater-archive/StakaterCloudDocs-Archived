@@ -21,7 +21,7 @@ Containers:
 Stakater [Application Chart](https://github.com/stakater-charts/application) uses `autoscaling/v2beta2` API which provides additional metrics other then CPU only to be used as a metrics for autoscaling. These metrics can be CPU, Memory or custom metrics exposed by the application [See here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics)
 
 | Metrics | Description |
-|:---|:---|:----|
+|--- |--- |
 | CPU Utilization | Number of CPU cores used. Can be used to calculate a percentage/Integer Value of the pod's requested CPU. |
 | Memory Utilization | Amount of memory used. Can be used to calculate a percentage/Integer Value of the pod's requested memory. |
 
