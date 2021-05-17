@@ -92,6 +92,24 @@ spec:
     - /spec/replicas
 ```
 
+## How to test HPA
+
+To test the HorizontalPodAutoscaler with your application, you need to install the HPA for your application and then gradually increase the load (memory or cpu depending on hpa configuration). You can use tools like postman, jmeter, readyAPI or a manual [script](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#increase-load) to increase the load on your application.
+
+You can monitor the Horizontal Pod Auto Scaler from your openshift/kubernetes dashboard or with command
+
+```bash
+kubectl describe hpa <hpa-name>
+```
+The cpu/memory usage and the events should show the application pods getting scaled up and down when the load increases or decreases.
+
+**HPA Metrics:**
+![HPA Metrics High Load](./images/HPA-Metrics.png)
+![HPA Metrics Low Load](./images/HPA-Metrics2.png)
+
+**HPA Events:**
+![HPA Events](./images/HPA-Events2.png)
+
 # Useful Links
 
 - [Autoscaling in OpenShift](https://docs.openshift.com/container-platform/4.4/nodes/pods/nodes-pods-autoscaling.html)
