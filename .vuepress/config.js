@@ -66,9 +66,10 @@ module.exports = {
                 title: 'Authentication and Authorization',
                 children: [
                     '/content/sre/authentication-authorization/google-idp.md',
+                    '/content/sre/authentication-authorization/azure-idp.md',
                     '/content/sre/authentication-authorization/keycloak-idp.md',
-                    '/content/sre/authentication-authorization/azure-idp.md'
-                ]                
+                    '/content/sre/authentication-authorization/saml-idp.md'
+                ]
             },
             {
                 title: 'Pipelines',
