@@ -8,7 +8,7 @@ Replace angle brackets with following values in below templates:
   - \<env>:  Environment name
   - \<gitops-repo>:  url of your gitops repo
 
- *) \<env>\/config/argocd/\<team>/\<application>.yaml 
+ 1) \<env>\/config/argocd/\<team>/\<application>.yaml 
 
 
 ``` yaml
@@ -59,12 +59,12 @@ spec:
 
 ```
 
- *) \<env>/config/argocd/\<team>/\<team>-dev.yaml <br>
+ 2) \<env>/config/argocd/\<team>/\<team>-dev.yaml <br>
  ``` yaml
  apiVersion: argoproj.io/v1alpha1
  kind: Application
  metadata:
- name: <application>-dev
+ name: <team>-dev
  namespace: openshift-stakater-argocd
  spec:
  destination:
@@ -81,20 +81,20 @@ spec:
      selfHeal: true
  ```
 
-*) \<env>/config/argocd/\<team>/\<team>-pr.yaml <br>
+3) \<env>/config/argocd/\<team>/\<team>-pr.yaml <br>
 
 ``` yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: <application>-pr
+  name: <team>-pr
   namespace: openshift-stakater-argocd
 spec:
   destination:
     namespace: <team>-pr
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-devtest/apps/<team>/pr/
+    path: <env>/apps/<team>/pr/
     repoURL: '<gitops-repo>'
     targetRevision: HEAD
   project: <team>
@@ -104,7 +104,7 @@ spec:
       selfHeal: true
 ```
 
-*) \<env>/config/argocd/\<team>/argo-project.yaml
+4) \<env>/config/argocd/\<team>/argo-project.yaml
 ``` yaml
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
@@ -128,7 +128,7 @@ spec:
     kind: "*"
 ```
 
-*) \<env>/01-devtest/config/tenants/\<application>.yaml
+5) \<env>/config/tenants/\<application>.yaml
 ``` yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Tenant
