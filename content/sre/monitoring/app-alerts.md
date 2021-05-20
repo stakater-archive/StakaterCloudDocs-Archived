@@ -7,7 +7,7 @@ There are 2 types of monitoring:
 2. Workload monitoring ( deployed by stakater to monitor application workloads)
 
 
-![Monitoring Diagram](./images/monitoring-diagram.jpg)
+![Monitoring Diagram](./images/monitoring-diagram.png)
 
 ## Infrastructure Monitoring
 1. Prometheus
