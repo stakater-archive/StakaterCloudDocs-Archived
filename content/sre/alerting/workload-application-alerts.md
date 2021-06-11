@@ -1,4 +1,4 @@
-# Customer workload Alerting
+# Customer workload alerting (>=4.7)
 
 App Agility Platform provides seperate alerting for customer workloads that offer individual configuration for each new application a customer defines.
 
@@ -8,7 +8,9 @@ Having alerts for your new application go through following points:
 - `AlertmanagerConfig` for adding the alertmanager config specific to the app
 - `PrometheusRule` for firing an alert
 
-## 1. ServiceMonitor/PodMonitor Example
+**Note:** Cluster needs to be on version greater than or equal to 4.7
+
+## 1. ServiceMonitor/PodMonitor example
 Service Monitor uses the service that is used by your app. Then Service Monitor scrapes metrics via that service.
 ServiceMonitor can be like this:
 ~~~
@@ -43,7 +45,7 @@ spec:
     path: /metrics # metrics path
 ~~~
 
-## 2. Enabling workload monitoring for your Namespace/Project
+## 2. Enabling workload monitoring for your namespace/project
 
 To enable that you just need to add `stakater.com/workload-monitoring: 'true'` label to your namespace manifest.
 
@@ -58,7 +60,7 @@ metadata:
 ~~~
 
 
-## 3. Writing an AlertmanagerConfig for your Applicaiton
+## 3. Writing an AlertmanagerConfig for your applicaiton
 
 You can define AlertmanagerConfig to direct alerts to your target applications like slack, pagetduty etc. Our application chart also support configuring AlertmanagerConfig. Check it out [here](https://github.com/stakater-charts/application)
 
