@@ -103,7 +103,8 @@ module.exports = {
             {
                 title: 'Logging',
                 children: [
-                    '/content/sre/logging/logging.md'
+                    '/content/sre/logging/logging.md',
+                    '/content/sre/logging/kibana-view-logs.md'
                 ]
             },                        
             {
