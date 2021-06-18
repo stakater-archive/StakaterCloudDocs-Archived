@@ -174,6 +174,12 @@ module.exports = {
                     '/content/sre/faq/customization.md',
                     '/content/sre/faq/developers.md'
                 ]
+            },
+            {
+                title: 'Repository Manager',
+                children: [
+                    '/content/sre/repository/nexus.md',
+                ]
             }            
         ],
         repo: 'stakater/stakaterclouddocs',
