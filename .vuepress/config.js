@@ -90,7 +90,8 @@ module.exports = {
                 title: 'Artifact Management',
                 children: [
                     '/content/sre/registry/registry.md',
-                    '/content/sre/registry/accessing-registry.md'
+                    '/content/sre/registry/accessing-registry.md',
+                    '/content/sre/repository/nexus.md'                    
                 ]
             },
             {
@@ -174,13 +175,7 @@ module.exports = {
                     '/content/sre/faq/customization.md',
                     '/content/sre/faq/developers.md'
                 ]
-            },
-            {
-                title: 'Repository Manager',
-                children: [
-                    '/content/sre/repository/nexus.md',
-                ]
-            }            
+            }
         ],
         repo: 'stakater/stakaterclouddocs',
         editLinks: true,
