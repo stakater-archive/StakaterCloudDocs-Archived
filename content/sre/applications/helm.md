@@ -78,3 +78,21 @@ This approach makes version bumping very easy (you bump everything up) and also 
 The downside of this approach is that you can’t track chart changes separately.
 
 ![Chart Version Single](./images/chart-version-single.jpeg)
+
+### Chart versus application versioning
+
+This is an advanced approach which you should adopt if changes are happening in the charts themselves all the time (i.e. in the templates) and you want to track them separately from the application.
+
+![Chart Version Multiple](./images/chart-version-multiple.jpeg)
+
+An important point here is that you need to adopt a policy in your team on what a “chart change” means. Helm does not enforce chart version changes. You can deploy a different chart with the same version as the previous one. So, if this is something that you want to do, you need to make sure that all teams are on the same page for versioning practices.
+
+On the plus side, this workflow allows you to individually version charts and applications and is very flexible for companies with teams that manage separately the charts from the application source code.
+
+### Umbrella charts
+
+Umbrella charts are charts of charts. They add an extra layer of complexity on both previous approaches. You can follow the same paradigms in umbrella charts. Either the parent chart has the same version as everything else (first approach) or it has a version on its own.
+
+In the second case, you need to agree with your team on when exactly the parent chart version should be bumped. Is it only when a child chart changes? Only when an application changes? or both?
+
+The answer does not really matter as long as your team follows the same rules.
