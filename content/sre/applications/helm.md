@@ -45,3 +45,22 @@ The most basic way to use Helm is by having a single chart that holds a single a
 However, you can also create a chart with dependencies to other charts (a.k.a. umbrella chart) which are completely external using the requirements.yaml file. Using this strategy is optional and can work well in several organizations. Again, there is no definitive answer on right and wrong here, it depends on your team process.
 
 ![Chart Structure](./images/chart-structure.jpeg)
+
+### Helm vs K8s templates
+
+Helm is a package manager that also happens to include templating capabilities. Unfortunately, a lot of people focus only on the usage of Helm as a template manager and nothing else.
+
+Technically Helm can be used as only a templating engine by stopping the deployment process in the manifest level. It is perfectly possible to use Helm only to create plain Kubernetes manifests and then install them on the cluster using the standard methods (such as kubectl). But then you miss all the advantages of Helm (especially the application registry aspect).
+
+At the time of writing Helm is the only package manager for Kubernetes, so if you want a way to group your manifests and a registry of your running applications, there are no off-the-shelf alternative apart from Helm.
+
+Here is a table that highlights the comparison:
+
+Helm Feature |	Alternative
+--- | --- 
+Templating |	Kustomize, k8comp, kdeploy, ktmpl, kuku, jinja, sed, awk, etc.
+Manifest grouping (entity/package |)	None
+Application/package dependencies |	None
+Runtime view of cluster packages |	None
+Registry of applications |	None
+Direct rollbacks and Upgrades	None
