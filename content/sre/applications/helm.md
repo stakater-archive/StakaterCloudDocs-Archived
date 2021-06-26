@@ -14,7 +14,31 @@ Helm is currently the only solution that supports
 
 You can find a list of public curated charts in the [default](https://github.com/helm/charts/tree/master/stable) Helm repository.
 
-## Charts and sub-charts
+## Common Helm misconceptions
+
+Any new technology requires training on how to use it effectively. If you have already worked with any type of package manager, you should be familiar with how Helm works.
+
+Here is a list of important Helm points that are often controversial between teams.
+
+### Helm repositories are optional
+
+Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem.
+
+Helm can install a chart either in the package (.tgz) or unpackaged form (tree of files) to a Kubernetes cluster right away. Thus, the most minimal Helm pipeline has only two steps:
+
+- Checkout from git a Helm chart described in uncompressed files.
+- Install this chart to a Kubernetes cluster.
+
+### Chart versions and appVersions
+
+Each Helm chart has the ability to define two separate versions:
+
+- The version of the chart itself (version field in Chart.yaml).
+- The version of the application contained in the chart (appVersion field in Chart.yaml).
+
+These are unrelated and can be bumped up in any manner that you see fit. You can sync them together or have them increase independently. There is no right or wrong practice here as long as you stick into one.
+
+### Charts and sub-charts
 
 The most basic way to use Helm is by having a single chart that holds a single application. The single chart will contain all the resources needed by your application such as deployments, services, config-maps etc.
 
