@@ -20,7 +20,7 @@ Any new technology requires training on how to use it effectively. If you have a
 
 Here is a list of important Helm points that are often controversial between teams.
 
-### Helm repositories are optional
+### 1. Helm repositories are optional
 
 Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem.
 
@@ -29,7 +29,7 @@ Helm can install a chart either in the package (.tgz) or unpackaged form (tree o
 - Checkout from git a Helm chart described in uncompressed files.
 - Install this chart to a Kubernetes cluster.
 
-### Chart versions and appVersions
+### 2. Chart versions and appVersions
 
 Each Helm chart has the ability to define two separate versions:
 
@@ -38,7 +38,7 @@ Each Helm chart has the ability to define two separate versions:
 
 These are unrelated and can be bumped up in any manner that you see fit. You can sync them together or have them increase independently. There is no right or wrong practice here as long as you stick into one.
 
-### Charts and sub-charts
+### 3. Charts and sub-charts
 
 The most basic way to use Helm is by having a single chart that holds a single application. The single chart will contain all the resources needed by your application such as deployments, services, config-maps etc.
 
@@ -46,7 +46,7 @@ However, you can also create a chart with dependencies to other charts (a.k.a. u
 
 ![Chart Structure](./images/chart-structure.jpeg)
 
-### Helm vs K8s templates
+### 4. Helm vs K8s templates
 
 Helm is a package manager that also happens to include templating capabilities. Unfortunately, a lot of people focus only on the usage of Helm as a template manager and nothing else.
 
