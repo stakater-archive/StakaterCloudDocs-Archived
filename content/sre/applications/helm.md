@@ -64,3 +64,17 @@ Application/package dependencies |	None
 Runtime view of cluster packages |	None
 Registry of applications |	None
 Direct rollbacks and Upgrades	None
+
+## Helm packaging strategies
+
+As mentioned before a Helm chart version is completely different than the application version it contains. This means that you can track versions on the Helm chart itself separately from the applications it defines.
+
+### Simple 1-1 versioning
+
+This is the most basic versioning approach and it is the suggested one if you are starting out with Helm. Don’t use the `appVersion` field at all (it is optional anyway) and just keep the chart version in sync with your actual application.
+
+This approach makes version bumping very easy (you bump everything up) and also allows you to quickly track what application version is deployed on your cluster (same as chart version).
+
+The downside of this approach is that you can’t track chart changes separately.
+
+![Chart Version Single](./images/chart-version-single.jpeg)
