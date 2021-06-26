@@ -96,3 +96,27 @@ Umbrella charts are charts of charts. They add an extra layer of complexity on b
 In the second case, you need to agree with your team on when exactly the parent chart version should be bumped. Is it only when a child chart changes? Only when an application changes? or both?
 
 The answer does not really matter as long as your team follows the same rules.
+
+## Helm promotion strategies
+
+A Helm chart (like a Docker image) should be promoted between environments. It should start with testing and staging environments and gradually move to production ones.
+
+### 1. Single repository with multiple environments
+
+This is the most basic deployment workflow. You have a single Helm chart (which is exactly the same across all environments). It is deployed to multiple targets using a different set of values.
+
+### 2. Chart promotion between environments
+
+?
+
+### 3. Chart promotion between repositories and environments
+
+A more advanced workflow (useful in organizations with multi-location deployments) is the promotion of Helm releases between both repositories and environments.
+
+There are different pipelines for:
+
+1. Creating the Helm chart and storing it to a staging Helm repository
+2. Deployment of the Helm chart to a staging environment. After it is tested the chart is promoted to one or more “production” Helm repositories
+3. Deployment of the promoted Helm chart happens to one of the production environments
+
+While this workflow is very flexible, it adds complexity on the number of Helm charts available (since they exist in multiple Helm repositories). You also need to set up the parameters between the different pipelines so that Helm charts to be deployed can be indeed found in the expected Helm repository.
