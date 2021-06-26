@@ -44,4 +44,4 @@ The most basic way to use Helm is by having a single chart that holds a single a
 
 However, you can also create a chart with dependencies to other charts (a.k.a. umbrella chart) which are completely external using the requirements.yaml file. Using this strategy is optional and can work well in several organizations. Again, there is no definitive answer on right and wrong here, it depends on your team process.
 
-![Chart Structure](./images/chart structure.jpeg)
+![Chart Structure](./images/chart-structure.jpeg)
