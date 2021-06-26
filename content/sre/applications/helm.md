@@ -69,7 +69,7 @@ Direct rollbacks and Upgrades	None
 
 As mentioned before a Helm chart version is completely different than the application version it contains. This means that you can track versions on the Helm chart itself separately from the applications it defines.
 
-### Simple 1-1 versioning
+### 1. Simple 1-1 versioning
 
 This is the most basic versioning approach and it is the suggested one if you are starting out with Helm. Don’t use the `appVersion` field at all (it is optional anyway) and just keep the chart version in sync with your actual application.
 
@@ -79,7 +79,7 @@ The downside of this approach is that you can’t track chart changes separately
 
 ![Chart Version Single](./images/chart-version-single.jpeg)
 
-### Chart versus application versioning
+### 2. Chart versus application versioning
 
 This is an advanced approach which you should adopt if changes are happening in the charts themselves all the time (i.e. in the templates) and you want to track them separately from the application.
 
@@ -89,7 +89,7 @@ An important point here is that you need to adopt a policy in your team on what 
 
 On the plus side, this workflow allows you to individually version charts and applications and is very flexible for companies with teams that manage separately the charts from the application source code.
 
-### Umbrella charts
+### 3. Umbrella charts
 
 Umbrella charts are charts of charts. They add an extra layer of complexity on both previous approaches. You can follow the same paradigms in umbrella charts. Either the parent chart has the same version as everything else (first approach) or it has a version on its own.
 
