@@ -2,19 +2,19 @@
 
 Stakater Agility Platform supports provisioning clusters on AWS.
 
-## Subscription
+## Account Configuration
 
-An AWS subscription is needed to create and manage cluster on azure. The following criteria must be met
+An AWS account is needed to create and manage cluster on aws. The following criteria must be met
 
-- Stakater shall be provided access to a separate subscription.
-- The Stakater user must have admin access on the created subscription.
-- Stakater shall share an email address that should have full access to this subscription.
-- The customer must not use this subscription for other purposes and only stakater shall be responsible for managing resources created in this subscription.
-- Resource limits must be applied on the subscription and only the following resources must be allowed to be created.
+- Stakater shall be provided access to a separate aws account.
+- The Stakater user must have admin access on the created account.
+- Stakater shall share an email address that should have full access to this account.
+- The customer must not use this account for other purposes and only stakater shall be responsible for managing resources created in this account.
+- Resource limits must be applied on the account and only the following resources must be allowed to be created.
 
   |Type        | Limit |
     |------------|------------|
-  | Virtual Machines | The limit should be 12 i.e of 3 worker + 3 master |
+  | Virtual Machines | Varies. The limit should be 12 initially. (Initial deployemnt is 3 master + 3 infra + 3 worker)|
   | Regional vCPUs | The limit should be A x B x 2 , where A = no. of VMS (worker + infra + master), B = vCPUs per VM) |
   | Elastic IPs (EIPs) | 5 |
   | Virtual Private Clouds (VPCs) | 5 |
