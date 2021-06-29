@@ -14,17 +14,12 @@ An azure subscription is needed to create and manage cluster on azure. The follo
 
   |Type        | Limit |
   |------------|------------|
-  | Virtual Machines | The limit should be no. of worker + infra + master |
+  | Virtual Machines | Varies. The limit should be 12 initially. (Initial deployemnt is 3 master + 3 infra + 3 worker) |
   | Regional vCPUs | The limit should be A x B x 2 , where A = no. of VMS (worker + infra + master), B = vCPUs per VM) |
-  | DSV3 family CPUs | Atleast A x B x 2 ,  where A = no. of VMS (worker + infra + master), B = vCPUs per VM) |
-  | Public IP addresses | 10 |
-  | Standard Sku Public IP Addresses | 10 |
-  | Static Public IP Addresses | 10 |
-  | Storage Accounts | 10 |
-  | Load Balancers   | 6 |
-  | Standard Sku Load Balancers | 6 |
-  | Virtual Networks | 3 |
+  | Public IP addresses | 5 |
+  | Private IP Addresses | 7 |
+  | Network Interfaces | 6 |
+  | Network Load Balancers   | 3 |
+  | Virtual Networks | 1 |
   | StandardStorageSnapshots | 10000 (depends on how many disks are used) and backup duration |
-  | Network Security Groups | 6 |
-  | Premium Storage Managed Disks | 100 (depends on how many disks are used) |
-  | Network Interfaces | 30 |
+  | Machine Specifications | 6 machines of 8x32x120G |
