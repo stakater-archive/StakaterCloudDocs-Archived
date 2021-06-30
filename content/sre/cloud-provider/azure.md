@@ -23,3 +23,4 @@ An azure subscription is needed to create and manage cluster on azure. The follo
   | Virtual Networks | 1 |
   | StandardStorageSnapshots | 10000 (depends on how many disks are used) and backup duration |
   | Machine Specifications | 6 machines of 8x32x120G |
+  | Region | Region will be identified by the customer |
