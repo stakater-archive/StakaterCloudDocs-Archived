@@ -63,7 +63,7 @@ Manifest grouping (entity/package) |	None
 Application/package dependencies |	None
 Runtime view of cluster packages |	None
 Registry of applications |	None
-Direct rollbacks and Upgrades	None
+Direct rollbacks and Upgrades |	None
 
 ## Helm packaging strategies
 
