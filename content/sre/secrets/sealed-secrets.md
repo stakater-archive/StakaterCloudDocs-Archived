@@ -132,10 +132,10 @@ data:
 
 save it in a file named `secret-mysql.yaml`. This file should not be pushed to git as it is easily decodable.
 
-Now install kubeseal and your kubeconfig should be pointing to Enento Openshift cluster.
+Now install kubeseal and your kubeconfig should be pointing to Openshift cluster.
 
-As sealed secrets controller is running in `enento-system` namespace and sealed secrets service name is `sealed-secrets`, so you need to run
-
+As sealed secrets controller is running in `openshift-stakater-system` namespace and sealed secrets service name is `sealed-secrets`, so you need to run
+R
 ```sh
 kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-system  < SECRET_FILE -o yaml > SEALED_SECRET_FILE
 ```
@@ -148,7 +148,7 @@ where:
 e.g. to encrypt the above `secret-mysql.yaml` file, you need to run
 
 ```sh
-kubeseal --controller-name=sealed-secrets --controller-namespace=enento-system  < secret-mysql.yaml -o yaml > sealed-secret-mysql.yaml
+kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-sealed-secrets  < secret-mysql.yaml -o yaml > sealed-secret-mysql.yaml
 ```
 
 Now you can add `sealed-secret-mysql.yaml` file to the `apps-config` repo under the app name and its environment.
