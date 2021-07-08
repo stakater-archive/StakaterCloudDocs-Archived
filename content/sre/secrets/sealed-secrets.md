@@ -135,7 +135,7 @@ save it in a file named `secret-mysql.yaml`. This file should not be pushed to g
 Now install kubeseal and your kubeconfig should be pointing to Openshift cluster.
 
 As sealed secrets controller is running in `openshift-stakater-system` namespace and sealed secrets service name is `sealed-secrets`, so you need to run
-R
+
 ```sh
 kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-system  < SECRET_FILE -o yaml > SEALED_SECRET_FILE
 ```
