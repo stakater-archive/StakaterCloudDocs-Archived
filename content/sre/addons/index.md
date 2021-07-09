@@ -12,7 +12,7 @@ CI | Tekton
 CD | ArgoCD
 Code Inspection | SonarQube
 Internal Alerting | AlertManager
-External Alerting | UptimeRobot
+External Alerting | UptimeRobot (free tier)
 Service Mesh | Istio (one control plane)
 Image Scanning | Trivy
 Backups | Velero
