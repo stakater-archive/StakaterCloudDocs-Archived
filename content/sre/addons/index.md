@@ -11,7 +11,8 @@ Artifacts Management | Nexus
 CI | Tekton
 CD | ArgoCD
 Code Inspection | SonarQube
-Alerting | AlertManager, UptimeRobot
+Internal Alerting | AlertManager
+External Alerting | UptimeRobot
 Service Mesh | Istio (one control plane)
 Image Scanning | Trivy
 Backups | Velero
