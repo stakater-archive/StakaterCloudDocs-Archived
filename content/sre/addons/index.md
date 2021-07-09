@@ -13,9 +13,10 @@ CD | ArgoCD
 Code Inspection | SonarQube
 Internal Alerting | AlertManager
 External Alerting | UptimeRobot (free tier)
-Service Mesh | Istio (one control plane)
+Service Mesh | Istio, Kiali, Jaeger (one control plane)
 Image Scanning | Trivy
 Backups | Velero
 SSO (for managed addons) | KeyCloak
 Policy Enforcement | Kyverno
 Automatic reload | [Reloader](https://github.com/stakater/Reloader)
+Intrusion detection | Falco (coming soon)
