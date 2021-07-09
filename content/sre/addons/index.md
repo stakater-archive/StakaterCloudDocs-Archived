@@ -17,3 +17,4 @@ Image Scanning | Trivy
 Backups | Velero
 SSO (for managed addons) | KeyCloak
 Policy Enforcement | Kyverno
+Automatic reload | [Reloader](https://github.com/stakater/Reloader)
