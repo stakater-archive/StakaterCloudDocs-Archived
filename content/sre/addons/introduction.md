@@ -1,4 +1,4 @@
-# Managed AddOns
+# Introduction
 
 Here is the list of managed addons
 
