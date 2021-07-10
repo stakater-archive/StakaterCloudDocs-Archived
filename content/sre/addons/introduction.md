@@ -9,7 +9,7 @@ Logging |	ElasticSearch, Fluentd, Kibana
 Monitoring | Prometheus, Grafana
 Artifacts Management | Nexus
 CI (continuous integration) | Tekton
-CD (continuous deployment) | ArgoCD
+CD (continuous delivery) | ArgoCD
 Code Inspection | SonarQube
 Internal Alerting | AlertManager
 External Alerting | UptimeRobot (free tier)
