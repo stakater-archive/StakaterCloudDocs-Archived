@@ -8,12 +8,12 @@ Secrets management | Vault
 Logging |	ElasticSearch, Fluentd, Kibana
 Monitoring | Prometheus, Grafana
 Artifacts Management | Nexus
-CI | Tekton
-CD | ArgoCD
+CI (continuous integration) | Tekton
+CD (continuous deployment) | ArgoCD
 Code Inspection | SonarQube
 Internal Alerting | AlertManager
 External Alerting | UptimeRobot (free tier)
-Service Mesh | Istio, Kiali, Jaeger (one control plane)
+Service Mesh | Istio, Kiali, Jaeger (only one control plane)
 Image Scanning | Trivy
 Backups | Velero
 SSO (for managed addons) | KeyCloak
