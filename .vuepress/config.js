@@ -27,9 +27,15 @@ module.exports = {
                     '/content/sre/introduction/why-sro.md',
                     '/content/sre/introduction/sro-overview.md',
                     '/content/sre/introduction/sro-features.md',                  
-                    '/content/sre/introduction/sro-key-differentiators.md'                    
+                    '/content/sre/introduction/sro-key-differentiators.md'
                 ]
             },
+            {
+                title: 'Managed AddOns',
+                children: [
+                    '/content/sre/addons/introduction.md'
+                ]
+            },            
             {
                 title: 'Cloud Provider',
                 children: [
@@ -73,21 +79,16 @@ module.exports = {
                 ]
             },
             {
-                title: 'Pipelines',
+                title: 'Continuous Integration (CI)',
                 children: [
                     '/content/sre/pipelines/introduction.md',
-                    {
-                        title: 'Tekton',
-                        children: [
-                            '/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md',
-                            '/content/sre/pipelines/openshift-pipelines/deploying-delivery-pipeline.md',
-                            '/content/sre/pipelines/openshift-pipelines/deploying-cicd-pipeline.md'
-                        ]
-                    }
+                    '/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md',
+                    '/content/sre/pipelines/openshift-pipelines/deploying-delivery-pipeline.md',
+                    '/content/sre/pipelines/openshift-pipelines/deploying-cicd-pipeline.md'
                 ]
             },
             {
-                title: 'Artifact Management',
+                title: 'Artifacts Management',
                 children: [
                     '/content/sre/registry/registry.md',
                     '/content/sre/registry/accessing-registry.md',
