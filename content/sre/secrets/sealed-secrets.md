@@ -148,7 +148,7 @@ where:
 e.g. to encrypt the above `secret-mysql.yaml` file, you need to run
 
 ```sh
-kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-sealed-secrets  < secret-mysql.yaml -o yaml > sealed-secret-mysql.yaml
+kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-system  < secret-mysql.yaml -o yaml > sealed-secret-mysql.yaml
 ```
 
 Now you can add `sealed-secret-mysql.yaml` file to the `apps-config` repo under the app name and its environment.
