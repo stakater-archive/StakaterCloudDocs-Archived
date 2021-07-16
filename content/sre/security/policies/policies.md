@@ -12,9 +12,13 @@ Kyverno is a policy engine designed for Kubernetes. It manages policies as Kuber
 
 ## How to write Policies?
 
-[Create custom policy rules to validate, mutate, and generate configurations.](https://kyverno.io/docs/writing-policies)
+To add custom policies, user can create `Policy` custom resource. This is a namespaced resource and would only allow policy policy in the relevant namespace.
+
+Detailed walk-through of how to create policies can be found [here](https://kyverno.io/docs/writing-policies)
 
 [For reference: Sample Policies](https://kyverno.io/policies/)
+
+**NOTE:** Creating cluster level policies is not allowed.
 
 ### Example
 
@@ -46,6 +50,18 @@ spec:
                 development-team: "?*"
 ```
 
+### Failure Actions
+
+To update failure action, we can set the following values for `validationFailureAction` in the `Policy` custom resource. It supports the following values:
+
+### Audit
+
+In `audit` mode, the policy will generate appropriate warnings but won't reject anything. We can view `PolicyReport` custom resource against that policy to view detailed violation report.
+
+### Enforce
+
+In `enforce` mode, the policy will deny/reject all actions that violate the policy. Report is generated against all the violations and is stored in `PolicyReport` custom resource.
+
 ### Default Policy
 
 Policies that are enforced by default. User cannot disable these policies since they are considered essential for governance, security etc.
@@ -55,7 +71,9 @@ Policies that are enforced by default. User cannot disable these policies since 
 A front-end view of how users can manage their policies.
 ![image](./images/policies-frontend.png)
 
-## Kyverno vs OPA Gatekeeper
+## Alternatives to kyverno
+
+### Kyverno vs OPA Gatekeeper
 
 | Features/Capabilities                       | Gatekeeper | Kyverno        |
 | ------------------------------------------- | ---------- | -------------- |
