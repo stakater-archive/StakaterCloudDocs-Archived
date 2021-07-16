@@ -16,10 +16,6 @@ Kyverno is a policy engine designed for Kubernetes. It manages policies as Kuber
 
 [For reference: Sample Policies](https://kyverno.io/policies/)
 
-## Architecture Diagram
-
-![image](./images/managed-policies-architecture-diagram.png)
-
 ### Example
 
 ```yaml
