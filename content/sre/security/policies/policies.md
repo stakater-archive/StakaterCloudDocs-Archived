@@ -66,10 +66,13 @@ In `enforce` mode, the policy will deny/reject all actions that violate the poli
 
 Policies that are enforced by default. User cannot disable these policies since they are considered essential for governance, security etc.
 
-## Front-End
+## Stakater Cloud UI
 
-A front-end view of how users can manage their policies.
+A concrete list of policies is maintained by Stakater for ensuring that clusters follow best practices for security, governance etc. This list of policy can be accessed using our centralized control-plane [Stakater Cloud](https://cloud.stakater.com)
+
 ![image](./images/policies-frontend.png)
+
+**NOTE:** Policies added directly to the clusters(Namespaced Policies) cannot be managed through this front-end
 
 ## Alternatives to kyverno
 
@@ -94,3 +97,8 @@ A front-end view of how users can manage their policies.
 - [https://kubernetes.io/docs/concepts/policy](https://kubernetes.io/docs/concepts/policy/)
 - [OPA Gatekeeper vs. Kyverno](https://www.youtube.com/watch?v=9gSrRNmmKBc)
 - [Kyverno Policy Agent](https://thenewstack.io/kyverno-kubernetes-configuration-via-policy/)
+
+## FAQ
+
+- Can we manage policies added by customers using Stakater Cloud? No, as of right now there is no option for that.
+- Can we disable default policies? No, these policies are critical in maintaining a secure environment for the customers.
