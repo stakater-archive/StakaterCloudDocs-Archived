@@ -19,4 +19,5 @@ Backups | Velero
 SSO (for managed addons) | KeyCloak
 Policy Enforcement | Kyverno
 Automatic reload | [Reloader](https://github.com/stakater/Reloader)
+Launchpad to discover applications | [Forecastle](https://github.com/stakater/Forecastle)
 Intrusion detection | Falco (coming soon)

@@ -12,7 +12,7 @@ With Stakater App Agility Platform you can deploy a containerized, hybrid enviro
 - Accelerated time to market on a best-of-breed platform
 - Consistent experience across your hybrid cloud
 - Scalable, reliable, supported hybrid environment with a certified ecosystem of proven ISV solutions
-- Containers with cloud-based consumption model and integrated billing
+- Containers with cloud-based consumption model
 
 ### Challenges Addressed
 - Keeping up with the ever changing set of open source projects
