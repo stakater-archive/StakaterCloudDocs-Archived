@@ -109,11 +109,7 @@ A Helm chart (like a Docker image) should be promoted between environments. It s
 
 This is the most basic deployment workflow. You have a single Helm chart (which is exactly the same across all environments). It is deployed to multiple targets using a different set of values.
 
-### 2. Chart promotion between environments
-
-?
-
-### 3. Chart promotion between repositories and environments
+### 2. Chart promotion between repositories and environments
 
 A more advanced workflow (useful in organizations with multi-location deployments) is the promotion of Helm releases between both repositories and environments.
 
