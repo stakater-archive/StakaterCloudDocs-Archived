@@ -45,6 +45,7 @@ module.exports = {
         title: "Applications",
         children: [
           "/content/sre/applications/cloud-native-app.md",
+          "/content/sre/applications/helm.md",          
           "/content/sre/forecastle/forecastle.md",
         ],
       },
