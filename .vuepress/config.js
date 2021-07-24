@@ -137,8 +137,7 @@ module.exports = {
         title: "Networking",
         children: [
           "/content/sre/networking/routes.md",
-          "/content/sre/networking/route-sharding.md",
-          "/content/sre/networking/external-dns.md",
+          "/content/sre/networking/route-sharding.md"
         ],
       },
       {
