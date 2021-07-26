@@ -7,17 +7,22 @@ Managed AddOn |	Description
 Secrets management | Vault
 Logging |	ElasticSearch, Fluentd, Kibana
 Monitoring | Prometheus, Grafana
-Artifacts Management | Nexus
+Artifacts management | Nexus
 CI (continuous integration) | Tekton
 CD (continuous delivery) | ArgoCD
-Code Inspection | SonarQube
-Internal Alerting | AlertManager
-External Alerting | UptimeRobot (free tier)
-Service Mesh | Istio, Kiali, Jaeger (only one control plane)
-Image Scanning | Trivy
+Code inspection | SonarQube
+Log alerting | [Stakater Konfigurator](https://github.com/stakater/Konfigurator)
+Internal alerting | AlertManager
+External (downtime) alerting | [Stakater IMC](https://github.com/stakater/IngressMonitorController), UptimeRobot (free tier)
+Service mesh | Istio, Kiali, Jaeger (only one control plane)
+Image scanning | Trivy
 Backups | Velero
 SSO (for managed addons) | KeyCloak
-Policy Enforcement | Kyverno
-Automatic reload | [Reloader](https://github.com/stakater/Reloader)
-Launchpad to discover applications | [Forecastle](https://github.com/stakater/Forecastle)
+Policy enforcement | Kyverno
+Automatic reload | [Stakater Reloader](https://github.com/stakater/Reloader)
+Launchpad to discover applications | [Stakater Forecastle](https://github.com/stakater/Forecastle)
+Multi-tenancy | Stakater Tenant Operator
+Clone secrets, secrets, etc. | Stakater Replicator
 Intrusion detection | Falco (coming soon)
+Automated base image management | Renovate (coming soon)
+Advanced cluster security | Stackrox (coming soon)
