@@ -1,8 +1,6 @@
 # Bot Account Permissions
 
-
 Stakater bot account will have following permissions
-
 
 ## GitOps Repo
 
