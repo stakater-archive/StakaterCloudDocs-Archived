@@ -35,6 +35,7 @@ module.exports = {
       {
         title: "Cloud Provider",
         children: [
+          "/content/sre/cloud-provider/introduction.md",          
           "/content/sre/cloud-provider/azure.md",
           "/content/sre/cloud-provider/aws.md",
           "/content/sre/cloud-provider/google.md",
