@@ -79,10 +79,7 @@ module.exports = {
       {
         title: "Continuous Integration & Deployment (CI&CD)",
         children: [
-          "/content/sre/pipelines/introduction.md",
-          "/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md",
-          "/content/sre/pipelines/openshift-pipelines/deploying-delivery-pipeline.md",
-          "/content/sre/pipelines/openshift-pipelines/deploying-cicd-pipeline.md",
+          "/content/sre/pipelines/introduction.md"
         ],
       },
       {
@@ -90,7 +87,7 @@ module.exports = {
         children: [
           "/content/sre/registry/registry.md",
           "/content/sre/registry/accessing-registry.md",
-          "/content/sre/repository/nexus.md",
+          "/content/sre/repository/nexus.md"
         ],
       },
       {
