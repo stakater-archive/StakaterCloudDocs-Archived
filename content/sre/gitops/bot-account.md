@@ -10,7 +10,7 @@ Stakater bot account will have following permissions
 
 Bot account need to have admin permission in gitops repository as it's going to push to default branch of gitops repository. Bot account is used by tekton pipeline and push changes in gitops repository.
 
-Default branch of repository is usually protected. In order to make any change to gitops repository,developers will have to make PR and merge it to default branch. 
+Default branch of repository is usually protected. In order to make any change to gitops repository,developers will have to make PR and merge it to default branch. Bot account need to have admin permission to by pass this rule
 
 
 ## Application Repo
