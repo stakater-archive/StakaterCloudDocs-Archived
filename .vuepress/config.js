@@ -77,7 +77,7 @@ module.exports = {
         ],
       },
       {
-        title: "Continuous Integration (CI)",
+        title: "Continuous Integration & Deployment (CI&CD)",
         children: [
           "/content/sre/pipelines/introduction.md",
           "/content/sre/pipelines/openshift-pipelines/openshift-pipelines.md",
