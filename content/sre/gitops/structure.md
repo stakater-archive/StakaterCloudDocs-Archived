@@ -101,7 +101,6 @@
 │           ├── quota.yaml
 │           └── 02-tenant.yaml
 └── README.md
-
 ```
 
 The same configured gitops directory can be found [here](https://github.com/stakater/gitops-config-template)
@@ -113,31 +112,31 @@ Above structure supports following
 - multi application
 - multi environment
 
-## Layer#1 Tenants
+## Layer 1 - Tenant
 
-At the root of repository, it has folder with tenant name. tenant is a snonym of team. Each tenant will get its own folder in the root of repository. For eg: alpha,beta. There are two type of tenants
-1. **Application Tenants:**  Tenants that have one or more application
+At the root of repository, it has folder with tenant name. tenant is a snonym of team. Each tenant will get its own folder in the root of repository e.g. alpha, beta, etc.. There are two type of tenants:
+
+1. **Application Tenants:**  Tenants that have one or more applications
 2. **Sre Tenant:** Tenant that is responsible for cluster level configuration
 
-Each type of Tenant follows different structure.
+Each type of tenant follows different structure.
 
 ## Application Tenant
- 
 
-### Layer#2 Application/Config
+### Layer 2 - Application/Config
  
 #### Application
 
-Inside application tenants folder,there is a separate folder of each application that belongs to a tenant. The name of the folder should match repository name in SCM.
+Inside application tenants folder, there is a separate folder of each application that belongs to a tenant. The name of the folder should match repository name in SCM.
 
 #### Config
 
-Inside config folder, there is a folder for each environment. In each environment folder,there are 2 entities.
+Inside config folder there is a folder for each environment. In each environment folder there are 2 entities.
 
 1. **Space.yaml**: File that contains space configuration for each environment. Space is a stakater created ```Tenant-Operator``` Custom Resource that is responsible for creating namespace and assigning appropirate permission to associated tenant
 2. **argocd**:  Folder that contains argocd ```Application``` Custom Resource that watches deployments files in ```<tenant>/<app>/<env>```  (Layer#3 Environment) folder
 
-### Layer#3 Environment
+### Layer 3 - Environment
 
 Inside each folder, there is separate folder of environment which application will gets deployed to. Inside each environment folder there will be actual deployment files. 
 
@@ -145,11 +144,11 @@ Deployment files can only be vanilla yaml files, helm chart and kustomize reposi
 
 ## SRE Tenant
 
-### Layer#2 Cluster
+### Layer 2 - Cluster
 
 At the root of SRE tenant, there is a folder of each cluster.
 
-### Layer#3 Configs
+### Layer 3 - Configs
 
 In each cluster folder there are config files for cluster. It is further divided in 2 folders
    - tenants
@@ -157,10 +156,10 @@ In each cluster folder there are config files for cluster. It is further divided
 
 ### Tenants
 
-  Tenants folder contain custom resources of ```Tenant Operator```. They are following
+Tenants folder contain custom resources of ```Tenant Operator```. They are following
 
-  - quota: Amount of resource(configmaps,cpus,memory) for each tenant that it can consume
-  - tenant: Contains file for each team. it contain information of members that are part of tenant.
+- quota: Amount of resource(configmaps,cpus,memory) for each tenant that it can consume
+- tenant: Contains file for each team. it contain information of members that are part of tenant.
 
 ### Argocd
 
