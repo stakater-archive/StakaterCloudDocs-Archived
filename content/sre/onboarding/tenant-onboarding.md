@@ -18,6 +18,7 @@ Replace angle brackets with following values in below templates:
   - \<env>:  Environment name
   - \<gitops-repo>:  url of your gitops repo
   - \<nexus-repo>: url of nexus repository
+  - \<sre>: sre tenant folder with prefix i.e 03-sre
 
 
 Once these folders are created, add following files
