@@ -1,14 +1,14 @@
-## Quick start guide for new projects
+# Add new application
 
-This quick guide covers the steps to set up a new project in the Stakater App Agility Platform.
+This quick guide covers the steps to set up a new project in gitops config repository.
 
 
-### Building and deploying your application
+### Deploying your application
 
-To onboard application in stakater app agility platform, you need to configure application and gitops repository. Following are the changes you need to make in order to on-board application.
+To onboard application in gitops config, you need to configure application and gitops repository. Following are the changes you need to make in order to on-board application.
 
 Replace angle brackets with following values in below templates:
-  - \<team> : Name of the team
+  - \<tenant> : Name of the tenant
   - \<application> : Name of git repository of the application
   - \<env>:  Environment name
   - \<gitops-repo>:  url of your gitops repo
@@ -92,14 +92,25 @@ application:
       targetPort: 8080
   # Openshift Routes
 ```
+
+
+
 ### 2. GitOps-Config Repo
 
-Simply setting the webhook_url is sufficient to have Tekton build the application.
+You need to create application folder inside a tenant. Inside application folder you need to create each environment folder that application will be deployed to. Following folders will be created.
 
-To deploy, you'll need to add following files to the gitops repository.
+- \<tenant>/\<application>
+- \<tenant>/\<application>/\<01-env>
+-  \<tenant>/\<application>/\<02-env>
+-  \<tenant>/\<application>/\<0n-env>
+
+
+To deploy, you'll need to add helm chart of your application in **each** environment folder.
+
+Add values of helm chart that are different from  default values at ```deploy/values.yaml```  defined in application repository
 
 Templates for the files: 
-- \<env>\/apps/\<team>/dev/helm-values/\<application>.yaml: 
+- \<tenant>/\<application>/\<env>\values.yaml: 
 
 ``` yaml
 <application>:
@@ -108,37 +119,10 @@ Templates for the files:
       enabled: false
     deployment:
       image:
-        repository: <nexus-repo>/<team>/<application>
+        repository: <nexus-repo>/<tenant>/<application>
         tag: v0.0.1
 ```
-
-- \<env>\/config/argocd/\<team>/\<application>.yaml 
-
-``` yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: <team>
-  namespace: openshift-stakater-argocd
-spec:
-  destination:
-    namespace: <team>-dev
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: common/helm/<team>/<application>
-    repoURL: '<gitops-config>'
-    targetRevision: HEAD
-    helm:
-      valueFiles:
-        - "../../../../<env>/apps/<team>/dev/helm-values/<application>.yaml"
-  project: <team>
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-```
-
-- common/helm/\<team>/\<application>/Chart.yaml 
+- \<tenant>/\<app>/\<env>\Chart.yaml: 
 
 ``` yaml
 apiVersion: v2
@@ -156,3 +140,28 @@ version: 0.1.0
 appVersion: 1.0.0
 
 ```
+
+- \<tenant>\/configs/\<env>/argocd/\<application>.yaml 
+
+``` yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <tenant>-<env>-<application>
+  namespace: openshift-stakater-argocd
+spec:
+  destination:
+    namespace: <tenant>-<env>
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: <tenant>/<application>/<env>
+    repoURL: '<gitops-config>'
+    targetRevision: HEAD
+  project: <tenant>-<env>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+
