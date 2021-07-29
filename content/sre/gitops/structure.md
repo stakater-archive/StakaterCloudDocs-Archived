@@ -1,3 +1,4 @@
+# GitOps structure
 ```.
 ├── 01-tenant
 │   ├── 01-app
