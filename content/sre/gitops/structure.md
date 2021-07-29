@@ -2,7 +2,7 @@
 ├── 01-tenant
 │   ├── 01-app
 │   │   ├── 00-env
-│   │   │   └── nginx.yaml
+│   │   │   └── deployment.yaml
 │   │   ├── 01-env
 │   │   │   ├── Chart.yaml
 │   │   │   └── values.yaml
@@ -14,7 +14,7 @@
 │   │       └── values.yaml
 │   ├── 02-app
 │   │   ├── 00-env
-│   │   │   └── argocd.yaml
+│   │   │   └── deployment.yaml
 │   │   ├── 01-env
 │   │   │   ├── Chart.yaml
 │   │   │   └── values.yaml
@@ -27,6 +27,9 @@
 │   └── configs
 │       ├── 00-env
 │       │   └── space.yaml
+│       │   ├── argocd
+│       │   │   ├── 02-app
+│       │   │   └── 01-app
 │       ├── 01-env
 │       │   ├── argocd
 │       │   │   ├── 02-app
