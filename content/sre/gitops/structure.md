@@ -123,10 +123,10 @@ Above structure supports following
 
 ## Layer 1 - Tenant
 
-At the root of repository, it has folder with tenant name. tenant is a snonym of team. Each tenant will get its own folder in the root of repository e.g. alpha, beta, etc.. There are two type of tenants:
+At the root of repository, it has folder with tenant name. tenant is a snonym of team. Each tenant will get its own folder in the root of repository e.g. alpha, beta, etc. There are two type of tenants:
 
 1. **Application Tenants:**  Tenants that have one or more applications
-2. **Sre Tenant:** Tenant that is responsible for cluster level configuration
+2. **SRE or DeliveryEngineering Tenant:** Tenant that is responsible for cluster level configuration
 
 Each type of tenant follows different structure.
 
