@@ -82,24 +82,33 @@
 │   │   │   ├── 01-env
 │   │   │   │   ├── 01-tenant.yaml
 │   │   │   │   └── 02-tenant.yaml
-│   │   │   └── tenants.yaml
-│   │   └── tenants
-│   │       ├── 01-tenant.yaml
-│   │       ├── quota.yaml
-│   │       └── 02-tenant.yaml
+│   |    │   └── tenant-operator.yaml
+│   |    └── tenant-operator
+│   |        ├── quota
+│   |        │   ├── 01-quota.yaml
+│   |        │   ├── 02-quota.yaml
+│   |        │   └── 03-quota.yaml
+│   |        └── tenants
+│   |            ├── 01-tenent.yaml
+│   |            └── 02-tenent.yaml
 │   └── 02-cluster
-│       ├── argocd
+│      ├── argocd
 │       │   ├── 02-env
 │       │   │   ├── 01-tenant.yaml
 │       │   │   └── 02-tenant.yaml
 │       │   ├── 03-env
 │       │   │   ├── 01-tenant.yaml
 │       │   │   └── 02-tenant.yaml
-│       │   └── tenants.yaml
-│       └── tenants
-│           ├── 01-tenant.yaml
-│           ├── quota.yaml
-│           └── 02-tenant.yaml
+│       │   └── tenant-operator.yaml
+│       └── tenant-operator
+│           ├── quota
+│           │   ├── 01-quota.yaml
+│           │   ├── 02-quota.yaml
+│           │   └── 03-quota.yaml
+│           └── tenants
+│               ├── tenant-1.yaml
+│               └── tenant-2.yaml
+
 └── README.md
 ```
 
@@ -154,9 +163,9 @@ In each cluster folder there are config files for cluster. It is further divided
    - tenants
    - argocd
 
-### Tenants
+### Tenant-Operator
 
-Tenants folder contain custom resources of ```Tenant Operator```. They are following
+Tenant-Operator folder contain custom resources of ```Tenant Operator```. They are following
 
 - quota: Amount of resource(configmaps,cpus,memory) for each tenant that it can consume
 - tenant: Contains file for each team. it contain information of members that are part of tenant.
