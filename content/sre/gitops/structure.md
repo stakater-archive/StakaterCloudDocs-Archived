@@ -114,7 +114,7 @@ Above structure supports following
 
 At the root of repository, it has folder with tenant name. tenant is a snonym of team. Each tenant will get its own folder in the root of repository. For eg: alpha,beta. There are two type of tenants
 1. **Application Tenants:**  Tenants that have one or more application
-2. **Sre T enant:** Tenant this is responsible for cluster level configuration
+2. **Sre Tenant:** Tenant this is responsible for cluster level configuration
 
 Each type of Tenant follows different structure.
 
