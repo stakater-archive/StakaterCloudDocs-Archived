@@ -56,7 +56,8 @@ module.exports = {
           "/content/sre/gitops/github.md",
           "/content/sre/gitops/gitlab.md",
           "/content/sre/gitops/bot-account.md",
-          "/content/sre/gitops/faqs.md",
+          "/content/sre/gitops/structure.md",
+          "/content/sre/gitops/faqs.md"
         ],
       },
       {
