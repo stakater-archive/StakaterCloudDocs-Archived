@@ -147,7 +147,7 @@ Inside config folder there is a folder for each environment. In each environment
 
 ### Layer 3 - Environment
 
-Inside each folder, there is separate folder of environment which application will gets deployed to. Inside each environment folder there will be actual deployment files. 
+Inside each appication folder, there is separate folder of environment which application will gets deployed to. Inside each environment folder there will be actual deployment files. 
 
 Deployment files can only be vanilla yaml files, helm chart and kustomize repository that are supported by argocd.
 
