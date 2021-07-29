@@ -63,7 +63,7 @@ module.exports = {
       {
         title: "Onboarding",
         children: [
-          "/content/sre/onboarding/team-onboarding.md",
+          "/content/sre/onboarding/tenant-onboarding.md",
           "/content/sre/onboarding/application-onboarding.md",
           "/content/sre/onboarding/developer-training.md",
         ],
