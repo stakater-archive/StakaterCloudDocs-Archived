@@ -1,28 +1,33 @@
 # Add new application
 
-This quick guide covers the steps to set up a new project in gitops config repository.
+This guide covers the steps to set up a new project/application/microservice in gitops-config repository.
 
+To onboard application in gitops config, you need to make changes to both:
 
-### Deploying your application
+1. application repository and 
+2. gitops-config repository. 
 
-To onboard application in gitops config, you need to configure application and gitops repository. Following are the changes you need to make in order to on-board application.
+Following are the changes you need to make in order to on-board a new application.
 
 Replace angle brackets with following values in below templates:
+
   - \<tenant> : Name of the tenant
   - \<application> : Name of git repository of the application
   - \<env>:  Environment name
   - \<gitops-repo>:  url of your gitops repo
   - \<nexus-repo>: url of nexus repository
 
-### 1. Application Repo
+## 1. Application Repo
 
+In application repo add helm chart in ***deploy*** folder at the root of your repository. To configure helm chart add following 2 files in ***deploy*** folder.
 
-In application repo, you need to configure helm chart for the application. you need to have helm chart in ***deploy*** folder at the root of your repository.
+We use [stakater application](https://github.com/stakater-charts/application/tree/master/application) chart as our main chart.
 
-
-you can configure helm chart by having mere 2 files in ***deploy*** folder
+1. Chart.yaml
+2. values.yaml
 
 - Chart.yaml
+
 ```yaml 
 apiVersion: v2
 name: <application>
@@ -36,9 +41,11 @@ type: application
 
 version: 0.1.0
 ```
+
 - values.yaml
 
-you can configure helm values as per your application requirement. We use [stakater application](https://github.com/stakater-charts/application/tree/master/application) chart as our main chart.
+Configure helm values as per application needs.
+
 ```yaml
 application:
   applicationName: <application>
@@ -93,9 +100,7 @@ application:
   # Openshift Routes
 ```
 
-
-
-### 2. GitOps-Config Repo
+## 2. GitOps-Config Repo
 
 You need to create application folder inside a tenant. Inside application folder you need to create each environment folder that application will be deployed to. Following folders will be created.
 
@@ -104,12 +109,12 @@ You need to create application folder inside a tenant. Inside application folder
 -  \<tenant>/\<application>/\<02-env>
 -  \<tenant>/\<application>/\<0n-env>
 
-
 To deploy, you'll need to add helm chart of your application in **each** environment folder.
 
 Add values of helm chart that are different from  default values at ```deploy/values.yaml```  defined in application repository
 
-Templates for the files: 
+Templates for the files:
+
 - \<tenant>/\<application>/\<env>\values.yaml: 
 
 ``` yaml
@@ -122,6 +127,7 @@ Templates for the files:
         repository: <nexus-repo>/<tenant>/<application>
         tag: v0.0.1
 ```
+
 - \<tenant>/\<app>/\<env>\Chart.yaml: 
 
 ``` yaml
@@ -163,5 +169,3 @@ spec:
       prune: true
       selfHeal: true
 ```
-
-
