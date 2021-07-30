@@ -1,3 +1,4 @@
+# GitOps structure
 ```.
 ├── 01-tenant
 │   ├── 01-app
@@ -112,7 +113,7 @@
 └── README.md
 ```
 
-The same configured gitops directory can be found [here](https://github.com/stakater/gitops-config-template)
+The sample configured gitops directory can be found [here](https://github.com/stakater/gitops-config-template)
 
 Above structure supports following
 
