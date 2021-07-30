@@ -1,5 +1,7 @@
 # Stakater App Agility Platform (AAP) Introduction
 
+At Stakater, we believe that Kubernetes is becoming the new foundation for compute and that over time, most applications will run on it in some form.
+
 Organizations have adopted containers and Kubernetes to automate their applications operations and make their business applications portable, secure, easy to manage and scalable. While booting a Kubernetes cluster is fairly painless, a production grade Kubernetes environment can be complex, and require significant expertise to operate. Additionally managing an application platform on top of that is considerably challenging. Companies not only require an application stack for running their business processes, they need such an application stack to be configurable yet consistent and auditable, upgradable and devops enabled yet upgradable and cost-effective.
 
 Companies require a solution with a justifiable return on their investment.
