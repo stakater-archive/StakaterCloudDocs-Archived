@@ -5,7 +5,7 @@ To add new environment in cluster, do following steps in gitops directory
 - Add environment folder inside cluster's argocd folder located in sre tenant directory.
 
   **\<sre-tenant>/\<cluster>/argocd/\<env>**
-- Add environment folder inside config folder located in tenants directory
+- Add environment folder inside config folder located in application tenants directory
 
   **\<application-tenant>/configs/\<env>**/argocd/
 - Add environment folder in each application direcory located in application tenants directory
@@ -30,3 +30,10 @@ To add new environment in cluster, do following steps in gitops directory
   spec:
     tenant: <tenant>
   ```
+
+  Replace angle brackets with following values in Above templates:
+  - \<tenant> : Name of the tenant
+  - \<application-tenant> : Name of application tenant
+  - \<sre-tenant> : Name of sre tenant
+  - \<env>:  Environment name
+  - \<nexus-repo>: url of nexus repository
