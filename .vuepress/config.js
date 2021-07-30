@@ -65,7 +65,7 @@ module.exports = {
         children: [
           "/content/sre/onboarding/tenant-onboarding.md",
           "/content/sre/onboarding/application-onboarding.md",
-          "/content/sre/onboarding/environment-training.md",
+          "/content/sre/onboarding/environment-onboarding.md",
           "/content/sre/onboarding/developer-training.md"
         ],
       },
