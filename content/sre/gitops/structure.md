@@ -1,4 +1,5 @@
 # GitOps structure
+
 ```.
 ├── 01-tenant
 │   ├── 01-app
@@ -132,6 +133,7 @@ At the root of repository, it has folder with tenant name; tenant is a snonym of
 Each type of tenant follows different structure.
 
 ## Application Tenant
+
 ```
 ├── 01-tenant
 │   ├── 01-app
