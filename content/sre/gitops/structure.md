@@ -184,7 +184,7 @@ Inside each appication folder, there is a separate folder of each environment wh
 
 Deployment files can only be vanilla yaml files, helm chart and kustomize repository that are supported by argocd.
 
-#### Config
+### Config
 
 Inside config folder there is a folder for each environment. In each environment folder there are 2 entities.
 
