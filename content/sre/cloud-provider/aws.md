@@ -1,9 +1,5 @@
 # AWS
 
-Stakater Agility Platform supports provisioning clusters on AWS.
-
-## Account Configuration
-
 An AWS account is needed to create and manage cluster on aws. The following criteria must be met
 
 - Stakater shall be provided access to a separate aws account.
