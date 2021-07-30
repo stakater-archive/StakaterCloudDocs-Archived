@@ -188,7 +188,7 @@ Deployment files can only be vanilla yaml files, helm chart and kustomize reposi
 
 Inside config folder there is a folder for each environment. In each environment folder there are 2 entities.
 
-1. **Space.yaml**: File that contains space configuration for each environment. Space is a stakater created ```Tenant-Operator``` Custom Resource that is responsible for creating namespace and assigning appropirate permission to associated tenant
+1. **Space.yaml**: File that contains space configuration for each environment. Space is a stakater created ```Tenant-Operator``` Custom Resource that is responsible for creating namespace and assigning appropirate permission to associated tenant members
 2. **argocd**:  Folder that contains argocd ```Application``` Custom Resource that watches deployments files in ```<tenant>/<app>/<env>```  (Layer#3 Environment) folder
 
 ## SRE Tenant
@@ -219,16 +219,15 @@ Below is the structure of SRE tenant
 
 At the root of SRE tenant, there is a folder of each cluster.
 
-In each cluster folder there are config files for particular cluster. It is further divided into 2 folders
-
+In each cluster folder there are config files for particular cluster. It is further divided into 2 sub folders:
 
 #### Tenant-Operator
 
 Tenant-Operator folder contain custom resources of ```Tenant Operator```. They are following
 
-- quota: Amount of resource(configmaps,cpus,memory) for each tenant that it can consume
-- tenant: Contains file for each team. it contain information of members that are part of tenant.
+- quota: Amount of resource(configmaps,cpus,memory) for each tenant that it can consume.
+- tenant: Contains file for each team. It contain information of members that are part of tenant.
 
-#### Argocd
+#### ArgoCD
 
 This folder is a starting point of all configuration in the cluster. ArgoCD by default is configured to watch this folder. Inside the folder,we have sub-folder for each environment that is a part of cluster. Environment folders contain ```Application``` CR's that are responsible for bringing up the whole environment.
