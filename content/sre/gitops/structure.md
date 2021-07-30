@@ -176,6 +176,8 @@ Each type of tenant follows different structure.
 
 Inside application tenants folder, there is a separate folder of each application that belongs to a tenant. The name of the folder should match repository name in SCM.
 
+It contains 2 type of folders.
+
 #### Environments
 
 Inside each appication folder, there is a separate folder of each environment where application will gets deployed to. Inside each environment folder there will be actual deployment files. 
@@ -218,8 +220,7 @@ Below is the structure of SRE tenant
 At the root of SRE tenant, there is a folder of each cluster.
 
 In each cluster folder there are config files for particular cluster. It is further divided into 2 folders
-   - tenant-operator
-   - argocd
+
 
 #### Tenant-Operator
 
