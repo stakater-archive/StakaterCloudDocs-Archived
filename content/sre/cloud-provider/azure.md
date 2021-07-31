@@ -1,9 +1,5 @@
 # Azure
 
-Stakater Agility Platform supports provisioning clusters on Azure.
-
-## Subscription
-
 An azure subscription is needed to create and manage cluster on azure. The following criteria must be met
 
 - Stakater shall be provided access to a separate subscription.
