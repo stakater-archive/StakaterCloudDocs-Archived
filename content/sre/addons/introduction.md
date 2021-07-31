@@ -22,7 +22,7 @@ Policy enforcement | Kyverno
 Automatic reload | [Stakater Reloader](https://github.com/stakater/Reloader)
 Launchpad to discover applications | [Stakater Forecastle](https://github.com/stakater/Forecastle)
 Multi-tenancy | Stakater Tenant Operator
-Clone secrets, secrets, etc. | Stakater Replicator
+Clone secrets, configmaps, etc. | Stakater Replicator
 Intrusion detection | Falco (coming soon)
 Automated base image management | Renovate (coming soon)
 Advanced cluster security | Stackrox (coming soon)
