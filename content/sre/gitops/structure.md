@@ -123,7 +123,7 @@ Above structure supports following
 - multi application
 - multi environment
 
-## Tenant
+## Tenant Types
 
 At the root of repository, it has folder with tenant name; tenant is a snonym of team. Each tenant will get its own folder at the root of repository e.g. alpha, beta, etc. There are two type of tenants:
 
@@ -193,7 +193,7 @@ Inside config folder there is a folder for each environment. In each environment
 1. **Space.yaml**: File that contains space configuration for each environment. Space is a stakater created ```Tenant-Operator``` Custom Resource that is responsible for creating namespace and assigning appropirate permission to associated tenant members
 2. **argocd**:  Folder that contains argocd ```Application``` Custom Resource that watches deployments files in ```<tenant>/<app>/<env>```  (Layer#3 Environment) folder
 
-## SRE Tenant
+## SRE or DeliveryEngineering Tenant
 
 Below is the structure of SRE tenant
 
@@ -208,13 +208,13 @@ Below is the structure of SRE tenant
 │   │   │   │   └── 02-tenant.yaml
 │   |    │   └── tenant-operator.yaml
 │   |    └── tenant-operator
-│   |        ├── quota
+│   |        ├── quotas
 │   |        │   ├── 01-quota.yaml
 │   |        │   ├── 02-quota.yaml
 │   |        │   └── 03-quota.yaml
 │   |        └── tenants
-│   |            ├── 01-tenent.yaml
-│   |            └── 02-tenent.yaml
+│   |            ├── 01-tenant.yaml
+│   |            └── 02-tenant.yaml
 ```
 
 ### Cluster
@@ -225,10 +225,10 @@ In each cluster folder there are config files for particular cluster. It is furt
 
 #### Tenant-Operator
 
-Tenant-Operator folder contain custom resources of ```Tenant Operator```. They are following
+tenant-operator folder contain custom resources of ```Tenant Operator```. They are following
 
-- quota: Amount of resource(configmaps,cpus,memory) for each tenant that it can consume.
-- tenant: Contains file for each team. It contain information of members that are part of tenant.
+- quotas: Amount of resource (configmaps, cpus, memory, egc.) for each tenant that can consume.
+- tenants: Contains file for each team. It contain information of members that are part of tenant.
 
 #### ArgoCD
 
