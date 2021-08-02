@@ -109,6 +109,8 @@ Add webhook to the application repository; you can find the webhook URL in the r
 
 For GitHub add following to the payload.
 
+![GitHub](./images/github.png)
+
 ## 3. Add files to gitops-config repo
 
 You need to create application folder inside a tenant. Inside application folder you need to create each environment folder that application will be deployed to. Following folders will be created.
