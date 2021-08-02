@@ -1,6 +1,6 @@
 # Configuring gitops-config repo on GitHub
 
-- Create a git repo and name it `gitops-config` and put in the description `Single source of truth for declarative workloads to be deployed on Stakater Agility Platform`
+- Create a git repo and name it `gitops-config` and put in the description `Single source of truth for declarative workloads to be deployed on Stakater App Agility Platform`
 - Enable branch protection; `Settings > Branches > Branch protection rules` and then click `Add rule` and select following only
 
 ![main-branch-protection-rule](./images/main-branch-protection-rule.png)
