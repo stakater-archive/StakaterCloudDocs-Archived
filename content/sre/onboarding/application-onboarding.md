@@ -4,7 +4,7 @@ This guide covers the steps to set up a new project/application/microservice in 
 
 To onboard a new application you need to make following changes:
 
-1. add few files to application repository
+1. add helm files to application repository
 2. add webhook to application repository 
 3. add few files to gitops-config repository
 
@@ -18,7 +18,7 @@ Replace angle brackets with following values in below templates:
   - \<gitops-repo>:  url of your gitops repo
   - \<nexus-repo>: url of nexus repository
 
-## 1. Addd files to application repo
+## 1. Add helm files to application repo
 
 In application repo add helm chart in ***deploy*** folder at the root of your repository. To configure helm chart add following 2 files in ***deploy*** folder.
 
@@ -111,7 +111,7 @@ For GitHub add following to the payload.
 
 ![GitHub](./images/github.png)
 
-## 3. Add files to gitops-config repo
+## 3. Add files to gitops-config repository
 
 You need to create application folder inside a tenant. Inside application folder you need to create each environment folder that application will be deployed to. Following folders will be created.
 
