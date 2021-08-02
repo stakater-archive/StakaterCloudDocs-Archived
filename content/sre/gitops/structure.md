@@ -232,7 +232,7 @@ tenant-operator folder contain custom resources of ```Tenant Operator```. They a
 
 #### ArgoCD
 
-This folder is a starting point of all configuration in the cluster. ArgoCD by default is configured to watch this folder. Inside the folder,we have following:
+This folder is a starting point of all configuration in the cluster. ArgoCD by default is configured to watch this folder. Inside the folder we have following:
 
 - tenant-operator.yaml: Responsible for creating tenants configuration in the cluster
-- Environment Folder: Sub-folder for each environment that is a part of cluster. Environment folders contain ```Application``` CR's that are responsible for bringing up the particular  environment.
+- Environment(s) Folder: Sub-folder for each environment that is a part of cluster. Environment folders contain ```Application``` CR's that are responsible for bringing up the particular environment.
