@@ -2,10 +2,11 @@
 
 This guide covers the steps to set up a new project/application/microservice in gitops-config repository.
 
-To onboard application in gitops config, you need to make changes to both:
+To onboard a new application you need to make following changes:
 
-1. application repository and 
-2. gitops-config repository. 
+1. add few files to application repository
+2. add webhook to application repository 
+3. add few files to gitops-config repository
 
 Following are the changes you need to make in order to on-board a new application.
 
@@ -17,7 +18,7 @@ Replace angle brackets with following values in below templates:
   - \<gitops-repo>:  url of your gitops repo
   - \<nexus-repo>: url of nexus repository
 
-## 1. Application Repo
+## 1. Addd files to application repo
 
 In application repo add helm chart in ***deploy*** folder at the root of your repository. To configure helm chart add following 2 files in ***deploy*** folder.
 
@@ -100,7 +101,15 @@ application:
   # Openshift Routes
 ```
 
-## 2. GitOps-Config Repo
+## 2. Add webhook to application repository
+
+Add webhook to the application repository; you can find the webhook URL in the routes of the `build` namespace; for payload you need to include the pull `requests` and `pushes`
+
+### GitHub
+
+For GitHub add following to the payload.
+
+## 3. Add files to gitops-config repo
 
 You need to create application folder inside a tenant. Inside application folder you need to create each environment folder that application will be deployed to. Following folders will be created.
 
