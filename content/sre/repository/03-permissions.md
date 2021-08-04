@@ -1,13 +1,5 @@
 ## Roles and Users
 
-### Roles
-
-|    Nexus Role       |    Privileges       |
-| ------------------- | ------------------- |
-| nexus-oauth-admin   |nx-all               |
-| nexus-oauth-viewer  |nx-repository-view-*-*-browse, nx-repository-view-*-*-read |
-| nexus-oauth-editor  |nx-datastores-all, nx-blobstores-all, nx-analytics-all, nx-repository-admin-*-*-* |
-
 ### Users
 
 We divide the nexus users into 2 groups according to the interaction method:
@@ -15,11 +7,23 @@ We divide the nexus users into 2 groups according to the interaction method:
 1. human users and 
 2. machines users
 
-#### Human Users
+#### 1. Human Users
 
-Human user interacts with nexus using UI. For Human users, we are using SSO authentication method. So once we grant proper roles to the users. You can refer the role mapping rules mentioned above as the list format. At the first login, account information is registered in the rh-sso which is comming from the IdP. If that information is enough, then registration is performed automatically. If some information is missing, user is requested to update account information and user has to fill out all information. (NOTE: Now email is not filled automatically).
+Human user interacts with nexus using UI. For Human users, we are using SSO authentication method. So once we grant proper roles to the users. You can refer the role mapping rules mentioned above as the list format. At the first login, account information is registered in the rh-sso which is comming from the IdP. If that information is enough, then registration is performed automatically. If some information is missing, user is requested to update account information and user has to fill out all information. (NOTE: Email is not filled automatically).
 
-#### Machine Users
+#### SSO (oauth) Roles
+
+For human users which login via SSO we have following roles available.
+
+|    Nexus Role       |    Privileges       |
+| ------------------- | ------------------- |
+| nexus-oauth-admin   |nx-all               |
+| nexus-oauth-viewer  |nx-repository-view-*-*-browse, nx-repository-view-*-*-read |
+| nexus-oauth-editor  |nx-datastores-all, nx-blobstores-all, nx-analytics-all, nx-repository-admin-*-*-* |
+
+On first login you automatically get `nexus-oauth-viewer`
+
+#### 2. Machine Users
 
 Machine user interacts with nexus using API or CLI and we are using nexus local user authentication for machines users
 
