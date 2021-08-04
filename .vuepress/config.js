@@ -88,9 +88,11 @@ module.exports = {
       {
         title: "Artifacts Management",
         children: [
-          "/content/sre/registry/registry.md",
-          "/content/sre/registry/accessing-registry.md",
-          "/content/sre/repository/nexus.md"
+          "/content/sre/repository/01-introduction.md",
+          "/content/sre/repository/06-accessing-repository.md",          
+          "/content/sre/repository/03-permissions.md",
+          "/content/sre/repository/04-routes.md",          
+          "/content/sre/repository/05-use-cases.md"
         ],
       },
       {
