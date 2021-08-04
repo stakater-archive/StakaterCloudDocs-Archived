@@ -1,0 +1,3 @@
+## Accessing repository
+
+Visit the nexus web view url which looks like this __<span>https:<span>//nexus-openshift-stakater-nexus.apps.<...>.kubeapp.cloud__ which can be found on your forcastle. For the first time it will ask you for `username` and `email`. Please note that you should use the correct email address there, the one registered with stakater. If you happen to register with wrong `email` address and get locked out. Please contact stakater for resolution.

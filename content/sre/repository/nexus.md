@@ -14,9 +14,5 @@
 | <span>https:</span>//nexus-helm-openshift-stakater-nexus.<...>.kubeapp.cloud/repository/helm-charts/ | Nexus helm repository. | This is the nexus helm repository endpoint, used to pull and push helm charts. |
 | <span>https:</span>//nexus-repository-openshift-stakater-nexus.<...>.kubeapp.cloud/repository/ | Nexus maven repository. | This is the nexus maven repository endpoint, used for maven apps. |
 
-
 We also support whitelisting for these endpoints. Please contact support if you want to enable whitelisting for specific IPs.
 
-## Registering
-
-Visit the nexus web view url which looks like this __<span>https:<span>//nexus-openshift-stakater-nexus.apps.<...>.kubeapp.cloud__ which can be found on your forcastle. For the first time it will ask you for `username` and `email`. Please note that you should use the correct email address there, the one registered with stakater. If you happen to register with wrong `email` address and get locked out. Please contact stakater for resolution.
