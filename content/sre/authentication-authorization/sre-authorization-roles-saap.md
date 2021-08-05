@@ -18,7 +18,7 @@
 - Can add/manage NetworkPolicy objects
 - Are able to view information about specific nodes and PVs in the cluster, including schequotas and limits on the cluster
 - Can access the reserved ‘saap-customer-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
-- Allow crud for saap-customer-admin on clusterresourcequotas
+- Allow crud for saap-customer-cluster-admin on clusterresourcequotas
 
 
 ###  Resources Permissions
