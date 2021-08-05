@@ -3,17 +3,17 @@
 ## saap-sre-cluster-admin:
 ###  Operators Permissions:
 - Customer can view OperatorHub in console
-- Customer can managed CRs for curated operators e.g
+- Customer can manage CRs for curated operators e.g
   - AMQ Certificate Manager Operator
   - Openshift Pipelines Operator
 - Can install Operators from a curated list provided by the OperatorHub. This makes the Operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
 - Privileged and custom Operators cannot be installed
-- Cluster administrators can delete installed Operators from a selected namespace by using the web console/CLI.
+- Cluster administrators can managed installed Operators from a selected namespace by using the web console/CLI.
 
 ###  Project Permissions:
 - Have admin access to all customer-created projects on the cluster
 - Customer has read-only access to openshift*,stakater*,kube*,redhat*,default projects because these are managed by the stakater team
-- Nodes & Quotas Permissions:
+### Nodes & Quotas Permissions:
 - Can manage resource quotas and limits on the cluster
 - Can add/manage NetworkPolicy objects
 - Are able to view information about specific nodes and PVs in the cluster, including schequotas and limits on the cluster
