@@ -77,6 +77,8 @@ module.exports = {
           "/content/sre/authentication-authorization/azure-idp.md",
           "/content/sre/authentication-authorization/keycloak-idp.md",
           "/content/sre/authentication-authorization/saml-idp.md",
+          "/content/sre/authentication-authorization/saap-authorization-roles.md",
+          "/content/sre/authentication-authorization/curated-list-operators.md"
         ],
       },
       {
