@@ -69,7 +69,9 @@ module.exports = {
                     '/content/sre/authentication-authorization/google-idp.md',
                     '/content/sre/authentication-authorization/azure-idp.md',
                     '/content/sre/authentication-authorization/keycloak-idp.md',
-                    '/content/sre/authentication-authorization/saml-idp.md'
+                    '/content/sre/authentication-authorization/saml-idp.md',
+                    '/content/sre/authentication-authorization/saap-customer-cluster-admin-role.md'
+
                 ]
             },
             {
