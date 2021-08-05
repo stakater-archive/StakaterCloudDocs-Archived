@@ -1,28 +1,35 @@
-## Quick start guide for new projects
+# Add new application
 
-This quick guide covers the steps to set up a new project in the Stakater App Agility Platform.
+This guide covers the steps to set up a new project/application/microservice in gitops-config repository.
 
+To onboard a new application you need to make following changes:
 
-### Building and deploying your application
+1. add helm files to application repository
+2. add dockerfile to application repository
+3. add webhook to application repository 
+4. add few files to gitops-config repository
 
-To onboard application in stakater app agility platform, you need to configure application and gitops repository. Following are the changes you need to make in order to on-board application.
+Following are the changes you need to make in order to on-board a new application.
 
 Replace angle brackets with following values in below templates:
-  - \<team> : Name of the team
+
+  - \<tenant> : Name of the tenant
   - \<application> : Name of git repository of the application
   - \<env>:  Environment name
   - \<gitops-repo>:  url of your gitops repo
   - \<nexus-repo>: url of nexus repository
 
-### 1. Application Repo
+## 1. Add helm files to application repo
 
+In application repo add helm chart in ***deploy*** folder at the root of your repository. To configure helm chart add following 2 files in ***deploy*** folder.
 
-In application repo, you need to configure helm chart for the application. you need to have helm chart in ***deploy*** folder at the root of your repository.
+We use [stakater application](https://github.com/stakater-charts/application/tree/master/application) chart as our main chart.
 
-
-you can configure helm chart by having mere 2 files in ***deploy*** folder
+1. Chart.yaml
+2. values.yaml
 
 - Chart.yaml
+
 ```yaml 
 apiVersion: v2
 name: <application>
@@ -36,9 +43,11 @@ type: application
 
 version: 0.1.0
 ```
+
 - values.yaml
 
-you can configure helm values as per your application requirement. We use [stakater application](https://github.com/stakater-charts/application/tree/master/application) chart as our main chart.
+Configure helm values as per application needs.
+
 ```yaml
 application:
   applicationName: <application>
@@ -92,14 +101,83 @@ application:
       targetPort: 8080
   # Openshift Routes
 ```
-### 2. GitOps-Config Repo
 
-Simply setting the webhook_url is sufficient to have Tekton build the application.
+## 2. Add dockerfile to application repository
 
-To deploy, you'll need to add following files to the gitops repository.
+SAAP ships with few generic tekton pipelines for quick jump start; all those pipelines expect to have Dockerfile in the root of the repository. Dockerfile should handle both build and package part; we typically use mutli-stage Dockerfiles with 2 steps; one for build and another for run e.g.
 
-Templates for the files: 
-- \<env>\/apps/\<team>/dev/helm-values/\<application>.yaml: 
+```
+## BUILD
+FROM maven:3.6.3-openjdk-11-slim AS build
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean package
+
+## RUN
+FROM registry.access.redhat.com/ubi8/openjdk-8
+
+LABEL name="review" \
+      maintainer="Stakater <hello@stakater.com>" \
+      vendor="Stakater" \
+      release="1" \
+      summary="Java Spring boot application"
+
+# Set working directory
+ENV HOME=/opt/app
+WORKDIR $HOME
+
+# Expose the port on which your service will run
+EXPOSE 8080
+
+# NOTE we assume there's only 1 jar in the target dir
+COPY --from=build /usr/src/app/target/*.jar $HOME/artifacts/app.jar
+
+USER 1001
+
+# Set Entrypoint
+ENTRYPOINT exec java $JAVA_OPTS -jar artifacts/app.jar
+```
+
+The idea is to avoid having different pipelines for different applications and if possible do stuff in dockerfiles but there can b cases where one might need to language specific pipelines.
+
+Customers can do the way they like; as we ship few generic tekton pipelines just for the sake of jump start.
+
+We do have a separate offering `Pipeline as a Service`; in which we completely manage all sorts (generic and specific) of tekton pipelines; reach out to sales@stakater.com for more information.
+
+## 3. Add webhook to application repository
+
+Add webhook to the application repository; you can find the webhook URL in the routes of the `build` namespace; for payload you need to include the `pull requests` and `pushes` with ContentType `application/json`.
+
+### GitHub
+
+For GitHub add following to the payload.
+
+![GitHub](./images/github.png)
+
+### Gitlab
+
+_TODO_
+
+### Bitbucket
+
+_TODO_
+
+## 4. Add files to gitops-config repository
+
+You need to create application folder inside a tenant. Inside application folder you need to create each environment folder that application will be deployed to. Following folders will be created.
+
+- \<tenant>/\<application>
+- \<tenant>/\<application>/\<01-env>
+-  \<tenant>/\<application>/\<02-env>
+-  \<tenant>/\<application>/\<0n-env>
+
+To deploy, you'll need to add helm chart of your application in **each** environment folder.
+
+Add values of helm chart that are different from  default values at ```deploy/values.yaml```  defined in application repository
+
+Templates for the files:
+
+- \<tenant>/\<application>/\<env>\values.yaml: 
 
 ``` yaml
 <application>:
@@ -108,37 +186,11 @@ Templates for the files:
       enabled: false
     deployment:
       image:
-        repository: <nexus-repo>/<team>/<application>
+        repository: <nexus-repo>/<tenant>/<application>
         tag: v0.0.1
 ```
 
-- \<env>\/config/argocd/\<team>/\<application>.yaml 
-
-``` yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: <team>
-  namespace: openshift-stakater-argocd
-spec:
-  destination:
-    namespace: <team>-dev
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: common/helm/<team>/<application>
-    repoURL: '<gitops-config>'
-    targetRevision: HEAD
-    helm:
-      valueFiles:
-        - "../../../../<env>/apps/<team>/dev/helm-values/<application>.yaml"
-  project: <team>
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-```
-
-- common/helm/\<team>/\<application>/Chart.yaml 
+- \<tenant>/\<app>/\<env>\Chart.yaml: 
 
 ``` yaml
 apiVersion: v2
@@ -155,4 +207,27 @@ version: 0.1.0
 
 appVersion: 1.0.0
 
+```
+
+- \<tenant>\/configs/\<env>/argocd/\<application>.yaml 
+
+``` yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <tenant>-<env>-<application>
+  namespace: openshift-stakater-argocd
+spec:
+  destination:
+    namespace: <tenant>-<env>
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: <tenant>/<application>/<env>
+    repoURL: '<gitops-config>'
+    targetRevision: HEAD
+  project: <tenant>-<env>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 ```

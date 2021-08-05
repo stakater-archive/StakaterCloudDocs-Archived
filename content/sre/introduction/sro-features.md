@@ -4,13 +4,13 @@
 - Professionally managed infrastructure
 - Automated deployment of OpenShift clusters
 - Automated scaling configuration
-- High Availability and Disaster Recovery management
+- High availability and disaster recovery management
 - Storage configuration and backup management
 - Network and firewall management
 - Patch and upgrade management
 - Provision management, security, backup, network components
 - Security processes and controls aligned with industry standards.
-- Virtual Network integration
+- Virtual network integration
 - Persistent storage volumes
 - Flexible pricing and consumption. Use existing clouds or purchase a standard cluster through Stakater.
 
@@ -21,7 +21,7 @@
 - High uptime (99.5% uptime SLA and support)
 
 ### Supporting services
-- Automated Development Workflows
+- Automated development workflows
 - System service monitoring and log management
 - Identity and access management
 - Compliance and security policy enforcement

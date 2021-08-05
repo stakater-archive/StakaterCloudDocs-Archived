@@ -6,6 +6,9 @@ There are 2 types of monitoring:
 1. InfraStructure monitoring (comes default with openshift installation)
 2. Workload monitoring ( deployed by stakater to monitor application workloads)
 
+
+![Monitoring Diagram](./images/monitoring-diagram.png)
+
 ## Infrastructure Monitoring
 1. Prometheus
 2. Grafana
