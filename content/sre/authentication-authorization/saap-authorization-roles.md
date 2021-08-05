@@ -5,7 +5,7 @@ Depending on responsibilities of a role, specific roles can be assigned to custo
 ## 1. saap-customer-cluster-admin:
 ###  Operators Permissions:
 - Customer can view OperatorHub in console
-- Customer can manage CRs for curated operators e.g
+- Customer can manage CRs for [curated operators](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) e.g
   - AMQ Certificate Manager Operator
   - Openshift Pipelines Operator
 - Can install Operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the Operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
