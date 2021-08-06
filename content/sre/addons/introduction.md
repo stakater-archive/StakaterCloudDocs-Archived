@@ -20,7 +20,7 @@ Backups | Velero
 SSO (for managed addons) | KeyCloak
 Policy enforcement | Kyverno
 Automatic reload | [Stakater Reloader](https://github.com/stakater/Reloader)
-Launchpad to discover applications | [Stakater Forecastle](https://github.com/stakater/Forecastle)
+Developer dashboard - Launchpad to discover applications | [Stakater Forecastle](https://github.com/stakater/Forecastle)
 Multi-tenancy | Stakater Tenant Operator
 Clone secrets, configmaps, etc. | Stakater Replicator
 Intrusion detection | Falco (coming soon)
