@@ -97,7 +97,7 @@ module.exports = {
       },
       {
         title: "Code Quality",
-        children: ["/content/sre/code-quality/sonarqube.md"],
+        children: ["/content/sre/code-quality/01-introduction.md"],
       },
       {
         title: "Logging",
