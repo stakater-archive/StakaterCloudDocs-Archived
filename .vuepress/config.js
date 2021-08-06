@@ -135,6 +135,7 @@ module.exports = {
           "/content/sre/backup-restore/backup-restore.md",
           "/content/sre/backup-restore/stateful-app-example.md",
           "/content/sre/backup-restore/restore-with-gitops.md",
+          "/content/sre/backup-restore/limitations.md"
         ],
       },
       {
