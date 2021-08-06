@@ -130,12 +130,12 @@ module.exports = {
       {
         title: "Backup & Restore",
         children: [
-          "/content/sre/backup-restore/introduction.md",          
+          "/content/sre/backup-restore/01-introduction.md",          
           "/content/sre/backup-restore/velero-cli.md",
           "/content/sre/backup-restore/backup-restore.md",
           "/content/sre/backup-restore/stateful-app-example.md",
           "/content/sre/backup-restore/restore-with-gitops.md",
-          "/content/sre/backup-restore/limitations.md"
+          "/content/sre/backup-restore/02-limitations.md"
         ],
       },
       {
