@@ -86,6 +86,12 @@ module.exports = {
         ],
       },
       {
+        title: "ArgoCD",
+        children: [
+          "/content/sre/argocd/01-introduction.md"
+        ],
+      },
+      {
         title: "Artifacts Management",
         children: [
           "/content/sre/repository/01-introduction.md",
