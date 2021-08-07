@@ -10,6 +10,6 @@
 | Flexible consumption based pricing | Optimize costs with ﬂexible pay-as-you-go pricing model (monthly binding) |
 | Avoid lock-in | SAAP can be deployed on a wide choice of IaaS platforms |
 | Sandboxed environments | Try out new ideas in a low-risk sandboxed environment |
-| -- | Deliver new software features faster, focusing on customer value rather than infrastructure complexitie |
-| -- | Remove the cost and complexity of provisioning, managing and scaling the underlying infrastructure, OS and middleware components |
-| -- | Realise more value from your DevOps team by allowing them to focus on the 'Dev' rather than 'Ops' |
+| Time to market | Deliver new software features faster, focusing on customer value rather than infrastructure complexities |
+| Cost reduction | Remove the cost and complexity of provisioning, managing and scaling the underlying infrastructure, OS and middleware components |
+| Efficient devops | Realise more value from your DevOps team by allowing them to focus on the 'Dev' rather than 'Ops' |
