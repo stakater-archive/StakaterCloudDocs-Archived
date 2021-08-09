@@ -26,5 +26,7 @@ SAAP customer cluster admins cannot install any operator from Operator Hub, allo
 If the customer requires to install an operator that is not mentioned in the above list , the user can raise a request with Stakater Support.The Stakater team will review and add it to the allowed list
 
 ## Items to be provided to Stakater Support
-- Operator Name
-- Usage
+- Operator Name 
+- Official Operator repository 
+- Detailed description of use case
+- Detailed description of use case
