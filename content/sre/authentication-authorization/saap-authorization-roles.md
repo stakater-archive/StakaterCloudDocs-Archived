@@ -21,7 +21,7 @@ Depending on responsibilities of a role, specific roles can be assigned to custo
 - Customer can create/view/delete NetworkPolicy objects
 - DNS Forwarder
 ### Monitoring
-- Customer can GET openshift haproxy router metrics
+- Customer can view openshift haproxy router metrics
 - Customer can view monitoring web applications
 - Customer can view project status (nice UX from use monitoring web applications)
 ### Compute
