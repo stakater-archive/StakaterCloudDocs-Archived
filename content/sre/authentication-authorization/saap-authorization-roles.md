@@ -2,15 +2,15 @@
 
 Depending on responsibilities of a role, specific roles can be assigned to customer groups, which enable them to achieve there daily tasks.Below is a list of roles provided by SAAP for different customer groups
 
-Namespaces are devided into two sub-categories
-- **Managed Projects/Namespaces** : managed by the stakater team , consist of projects/namespaced with format openshift*,stakater*,kube*,redhat*,default
+Namespaces are divided into two sub-categories
+- **Managed Projects/Namespaces** : managed by the stakater team , consist of projects/namespaces with format openshift*,stakater*,kube*,redhat*,default
 - **Non-Managed Projects/Namespaces** : created by Users
 ## 1.SAAP Cluster Admin (SCA)
 
 SAAP Cluster Admin (SCA) can:
 ###  Operators Permissions:
 - view OperatorHub in console
-- create/view/delete CRs for [curated operators](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) e.g
+- create/view/delete CRs for [curated operators](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) e.g.
   - AMQ Certificate Manager Operator
   - Openshift Pipelines Operator
 - install Operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the Operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
@@ -22,7 +22,7 @@ SAAP Cluster Admin (SCA) can:
 ### Storage
 - create/view/delete quotas and limits on the cluster
 - not view information about nodes and PVs in the cluster, as this is managed by the stakater team
-- not allowed to delete Storage Class
+- not delete Storage Class
 ### Networking
 - create/view/delete NetworkPolicy objects
 - view routes in all projects
@@ -52,6 +52,6 @@ SAAP Cluster Admin (SCA) can:
 Only the mentioned permissions above are present for the role, for any other permission required the customer need to raise a case with Stakater Support team.
 
 ## How to request this role from Stakater Support
-If customer requires a user to be given saap-customer-cluster-admin role , they can raise a request with Stakater team. Stakater team will add the user to the group and inform customer.
+If customer requires a user to be given saap-cluster-admin role , they can raise a request with Stakater team. Stakater team will add the user to the group and inform customer.
 ## Items to be provided to Stakater Support
 - User Email that needs to be assigned this group
