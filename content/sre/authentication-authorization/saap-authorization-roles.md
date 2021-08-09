@@ -3,9 +3,8 @@
 Depending on responsibilities of a role, specific roles can be assigned to customer groups, which enable them to achieve there daily tasks.Below is a list of roles provided by SAAP for different customer groups
 
 Namespaces are devided into two sub-categories
-- Managed Projects/Namespaces : managed by the stakater team , consist of projects/namespaced with format openshift*,stakater*,kube*,redhat*,default
-- Non-Managed Projects/Namespaces : created by Users
-Non-Managed Projects/Namespaces
+- **Managed Projects/Namespaces** : managed by the stakater team , consist of projects/namespaced with format openshift*,stakater*,kube*,redhat*,default
+- **Non-Managed Projects/Namespaces** : created by Users
 ## 1.SAAP Cluster Admin (SCA)
 
 SAAP Cluster Admin (SCA) can:
