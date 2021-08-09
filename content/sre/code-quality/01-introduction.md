@@ -2,7 +2,7 @@
 
 [SonarQube](https://www.sonarqube.org/) 
 
-We SonarQube to analyze your code's quality
+We offer SonarQube as managed addon to analyze the code's quality.
 
 SonarQube performs static code analysis to evaluate code quality, using analysis rules that focus on three areas:
 
