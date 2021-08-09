@@ -86,6 +86,12 @@ module.exports = {
         ],
       },
       {
+        title: "ArgoCD",
+        children: [
+          "/content/sre/argocd/01-introduction.md"
+        ],
+      },
+      {
         title: "Artifacts Management",
         children: [
           "/content/sre/repository/01-introduction.md",
@@ -97,7 +103,7 @@ module.exports = {
       },
       {
         title: "Code Quality",
-        children: ["/content/sre/code-quality/sonarqube.md"],
+        children: ["/content/sre/code-quality/01-introduction.md"],
       },
       {
         title: "Logging",
