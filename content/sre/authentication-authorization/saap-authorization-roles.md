@@ -15,7 +15,8 @@ Depending on responsibilities of a role, specific roles can be assigned to custo
 - Customer have admin access to all customer-created projects on the cluster
 - Customer has view access to openshift*,stakater*,kube*,redhat*,default projects because these are managed by the stakater team
 ### Storage
-- Customer is able to view information about specific nodes and PVs in the cluster, including quotas and limits on the cluster
+- Customer is able to view information about nodes and PVs in the cluster
+- Customer can create/view/delete quotas and limits on the cluster
 - Customer is not allowed to delete Storage Class
 ### Networking
 - Customer can create/view/delete NetworkPolicy objects
