@@ -27,7 +27,7 @@ SAAP Cluster Admin (SCA) can:
 - create/view/delete NetworkPolicy objects
 - view routes in all projects
 - not view/create/delete ingresses in Managed Projects/Namespaces
-- DNS Forwarder
+- can view/update dnses resource for DNS Forwarder apigroups
 ### Monitoring
 - view openshift haproxy router metrics
 - view monitoring web applications
