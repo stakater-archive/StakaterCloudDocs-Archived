@@ -21,7 +21,3 @@ The continuous integration (CI) server integrates SonarQube into the ALM. The So
 **From a software architect’s standpoint**, SonarQube is worth the time because it helps you keep an eye on whether your cleanly delineated initial design is being degraded over time with creeping dependency cycles. It can show you whether the internal coding rules are being followed, and it can help you spot rising complexity that needs to be refactored.
 
 **From a project management standpoint**, SonarQube is worth the focus because testing alone isn’t enough. It can only show whether software does what it’s supposed to do: its level of external quality. On the other hand, SonarQube analyzes and fosters internal quality: whether an application will run optimally and be readily maintainable and extensible down the road.
-
-**From a business standpoint**, SonarQube offers a strong ROI because its acquisition and setup costs are low, and its intuitive interfaces mean that very little training is required. Add to that the fact that its adoption within an organization is typically viral, and you’ve got a minimal investment that produces what quickly become significant results.
-
-**Finally, from a management standpoint**, SonarQube is worth the investment because it gives you metrics. Like the stereotypical charts that salesmen are measured by, with SonarQube in the fold, you’ve now got trending available on abstract measures of code quality. 
