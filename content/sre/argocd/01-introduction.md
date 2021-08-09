@@ -2,7 +2,7 @@
 
 We use GitOps to continuously deliver application changes
 
-[Argo CD](https://argoproj.github.io/argo-cd/){: target=_blank} is a declarative, GitOps continuous delivery tool for Kubernetes. The deployment environment is a namespace in a container platform.
+[Argo CD](https://argoproj.github.io/argo-cd/) is a declarative, GitOps continuous delivery tool for Kubernetes. The deployment environment is a namespace in a container platform.
 
 Argo CD models a collection of applications as a project and uses a Git repository to store the application's desired state.
 
