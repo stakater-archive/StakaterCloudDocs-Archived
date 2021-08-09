@@ -2,7 +2,7 @@
 
 Depending on responsibilities of a role, specific roles can be assigned to customer groups, which enable them to achieve there daily tasks.Below is a list of roles provided by SAAP for different customer groups
 
-## 1. saap-customer-cluster-admin:
+## 1. saap-cluster-admin:
 ###  Operators Permissions:
 - Customer can view OperatorHub in console
 - Customer can create/view/delete CRs for [curated operators](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) e.g
