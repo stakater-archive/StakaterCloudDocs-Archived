@@ -29,4 +29,3 @@ If the customer requires to install an operator that is not mentioned in the abo
 - Operator Name 
 - Official Operator repository 
 - Detailed description of use case
-- Detailed description of use case
