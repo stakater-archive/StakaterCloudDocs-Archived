@@ -2,47 +2,53 @@
 
 Depending on responsibilities of a role, specific roles can be assigned to customer groups, which enable them to achieve there daily tasks.Below is a list of roles provided by SAAP for different customer groups
 
-## 1. saap-cluster-admin:
+Namespaces are devided into two sub-categories
+- Managed Projects/Namespaces : managed by the stakater team , consist of projects/namespaced with format openshift*,stakater*,kube*,redhat*,default
+- Non-Managed Projects/Namespaces : created by Users
+Non-Managed Projects/Namespaces
+## 1.SAAP Cluster Admin (SCA)
+
+SAAP Cluster Admin (SCA) can:
 ###  Operators Permissions:
-- Customer can view OperatorHub in console
-- Customer can create/view/delete CRs for [curated operators](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) e.g
+- view OperatorHub in console
+- create/view/delete CRs for [curated operators](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) e.g
   - AMQ Certificate Manager Operator
   - Openshift Pipelines Operator
-- Customer can install Operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the Operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
-- Customer is not allowed to install Privileged and custom Operators
-- Customer can view installed Operators from a selected namespace by using the web console/CLI.
+- install Operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the Operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
+- not install Privileged and custom Operators
+- view installed Operators from a selected namespace by using the web console/CLI.
 ###  Projects Permissions:
-- Customer has admin access to all customer-created projects on the cluster
-- Customer has view access to openshift*,stakater*,kube*,redhat*,default projects because these are managed by the stakater team
+- create/view/edit/delete all resource in all customer-created projects on the cluster
+- view all resources in Managed Projects/Namespaces
 ### Storage
-- Customer can create/view/delete quotas and limits on the cluster
-- Customer cannot view information about nodes and PVs in the cluster, as this is managed by the stakater team
-- Customer is not allowed to delete Storage Class
+- create/view/delete quotas and limits on the cluster
+- not view information about nodes and PVs in the cluster, as this is managed by the stakater team
+- not allowed to delete Storage Class
 ### Networking
-- Customer can create/view/delete NetworkPolicy objects
-- Customer can view routes in all projects
-- Customer cannot view/create/delete ingresses in openshift*,stakater*,kube*,redhat*,default projects because these are managed by the stakater team
+- create/view/delete NetworkPolicy objects
+- view routes in all projects
+- not view/create/delete ingresses in Managed Projects/Namespaces
 - DNS Forwarder
 ### Monitoring
-- Customer can view openshift haproxy router metrics
-- Customer can view monitoring web applications
-- Customer can view project status (nice UX from use monitoring web applications)
+- view openshift haproxy router metrics
+- view monitoring web applications
+- view project/namespaces status Non-Managed Projects/Namespaces
 ### Compute
-- Customer can view  machines, machinesets
-- Customer cannot view Nodes,machine configs, machine config pools,imagestreams
-- Customer cannot delete machines,machinesets
-- Manage project.config.openshift.io CR
-- Start - anyuid and nonroot SSCs
+- view  machines, machinesets
+- not view Nodes,machine configs, machine config pools,imagestreams
+- not delete machines,machinesets
+- crete/view/delete project.config.openshift.io CR
+- start anyuid and nonroot SSCs
 ###  User Management
-- Customer can view Users/Groups
-- Customer can view Service Accounts/Roles/Role Bindings in user created projects
-- Customer cannot view Service Accounts/Roles/Role Bindings in openshift* ,stakater*,kube*,redhat*,default namespaces
-- Allow create/view/delete on UserIdentityMappings
+- view Users/Groups
+- view Service Accounts/Roles/Role Bindings in Non-Managed Namespaces/Projects
+- not view Service Accounts/Roles/Role Bindings in Managed Namespaces/Projects 
+- create/view/delete on UserIdentityMappings
 - Customer can create/verify tokens and access
 ### Administration:
-- Customer can create/edit/delete resource quotas and limits on the cluster
-- Customer can access the reserved ‘saap-customer-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
-- Customer can create/edit/delete clusterresourcequotas  
+- create/edit/delete resource quotas and limits on the cluster
+- access the reserved ‘saap-customer-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
+- create/edit/delete clusterresourcequotas  
 
 Only the mentioned permissions above are present for the role, for any other permission required the customer need to raise a case with Stakater Support team.
 
