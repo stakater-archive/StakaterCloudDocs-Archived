@@ -12,7 +12,7 @@ Depending on responsibilities of a role, specific roles can be assigned to custo
 - Customer is not allowed to install Privileged and custom Operators
 - Customer can view installed Operators from a selected namespace by using the web console/CLI.
 ###  Projects Permissions:
-- Customer have admin access to all customer-created projects on the cluster
+- Customer has admin access to all customer-created projects on the cluster
 - Customer has view access to openshift*,stakater*,kube*,redhat*,default projects because these are managed by the stakater team
 ### Storage
 - Customer can create/view/delete quotas and limits on the cluster
@@ -20,6 +20,8 @@ Depending on responsibilities of a role, specific roles can be assigned to custo
 - Customer is not allowed to delete Storage Class
 ### Networking
 - Customer can create/view/delete NetworkPolicy objects
+- Customer can view routes in all projects
+- Customer cannot view/create/delete ingresses in openshift*,stakater*,kube*,redhat*,default projects because these are managed by the stakater team
 - DNS Forwarder
 ### Monitoring
 - Customer can view openshift haproxy router metrics
@@ -34,7 +36,7 @@ Depending on responsibilities of a role, specific roles can be assigned to custo
 ###  User Management
 - Customer can view Users/Groups
 - Customer can view Service Accounts/Roles/Role Bindings in user created projects
-- Customer cannot view Service Accounts/Roles/Rold Bindings in openshift* ,stakater*,kube*,redhat*,default namespaces
+- Customer cannot view Service Accounts/Roles/Role Bindings in openshift* ,stakater*,kube*,redhat*,default namespaces
 - Allow create/view/delete on UserIdentityMappings
 - Customer can create/verify tokens and access
 ### Administration:
