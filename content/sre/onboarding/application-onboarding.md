@@ -50,6 +50,7 @@ Configure helm values as per application needs.
 
 ```yaml
 application:
+  # application name should be short so limit of 63 characters in route can be fulfilled. Default route name formed is <application-name>-<namespace>.<base-domain>
   applicationName: <application>
   space:
     enabled: true
