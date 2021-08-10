@@ -37,7 +37,7 @@ SAAP Cluster Admin (SCA):
 ### Monitoring
 - can view openshift haproxy router metrics
 - can view monitoring web applications
-- can view customer owned 
+- can view customer owned namespaces status
 
 ### Compute
 - can view machines and machinesets
