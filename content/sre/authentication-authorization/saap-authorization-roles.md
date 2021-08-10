@@ -40,7 +40,7 @@ SAAP Cluster Admin (SCA):
 - can view customer owned 
 
 ### Compute
-- can view  machines, machinesets
+- can view machines and machinesets
 - can crete/view/delete project.config.openshift.io CR
 - can start anyuid and nonroot SSCs
 - can not view nodes, machine configs, machine config pools, imagestreams
