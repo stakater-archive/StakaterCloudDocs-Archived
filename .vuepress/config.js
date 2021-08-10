@@ -35,7 +35,7 @@ module.exports = {
       {
         title: "Cloud Provider",
         children: [
-          "/content/sre/cloud-provider/introduction.md",          
+          "/content/sre/cloud-provider/introduction.md",
           "/content/sre/cloud-provider/azure.md",
           "/content/sre/cloud-provider/aws.md",
           "/content/sre/cloud-provider/google.md",
@@ -46,7 +46,7 @@ module.exports = {
         title: "Applications",
         children: [
           "/content/sre/applications/cloud-native-app.md",
-          "/content/sre/applications/helm.md",          
+          "/content/sre/applications/helm.md",
           "/content/sre/forecastle/forecastle.md",
         ],
       },
@@ -77,6 +77,8 @@ module.exports = {
           "/content/sre/authentication-authorization/azure-idp.md",
           "/content/sre/authentication-authorization/keycloak-idp.md",
           "/content/sre/authentication-authorization/saml-idp.md",
+          "/content/sre/authentication-authorization/saap-authorization-roles.md",
+          "/content/sre/authentication-authorization/curated-list-operators.md"
         ],
       },
       {
@@ -95,9 +97,9 @@ module.exports = {
         title: "Artifacts Management",
         children: [
           "/content/sre/repository/01-introduction.md",
-          "/content/sre/repository/06-accessing-repository.md",          
+          "/content/sre/repository/06-accessing-repository.md",
           "/content/sre/repository/03-permissions.md",
-          "/content/sre/repository/04-routes.md",          
+          "/content/sre/repository/04-routes.md",
           "/content/sre/repository/05-use-cases.md"
         ],
       },
