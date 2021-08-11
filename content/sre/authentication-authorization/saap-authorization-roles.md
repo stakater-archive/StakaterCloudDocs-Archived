@@ -6,7 +6,7 @@ Namespaces are divided into two sub-categories:
 
 - **Stakater owned** : created by the Stakater team , consist of projects/namespaces with format openshift*,stakater*,kube*,redhat*,default
 - **Customer owned** : created by the customer
-- 
+
 ## 1.SAAP Cluster Admin (SCA)
 
 SAAP Cluster Admin (SCA):
@@ -25,8 +25,8 @@ SAAP Cluster Admin (SCA):
 - can only view resources in Stakater owned namespaces
 
 ### Storage
-- can not view information about nodes and PVs in the cluster, as this is managed by the stakater team
-- cant not delete storage classes
+- can not view information about pvs in the cluster
+- can not delete storage classes
 
 ### Networking
 - can create/view/delete NetworkPolicy objects
@@ -56,7 +56,7 @@ SAAP Cluster Admin (SCA):
 ### Administration:
 - can create/edit/delete resource quotas and limits on the cluster
 - can access the reserved ‘saap-customer-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
-- create/edit/delete clusterresourcequotas  
+- can create/edit/delete clusterresourcequotas  
 
 Only the mentioned permissions above are present for the role, for any other permission required the user need to raise a case with Stakater Support team.
 
