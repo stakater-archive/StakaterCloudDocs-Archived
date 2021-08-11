@@ -21,8 +21,7 @@ SAAP Cluster Admin (SCA):
 - can not install privileged and custom operators
 
 ###  Projects Permissions:
-- can create projects/namespaces
-- can update/patch Customer owned projects
+- can create/update/patch customer owned namespaces
 - can create/view/edit/delete all resources in customer owned namespaces
 - can only view resources in Stakater owned namespaces
 
