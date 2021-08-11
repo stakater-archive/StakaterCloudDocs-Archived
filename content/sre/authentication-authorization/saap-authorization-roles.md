@@ -39,9 +39,8 @@ SAAP Cluster Admin (SCA):
 - can view customer owned namespaces status
 
 ### Compute
-- can view machines and machinesets
+- can view machines, machinesets, nodes, machine configs, machine config pools, imagestreams
 - can start anyuid and nonroot SCCs
-- can view nodes, machine configs, machine config pools, imagestreams
 - can not delete machines, machinesets, nodes, machine configs, machine config pools, imagestreams
 
 ###  User Management
