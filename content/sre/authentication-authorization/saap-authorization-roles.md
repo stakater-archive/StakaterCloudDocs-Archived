@@ -17,10 +17,12 @@ SAAP Cluster Admin (SCA):
   - AMQ Certificate Manager Operator
   - Openshift Pipelines Operator
 - can install operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
-- can view installed operators from a selected namespace by using the web console/CLI
+- can view installed operators by using the web console/CLI
 - can not install privileged and custom operators
 
 ###  Projects Permissions:
+- can create projects/namespaces
+- can update/patch Customer owned projects
 - can create/view/edit/delete all resources in customer owned namespaces
 - can only view resources in Stakater owned namespaces
 
@@ -29,27 +31,24 @@ SAAP Cluster Admin (SCA):
 - can not delete storage classes
 
 ### Networking
-- can create/view/delete NetworkPolicy objects
-- can view routes in all namespaces
-- can view/update dns resources for DNS Forwarder apigroups
-- can not view/create/delete ingresses in Managed Projects/Namespaces 
+- can create/view/delete NetworkPolicy objects in customer owned namespaces
+- can view routes and ingresses in all namespaces
+- can view/update dns resources for DNS Forwarder apigroups in customer owned namespaces
 
 ### Monitoring
-- can view openshift haproxy router metrics
-- can view monitoring web applications
+- can view console dashboard where metrics are shown for namespaces
 - can view customer owned namespaces status
 
 ### Compute
 - can view machines and machinesets
-- can crete/view/delete project.config.openshift.io CR
-- can start anyuid and nonroot SSCs
-- can not view nodes, machine configs, machine config pools, imagestreams
-- can not delete machines, machinesets
+- can start anyuid and nonroot SCCs
+- can view nodes, machine configs, machine config pools, imagestreams
+- can not delete machines, machinesets, nodes, machine configs, machine config pools, imagestreams
 
 ###  User Management
 - can view users/groups
 - can view service accounts/roles/role bindings in customer owned namespaces
-- can create/view/delete on UserIdentityMappings
+- can create/view on UserIdentityMappings
 - can create/verify tokens and access
 - can not view service accounts/roles/role bindings in Stakater owned namespaces 
 
