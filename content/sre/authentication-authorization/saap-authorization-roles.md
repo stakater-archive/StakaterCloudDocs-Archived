@@ -25,7 +25,7 @@ SAAP Cluster Admin (SCA):
 - can only view resources in Stakater owned namespaces
 
 ### Storage
-- can not view information about pvs in the cluster
+- can create/view pvs in the cluster
 - can not delete storage classes
 
 ### Networking
