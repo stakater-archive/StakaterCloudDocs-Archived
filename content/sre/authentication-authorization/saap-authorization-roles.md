@@ -4,7 +4,7 @@ Depending on responsibilities of a role, specific roles can be assigned to user 
 
 Namespaces are divided into two sub-categories:
 
-- **Stakater owned** : created by the Stakater team , consist of projects/namespaces with format openshift*, stakater*, kube*, redhat* ,default
+- **Stakater owned** : created by the Stakater team which consists of projects/namespaces with format `openshift*`, `stakater*`, `kube*`, `redhat*`, `default`
 - **Customer owned** : created by the customer
 
 ## 1.SAAP Cluster Admin (SCA)
