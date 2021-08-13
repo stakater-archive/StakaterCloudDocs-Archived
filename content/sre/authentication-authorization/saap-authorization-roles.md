@@ -4,7 +4,7 @@ Depending on responsibilities of a role, specific roles can be assigned to user 
 
 Namespaces are divided into two sub-categories:
 
-- **Stakater owned** : created by the Stakater team , consist of projects/namespaces with format openshift*,stakater*,kube*,redhat*,default
+- **Stakater owned** : created by the Stakater team which consists of projects/namespaces with format `openshift*`, `stakater*`, `kube*`, `redhat*`, `default`
 - **Customer owned** : created by the customer
 
 ## 1.SAAP Cluster Admin (SCA)
@@ -16,18 +16,20 @@ SAAP Cluster Admin (SCA):
 - can create/view/delete CRs for [curated operators](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) e.g.
   - AMQ Certificate Manager Operator
   - Openshift Pipelines Operator
-- can install operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
+- can install cluster-wide operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
 - can view installed operators by using the web console/CLI
-- can not install privileged and custom operators
+- can not install cluster-wide privileged and custom operators
+- can install operators in Customer owned namespace
 
 ###  Projects Permissions:
 - can create/update/patch customer owned namespaces
 - can create/view/edit/delete all resources in customer owned namespaces
 - can only view resources in Stakater owned namespaces
+- can not view secrets, configmaps ,jobs and cronjobs in Stakater owned namespaces
 
 ### Storage
-- can create/view pvs in the cluster
-- can not delete storage classes
+- can create/view/edit persistentvolumeclaims,storageclasses and volumesnapshots in the cluster
+- can not delete persistentvolumeclaims,storageclasses and volumesnapshots in the cluster
 
 ### Networking
 - can create/view/delete NetworkPolicy objects in customer owned namespaces
@@ -53,7 +55,7 @@ SAAP Cluster Admin (SCA):
 ### Administration:
 - can create/edit/delete resource quotas and limits on the cluster
 - can access the reserved ‘saap-customer-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
-- can create/edit/delete clusterresourcequotas  
+- can not create/edit/delete clusterresourcequotas  
 
 Only the mentioned permissions above are present for the role, for any other permission required the user need to raise a case with Stakater Support team.
 
