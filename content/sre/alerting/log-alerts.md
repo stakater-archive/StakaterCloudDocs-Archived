@@ -38,13 +38,14 @@ Additionally you can parse your application logs if they are not in JSON format 
 Following Configuration will send the log to Slack channel `my-application-log-alerts` if the regex described in `pattern` matches in the field described in `key`.
 
 ```yaml
-fluentdConfigAnnotations:
-  notifications:
-    slack: 
-      webhookURL: https://hooks.slack.com/services/XXXXXXX/YYYYYYYYY/aaaaaaabbbbbcccccddd
-      channelName: my-application-log-alerts
-  key: "level"
-  pattern: "(ERROR|ERR|error|E[A-Z0-9]{4})"
+deployment:
+  fluentdConfigAnnotations:
+    notifications:
+      slack: 
+        webhookURL: https://hooks.slack.com/services/XXXXXXX/YYYYYYYYY/aaaaaaabbbbbcccccddd
+        channelName: my-application-log-alerts
+      key: "level"
+      pattern: "(ERROR|ERR|error|E[A-Z0-9]{4})"
 ```
 **Log entry sent to slack channel:**
 
