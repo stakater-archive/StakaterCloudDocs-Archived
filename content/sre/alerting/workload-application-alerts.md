@@ -1,18 +1,22 @@
 # Internal Alerting - Customer workload alerting (>=4.7)
 
-App Agility Platform provides seperate alerting for customer workloads that offer individual configuration for each new application a customer defines.
+Stakater App Agility Platform also provides fully managed dedicated workload monitoring stack based on Prometheus, AlertManager and Grafana.
 
-Having alerts for your new application go through following points:
-1. Application with a `ServiceMonitor/PodMonitor`
-2. Enabling workload monitoring for your namespace.
-3. `AlertmanagerConfig` for adding the alertmanager config specific to the app
-4. `PrometheusRule` for firing an alert
+To configure alerting for your application do following:
 
-**Note:** Cluster needs to be on version greater than or equal to 4.7
+1. Create `ServiceMonitor/PodMonitor` for the application
+3. Create `AlertmanagerConfig` for the application
+4. Create `PrometheusRule` for firing an alert for the application
+2. Validate workload monitoring is enabled on your namespace
 
-## 1. ServiceMonitor/PodMonitor example
-Service Monitor uses the service that is used by your app. Then Service Monitor scrapes metrics via that service.
-ServiceMonitor can be like this:
+**Note:** OpenShift Cluster needs to be on version greater than or equal to 4.7
+
+## 1. Create ServiceMonitor/PodMonitor for the application
+
+You need to define ServiceMonitor/PodMonitor so, the application metrics can be scrapped.
+
+Service Monitor uses the service that is used by your application. Then Service Monitor scrapes metrics via that service. ServiceMonitor can be like this:
+
 ~~~
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -28,8 +32,11 @@ spec:
     matchLabels:
       {LABELS TO SELECT YOUR APP SERVICE}
 ~~~
-Pod Monitori directly scrapes metrics from a pod. In this case, Pod needs to have that port open.
+
+Pod Monitor directly scrapes metrics from a pod. In this case, Pod needs to have that port open.
+
 PodMonitor can be like this:
+
 ~~~
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
@@ -44,29 +51,15 @@ spec:
   - targetPort: 8080 # metrics port
     path: /metrics # metrics path
 ~~~
-Our application helm chart also support configuring `ServiceMonitor`. Check it out [here](https://github.com/stakater-charts/application)
 
-## 2. Enabling workload monitoring for your namespace/project
+Stakater application helm chart supports configuring `ServiceMonitor`. Check it out [here](https://github.com/stakater-charts/application)
 
-To enable that you just need to add `stakater.com/workload-monitoring: 'true'` label to your namespace manifest.
+## 2. Create AlertmanagerConfig for the applicaiton
 
-Something like this:
-~~~
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    stakater.com/workload-monitoring: 'true'
-  name: {NAME}
-~~~
-
-All namespaces created via tenant-operator have this label.
-
-## 3. Writing an AlertmanagerConfig for your applicaiton
-
-You can define AlertmanagerConfig to direct alerts to your target applications like slack, pagetduty etc. Our application chart also support configuring AlertmanagerConfig. Check it out [here](https://github.com/stakater-charts/application)
+You need to define AlertmanagerConfig to direct alerts to your target alerting medium like slack, pagetduty, etc. 
 
 A sample AlertmanagerConfig can look like:
+
 ~~~
 apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
@@ -93,13 +86,16 @@ spec:
   - name: "null"
 ~~~
 
-Now the label `alertmanagerConfig: "workload"` enables it to be picked up by the Alertmanager of workload monitoring offered by Stakater Agility Platform and you can direct this alert anywhere you like pagerduty or slack. Also you cannot change this label. You need to use this specific label to get this configuration picked up by the alertmanager.
+Now the label `alertmanagerConfig: "workload"` enables it to be picked up by the Alertmanager of workload monitoring offered by Stakater App Agility Platform and you can direct this alert anywhere you like pagerduty or slack. Also you cannot change this label. You need to use this specific label to get this configuration picked up by the Stakater managed alertmanager.
 
-## 4. Defining a PrometheusRule for your app
+Stakater application helm chart supports configuring AlertmanagerConfig. Check it out [here](https://github.com/stakater-charts/application)
 
-You need to create a PrometheusRule with the label `prometheus: stakater-workload-monitoring` to be picked by the workload monitoring promethues. Our application chart also support configuring PrometheusRule. Check it out [here](https://github.com/stakater-charts/application)
+## 3. Create PrometheusRule for the application
 
-A simple example would be
+You need to create a PrometheusRule with the label `prometheus: stakater-workload-monitoring` to be picked by the workload monitoring promethues.
+
+A simple example would be:
+
 ~~~
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
@@ -123,3 +119,22 @@ spec:
           labels:
             severity: critical  
 ~~~
+
+Stakater application helm chart supports configuring PrometheusRule. Check it out [here](https://github.com/stakater-charts/application)
+
+## 4. Enabling workload monitoring for your namespace/project
+
+To enable that you just need to add `stakater.com/workload-monitoring: 'true'` label to your namespace manifest.
+
+Like:
+
+~~~
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    stakater.com/workload-monitoring: 'true'
+  name: {NAME}
+~~~
+
+All namespaces created via tenant-operator in Stakater App Agility Platform have this label by default. You can still validate by describing the project/namespace
