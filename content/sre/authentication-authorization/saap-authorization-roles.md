@@ -18,7 +18,7 @@ SAAP Cluster Admin (SCA):
   - Openshift Pipelines Operator
 - can install cluster-wide operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
 - can view installed operators by using the web console/CLI
-- can not install privileged and custom operators cluster-wide
+- can not install cluster-wide privileged and custom operators
 - can install operators in Customer owned namespace
 
 ###  Projects Permissions:
