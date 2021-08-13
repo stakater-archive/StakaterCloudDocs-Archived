@@ -25,10 +25,11 @@ SAAP Cluster Admin (SCA):
 - can create/update/patch customer owned namespaces
 - can create/view/edit/delete all resources in customer owned namespaces
 - can only view resources in Stakater owned namespaces
+- can not view secrets, configmaps ,jobs and cronjobs in Stakater owned namespaces
 
 ### Storage
-- can create/view pvs in the cluster
-- can not delete storage classes
+- can create/view/edit persistentvolumeclaims,storageclasses and volumesnapshots in the cluster
+- can not delete persistentvolumeclaims,storageclasses and volumesnapshots in the cluster
 
 ### Networking
 - can create/view/delete NetworkPolicy objects in customer owned namespaces
