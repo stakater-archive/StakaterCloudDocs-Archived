@@ -22,8 +22,7 @@ SAAP Cluster Admin (SCA):
 - can install operators in Customer owned namespace
 
 ###  Projects Permissions:
-- can create projects/namespaces
-- can update/patch Customer owned projects
+- can create/update/patch customer owned namespaces
 - can create/view/edit/delete all resources in customer owned namespaces
 - can only view resources in Stakater owned namespaces
 
@@ -41,9 +40,8 @@ SAAP Cluster Admin (SCA):
 - can view customer owned namespaces status
 
 ### Compute
-- can view machines and machinesets
+- can view machines, machinesets, nodes, machine configs, machine config pools, imagestreams
 - can start anyuid and nonroot SCCs
-- can view nodes, machine configs, machine config pools, imagestreams
 - can not delete machines, machinesets, nodes, machine configs, machine config pools, imagestreams
 
 ###  User Management
