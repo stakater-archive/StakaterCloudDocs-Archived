@@ -1,6 +1,6 @@
 # Curated List of Operators for SAAP Roles
 
-SAAP cluster admins cannot install any operator from Operator Hub, allowed operators to install are maintained as a curated list by SAAP. This restriction is added as the Operator Lifecycle Manager (OLM) runs with cluster-admin privileges. By default, Operator authors can specify any set of permissions in the cluster service version (CSV) and OLM will consequently grant it to the Operator.
+SAAP cluster admins cannot install cluster-wide operator from Operator Hub, allowed operators to install are maintained as a curated list by SAAP. This restriction is added as the Operator Lifecycle Manager (OLM) runs with cluster-admin privileges. By default, Operator authors can specify any set of permissions in the cluster service version (CSV) and OLM will consequently grant it to the Operator.
 
 - certificates.certmanager.k8s.io
 - issuers.certmanager.k8s.io
