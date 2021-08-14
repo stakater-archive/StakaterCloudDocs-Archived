@@ -18,9 +18,9 @@ It will look like following:
 
 - /\<tenant>
 - /\<tenant>/configs
-- /\<tenant>/configs/\<01-env>/\argocd
-- /\<tenant>/configs/\<02-env>/\argocd
-- /\<tenant>/configs/\<n-env>/\argocd
+- /\<tenant>/configs/\<01-env>/argocd
+- /\<tenant>/configs/\<02-env>/argocd
+- /\<tenant>/configs/\<n-env>/argocd
 
 Replace angle brackets with following values in below templates:
   - \<tenant> : Name of the tenant
