@@ -127,8 +127,8 @@ module.exports = {
         title: "Alerting",
         children: [
           "/content/sre/alerting/downtime-notifications-uptimerobot.md",
-          "/content/sre/alerting/log-alerts.md",
           "/content/sre/alerting/workload-application-alerts.md",
+          "/content/sre/alerting/log-alerts.md",
         ],
       },
       {
