@@ -39,8 +39,6 @@ Once these folders are created; add following files
 
 ## Step 2 - Create files
 
-Add space configuation for **each** environment
-
 Templates for the files:
 
 ### Create tenant
@@ -63,6 +61,8 @@ spec:
 ```
 
 ### Create space
+
+Add space configuation for **each** environment
 
 - /\<tenant>/configs/\<env>/\space.yaml
 
