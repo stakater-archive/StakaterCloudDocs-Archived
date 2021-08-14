@@ -1,25 +1,32 @@
 # Add new tenant
 
-To onborad a new tenant in gitops structure, you need to do following
+To onborad a new tenant in gitops structure, you need to do following.
 
-Create new folder at the root of repository with tenant name then create config folder for that tenant. Inside config folder add environment folder for **each** environment.
+We broadly categorize tenants into two types:
 
-Create following folders:
+1. application tenants: tenants who build and delivery application
+2. sre|delivery-engineering|devops tenant: team responsible to onboard other tenants; usually we recomend only one such tenant
+
+Here are the steps to create folder:
+
+- Step 1: Create folder at the root of `gitops` repository with `tenant` name
+- Step 2: Create `configs` folder inside `tenant` folder
+- Step 3: Create folder per environment in `configs` folder
+- Step 4: Create `argocd` folder in environment folder
+
+It will look like following:
 
 - /\<tenant>
 - /\<tenant>/configs
-- /\<tenant>/configs/\<01-env>/argocd
-- /\<tenant>/configs/\<02-env>/argocd
-- /\<tenant>/configs/\<n-env>/argocd
+- /\<tenant>/configs/\<01-env>/\argocd
+- /\<tenant>/configs/\<02-env>/\argocd
+- /\<tenant>/configs/\<n-env>/\argocd
 
 Replace angle brackets with following values in below templates:
   - \<tenant> : Name of the tenant
-  - \<application> : Name of git repository of the application
-  - \<env>:  Environment name
+  - \<env>:  Name of the tenant
   - \<gitops-repo>:  url of your gitops repo
-  - \<nexus-repo>: url of nexus repository
   - \<sre>: sre tenant folder with prefix i.e 03-sre
-
 
 Once these folders are created, add following files
 
@@ -27,7 +34,8 @@ Add space configuation for **each** environment
 
 Templates for the files:
 
-- /\<tenant>/configs/\<env>/space.yaml
+- /\<tenant>/configs/\<env>/\space.yaml
+
 ```
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Space
@@ -105,9 +113,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
-
 ```
-
-
-
