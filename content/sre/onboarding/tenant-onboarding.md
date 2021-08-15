@@ -4,7 +4,7 @@ To onborad a new tenant in gitops structure, you need to do following.
 
 We broadly categorize tenants into two types:
 
-1. application tenants: tenants who build and delivery application
+1. application tenants: tenants who build and delivery applications
 2. sre|delivery-engineering|devops tenant: team responsible to onboard other tenants; usually we recomend only one such tenant
 
 Adding new tenant can be divided into parts
@@ -41,26 +41,9 @@ Once these folders are created; add following files
 
 Templates for the files:
 
-### Create tenant
+### Per Environment
 
-Add tenants configuration inside sre tenant configuration
-
-- \<sre>/\<cluster>/tenant-operator/tenants/\<tenant>.yaml
-
-```
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Tenant
-metadata:
-  name: <tenant>
-spec:
-  users:
-  - <user-1>
-  - <user-2>
-  - <user-n>
-  quota: <quota>
-```
-
-### Create space
+#### Create space per environment
 
 Add space configuation for **each** environment
 
@@ -78,9 +61,9 @@ spec:
   tenant: <tenant>
 ```
 
-### Create argocd project and application
+#### Create argocd project and application per environment
 
-Create argocd project and argocd application that will watch folder inside `\<tenant>/\<config>/\<argocd>` that in turn going to deploy application in particular environment
+Create argocd project and argocd application per environment that will watch folder inside `\<tenant>/\<config>/\<argocd>` that in turn going to deploy application in particular environment
 
 Add this file for **each** environment
 
@@ -123,4 +106,25 @@ spec:
     automated:
       prune: true
       selfHeal: true
+```
+
+### Per Tenant
+
+### Create tenant
+
+Add tenants configuration inside sre tenant configuration
+
+- \<sre>/\<cluster>/tenant-operator/tenants/\<tenant>.yaml
+
+```
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Tenant
+metadata:
+  name: <tenant>
+spec:
+  users:
+  - <user-1>
+  - <user-2>
+  - <user-n>
+  quota: <quota>
 ```
