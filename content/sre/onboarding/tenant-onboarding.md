@@ -41,7 +41,7 @@ Once these folders are created; add following files
 
 Templates for the files:
 
-### Per Environment
+### 1. Per Environment
 
 #### Create space per environment
 
@@ -108,7 +108,7 @@ spec:
       selfHeal: true
 ```
 
-### Per Tenant
+### 2. Per Tenant
 
 ### Create tenant
 
