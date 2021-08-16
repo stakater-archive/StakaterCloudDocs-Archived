@@ -1,8 +1,8 @@
-# External Alerting - Downtime Notifications via UptimeRobot
+# External downtime alerting
 
-Stakater App Agility Platform provides downtime notifications for Applications via [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which out of the box integrates with [UptimeRobot](https://uptimerobot.com). For this guide we will configure a slack channel for recieving the alerts; but you can can configure any medium supported by the service.
+Stakater App Agility Platform provides downtime notifications for Applications via [IngressMonitorController](https://github.com/stakater/IngressMonitorController) which out of the box integrates with [UptimeRobot](https://uptimerobot.com) and many other services. For this guide we will configure a slack channel for recieving the alerts; but you can can configure any medium supported by the service (email, pagerduty, etc.).
 
-To configure alerting do following:
+To configure downtime alerting do following:
 
 1. Configure incoming webhook in slack
 2. Create alert contact on uptimerobot with webhook
@@ -10,7 +10,7 @@ To configure alerting do following:
 4. Enable EndpointMonitor in the application
 5. Validate downtime notification
 
-## 1. Configuring the Incoming Webhook in Slack 
+## 1. Configuring incoming webhook in slack 
 
 - While in your Slack workspace, left-click the name of your workspace, and pick `Administration` > `Manage Apps` from the dropdown Menu.
 - A new browser window should appear in which you can customize your workspace. From here, navigate to `Custom Integrations` and then to `Incoming WebHooks`.
@@ -26,9 +26,13 @@ To configure alerting do following:
 
 Create alert contact on uptimerobot
 
+_TODO Add details with screen shots_
+
 ## 3. Update IMC configuration
 
 Update IngressMonitorController configuration
+
+_TODO Add details with screen shots_
 
 ## 4. Enable EndpointMonitor in the application
 
@@ -41,4 +45,9 @@ endpointMonitor:
 
 ## 5. Validate downtime notification
 
-From OpenShift console change replicas to zero; and you should recieve downtime notification!
+Reduce replicas to zero; and you should recieve downtime notification!
+
+```
+  deployment:
+    replicas: 0
+```

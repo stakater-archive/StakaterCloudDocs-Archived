@@ -1,4 +1,4 @@
-# Internal Alerting - Customer workload alerting (>=4.7)
+# Internal alerting
 
 Stakater App Agility Platform also provides fully managed dedicated workload monitoring stack based on Prometheus, AlertManager and Grafana.
 
