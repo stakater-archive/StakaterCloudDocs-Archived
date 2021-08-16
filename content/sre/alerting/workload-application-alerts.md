@@ -13,6 +13,8 @@ To configure alerting for your application do following:
 
 ## 1. Create ServiceMonitor for the application
 
+Service Monitor uses the service that is used by your application. Then Service Monitor scrapes metrics via that service.
+
 You need to define ServiceMonitor so, the application metrics can be scrapped.
 
 ServiceMonitor can be enabled in [Application Chart](https://github.com/stakater-charts/application).
