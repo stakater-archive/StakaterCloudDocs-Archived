@@ -22,10 +22,15 @@ ServiceMonitor can be enabled in [Application Chart](https://github.com/stakater
 | Parameter | Description |
 |:---|:---|
 | .Values.serviceMonitor.enabled | Enable serviceMonitor
+| .Values.serviceMonitor.endpoints | Array of endpoints to be scraped by prometheus
 
 ```
 serviceMonitor:
   enabled: true
+  endpoints:
+  - interval: 5s
+    path: /actuator/prometheus
+    port: http
 ```
 
 ## 2. Create AlertmanagerConfig for the applicaiton
