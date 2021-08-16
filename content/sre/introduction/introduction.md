@@ -6,7 +6,7 @@ Organizations have adopted containers and Kubernetes to automate their applicati
 
 Companies require a solution with a justifiable return on their investment.
 
-![Stakater App Agility Platform](./images/saap.png)
+![Stakater App Agility Platform](./images/saap.jpg)
 
 Built by open source leaders, Red Hat® OpenShift® is the leading enterprise Kubernetes platform. Stakater App Agility Platform is a fully managed enterprise Kubernetes platform hosted on AWS, Google, Azure, VMWare & OpenStack. With Stakater App Agility Platform, innovators can focus on what matters, stay competitive, and outpace rising customer expectations without worrying about managing the underlying infrastructure.
 
