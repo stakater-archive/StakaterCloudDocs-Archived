@@ -9,7 +9,7 @@ We broadly categorize tenants into two types:
 
 Adding new tenant can be divided into parts
 
-1. Create folders with `.gitignore` files
+1. Create folders with `.gitkeep` files
 2. Create `tenant`, `space` and `argocd` files
 
 ## Step 1 - Create folders
