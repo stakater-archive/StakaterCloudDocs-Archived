@@ -20,6 +20,7 @@ SAAP Cluster Admin (SCA):
 - can view installed operators by using the web console/CLI
 - can not install cluster-wide privileged and custom operators
 - can install operators in Customer owned namespace
+- SCA can manage subscriptions in Customer owned namespace
 
 ###  Projects Permissions:
 - can create/update/patch customer owned namespaces
@@ -50,7 +51,11 @@ SAAP Cluster Admin (SCA):
 - can view service accounts/roles/role bindings in customer owned namespaces
 - can create/view on UserIdentityMappings
 - can create/verify tokens and access
-- can not view service accounts/roles/role bindings in Stakater owned namespaces 
+- can not view service accounts/roles/role bindings in Stakater owned namespaces
+- can not add members to cluster-admin
+- can not delete members from cluster-admin
+- SCA user can create `admin` rolebinding on customer-owned namespaces
+- SCA user can create `edit` rolebinding on customer-owned namespaces
 
 ### Administration:
 - can create/edit/delete resource quotas and limits on the cluster
