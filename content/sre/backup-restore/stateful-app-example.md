@@ -1,13 +1,15 @@
 # Backup and Restore a Stateful App using Velero
 
 ## Prerequisite
----------
+
 You need velero CLI setup, follow the velero-cli [doc](./velero-cli.md)
+
 ## Prepare manifests for app
----------
+
 You will need the following manifest to deploy the sample app.
 
 Security Context Constraints to have proper permissions to your app
+
 ~~~
 kind: SecurityContextConstraints
 apiVersion: v1
@@ -155,15 +157,16 @@ spec:
 
 Note: If you see some error or failed app, please try to ensure CASSANDRA_SEEDS value in your stateful app.
 
-
 ## Deploy app, populate data and verify
----------
 
 Deploy all the above manifests. Once on a successful deployment, you can check the app status using:
+
 ~~~
 kubectl exec -it cassandra-0 -n cassandra-app -- nodetool status
 ~~~
+
 and you should see something like this:
+
 ~~~
 Datacenter: Demo-DataCenter
 ===========================
@@ -174,10 +177,13 @@ UN  10.130.4.200  150.08 KiB  32           100.0%            2516974e-3065-4acd-
 ~~~
 
 Now we will populate data, run the command to connect into pod:
+
 ~~~
 kubectl exec -it cassandra-0 -n cassandra-app -- cqlsh
 ~~~
+
 Now you should be connected to `cqlsh` utility in the app pod, running the commands to populate data:
+
 ~~~
 cqlsh> CREATE KEYSPACE demodb WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };
 
@@ -200,13 +206,15 @@ cqlsh:demodb> exit
 If everything goes well, your output should resemble to the one record above.
 
 ## Take backup and destroy app
----------
 
 To take velero backup, use velero command:
+
 ~~~
 velero backup create cassandra-backup --include-namespaces cassandra-app --namespace <VELERO_NAMESAPCE>
 ~~~
+
 or you can use Backup CR:
+
 ~~~
 apiVersion: velero.io/v1
 kind: Backup
@@ -225,13 +233,15 @@ spec:
 Now delete the app namespace `cassandra-app` and this should delete everything in the namespace including deployed app and its Volume.
 
 ## Restore and verify app
----------
 
 To perform a velero restore, use velero command:
+
 ~~~
 velero restore create --from-backup cassandra-backup --namespace <VELERO_NAMESAPCE>
 ~~~
+
 Or we can use Restore CR to perform a restore:
+
 ~~~
 apiVersion: velero.io/v1
 kind: Restore
@@ -252,10 +262,13 @@ spec:
 ~~~
 
 After a successful restore, we should be able to see a pod of our app running and should be able to link to its shell. Check the status again:
+
 ~~~
 kubectl exec -it cassandra-0 -n cassandra-app -- nodetool status
 ~~~
+
 and you should see the status as before:
+
 ~~~
 Datacenter: Demo-DataCenter
 ===========================
@@ -266,10 +279,13 @@ UN  10.130.4.200  150.08 KiB  32           100.0%            2516974e-3065-4acd-
 ~~~
 
 We will again exec in the app using:
+
 ~~~
 kubectl exec -it cassandra-0 -n cassandra -- cqlsh
 ~~~
+
 Check for the populated data:
+
 ~~~
 cqlsh> use demodb;
 
