@@ -54,8 +54,8 @@ SAAP Cluster Admin (SCA):
 - can not view service accounts/roles/role bindings in Stakater owned namespaces
 - can not add members to cluster-admin
 - can not delete members from cluster-admin
-- SCA user can create 'admin' rolebinding on customer-owned namespaces
-- SCA user can create edit rolebinding on customer-owned namespaces
+- SCA user can create `admin` rolebinding on customer-owned namespaces
+- SCA user can create `edit` rolebinding on customer-owned namespaces
 
 ### Administration:
 - can create/edit/delete resource quotas and limits on the cluster
