@@ -18,9 +18,9 @@ SAAP Cluster Admin (SCA):
   - Openshift Pipelines Operator
 - can install cluster-wide operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
 - can view installed operators by using the web console/CLI
-- can not install cluster-wide privileged and custom operators
-- can install operators in Customer owned namespace
-- can manage subscriptions in Customer owned namespace
+- can not install privileged and custom operators cluster-wide
+- can install operators in customer owned namespace
+- can manage subscriptions in customer owned namespace
 
 ###  Projects Permissions:
 - can create/update/patch customer owned namespaces
@@ -54,17 +54,17 @@ SAAP Cluster Admin (SCA):
 - can not view service accounts/roles/role bindings in Stakater owned namespaces
 - can not add members to cluster-admin
 - can not delete members from cluster-admin
-- can create 'admin' rolebinding on customer-owned namespaces
-- can create edit rolebinding on customer-owned namespaces
+- can create 'admin' rolebinding on customer owned namespaces
+- can create edit rolebinding on customer owned namespaces
 
 
 ### Administration:
 - can create/edit/delete resource quotas and limits on the cluster
 - can access the reserved ‘saap-cluster-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
 - can not create/edit/delete clusterresourcequotas  
-- SAAP-cluster-admin Service Account can create projectrequest
-- SAAP-cluster-admin Service Account can delete project
-- SAAP-cluster-admin Service Account cannot edit/create rolebinding
+- saap-cluster-admin service account can create projectrequest
+- saap-cluster-admin service account can delete project
+- saap-cluster-admin service account cannot edit/create rolebinding
 
 Only the mentioned permissions above are present for the role, for any other permission required the user need to raise a case with Stakater Support team.
 
