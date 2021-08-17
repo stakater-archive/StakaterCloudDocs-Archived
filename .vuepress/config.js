@@ -67,6 +67,8 @@ module.exports = {
           "/content/sre/onboarding/tenant-onboarding.md",
           "/content/sre/onboarding/application-onboarding.md",
           "/content/sre/onboarding/environment-onboarding.md",
+          "/content/sre/onboarding/cluster-onboarding.md",
+          "/content/sre/onboarding/quota-onboarding.md",          
           "/content/sre/onboarding/developer-training.md"
         ],
       },
@@ -127,8 +129,8 @@ module.exports = {
         title: "Alerting",
         children: [
           "/content/sre/alerting/downtime-notifications-uptimerobot.md",
-          "/content/sre/alerting/log-alerts.md",
           "/content/sre/alerting/workload-application-alerts.md",
+          "/content/sre/alerting/log-alerts.md",
         ],
       },
       {

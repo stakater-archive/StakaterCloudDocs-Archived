@@ -4,7 +4,7 @@ Depending on responsibilities of a role, specific roles can be assigned to user 
 
 Namespaces are divided into two sub-categories:
 
-- **Stakater owned** : created by the Stakater team , consist of projects/namespaces with format openshift*, stakater*, kube*, redhat* ,default
+- **Stakater owned** : created by the Stakater team which consists of projects/namespaces with format `openshift*`, `stakater*`, `kube*`, `redhat*`, `default`
 - **Customer owned** : created by the customer
 
 ## 1.SAAP Cluster Admin (SCA)
@@ -18,7 +18,7 @@ SAAP Cluster Admin (SCA):
   - Openshift Pipelines Operator
 - can install cluster-wide operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
 - can view installed operators by using the web console/CLI
-- can not install privileged and custom operators cluster-wide
+- can not install cluster-wide privileged and custom operators
 - can install operators in Customer owned namespace
 - can manage subscriptions in Customer owned namespace
 

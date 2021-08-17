@@ -1,10 +1,27 @@
 # Add new tenant
 
-To onborad a new tenant in gitops structure, you need to do following
+To onborad a new tenant in gitops structure, you need to do following.
 
-Create new folder at the root of repository with tenant name then create config folder for that tenant. Inside config folder add environment folder for **each** environment.
+We broadly categorize tenants into two types:
 
-Create following folders:
+1. application tenants: tenants who build and delivery applications
+2. sre|delivery-engineering|devops tenant: team responsible to onboard other tenants; usually we recomend only one such tenant
+
+Adding new tenant can be divided into parts
+
+1. Create folders with `.gitkeep` files
+2. Create `tenant`, `space` and `argocd` files
+
+## Step 1 - Create folders
+
+Here are the steps to create folders per tenant:
+
+- Step 1: Create folder at the root of `gitops` repository with `tenant` name
+- Step 2: Create `configs` folder inside `tenant` folder
+- Step 3: Create folder per environment in `configs` folder
+- Step 4: Create `argocd` folder in environment folder
+
+It will look like following:
 
 - /\<tenant>
 - /\<tenant>/configs
@@ -14,53 +31,39 @@ Create following folders:
 
 Replace angle brackets with following values in below templates:
   - \<tenant> : Name of the tenant
-  - \<application> : Name of git repository of the application
-  - \<env>:  Environment name
-  - \<gitops-repo>:  url of your gitops repo
-  - \<nexus-repo>: url of nexus repository
-  - \<sre>: sre tenant folder with prefix i.e 03-sre
+  - \<env>:  Name of the tenant
+  - \<quota>: Name of the quota
+  - \<gitops-config>: gitops-config repo URL
 
+Once these folders are created; add following files
 
-Once these folders are created, add following files
-
-Add space configuation for **each** environment
+## Step 2 - Create files
 
 Templates for the files:
 
-- /\<tenant>/configs/\<env>/space.yaml
+### 1. Per Environment
+
+#### Create space per environment
+
+Add space configuation for **each** environment
+
+- /\<tenant>/configs/\<env>/\space.yaml
+
 ```
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Space
 metadata:
   name: <tenant>-<environment>
   labels:
-    team: <tenant>
+    tenant: <tenant>
     kind: <environment>
-    stakater.com/workload-monitoring: 'true'
-  annotations:
-    openshift.io/node-selector: node-role.kubernetes.io/worker= 
 spec:
   tenant: <tenant>
 ```
 
-Add tenants configuration inside sre tenant configuration
+#### Create argocd project and application per environment
 
-- \<sre>/\<cluster>/tenant-operator/tenants/\<tenant>.yaml
-
-```
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Tenant
-metadata:
-  name: <tenant>
-spec:
-  users:
-  - <user-1>
-  - <user-2>
-  - <user-n>
-  quota: <quota>
-```
-
-Create argocd project and argocd application that will watch folder inside \<tenant>/\<config>/\<argocd> that in turn going to deploy application in particular environment
+Create argocd project and argocd application per environment that will watch folder inside `\<tenant>/\<config>/\<argocd>` that in turn going to deploy application in particular environment
 
 Add this file for **each** environment
 
@@ -71,15 +74,13 @@ kind: AppProject
 metadata:
   name: <tenant>-<env>
   namespace: openshift-stakater-argocd
-
 spec:
   description: <tenant> team
   # Allow manifests to deploy from any Git repos
   sourceRepos:
   - '*'
-  # Only permit applications to deploy to the guestbook namespace in the same cluster
   destinations:
-  - namespace: "*"
+  - namespace: "<tenant>-<env>"
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: "*"
@@ -105,9 +106,25 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
-
 ```
 
+### 2. Per Tenant
 
+### Create tenant
 
+Add tenants configuration inside sre tenant configuration
+
+- \<sre>/\<cluster>/tenant-operator/tenants/\<tenant>.yaml
+
+```
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Tenant
+metadata:
+  name: <tenant>
+spec:
+  users:
+  - <user-1>
+  - <user-2>
+  - <user-n>
+  quota: <quota>
+```
