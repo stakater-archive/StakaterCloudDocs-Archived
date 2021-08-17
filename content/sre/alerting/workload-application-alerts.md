@@ -64,14 +64,14 @@ alertmanagerConfig:
   enabled: true
   spec:
     route:
-      receiver: 'slacknotifications'
+      receiver: 'slackwebhook'
     receivers:
-    - name: 'slacknotifications'
+    - name: 'slackwebhook'
       slackConfigs:
       - apiURL: 
-          name: slackconfig-test
-          key: hook
-        channel: '#test-app'
+          name: slackWebhookConfig
+          key: webhookUrl
+        channel: '#channel-name'
         sendResolved: true
         httpConfig:
           tlsConfig:
@@ -83,10 +83,10 @@ Above slack config is pulled from a secret present in the same namespace, which 
 kind: Secret
 apiVersion: v1
 metadata:
-  name: slackconfig-test
-  namespace: alert-test
+  name: slackWebhookConfig
+  namespace: <your-app-namespace>
 data:
-  hook: <slack-webhook-url-in-base64>
+  webhookUrl: <slack-webhook-url-in-base64>
 type: Opaque
 ```
 
