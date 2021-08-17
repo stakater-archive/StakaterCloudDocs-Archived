@@ -62,9 +62,9 @@ SAAP Cluster Admin (SCA):
 - can create/edit/delete resource quotas and limits on the cluster
 - can access the reserved ‘saap-cluster-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
 - can not create/edit/delete clusterresourcequotas  
-- SAAP-cluster-admin Service Account can create projectrequest
-- SAAP-cluster-admin Service Account can delete project
-- SAAP-cluster-admin Service Account cannot edit/create rolebinding
+- saap-cluster-admin service account can create projectrequest
+- saap-cluster-admin service account can delete project
+- saap-cluster-admin service account cannot edit/create rolebinding
 
 Only the mentioned permissions above are present for the role, for any other permission required the user need to raise a case with Stakater Support team.
 
