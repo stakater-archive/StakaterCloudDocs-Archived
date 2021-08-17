@@ -47,7 +47,7 @@ A sample AlertmanagerConfig can be configured in [Application Chart](https://git
 
 We will use slack as an example here. 
 
-1. Slack Config requires a secret with in your namespace with webhook-url. Create the secret as:
+Step 1: Create a `slack-webhook-config` secret which holds slack webhook-url
 
 ```
 kind: Secret
@@ -60,7 +60,7 @@ data:
 type: Opaque
 ```
 
-2. Add alertmanagerConfig spec to use `slack-webhook-config` secret.
+Step 2: Add a alertmanagerConfig spec to use `slack-webhook-config` secret created above in step 1
 
 ```
 alertmanagerConfig:
@@ -80,7 +80,6 @@ alertmanagerConfig:
           tlsConfig:
             insecureSkipVerify: true
 ```
-
 
 **Note:**
 AlertmanagerConfig will add a match with your namespace name by default, which will look like this:
