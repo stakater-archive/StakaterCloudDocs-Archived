@@ -19,8 +19,8 @@ SAAP Cluster Admin (SCA):
 - can install cluster-wide operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
 - can view installed operators by using the web console/CLI
 - can not install privileged and custom operators cluster-wide
-- can install operators in Customer owned namespace
-- can manage subscriptions in Customer owned namespace
+- can install operators in customer owned namespace
+- can manage subscriptions in customer owned namespace
 
 ###  Projects Permissions:
 - can create/update/patch customer owned namespaces
@@ -54,8 +54,8 @@ SAAP Cluster Admin (SCA):
 - can not view service accounts/roles/role bindings in Stakater owned namespaces
 - can not add members to cluster-admin
 - can not delete members from cluster-admin
-- can create 'admin' rolebinding on customer-owned namespaces
-- can create edit rolebinding on customer-owned namespaces
+- can create 'admin' rolebinding on customer owned namespaces
+- can create edit rolebinding on customer owned namespaces
 
 
 ### Administration:
