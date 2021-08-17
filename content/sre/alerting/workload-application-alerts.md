@@ -64,13 +64,13 @@ alertmanagerConfig:
   enabled: true
   spec:
     route:
-      receiver: 'slackwebhook'
+      receiver: 'slack-webhook'
     receivers:
-    - name: 'slackwebhook'
+    - name: 'slack-webhook'
       slackConfigs:
       - apiURL: 
-          name: slackWebhookConfig
-          key: webhookUrl
+          name: slack-webhook-config
+          key: webhook-url
         channel: '#channel-name'
         sendResolved: true
         httpConfig:
@@ -83,10 +83,10 @@ Above slack config is pulled from a secret present in the same namespace, which 
 kind: Secret
 apiVersion: v1
 metadata:
-  name: slackWebhookConfig
+  name: slack-webhook-config
   namespace: <your-namespace>
 data:
-  webhookUrl: <slack-webhook-url-in-base64>
+  webhook-url: <slack-webhook-url-in-base64>
 type: Opaque
 ```
 
