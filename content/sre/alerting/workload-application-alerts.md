@@ -45,28 +45,53 @@ A sample AlertmanagerConfig can be configured in [Application Chart](https://git
 | .Values.alertmanagerConfig.spec.route | The Alertmanager route definition for alerts matching the resource’s namespace. It will be added to the generated Alertmanager configuration as a first-level route 
 | .Values.alertmanagerConfig.spec.receivers | List of receivers  
 
+We will use slack as an example here. 
+
+Step 1: Create a `slack-webhook-config` secret which holds slack webhook-url
+
+```
+kind: Secret
+apiVersion: v1
+metadata:
+  name: slack-webhook-config
+  namespace: <your-namespace>
+data:
+  webhook-url: <slack-webhook-url-in-base64>
+type: Opaque
+```
+
+Step 2: Add a alertmanagerConfig spec to use `slack-webhook-config` secret created above in step 1
 
 ```
 alertmanagerConfig:
   enabled: true
   spec:
     route:
-       receiver: "null"
-       groupBy:
-       - job
-       routes:
-       - receiver: "null"
-         groupBy:
-         - alertname
-         - severity
-         continue: true
-       groupWait: 30s
-       groupInterval: 5m
-       repeatInterval: 12h
-    receivers: 
-      - name: "null"
+      receiver: 'slack-webhook'
+    receivers:
+    - name: 'slack-webhook'
+      slackConfigs:
+      - apiURL: 
+          name: slack-webhook-config
+          key: webhook-url
+        channel: '#channel-name'
+        sendResolved: true
+        httpConfig:
+          tlsConfig:
+            insecureSkipVerify: true
 ```
 
+**Note:**
+AlertmanagerConfig will add a match with your namespace name by default, which will look like this:
+
+```
+...
+      match:
+        namespace: <your-namespace>
+...
+```
+
+With this configuration, every new alert should land in the configured slack channel.
 ## 3. Create PrometheusRule for the application
 
 You need to create a PrometheusRule to define rules for alerting
