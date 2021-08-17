@@ -45,28 +45,52 @@ A sample AlertmanagerConfig can be configured in [Application Chart](https://git
 | .Values.alertmanagerConfig.spec.route | The Alertmanager route definition for alerts matching the resource’s namespace. It will be added to the generated Alertmanager configuration as a first-level route 
 | .Values.alertmanagerConfig.spec.receivers | List of receivers  
 
+We will use slack as an example here. 
+
+**Note:**
+AlertmanagerConfig will add a match with your namespace name by default, which will look like this:
+
+```
+...
+      matchers:
+      - namespace: <your-namespace>
+...
+```
+
+Now coming to AlertmanagerConfig:
 
 ```
 alertmanagerConfig:
   enabled: true
   spec:
     route:
-       receiver: "null"
-       groupBy:
-       - job
-       routes:
-       - receiver: "null"
-         groupBy:
-         - alertname
-         - severity
-         continue: true
-       groupWait: 30s
-       groupInterval: 5m
-       repeatInterval: 12h
-    receivers: 
-      - name: "null"
+      receiver: 'slacknotifications'
+    receivers:
+    - name: 'slacknotifications'
+      slackConfigs:
+      - apiURL: 
+          name: slackconfig-test
+          key: hook
+        channel: '#test-app'
+        sendResolved: true
+        httpConfig:
+          tlsConfig:
+            insecureSkipVerify: true
 ```
 
+Above slack config is pulled from a secret present in the same namespace, which should look like this:
+```
+kind: Secret
+apiVersion: v1
+metadata:
+  name: slackconfig-test
+  namespace: alert-test
+data:
+  hook: <slack-webhook-url-in-base64>
+type: Opaque
+```
+
+With this configuration, every new alert should land in the configured slack channel.
 ## 3. Create PrometheusRule for the application
 
 You need to create a PrometheusRule to define rules for alerting
