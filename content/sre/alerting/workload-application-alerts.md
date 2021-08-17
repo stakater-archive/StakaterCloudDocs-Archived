@@ -47,17 +47,20 @@ A sample AlertmanagerConfig can be configured in [Application Chart](https://git
 
 We will use slack as an example here. 
 
-**Note:**
-AlertmanagerConfig will add a match with your namespace name by default, which will look like this:
+1. Slack Config requires a secret with in your namespace with webhook-url. Create the secret as:
 
 ```
-...
-      matchers:
-      - namespace: <your-namespace>
-...
+kind: Secret
+apiVersion: v1
+metadata:
+  name: slack-webhook-config
+  namespace: <your-namespace>
+data:
+  webhook-url: <slack-webhook-url-in-base64>
+type: Opaque
 ```
 
-Now coming to AlertmanagerConfig:
+2. Add alertmanagerConfig spec to use `slack-webhook-config` secret.
 
 ```
 alertmanagerConfig:
@@ -78,16 +81,15 @@ alertmanagerConfig:
             insecureSkipVerify: true
 ```
 
-Above slack config is pulled from a secret present in the same namespace, which should look like this:
+
+**Note:**
+AlertmanagerConfig will add a match with your namespace name by default, which will look like this:
+
 ```
-kind: Secret
-apiVersion: v1
-metadata:
-  name: slack-webhook-config
-  namespace: <your-namespace>
-data:
-  webhook-url: <slack-webhook-url-in-base64>
-type: Opaque
+...
+      match:
+        namespace: <your-namespace>
+...
 ```
 
 With this configuration, every new alert should land in the configured slack channel.
