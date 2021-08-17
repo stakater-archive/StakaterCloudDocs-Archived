@@ -84,7 +84,7 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: slackWebhookConfig
-  namespace: <your-app-namespace>
+  namespace: <your-namespace>
 data:
   webhookUrl: <slack-webhook-url-in-base64>
 type: Opaque
