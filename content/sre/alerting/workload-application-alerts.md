@@ -60,7 +60,7 @@ data:
 type: Opaque
 ```
 
-Step 2: Add a alertmanagerConfig spec to use `slack-webhook-config` secret created above in step 1
+Step 2: Add a alertmanagerConfig spec to use `slack-webhook-config` secret created above in step 1, you need to replace `<workload-alertmanager-url>` with the link of Workload Alertmanager that you can get from forecastle.
 
 ```
 alertmanagerConfig:
@@ -76,6 +76,17 @@ alertmanagerConfig:
           key: webhook-url
         channel: '#channel-name'
         sendResolved: true
+        text: |2-
+          {{ range .Alerts }}
+          *Alert:* `{{ .Labels.severity | toUpper }}` - {{ .Annotations.summary }}
+          *Description:* {{ .Annotations.description }}
+          *Details:*
+            {{ range .Labels.SortedPairs }} *{{ .Name }}:* `{{ .Value }}`
+            {{ end }}
+          {{ end }}
+        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] SAAP Alertmanager Event Notification'
+        titleLink: |2
+          <workload-alertmanager-url>/#/alerts?receiver={{ .Receiver | urlquery }}
         httpConfig:
           tlsConfig:
             insecureSkipVerify: true
