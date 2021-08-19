@@ -49,13 +49,13 @@ Disalbe self heal in argocd application that is managing PVC so it does not recr
 Scale down statefulset pod so PVC can be deleted
 
 ```
-oc scale statefulsets <name> --replicas 0
+oc scale statefulsets <NAME> --replicas 0
 ```
 
 Delete the PVC which you want to restore data so that its created again by velero.
 
 ``` 
-oc delete pvc <pvc-name> -n <namespace> 
+oc delete pvc <PVC-NAME> -n <NAMESPACE> 
 ```
 
 ## 5. Restore Velero Backup
@@ -96,7 +96,7 @@ After a successful restore, you should be able to see pod up and running with re
 Scale up Stateful set so new pod can be attached to restored pvc
 
 ```
-oc scale statefulsets <name> --replicas 0
+oc scale statefulsets <NAME> --replicas 0
 ```
 
 ## 7. Validate
