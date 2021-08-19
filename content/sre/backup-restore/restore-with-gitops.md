@@ -2,21 +2,21 @@
 
 Restore PVC data when its managed in gitops by Argocd.
 
-## Prerequisite
+## 1. Prerequisite
 
 Setup velero-cli [doc](./velero-cli.md)
 
-## Take backup
+## 2. Take backup
 
 To take backup with velero you have two options:
 
-### Option # 1 - Via Cli
+### 2.1: Option # 1 - Via Cli
 
 ~~~
 velero backup create <NAME-OF-BACKUP> --include-namespaces <APPLICATION-NAMESPACE> --namespace openshift-velero
 ~~~
 
-### Option # 2 - Via CR
+### 2.2: Option # 2 - Via CR
 
 ~~~
 apiVersion: velero.io/v1
@@ -33,7 +33,7 @@ spec:
   ttl: 2h0m0s
 ~~~
 
-## Disable self heal in Argocd:
+## 3. Disable self heal in Argocd:
 
 Disalbe self heal in argocd application that is managing PVC so it does not recreate resources from gitops.
 
@@ -44,7 +44,7 @@ Disalbe self heal in argocd application that is managing PVC so it does not recr
       selfHeal: false
 ```
 
-## Delete PVC 
+## 4. Delete PVC 
 
 Scale down statefulset pod so PVC can be deleted
 
@@ -58,17 +58,17 @@ Delete the PVC which you want to restore data so that its created again by veler
 oc delete pvc <pvc-name> -n <namespace> 
 ```
 
-## Restore Velero Backup
+## 5. Restore Velero Backup
 
 To restore backup with velero you have two options:
 
-### Option # 1 - Via Cli
+### 5.1: Option # 1 - Via Cli
 
 ~~~
 velero restore create --from-backup <NAME-OF-BACKUP> --namespace openshift-velero
 ~~~
 
-### Option # 2 - Via CR
+### 5.2: Option # 2 - Via CR
 
 ~~~
 apiVersion: velero.io/v1
@@ -91,7 +91,7 @@ spec:
 
 After a successful restore, you should be able to see pod up and running with restored backup data
 
-## Scale up Statefulset again
+## 6. Scale up Statefulset again
 
 Scale up Stateful set so new pod can be attached to restored pvc
 
@@ -99,11 +99,11 @@ Scale up Stateful set so new pod can be attached to restored pvc
 oc scale statefulsets <name> --replicas 0
 ```
 
-## Validate
+## 7. Validate
 
-Validate the data exists
+Validate the data exists in the database.
 
-## Enable self heal again
+## 8. Enable self heal again
 
 Enable self heal so argocd start managing resources again. 
 
