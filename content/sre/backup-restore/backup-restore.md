@@ -179,7 +179,7 @@ Restore on the same cluster or the other cluster in the case of cluster broken.
 Update your backup storage location to read-only mode (this prevents backup objects from being created or deleted in the backup storage location during the restore process):
 ~~~
 kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
-    --namespace velero \
+    --namespace openshift-velero \
     --type merge \
     --patch '{"spec":{"accessMode":"ReadOnly"}}'
 ~~~
@@ -191,7 +191,7 @@ velero restore create --from-backup <BACKUP NAME>
 When ready, revert your backup storage location to read-write mode:
 ~~~
 kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
-   --namespace velero \
+   --namespace openshift-velero \
    --type merge \
    --patch '{"spec":{"accessMode":"ReadWrite"}}'
 ~~~
@@ -201,6 +201,6 @@ kubectl patch backupstoragelocation <STORAGE LOCATION NAME> \
 If you want to restore specific resources, you can use [resource filtering](https://velero.io/docs/main/resource-filtering/).
 For example, you can restore resources in `web` namespace:
 ```
-velero restore create --from-backup <BACKUP NAME> --include-namespaces web --namespace <VELERO_NAMESAPCE>
+velero restore create --from-backup <BACKUP NAME> --include-namespaces web --namespace openshift-velero
 ```
 **NOTE**: You have to select the resource filters properly. For example, if the target application has cluster-scope resources, then you cannot use `--include-namespaces` only.
