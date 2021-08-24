@@ -12,7 +12,7 @@ Users can create their own Router to host applications by providing a separate `
 
 Consider hosting domain for `custom.domain.com`; you need to take care of following steps
 
-1. Createe TLS certificates
+1. Create TLS certificates
 2. Create new router
 3. Create DNS entry
 4. Validate
