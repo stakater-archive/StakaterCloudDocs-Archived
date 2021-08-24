@@ -96,4 +96,4 @@ Pick version ```0.0.39``` and paste it to next environment
         tag: 0.0.39
 ```
 
-Similarly do it for all environments in same way
+Similarly do it for all environments.
