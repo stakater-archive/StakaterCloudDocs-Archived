@@ -2,18 +2,16 @@
 
 There are two type of environments for each tenant:
 
-- mandatory environment
-- optional environment
-
+- Mandatory environments
+- Optional environments
 
 ## Mandatory Environments
 
-There are two mandatory environments for tenant
-
+There are two mandatory environments per tenant:
 
 ### Build
 
-Build environment contains all pipeline configurations like *pipeline,eventlistener,pipelinrun etc*. This environment is used for running pipelines of tenant applications.
+Build environment contains all tekton pipeline configurations/resources like *pipeline,eventlistener,pipelinrun etc*. This environment is used for running pipelines of tenant applications.
 
 ### Preview
 
@@ -90,12 +88,3 @@ Pick version ```0.0.39``` and paste it to next environment
 ```
 
 Similarly do it for all environments in same way
-
-
-
-
-
-
-
-
-
