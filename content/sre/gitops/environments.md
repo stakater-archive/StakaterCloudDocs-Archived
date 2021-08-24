@@ -13,7 +13,7 @@ The CI/CD Environments are special Environments that are part of CI/CD workflow.
 
 ### 1. Build
 
-Build environment contains all tekton pipeline configurations/resources like *pipeline,eventlistener,pipelinrun etc*. These pipelines respond to changes in GitOps configuration repository and Application/Service soruce repositories. This environment is used for running pipelines of tenant applications.
+Build environment contains all tekton pipeline configurations/resources like *pipeline,eventlistener,pipelinrun etc*. These pipelines respond to changes in Application/Service soruce repositories. This environment is used for running pipelines of tenant applications.
 
 ### 2. Preview
 
