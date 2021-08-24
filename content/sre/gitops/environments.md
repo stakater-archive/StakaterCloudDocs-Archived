@@ -2,8 +2,8 @@
 
 There are two type of environments for each tenant:
 
-- 1. CI/CD Environments
-- 2. Other Environments
+1. CI/CD Environments
+2. Other Environments
 
 ## 1. CI/CD Environments
 
