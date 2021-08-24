@@ -57,6 +57,9 @@ SAAP Cluster Admin (SCA):
 - can create 'admin' rolebinding on customer owned namespaces
 - can create edit rolebinding on customer owned namespaces
 
+###  Velero Backups & Restores
+- can view/edit/create/delete Backup and Restores
+- can view/edit/create/delete Schedules for Velero in openshift-velero namespace
 
 ### Administration:
 - can create/edit/delete resource quotas and limits on the cluster
