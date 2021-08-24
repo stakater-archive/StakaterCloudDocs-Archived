@@ -1,6 +1,6 @@
 # Using custom domain
 
-## About Route Sharding
+## What is router sharding?
 
 As part of Stakater Cloud offering, we provide end users with a domain `*.apps.<CLUSTER_NAME>.<CLUSRER_ID>.kubeapp.cloud` that is pre-configured with SSL to provide a secure connection. As a common use case, end-users might want to use custom domains/ own domains for their applications. `Route Sharding` is used to facilitate this requirement.
 
@@ -8,9 +8,9 @@ In route sharding we create subset/shards of routes based on `namespaceSelector`
 
 Users can create their own Router to host applications by providing a separate `routeSelector` e.g. `router: myapp`. This new router will select all the Routes that has a label `router: myapp`.
 
-## Adding your own Domain
+## How to add custom domain?
 
-Consider hosting domain for `custom.domain.com`; you need to take care of following steps
+Consider have a domain `custom.domain.com`; you need to take care of following steps to use router sharding:
 
 1. Create TLS certificates
 2. Create new router
@@ -101,7 +101,7 @@ oc get svc -n openshift-ingress router-custom-domain --output jsonpath='{.status
 
 _TODO_
 
-### 4. Validate
+### 4. Validate application
 
 Update the label on your OpenShift Route to `router:custom-domain`
 
