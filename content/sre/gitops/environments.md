@@ -9,11 +9,11 @@ There are two type of environments for each tenant:
 
 There are three CI/CD environments per tenant
 
-The CI/CD Environment is a special Environment that contains CI/CD pipelines. These pipelines respond to changes in GitOps configuration repository and Application/Service soruce repositories. They are responisble for keeping the resources in the cluster in-sync with the configurations in Git and re-build/re-deploy application/service images.
+The CI/CD Environments are special Environments that are part of CI/CD workflow. There are 3 kind of CI/CD environments
 
 ### 1. Build
 
-Build environment contains all tekton pipeline configurations/resources like *pipeline,eventlistener,pipelinrun etc*. This environment is used for running pipelines of tenant applications.
+Build environment contains all tekton pipeline configurations/resources like *pipeline,eventlistener,pipelinrun etc*. These pipelines respond to changes in GitOps configuration repository and Application/Service soruce repositories. This environment is used for running pipelines of tenant applications.
 
 ### 2. Preview
 
@@ -29,7 +29,9 @@ Other than CI/CD environment there are applications environments like *qa,stagin
 
 ## Application promotion
 
-To promote application from one environment to another, you will need to bump image and chart version of environment. You can do so by picking these versions from previous environment.
+To promote application from one environment to another, you will need to bump image and chart version of environment. You can do so by picking these versions from previous environment. 
+
+This guide assumes that application is already on-boarded on environments.For more information on application onboarding [Click Here](https://docs.cloud.stakater.com/content/sre/onboarding/application-onboarding.html)
 
 ### Promote chart version 
 
@@ -64,7 +66,7 @@ similarly for other environments chart promotion, copy same version to ``Chart.y
 
 ### Promote image version
 
-First environment image is updated automatically by pipeline. In next environments, image is promoted by manually copying version from previous environment to next environment. for eg:
+First environment image is updated automatically by pipeline.In next environments, image is promoted by manually copying version from previous environment to next environment. for eg:
 
 \<gitops-repo>/\<tenant>/\<application>/\<env-1>/values.yaml
 
