@@ -105,4 +105,4 @@ _TODO_
 
 Update the label on your OpenShift Route to `router:custom-domain`
 
-_NOTE: you might have to delete existing route which is exposed on default router
+_NOTE: you might have to delete existing route which is exposed on default router_
