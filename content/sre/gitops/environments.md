@@ -2,22 +2,24 @@
 
 There are two type of environments for each tenant:
 
-- CI/CD environment
-- Other environment
-
+- CI/CD environments
+- Other environments
 
 ## CI/CD Environments
 
-There are two CI/CD environments for tenant
+There are three CI/CD environments per tenant
 
+The CI/CD Environment is a special Environment that contains CI/CD pipelines. These pipelines respond to changes in GitOps configuration repository and Application/Service soruce repositories. They are responisble for keeping the resources in the cluster in-sync with the configurations in Git and re-build/re-deploy application/service images.
 
-### Build
+### 1. Build
 
 Build environment contains all tekton pipeline configurations/resources like *pipeline,eventlistener,pipelinrun etc*. This environment is used for running pipelines of tenant applications.
 
-### Preview
+### 2. Preview
 
 Preview environment contains all preview application deployments. As soon as there is a new PR in application, pipeline creates new environment to test this PR. Each PR is deployed in separate namespace.
+
+### 3. Dev
 
 ## Other Environments
 
