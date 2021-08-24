@@ -1,4 +1,4 @@
-# Hosting your own Domain
+# Using custom domain
 
 ## About Route Sharding
 
