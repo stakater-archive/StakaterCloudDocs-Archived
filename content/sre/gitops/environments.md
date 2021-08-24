@@ -21,17 +21,19 @@ Preview environment contains all preview application deployments. As soon as the
 
 ### 3. Dev
 
+Once the PR is merged; the dynamic test environment is automatically deleted and the manifests are pushed to first permanent application environment dev.
+
 ## Other Environments
 
-Other than CI/CD environment, there are other environments like *dev,staging,prod etc*. As soon as pull request is merged, pr namespace is deleted and image version is bumped on first environment automatically by pipeline. After that, other environments are promoted manually by creating a PR to bump image version in helm values for controlled environment promotion. 
+Other than CI/CD environment there are applications environments like *qa,staging,pre-prod,prod etc*. Other environments are promoted manually by creating a PR to the gitops repo to bump image version in helm values for controlled environment promotion. 
 
 ## Application promotion in other environment
 
 To promote application from one environment to another, you will need to bump image and chart version of environment. you can do so by picking these versions from previous environment.
 
-### Promote Chart version 
+### Promote chart version 
 
-To promote chart version from first environment, you can check running chart version from ```Chart.lock``` file and update version in ```Chart.yaml``` of next version. for eg:
+To promote chart version from first environment, you can check the chart version from ```Chart.lock``` file and update version in ```Chart.yaml``` of next version. for eg:
 
 \<gitops-repo>/\<tenant>/\<application>/\<first-env>/Chart.lock
 
@@ -43,6 +45,7 @@ dependencies:
 digest: sha256:d33cb4ad70eecbe66abf4926c28cb18f2acab687a5dbd8a9b6c33758d386d9a2
 generated: "2021-08-23T12:54:14.214409662Z"
 ```
+
 pick version ```0.0.84``` from above ```Chart.lock``` and copy it in ``Chart.yaml`` of next environment
 
 \<gitops-repo>/\<tenant>/\<application>/\<env>/Chart.yaml
