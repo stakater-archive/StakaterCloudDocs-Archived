@@ -2,10 +2,10 @@
 
 There are two type of environments for each tenant:
 
-- CI/CD environments
-- Other environments
+- 1. CI/CD Environments
+- 2. Other Environments
 
-## CI/CD Environments
+## 1. CI/CD Environments
 
 There are three CI/CD environments per tenant
 
@@ -23,13 +23,13 @@ Preview environment contains all preview application deployments. As soon as the
 
 Once the PR is merged; the dynamic test environment is automatically deleted and the manifests are pushed to first permanent application environment dev.
 
-## Other Environments
+## 2. Other Environments
 
 Other than CI/CD environment there are applications environments like *qa,staging,pre-prod,prod etc*. Other environments are promoted manually by creating a PR to the gitops repo to bump image version in helm values for controlled environment promotion. 
 
-## Application promotion in other environment
+## Application promotion
 
-To promote application from one environment to another, you will need to bump image and chart version of environment. you can do so by picking these versions from previous environment.
+To promote application from one environment to another, you will need to bump image and chart version of environment. You can do so by picking these versions from previous environment.
 
 ### Promote chart version 
 
