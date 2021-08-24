@@ -23,7 +23,7 @@ Preview environment contains all preview application deployments. As soon as the
 
 #### 3. Dev
 
-Once the PR is merged; the dynamic test environment is automatically deleted and the manifests are pushed to first permanent application environment dev.
+Once the PR is merged; the dynamic test environment is automatically deleted and the helm manifests are pushed to first permanent application environment i.e. `dev` by the CI pipeline.
 
 ### 2. Other Environments
 
@@ -34,11 +34,11 @@ Other than CI/CD environment there are applications environments like *qa,stagin
 
 ## Application promotion
 
-To promote application from one environment to another, you will need to bump chart version and image version of environment. You can do so by picking these versions from previous environment. 
+To promote application from one environment to another; as mentioned above you will need to bump chart version and image version in that environment. You can do so by picking these versions from previous environment. 
 
-This guide assumes that application is already [on-boarded]((https://docs.cloud.stakater.com/content/sre/onboarding/application-onboarding.html)) to different environments.
+This guide assumes that application is already [on-boarded](https://docs.cloud.stakater.com/content/sre/onboarding/application-onboarding.html) to different environments.
 
-### Promote chart
+### 1. Promote chart
 
 To promote chart from first environment, you can check the chart version from ```Chart.lock``` file and update version in ```Chart.yaml``` of next version. for eg:
 
@@ -70,7 +70,7 @@ version: 0.1.0
 
 similarly for other environments chart promotion, copy same version to ``Chart.yaml`` of other environments
 
-### Promote image
+### 2. Promote image
 
 First environment image is updated automatically by pipeline. In next environments, image is promoted by manually copying version from previous environment to next environment. for eg:
 
