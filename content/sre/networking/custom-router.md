@@ -73,10 +73,10 @@ spec:
   nodePlacement:
     nodeSelector:
       matchLabels:
-        node-role.kubernetes.io/worker: ""
+        node-role.kubernetes.io/infra: ""
   routeSelector:
     matchLabels:
-      router: myapp
+      router: custom-domain
 ```
 
 ### 3. Add DNS entry
@@ -103,40 +103,6 @@ _TODO_
 
 ### 4. Validate
 
-#### Create a new project
+Update the label on your OpenShift Route to `router:custom-domain`
 
-`oc new-project route-demo`
-
-#### Use the oc new-app command to create a service
-
-```shell script
-oc new-app https://github.com/openshift/ruby-hello-world
-```
-
-#### Create a route
-
-```yaml
-kind: Route
-apiVersion: route.openshift.io/v1
-metadata:
-  name: ruby-hello-world
-  namespace: route-demo
-# Add this label to use your custom router
-  labels:
-    router: custom-domain-router
-  annotations:
-    openshift.io/host.generated: 'true'
-spec:
-# In case you omit `host` field openshift will generate a hostname for you as <name>-<namespace-name>.custom.domain.com
-  host: hello-world-app.custom.domain.com
-  to:
-    kind: Service
-    name: ruby-hello-world
-    weight: 100
-  port:
-    targetPort: 8080-tcp
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
-  wildcardPolicy: None
-```
+_NOTE: you might have to delete existing route which is exposed on default router
