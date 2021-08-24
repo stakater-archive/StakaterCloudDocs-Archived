@@ -2,13 +2,13 @@
 
 There are two type of environments for each tenant:
 
-- mandatory environment
-- optional environment
+- CI/CD environment
+- Other environment
 
 
-## Mandatory Environments
+## CI/CD Environments
 
-There are two mandatory environments for tenant
+There are two CI/CD environments for tenant
 
 
 ### Build
@@ -19,11 +19,11 @@ Build environment contains all pipeline configurations like *pipeline,eventliste
 
 Preview environment contains all preview application deployments. As soon as there is a new PR in application, pipeline creates new environment to test this PR. Each PR is deployed in separate namespace.
 
-## Optional Environments
+## Other Environments
 
-Other than mandatory environment, there are optional environments like *dev,staging,prod etc*. As soon as pull request is merged, preview environment is deleted and image version is bumped on first environment automatically by pipeline. After that, other environments are promoted manually by creating a PR to bump image version in helm values for controlled environment promotion. 
+Other than CI/CD environment, there are other environments like *dev,staging,prod etc*. As soon as pull request is merged, pr namespace is deleted and image version is bumped on first environment automatically by pipeline. After that, other environments are promoted manually by creating a PR to bump image version in helm values for controlled environment promotion. 
 
-## Application promotion in optional environment
+## Application promotion in other environment
 
 To promote application from one environment to another, you will need to bump image and chart version of environment. you can do so by picking these versions from previous environment.
 
