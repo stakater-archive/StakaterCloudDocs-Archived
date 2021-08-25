@@ -1,6 +1,6 @@
 # Google
 
-An GCP account is needed to create and manage cluster on GCP. The following criteria must be met
+A GCP account is needed to create and manage cluster on GCP. The following criteria must be met
 
 - Stakater shall be provided access to a separate project.
 - The Stakater user must have admin access on the created project.
