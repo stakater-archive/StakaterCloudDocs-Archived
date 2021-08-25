@@ -34,6 +34,7 @@ SAAP Cluster Admin (SCA):
 
 ### Networking
 - can create/view/delete NetworkPolicy objects in customer owned namespaces
+- can view services in all namespaces
 - can view routes and ingresses in all namespaces
 - can view/update dns resources for DNS Forwarder apigroups in customer owned namespaces
 
