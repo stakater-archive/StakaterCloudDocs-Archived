@@ -22,5 +22,5 @@ A GCP account is needed to create and manage cluster on GCP. The following crite
   | Firewall Rules | 11|
   | Persistent Disk SSD (GB)| 896|
   | Target Pools | 3|
-  | Machine Specifications | 6 machines of 8x32x120G |
+  | Machine Specifications | 9 machines of 8x32x120G |
   | Region | Region will be identified by the customer |
