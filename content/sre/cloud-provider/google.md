@@ -9,7 +9,7 @@ An GCP account is needed to create and manage cluster on GCP. The following crit
 - Resource limits must be applied on the account and only the following resources must be allowed to be created.
 
   |Type        | Limit |
-      |------------|------------|
+    |------------|------------|
   | Virtual Machines | Varies. The limit should be 12 initially. (Initial deployemnt is 3 master + 3 infra + 3 worker)|
   | Regional vCPUs | The limit should be A x B x 2 , where A = no. of VMS (worker + infra + master), B = vCPUs per VM) |
   | In-use global IP addresses | 4 |
