@@ -1,6 +1,8 @@
 # Predefined PrometheusRules
 
-There are few pre-defined PrometheusRules that come with the platfrom. You can use them to catch Alerts and use it further. Following are the rules and their descriptions
+There are few pre-defined PrometheusRules that come with the platfrom. You can use existing existing rules to forward alerts to your prefferred medium of choice. 
+
+Following are the rules along their descriptions
 
 ## Kubernetes Apps
 
