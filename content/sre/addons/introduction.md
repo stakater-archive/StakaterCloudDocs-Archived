@@ -14,7 +14,7 @@ Code inspection | SonarQube
 Log alerting | [Stakater Konfigurator](https://github.com/stakater/Konfigurator)
 Internal alerting | AlertManager
 External (downtime) alerting | [Stakater IMC](https://github.com/stakater/IngressMonitorController), UptimeRobot (free tier)
-Service mesh | Istio, Kiali, Jaeger (only one fully manageed control plane)
+Service mesh | Istio, Kiali, Jaeger (only one fully managed control plane)
 Image scanning | Trivy
 Backups & Recovery | Velero
 SSO (for managed addons) | KeyCloak
