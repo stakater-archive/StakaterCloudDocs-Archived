@@ -105,7 +105,7 @@ AlertmanagerConfig will add a match with your namespace name by default, which w
 With this configuration, every new alert should land in the configured slack channel.
 ## 3. Create PrometheusRule for the application
 
-You need to create a PrometheusRule to define rules for alerting
+You need to create a PrometheusRule to define rules for alerting or you can use [Predefined PrometheusRules](./predefined-prometheusrules.md) 
 
 A sample PrometheusRule can be configured in [Application Chart](https://github.com/stakater-charts/application).
 
