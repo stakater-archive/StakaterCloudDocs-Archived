@@ -132,6 +132,7 @@ module.exports = {
           "/content/sre/alerting/downtime-notifications-uptimerobot.md",
           "/content/sre/alerting/workload-application-alerts.md",
           "/content/sre/alerting/log-alerts.md",
+          "/content/sre/alerting/predefined-prometheusrules.md"
         ],
       },
       {
