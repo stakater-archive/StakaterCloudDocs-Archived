@@ -8,8 +8,8 @@ A Openstack account is needed to create and manage cluster on Binero Openstack. 
 - The customer must not use this account for other purposes and only stakater shall be responsible for managing resources created in this account.
 - Resource limits must be applied on the account and only the following resources must be allowed to be created.Ask Binero support to increase the quotas as below
 
-  |Type        | Limit |
-      |------------|------------|
+  | Type | Limit |
+  |---|---|
   | Instances | 100|
   | vCPUs | 200 |
   | RAM | 2TB |
