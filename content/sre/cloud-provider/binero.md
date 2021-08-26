@@ -5,7 +5,7 @@ A Openstack account is needed to create and manage cluster on Binero Openstack. 
 - Stakater shall be provided access to a separate Binero account or Stakater team can create a Binero Account for cluster provisioning of customer.
 - The Stakater user must have admin access on the created account.
 - Stakater shall share an email address that should have full access to this account.
-- Resource limits must be applied on the account and only the following resources must be allowed to be created.Ask Binero support to increase the quotas as below
+- Resource limits must be applied on the account and the following resources must be allowed to be created.Ask Binero support to increase the quotas as below
 
   | Type | Limit |
   |---|---|
