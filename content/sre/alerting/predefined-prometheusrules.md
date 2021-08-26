@@ -1,6 +1,6 @@
-# SAAP PrometheusRules
+# Predefined PrometheusRules
 
-There are few Predefined PrometheusRules that come with our platfrom. You can use them to catch Alerts and use it further. Following are the rules and their descriptions
+There are few pre-defined PrometheusRules that come with the platfrom. You can use them to catch Alerts and use it further. Following are the rules and their descriptions
 
 ## Kubernetes Apps
 
