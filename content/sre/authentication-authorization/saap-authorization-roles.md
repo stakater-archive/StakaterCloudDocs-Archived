@@ -41,6 +41,7 @@ SAAP Cluster Admin (SCA):
 ### Monitoring
 - can view console dashboard where metrics are shown for namespaces
 - can view customer owned namespaces status
+- can view events in all namespaces
 
 ### Compute
 - can view machines, machinesets, nodes, machine configs, machine config pools, imagestreams
