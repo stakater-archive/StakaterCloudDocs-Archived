@@ -18,9 +18,9 @@ SAAP Cluster Admin (SCA):
   - Openshift Pipelines Operator
 - can install cluster-wide operators from a [curated list](https://docs.cloud.stakater.com/content/sre/authentication-authorization/curated-list-operators.html) provided by the OperatorHub. This makes the operator available to all developers on your cluster to create Custom Resources and applications using that Operator.
 - can view installed operators by using the web console/CLI
-- can not install privileged and custom operators cluster-wide
 - can install operators in customer owned namespace
 - can manage subscriptions in customer owned namespace
+- can not install privileged and custom operators cluster-wide
 
 ###  Projects Permissions:
 - can create/update/patch customer owned namespaces
@@ -53,11 +53,11 @@ SAAP Cluster Admin (SCA):
 - can view service accounts/roles/role bindings in customer owned namespaces
 - can create/view on UserIdentityMappings
 - can create/verify tokens and access
+- can not delete members from cluster-admin
+- can create `admin` rolebinding on customer owned namespaces
+- can create edit rolebinding on customer owned namespaces
 - can not view service accounts/roles/role bindings in Stakater owned namespaces
 - can not add members to cluster-admin
-- can not delete members from cluster-admin
-- can create 'admin' rolebinding on customer owned namespaces
-- can create edit rolebinding on customer owned namespaces
 
 ###  Velero Backups & Restores
 - can view/edit/create/delete Backup and Restores
@@ -65,11 +65,11 @@ SAAP Cluster Admin (SCA):
 
 ### Administration:
 - can create/edit/delete resource quotas and limits on the cluster
-- can access the reserved ‘saap-cluster-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster
-- can not create/edit/delete clusterresourcequotas  
-- saap-cluster-admin service account can create projectrequest
+- can access the reserved ‘saap-cluster-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster 
+- saap-cluster-admin service account can create project
 - saap-cluster-admin service account can delete project
 - saap-cluster-admin service account cannot edit/create rolebinding
+- can not create/edit/delete clusterresourcequotas 
 
 Only the mentioned permissions above are present for the role, for any other permission required the user need to raise a case with Stakater Support team.
 
