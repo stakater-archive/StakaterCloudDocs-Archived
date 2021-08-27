@@ -2,11 +2,9 @@
 
 A GCP account is needed to create and manage cluster on GCP. The following criteria must be met
 
-- Stakater shall be provided access to a separate project.
-- The Stakater user must have admin access on the created project.
-- Stakater shall share an email address that should have full access to this project.
-- The customer must not use this project for other purposes and only stakater shall be responsible for managing resources created in this account.
-- Resource limits must be applied on the account and only the following resources must be allowed to be created.
+- An account on GCP.
+- A Stakater user (ask Stakater team for the email to use for this user) with admin priviliges on a separate project.
+- Resource limits must be applied on the account and the following resources must be allowed to be created.
 
   |Type        | Limit |
     |------------|------------|
