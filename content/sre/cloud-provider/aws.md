@@ -2,11 +2,9 @@
 
 An AWS account is needed to create and manage cluster on aws. The following criteria must be met
 
-- Stakater shall be provided access to a separate aws account.
-- The Stakater user must have admin access on the created account.
-- Stakater shall share an email address that should have full access to this account.
-- The customer must not use this account for other purposes and only stakater shall be responsible for managing resources created in this account.
-- Resource limits must be applied on the account and only the following resources must be allowed to be created.
+- An account on AWS.
+- A Stakater user (ask Stakater team for the email to use for this user) with admin priviliges.
+- Resource limits must be applied on the account and the following resources must be allowed to be created.
 
   |Type        | Limit |
     |------------|------------|
