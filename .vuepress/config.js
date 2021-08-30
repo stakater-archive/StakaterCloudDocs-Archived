@@ -120,6 +120,8 @@ module.exports = {
       {
         title: "Monitoring",
         children: [
+          "/content/sre/monitoring/01-introduction.md",
+          "/content/sre/monitoring/02-maturity-model.md",          
           "/content/sre/monitoring/app-uptime.md",
           "/content/sre/monitoring/app-alerts.md",
           "/content/sre/monitoring/goldilocks.md",
