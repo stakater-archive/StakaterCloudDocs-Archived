@@ -156,7 +156,7 @@ module.exports = {
         title: "Networking",
         children: [
           "/content/sre/networking/routes.md",
-          "/content/sre/networking/custom-router.md",
+          "/content/sre/networking/hosting-dns.md",
           "/content/sre/networking/external-dns.md",
         ],
       },
