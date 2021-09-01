@@ -26,6 +26,10 @@ The configuration to parse/match/send logs can be specified in the [Application 
 |.Values.deployment.fluentdConfigAnnotations.key|specify log field to match the regex|
 |.Values.deployment.fluentdConfigAnnotations.pattern|specify regex to be matched|
 
+For application log alerting use the following patterns to use for parsing java springboot logs
+
+```^(?<time>\d+(?:-\d+){2}\s+\d+(?::\d+){2}\.\d+)\s*(?<level>\S+) (?<pid>\d+) — [(?<thread>[\s\S*]?)] (?<class>\S+)\s*:\s*(?<message>[\s\S]*?)(?=\g<time>|\Z)```
+
 We recommend to log as JSON but for some reason if you can't then follow the next step as well.
 
 ### Additional config for non JSON log formats
