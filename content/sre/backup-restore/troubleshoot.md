@@ -1,4 +1,4 @@
-# Troubleshoot
+# Troubleshooting
 
 Following commands and their definitions will help you figure out issues with your backup & restore operations.
 
