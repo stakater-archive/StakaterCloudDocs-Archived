@@ -30,7 +30,7 @@ For application log alerting use the following patterns for parsing java springb
 
 ```2019-11-27 11:04:12.682  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'```
 
-Regex:
+#### Regex:
 
 ```^(?<time>\d+(?:-\d+){2}\s+\d+(?::\d+){2}\.\d+)\s*(?<level>\S+) (?<pid>\d+) — [(?<thread>[\s\S*]?)] (?<class>\S+)\s*:\s*(?<message>[\s\S]*?)(?=\g<time>|\Z)```
 
