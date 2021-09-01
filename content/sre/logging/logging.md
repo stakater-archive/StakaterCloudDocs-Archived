@@ -30,6 +30,17 @@ This will be parsed as follows:
 }
 ```
 
+If the customer wants to parse logs themselves for example application log alerting like shown below
+```
+2019-11-27 11:04:12.682  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+```
+
+Use the following regex to use for parsing such java springboot logs
+
+```
+/^(?<time>\d+(?:-\d+){2}\s+\d+(?::\d+){2}.\d+)\s*(?<level>\S+) (?<pid>\d+) --- \[(?<thread>[\s\S]*?)\] (?<class>\S+)\s*:\s*(?<message>[\s\S]*?)(?=\g<time>|\Z)/
+```
+
 ## Log Retention
 
 By default Application logs are retained for 7 days.
