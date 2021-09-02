@@ -29,8 +29,9 @@ This will be parsed as follows:
     "correlation": "ef4f3737f2bcf856"
 }
 ```
+)
 
-###Additional config for non JSON log formats 
+## Additional config for non JSON log formats
 
 Parsing application logs which are not in `JSON format` can be done using the below scenario. Following is an example of such a log
 ```
