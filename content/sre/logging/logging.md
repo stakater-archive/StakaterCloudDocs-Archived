@@ -35,7 +35,7 @@ This will be parsed as follows:
 
 Parsing application logs which are not in `JSON format` can be done using the below scenario. 
 
-Consider the following example of a one line event by a java application
+Consider the following example of a one line event by a java application: 
 
 ```
 2019-11-27 11:04:12.682  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
@@ -48,7 +48,7 @@ The configuration to parse/match/send logs can be specified in the [Application 
 |.Values.deployment.fluentdConfigAnnotations.regex|specify the regex to parse the complete log entry|
 |.Values.deployment.fluentdConfigAnnotations.timeFormat|specify the regex to parse time|
 
-Use the following Configuration for parsing java springboot logs as given above
+Use the following Configuration for parsing java springboot logs :
 
 ```yaml
 deployment:
@@ -58,7 +58,9 @@ deployment:
     regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
     timeFormat: "%Y-%m-%d %H:%M:%S.%L"
 ```
+
 This will be parsed as follows:
+
 ```
 time: 2019-11-27 11:04:12.682
 level: INFO
