@@ -29,16 +29,31 @@ This will be parsed as follows:
     "correlation": "ef4f3737f2bcf856"
 }
 ```
+Example Scenario
 
-If the customer wants to parse logs themselves for example application log alerting like shown below
+Parsing logs as below which are not in the JSON format 
 ```
 2019-11-27 11:04:12.682  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 ```
+The configuration to parse/match/send logs can be specified in the [Application Chart](https://github.com/stakater-charts/application).
+
+| Parameter | Description |
+|:---|:---|
+|.Values.deployment.fluentdConfigAnnotations.notifications.slack|specify slack *webhookURL* and *channelName*|
+|.Values.deployment.fluentdConfigAnnotations.key|specify log field to match the regex|
+|.Values.deployment.fluentdConfigAnnotations.pattern|specify regex to be matched|
 
 Use the following regex to use for parsing such java springboot logs
 
 ```
 /^(?<time>\d+(?:-\d+){2}\s+\d+(?::\d+){2}.\d+)\s*(?<level>\S+) (?<pid>\d+) --- \[(?<thread>[\s\S]*?)\] (?<class>\S+)\s*:\s*(?<message>[\s\S]*?)(?=\g<time>|\Z)/
+```
+Following Configuration will parse the above log 
+
+```yaml
+deployment:
+  fluentdConfigAnnotations:
+    regexFirstLine: /^(?<time>\d+(?:-\d+){2}\s+\d+(?::\d+){2}.\d+)\s*(?<level>\S+) (?<pid>\d+) --- \[(?<thread>[\s\S]*?)\] (?<class>\S+)\s*:\s*(?<message>[\s\S]*?)(?=\g<time>|\Z)/
 ```
 
 ## Log Retention
