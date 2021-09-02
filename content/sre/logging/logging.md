@@ -5,7 +5,7 @@ Stakater App Agility Platform uses EFK Stack (Elasticseatch Fluentd Kibana) to p
 ![Logging](./images/logging.png)
 
 
-## Application Logs parsing
+## Parse JSON Application Logs
 
 Logs are parsed by default if applications output logs in `JSON format` on stdout. Moreover one step nested JSON parsing is also supported additionally.
 
@@ -31,9 +31,9 @@ This will be parsed as follows:
 ```
 )
 
-## Additional config for non JSON log formats
+## Parse non JSON Application Logs
 
-Parsing application logs which are not in `JSON format` can be done using the below scenario. 
+Parsing application logs which are not in `JSON format` can be done as follows:
 
 Consider the following example of a one line event by a java application: 
 
