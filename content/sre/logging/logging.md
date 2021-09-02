@@ -39,9 +39,9 @@ The configuration to parse/match/send logs can be specified in the [Application 
 
 | Parameter | Description |
 |:---|:---|
-|.Values.deployment.fluentdConfigAnnotations.notifications.slack|specify slack *webhookURL* and *channelName*|
-|.Values.deployment.fluentdConfigAnnotations.key|specify log field to match the regex|
-|.Values.deployment.fluentdConfigAnnotations.pattern|specify regex to be matched|
+|.Values.deployment.fluentdConfigAnnotations.regexFirstLine|specify the regex to match the first line of the log|
+|.Values.deployment.fluentdConfigAnnotations.regex|specify the regex to parse the complete log entry|
+|.Values.deployment.fluentdConfigAnnotations.timeFormat|specify the regex to parse time|
 
 Use the following regex to use for parsing such java springboot logs
 
