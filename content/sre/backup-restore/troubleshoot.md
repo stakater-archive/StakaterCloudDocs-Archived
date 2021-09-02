@@ -9,7 +9,7 @@ Following commands and their definitions will help you figure out issues with yo
     velero backup logs <backup-name> -n <velero-namespace>
     ```
 
-   - Restor logs
+   - Restore logs
 
     ```bash
     velero restore logs <restore-name> -n <velero-namespace>
