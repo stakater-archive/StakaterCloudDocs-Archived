@@ -30,7 +30,8 @@ This will be parsed as follows:
 }
 ```
 
-###Additional config for non JSON log formats
+###Additional config for non JSON log formats 
+
 Parsing application logs which are not in `JSON format` can be done using the below scenario. Following is an example of such a log
 ```
 2019-11-27 11:04:12.682  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
