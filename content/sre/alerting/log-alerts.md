@@ -28,15 +28,7 @@ The configuration to parse/match/send logs can be specified in the [Application 
 
 We recommend to log as JSON but for some reason if you can't then follow the next step as well.
 
-### Additional config for non JSON log formats
-
-Additionally you can parse your application logs if they are not in JSON format by specifying regexes as described below:
-
-| Parameter | Description |
-|:---|:---|
-|.Values.deployment.fluentdConfigAnnotations.regexFirstLine|specify the regex to match the first line of the log|
-|.Values.deployment.fluentdConfigAnnotations.regex|specify the regex to parse the complete log entry|
-|.Values.deployment.fluentdConfigAnnotations.timeFormat|specify the regex to parse time|
+> Note : Additionally you can parse your application logs if they are not in JSON format as specified in this [logging scenario](https://docs.cloud.stakater.com/content/sre/logging/logging.html)
 
 ### Examples
 

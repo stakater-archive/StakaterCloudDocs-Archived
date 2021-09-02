@@ -29,13 +29,13 @@ This will be parsed as follows:
     "correlation": "ef4f3737f2bcf856"
 }
 ```
-Example Scenario
 
-Parsing logs as below which are not in the JSON format 
+###Additional config for non JSON log formats
+Parsing application logs which are not in `JSON format` can be done using the below scenario. Following is an example of such a log
 ```
 2019-11-27 11:04:12.682  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 ```
-The configuration to parse/match/send logs can be specified in the [Application Chart](https://github.com/stakater-charts/application).
+The configuration to parse/match/send logs can be specified in the [Application Chart](https://github.com/stakater-charts/application) , you can parse your application logs if they are not in JSON format by specifying regexes as described below:
 
 | Parameter | Description |
 |:---|:---|
@@ -43,17 +43,24 @@ The configuration to parse/match/send logs can be specified in the [Application 
 |.Values.deployment.fluentdConfigAnnotations.regex|specify the regex to parse the complete log entry|
 |.Values.deployment.fluentdConfigAnnotations.timeFormat|specify the regex to parse time|
 
-Use the following regex to use for parsing such java springboot logs
-
-```
-/^(?<time>\d+(?:-\d+){2}\s+\d+(?::\d+){2}.\d+)\s*(?<level>\S+) (?<pid>\d+) --- \[(?<thread>[\s\S]*?)\] (?<class>\S+)\s*:\s*(?<message>[\s\S]*?)(?=\g<time>|\Z)/
-```
-Following Configuration will parse the above log 
+Use the following Configuration for parsing java springboot logs as given above
 
 ```yaml
 deployment:
   fluentdConfigAnnotations:
-    regexFirstLine: /^(?<time>\d+(?:-\d+){2}\s+\d+(?::\d+){2}.\d+)\s*(?<level>\S+) (?<pid>\d+) --- \[(?<thread>[\s\S]*?)\] (?<class>\S+)\s*:\s*(?<message>[\s\S]*?)(?=\g<time>|\Z)/
+    regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
+      (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
+    regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
+    timeFormat: "%Y-%m-%d %H:%M:%S.%L"
+```
+the output for above log will look like this
+```
+time: 2019-11-27 11:04:12.682
+level: INFO
+pid: 1
+thread: nio-8080-exec-1
+class: o.s.web.servlet.DispatcherServlet
+message: Initializing Servlet 'dispatcherServlet'
 ```
 
 ## Log Retention
