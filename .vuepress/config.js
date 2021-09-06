@@ -148,6 +148,7 @@ module.exports = {
           "/content/sre/backup-restore/velero-cli.md",
           "/content/sre/backup-restore/backup-restore.md",
           "content/sre/backup-restore/troubleshoot.md",
+          "content/sre/backup-restore/cleanup.md",          
           "/content/sre/backup-restore/stateful-app-example.md",
           "/content/sre/backup-restore/restore-with-gitops.md",
           "/content/sre/backup-restore/02-limitations.md"
