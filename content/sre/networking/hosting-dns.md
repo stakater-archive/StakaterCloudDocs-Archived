@@ -40,14 +40,12 @@ There are two ways to configure TLS Certificate secret:
 
 Certmanager Operator let's you automate the certification issuing process via Let's Encrypt CA. These Certificates are generated and can be rotated automatically via Certmanager Operator whenever an Ingress is created with annotation: `cert-manager.io/cluster-issuer: <ISSUER_NAME>`
 
-#### ACME Solvers
-SAAP comes with a managed cert-manager so, all you have to do is to create a ClusterIssuer like the following:
-
 Two types of acme solvers are supported, The Pros and Cons of both strategies can be seen on the link:
-  1. (HTTP01 Challenge)[https://letsencrypt.org/docs/challenge-types/#http-01-challenge]
-  2. (DNS01 Challenge)[https://letsencrypt.org/docs/challenge-types/#dns-01-challenge]
 
-###### HTTP01 Challenge
+1. [HTTP01 Challenge](https://letsencrypt.org/docs/challenge-types/#http-01-challenge)
+2. [DNS01 Challenge](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
+
+#### HTTP01 Challenge
 For HTTP01 Challenge you just need to specify ingress field:
 ```
 apiVersion: cert-manager.io/v1
@@ -68,8 +66,12 @@ spec:
           ingress: {}
 ```
 
-###### DNS01 Challenge
-For DNS01 Challenge you need to first create a secret `in kube-system` that should contain the values to alter entries in your DNS provider. Following is an example for configuring AWS's Route53. Check configuration for your provider (here)[https://cert-manager.io/v1.5-docs/configuration/acme/dns01/#supported-dns01-providers]
+#### DNS01 Challenge
+For DNS01 Challenge you need to first create a secret in `kube-system` namespace that should contain the values to alter entries in your DNS provider. Following is an example for configuring AWS's Route53. Check configuration for your provider [here](https://cert-manager.io/v1.5-docs/configuration/acme/dns01/#supported-dns01-providers)
+
+::: tip
+ Use Limited acccess to the account being used for DNS01 Challenge automation 
+:::
 
 ```
 apiVersion: cert-manager.io/v1
@@ -100,7 +102,9 @@ spec:
 2. You can only issue 50 certificates per Registered Domain. [See Details here](https://letsencrypt.org/docs/rate-limits/)
 3. If you think you need more certificates for your staging/CI environment consider using a [Staging server](https://letsencrypt.org/docs/staging-environment/). The only downside for this strategy is that browser will not trust the CI/staging environment certificate.
 
-  > TIP: Consider using the cluster's default domain i.e. `*.kubeapp.cloud` for CI/staging envionment which are all secured by SAAP by default
+::: tip
+Consider using the cluster's default domain i.e. `*.kubeapp.cloud` for CI/staging envionment which are all secured by SAAP by default
+:::
 
 If you you are doing gitops with ArgoCD then you need to create an ArgoCD app like following that will watch cert-manager CRs and deploy them to the cluster:
 
