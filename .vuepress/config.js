@@ -120,6 +120,8 @@ module.exports = {
       {
         title: "Monitoring",
         children: [
+          "/content/sre/monitoring/01-introduction.md",
+          "/content/sre/monitoring/02-maturity-model.md",          
           "/content/sre/monitoring/app-uptime.md",
           "/content/sre/monitoring/app-alerts.md",
           "/content/sre/monitoring/goldilocks.md",
@@ -145,6 +147,8 @@ module.exports = {
           "/content/sre/backup-restore/01-introduction.md",          
           "/content/sre/backup-restore/velero-cli.md",
           "/content/sre/backup-restore/backup-restore.md",
+          "content/sre/backup-restore/troubleshoot.md",
+          "content/sre/backup-restore/cleanup.md",          
           "/content/sre/backup-restore/stateful-app-example.md",
           "/content/sre/backup-restore/restore-with-gitops.md",
           "/content/sre/backup-restore/02-limitations.md"

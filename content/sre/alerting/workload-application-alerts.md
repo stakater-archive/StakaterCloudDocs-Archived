@@ -5,9 +5,8 @@ Stakater App Agility Platform also provides fully managed dedicated workload mon
 To configure alerting for your application do following:
 
 1. Create `ServiceMonitor` for the application
-3. Create `AlertmanagerConfig` for the application
-4. Create `PrometheusRule` for firing an alert for the application
-
+2. Create `AlertmanagerConfig` for the application
+3. [Optional] Create `PrometheusRule` for defining the alerting rule
 
 **Note:** OpenShift Cluster needs to be on version greater than or equal to 4.7
 
@@ -92,6 +91,8 @@ alertmanagerConfig:
             insecureSkipVerify: true
 ```
 
+With this configuration all predefined rules and any new rule which you define should land in the configured slack channel.
+
 **Note:**
 AlertmanagerConfig will add a match with your namespace name by default, which will look like this:
 
@@ -102,10 +103,11 @@ AlertmanagerConfig will add a match with your namespace name by default, which w
 ...
 ```
 
-With this configuration, every new alert should land in the configured slack channel.
-## 3. Create PrometheusRule for the application
+## 3. [Optional] Create PrometheusRule for the application
 
-You need to create a PrometheusRule to define rules for alerting or you can use [Predefined PrometheusRules](./predefined-prometheusrules.md) 
+Stakater App Agility Platforms comes with lots of [Predefined PrometheusRules](./predefined-prometheusrules.md) which covers most of the commmon use cases.
+
+If required you can definitely create a new PrometheusRule to define for defining alerting rule.
 
 A sample PrometheusRule can be configured in [Application Chart](https://github.com/stakater-charts/application).
 
@@ -128,4 +130,3 @@ prometheusRule:
       labels:
         severity: critical 
 ~~~
-

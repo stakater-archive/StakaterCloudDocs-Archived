@@ -1,4 +1,4 @@
-# How to host Custom Domains?
+# How to host custom domains?
 
 Consider have a domain `custom.domain.com`; and you want to host your application on your own domain instead of the default route provided by SAAP i.e. `<MYAPP_NAME>-<MYAPP_NAMESPACE>.apps.<CLUSTER_NAME>.<CLUSTER_ID>.kubeapp.cloud`. You can follow these steps in order to use your own domain:
 
@@ -12,15 +12,17 @@ Consider have a domain `custom.domain.com`; and you want to host your applicatio
 In order to host your application on `custom.domain.com`. You need to point your DNS address on the public IP of the cluster's default router
 
 ### Option # 1: Create Manual entries
-#### Obtain Public IP Address
+
+#### Step # 1: Obtain Public IP Address
 
 Use the following command to get the Public IP address of your cluster:
 ```
 nslookup "*.apps.$(oc get dns -ojsonpath='{.items[0].spec.baseDomain}')" | grep Address | tail -1
 ```
 
-#### Create entry in your DNS Provider
-Add and `A` entry in your DNS provider to point `custom.domain.com` to the public IP obtained in the previous step.
+#### Step # 2: Create entry in your DNS Provider
+
+Add `A` entry in your DNS provider to point `custom.domain.com` to the public IP obtained in the previous step.
 
 ### Option # 2: ExternalDNS
 
@@ -39,6 +41,7 @@ There are two ways to configure TLS Certificate secret:
 Certmanager Operator let's you automate the certification issuing process via Let's Encrypt CA. These Certificates are generated and can be rotated automatically via Certmanager Operator whenever an Ingress is created with annotation: `cert-manager.io/cluster-issuer: <ISSUER_NAME>`
 
 #### ACME Solvers
+SAAP comes with a managed cert-manager so, all you have to do is to create a ClusterIssuer like the following:
 
 Two types of acme solvers are supported, The Pros and Cons of both strategies can be seen on the link:
   1. (HTTP01 Challenge)[https://letsencrypt.org/docs/challenge-types/#http-01-challenge]
@@ -98,6 +101,32 @@ spec:
 3. If you think you need more certificates for your staging/CI environment consider using a [Staging server](https://letsencrypt.org/docs/staging-environment/). The only downside for this strategy is that browser will not trust the CI/staging environment certificate.
 
   > TIP: Consider using the cluster's default domain i.e. `*.kubeapp.cloud` for CI/staging envionment which are all secured by SAAP by default
+
+If you you are doing gitops with ArgoCD then you need to create an ArgoCD app like following that will watch cert-manager CRs and deploy them to the cluster:
+
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # It's mandatory you don't name it cert-manager; as it will prune other managed resources
+  name: certificate-manager
+  namespace: openshift-stakater-argocd
+spec:
+  destination:
+    namespace: openshift-stakater-argocd
+    server: "https://kubernetes.default.svc"
+  source:
+    path: <PATH>
+    repoURL: <REPO-URL>
+    targetRevision: HEAD
+    directory:
+       recurse: true
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
 
 ### Option # 2: Bring Your Own Certificates (BYOC)
 
