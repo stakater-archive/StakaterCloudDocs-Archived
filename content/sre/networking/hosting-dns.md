@@ -38,8 +38,14 @@ There are two ways to configure TLS Certificate secret:
 
 Certmanager Operator let's you automate the certification issuing process via Let's Encrypt CA. These Certificates are generated and can be rotated automatically via Certmanager Operator whenever an Ingress is created with annotation: `cert-manager.io/cluster-issuer: <ISSUER_NAME>`
 
-Create a ClusterIssuer like the following:
+#### ACME Solvers
 
+Two types of acme solvers are supported, The Pros and Cons of both strategies can be seen on the link:
+  1. (HTTP01 Challenge)[https://letsencrypt.org/docs/challenge-types/#http-01-challenge]
+  2. (DNS01 Challenge)[https://letsencrypt.org/docs/challenge-types/#dns-01-challenge]
+
+###### HTTP01 Challenge
+For HTTP01 Challenge you just need to specify ingress field:
 ```
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -50,13 +56,48 @@ spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: <YOUR_EMAIL_ADDRESS>
+    preferredChain: "ISRG Root X1"
     privateKeySecretRef:
+      # Secret resource that will be used to store the account's private key.
       name: letsencrypt-prod-account-key
     solvers:
       - http01:
-          ingress:
-            class: nginx
+          ingress: {}
 ```
+
+###### DNS01 Challenge
+For DNS01 Challenge you need to first create a secret `in kube-system` that should contain the values to alter entries in your DNS provider. Following is an example for configuring AWS's Route53. Check configuration for your provider (here)[https://cert-manager.io/v1.5-docs/configuration/acme/dns01/#supported-dns01-providers]
+
+```
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    # lets encrypt account
+    email: <YOUR_EMAIL_ADDRESS>
+    server: https://acme-v02.api.letsencrypt.org/directory
+    preferredChain: "ISRG Root X1"
+    privateKeySecretRef:
+      # Secret resource that will be used to store the account's private key.
+      name: issuer-account-key
+    solvers:
+    - dns01:
+        route53:
+          accessKeyID: <AWS_ACCESS_KEY_ID>
+          region: eu-north-1            # default region
+          secretAccessKeySecretRef:     # Reference to the secret holding value for AWS_SECRET_ACCESS_KEY in kube-system namespace  
+            name: aws-creds
+            key: aws_secret_access_key
+```
+#### Limitations
+
+1. Wildcard certificates can only be issued by DNS01 Challenges not with HTTP01 Challenges.
+2. You can only issue 50 certificates per Registered Domain. [See Details here](https://letsencrypt.org/docs/rate-limits/)
+3. If you think you need more certificates for your staging/CI environment consider using a [Staging server](https://letsencrypt.org/docs/staging-environment/). The only downside for this strategy is that browser will not trust the CI/staging environment certificate.
+
+  > TIP: Consider using the cluster's default domain i.e. `*.kubeapp.cloud` for CI/staging envionment which are all secured by SAAP by default
 
 ### Option # 2: Bring Your Own Certificates (BYOC)
 
