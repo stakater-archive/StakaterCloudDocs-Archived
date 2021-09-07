@@ -21,6 +21,7 @@ SAAP Cluster Admin (SCA):
 - can install operators in customer owned namespace
 - can manage subscriptions in customer owned namespace
 - can not install privileged and custom operators cluster-wide
+- can view sealedsecrets custom resource in all namespaces
 
 ###  Projects Permissions:
 - can create/update/patch customer owned namespaces
