@@ -103,7 +103,7 @@ module.exports = {
           "/content/sre/repository/06-accessing-repository.md",
           "/content/sre/repository/03-permissions.md",
           "/content/sre/repository/04-routes.md",
-          "/content/sre/repository/05-use-cases.md"
+          "/content/sre/repository/05-FAQ.md"
         ],
       },
       {
