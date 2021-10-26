@@ -8,12 +8,23 @@ An Openshift/Kubernetes Node consist system services that ensure the smooth runn
 
 ### System Reservations
 
-These resources are reserved for every node
+These resources are reserved for every node for OS processes
 
 | Resource   |  Reserved  |
 | -- | -- |
-| CPU | 1 vCPU |
+| CPU | 0.5 vCPU |
 | Memory | 2Gi |
+| Ephemeral Storage | 1Gi |
+
+### Kube Reservations
+
+These resources are reserved for every node for kube processes
+
+| Resource   |  Reserved  |
+| -- | -- |
+| CPU | 0.5 vCPU |
+| Memory | 1Gi |
+| Ephemeral Storage | 1Gi |
 
 ### Eviction Threshold
 
@@ -22,4 +33,5 @@ If the utilization of the resource reaches the threshold value, workload pods wi
 | Resource   |  Threshold  | Explanation |
 | -- | -- | -- |
 | CPU | None |  Workloads will keep running, not evicted |
-| Memory | 1Gi | Workloads will start to get evicted, if only 1Gi of memory left on the node |
+| Memory | 2Gi | Workloads will start to get evicted, if only 2Gi of memory left on the node |
+| Storage | 10% | Workloads will start to get evicted, if only 10% of disk storage is left on the node |
