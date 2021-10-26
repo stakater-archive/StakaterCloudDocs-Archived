@@ -45,10 +45,10 @@ save it in a file named `secret-mysql.yaml`. This file should not be pushed to g
 
 Now install kubeseal and your kubeconfig should be pointing to Openshift cluster.
 
-As sealed secrets controller is running in `openshift-stakater-system` namespace and sealed secrets service name is `sealed-secrets`, so you need to run
+As sealed secrets controller is running in `stakater-sealed-secrets` namespace and sealed secrets service name is `sealed-secrets`, so you need to run
 
 ```sh
-kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-system --format yaml  < SECRET_FILE 
+kubeseal --controller-name=sealed-secrets --controller-namespace=stakater-sealed-secrets --format yaml  < SECRET_FILE 
 ```
 
 where:
@@ -64,7 +64,7 @@ To use secrets in dynamic test environments(for PR environment),you need to seal
 
 
 ```sh
-kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-system --format yaml --scope cluster-wide < secret-mysql.yaml 
+kubeseal --controller-name=sealed-secrets --controller-namespace=stakater-sealed-secrets --format yaml --scope cluster-wide < secret-mysql.yaml 
 ```
 
 Above command will generate sealedsecret resource output . for example 
@@ -107,7 +107,7 @@ you need to add sealedsecret block in helm values present in `deploy/values.yaml
 To generate sealedsecrets for dev environment, you need to run the following command
 
 ```sh
-kubeseal --controller-name=sealed-secrets --controller-namespace=openshift-stakater-system --format yaml  < secret-mysql.yaml 
+kubeseal --controller-name=sealed-secrets --controller-namespace=stakater-sealed-secrets --format yaml  < secret-mysql.yaml 
 ```
 Above command will generate sealedsecret resource output . for example 
 
