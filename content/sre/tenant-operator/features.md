@@ -23,14 +23,6 @@ Tenant limits (Quota) to ensure quality of service and fairness when sharing a c
 
 Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
 
-## Custom Resources
-
-- Tenant
-- Quota
-- Template
-- TemplateInstance
-- TemplateGroupInstance
-
 ## Working flow
 
 In SRO, identity management is realized by RHSSO centrally.
@@ -46,9 +38,13 @@ _3._ Tenant operator reads custom resources and configures authentication & auth
 
 _4._ Once the service providers are configured properly for the tenant, then users can access and use them.
 
-### Openshift Cluster
+## Custom Resources
 
-![](/content/sre/tenant-operator/images/CRs.png)
+- Tenant
+- Quota
+- Template
+- TemplateInstance
+- TemplateGroupInstance
 
 #### Tenant CR
 
@@ -207,6 +203,7 @@ It specifies the matching labels and tenant name.
 To keep track of resources created from Templates, TemplateInstance for each Template is being instantiated inside a Namespace.
 Generally, a TemplateInstance is created from a Template and then, the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
 
+![](/content/sre/tenant-operator/images/CRs.png)
 
 ## Notes
 
