@@ -82,6 +82,12 @@ spec:
   - `Edit`: Are user who will be editors of a tenant. They will have openshift edit-role assigned to their users.
   - `View`: Are user who will be viewers of a tenant. They will have openshift view-role assigned to their users.
 
+  |Role|Description|
+  | -- | -- |
+  | owner | owner role on namespace + CRUDS on CRs in the namespace |
+  | edit | edit role on namespace + CRUDS on CR in the namespace except Role and RoleBinding |
+  | view | view role on namespace + RS on CR in the namespace |
+
 - Tenant controller creates a `clusterresourcequotas.quota.openshift.io` object whose `spec` is same with the quota's specfied in `Tenant CR`.
 
 - Tenant controller creates a `templateinstance` object whose `spec` is same as `template` mentioned in `namespacetemplate.templateInstances.spec.template` specfied in `Tenant CR`, `templateinstance` will only be applied in those `namespaces` which belong to that `tenant` and which have `matching label`.
