@@ -23,21 +23,6 @@ Tenant limits (Quota) to ensure quality of service and fairness when sharing a c
 
 Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
 
-## Working flow
-
-In SRO, identity management is realized by RHSSO centrally.
-To configure the multi-tenancy, the TO interacts with RHSSO and service provider(Openshift cluster and managed applications running on it) perspectively.
-
-**Flow**
-
-_1._ The cluster admin creates/updates configurations(Secret) for Tenant operator. This includes connection information for all service providers and the identity provider.
-
-_2._ The tenant owner can create/update/delete custom resources.
-
-_3._ Tenant operator reads custom resources and configures authentication & authorization in identity provider while organizing resources in service providers.
-
-_4._ Once the service providers are configured properly for the tenant, then users can access and use them.
-
 ## Custom Resources
 
 - Tenant
