@@ -23,18 +23,9 @@ Tenant limits (Quota) to ensure quality of service and fairness when sharing a c
 
 Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
 
-**Multi-tenancy primitives**
-
-- Organizing resources (Openshift, managed applications)
-- Isolate network traffic (Openshift)
-- Set resource limits (Openshift)
-- Grouping users (Openshift, managed applications)
-- RBAC (Openshift, managed applications)
-
 ## Custom Resources
 
 - Tenant
-- Namespace
 - Quota
 - Template
 - TemplateInstance
@@ -42,30 +33,18 @@ Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
 
 ## Working flow
 
-![](/content/sre/tenant-operator/images/TO-arch.png)
-
 In SRO, identity management is realized by RHSSO centrally.
 To configure the multi-tenancy, the TO interacts with RHSSO and service provider(Openshift cluster and managed applications running on it) perspectively.
 
 **Flow**
 
-_1._ The cluster admin creates/updates configurations(as the k8s secret format) for Tenant operator. This includes connection information for all service providers and the identity provider.
+_1._ The cluster admin creates/updates configurations(Secret) for Tenant operator. This includes connection information for all service providers and the identity provider.
 
 _2._ The tenant owner can create/update/delete custom resources.
 
 _3._ Tenant operator reads custom resources and configures authentication & authorization in identity provider while organizing resources in service providers.
 
-_4._ Once the service providers are configured properly for the team, then users can access and use them.
-
-## Working principle per service provider
-
-Tenant operator performs following tasks for each service provider.
-
-|Application name|Actions against Service provider per Team|Actions against Identity Provider per Team|
-| -- | -- | -- |
-|OCP| - Create projects for the team<br>- Creates `group.user.openshift.io` including users | N/A <br>(There is no team-specific config/resource for OCP on IdP side ) |
-|Nexus| N/A <br>(There is no team-specific config/resource on nexus side ) | Assign proper clientRoles of nexus client to the users |
-|Vault| - Create groups and groupaliases<br>- Create policies against team specific path(/TEAM_NAME/*) | - Create a clientROle named TEAM_NAME<br>- Assign this clientRole to all users in the team |
+_4._ Once the service providers are configured properly for the tenant, then users can access and use them.
 
 ### Openshift Cluster
 
@@ -99,9 +78,9 @@ spec:
 ```
 
 - Tenant CR has 3 kinds of users:
-  - `Owner`: Are users who will be owners of that tenant. They have openshift admin-role assigned to there users and they can also create namespaces.
-  - `Edit`: Are user who will be editors of that tenant. They will have openshift edit-role assigned to there users.
-  - `View`: Are user who will be viewers of that tenant. They will have openshift view-role assigned to there users.
+  - `Owner`: Are users who will be owners of a tenant. They will have openshift admin-role assigned to their users and they can also create namespaces.
+  - `Edit`: Are user who will be editors of a tenant. They will have openshift edit-role assigned to their users.
+  - `View`: Are user who will be viewers of a tenant. They will have openshift view-role assigned to their users.
 
 - Tenant controller creates a `clusterresourcequotas.quota.openshift.io` object whose `spec` is same with the quota's specfied in `Tenant CR`.
 
@@ -222,16 +201,7 @@ It specifies the matching labels and tenant name.
 To keep track of resources created from Templates, TemplateInstance for each Template is being instantiated inside a Namespace.
 Generally, a TemplateInstance is created from a Template and then, the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
 
-### Environment Variables
-
-- `ENABLE_WEBHOOKS`: Contains value which tells the operator to either enable or disable webhooks
-
-- `OPERATOR_NAMESPACE`: Contains the namespace in which the operator is deployed
-
-- `DENY_USERS_LIST`: Contains comma seperated usernames(e.g. DENY_USERS_LIST=haseeb@stakater.com,hanzala@stakater.com), these users will be prevented from creating/updating/deleting stakater-managed namespaces e.g. stakater-tenant-operator
-
-- `DENY_GROUPS_LIST`: Contains comma seperated group names(e.g. DENY_GROUPS_LIST=saap-cluster-admins,saap-cluster-projects), these group users will be prevented from creating/updating/deleting stakater-managed namespaces e.g. stakater-tenant-operator
 
 ## Notes
 
-- `Tenant-Owner`: Can only create *Namespaces* with required *tenant label* and can delete *Projects*. To edit *Namespace* use `GitOps/ArgoCD`
+- `tenant.spec.users.owner`: Can only create *Namespaces* with required *tenant label* and can delete *Projects*. To edit *Namespace* use `GitOps/ArgoCD`
