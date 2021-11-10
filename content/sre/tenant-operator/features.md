@@ -11,9 +11,7 @@ It enables cluster administrators to host multiple tenants in a single Stakater 
 
 Openshift and all managed applications provide enough primitives to accommodate multiple tenants but it requires professional skills and deep knowledge on them. It gives complexity to the users.
 
-Tenant operator provides wrappers of them so users can use it easily at the higher abstract level.
-
-Operator supports initializing a new tenant (group, etc.) under a GitOps management pattern.
+Tenant operator provides wrappers on them so users can use it easily at the higher abstract level.
 
 Manage changes via PRs just like a typical workflow, so tenants can request changes; add new user or remove user.
 
