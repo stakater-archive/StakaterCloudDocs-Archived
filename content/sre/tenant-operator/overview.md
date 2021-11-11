@@ -7,6 +7,8 @@ It enables cluster administrators to host multiple tenants in a single Stakater 
 - enable to share managed applications to multiple tenants
 - enable to share Openshift cluster to multiple tenants
 
+![image](./images/tenant-operator-basic-overview.png)
+
 **Why?**
 
 Openshift and all managed applications provide enough primitives to accommodate multiple tenants but it requires professional skills and deep knowledge on them. It gives complexity to the users.
@@ -186,6 +188,32 @@ metadata:
 ```
 
 - Namespace should have label `stakater.com/tenant` which contains the name of tenant to which it belongs to. The labels and annotationos specified in the operator config, `ocp.labels.project` and `ocp.annotations.project` are inserted in the namespace by the controller.
+
+## Roles
+
+### SAAP Cluster Admin
+
+![image](./images/tenant-operator-sca-overview.png)
+
+[SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/authentication-authorization/saap-authorization-roles.html#_1-saap-cluster-admin-sca)
+
+### Owner
+
+![image](./images/tenant-operator-owner-overview.png)
+
+Owner role will have admin access on there namespaces + they can also create new namespaces
+
+### Edit
+
+![image](./images/tenant-operator-edit-overview.png)
+
+Edit role will have edit access on there namespaces + except for Role and RoleBinding
+
+### View
+
+![image](./images/tenant-operator-view-overview.png)
+
+view role will have view access on there namespace
 
 ## Notes
 
