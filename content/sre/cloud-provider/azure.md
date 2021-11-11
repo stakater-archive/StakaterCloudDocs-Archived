@@ -3,7 +3,7 @@
 An azure subscription is needed to create and manage cluster on azure. The following criteria must be met
 
 - An azure subscription.
-- A Stakater user (ask Stakater team for the email to use for this user) with priviliges to create an application in Azure AD.
+- A Stakater user (ask Stakater team for the email to use for this user) with priviliges to create an application in Azure AD (Recommended). [Create a Service Principal](https://docs.openshift.com/container-platform/4.9/installing/installing_azure/installing-azure-account.html#installation-azure-service-principal_installing-azure-account) to be used by SAAP installer if you do not want to give permissions to Azure AD.
 - Resource limits must be applied on the subscription and the following resources must be allowed to be created.
 
   |Type        | Limit |

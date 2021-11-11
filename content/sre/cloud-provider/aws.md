@@ -3,7 +3,7 @@
 An AWS account is needed to create and manage cluster on aws. The following criteria must be met
 
 - An account on AWS.
-- A Stakater user (ask Stakater team for the email to use for this user) with admin priviliges.
+- A Stakater user (ask Stakater team for the email to use for this user) with admin privileges on a separate project (Recommended). See the [required permissions](https://docs.openshift.com/container-platform/4.9/installing/installing_aws/installing-aws-account.html#installation-aws-permissions_installing-aws-account) for AWS if you do not want to grant admin privilege.
 - Resource limits must be applied on the account and the following resources must be allowed to be created.
 
   |Type        | Limit |
