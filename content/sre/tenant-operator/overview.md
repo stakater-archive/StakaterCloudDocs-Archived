@@ -186,7 +186,7 @@ It specifies the matching labels and tenant name.
 To keep track of resources created from Templates, TemplateInstance for each Template is being instantiated inside a Namespace.
 Generally, a TemplateInstance is created from a Template and then, the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
 
-![](/content/sre/tenant-operator/images/CRs.png)
+![image](./images/CRs.png)
 
 ## Notes
 
