@@ -9,7 +9,9 @@ To configure log alerting do following:
 
 ## 1. Configure the incoming webhook in slack
 
-> Note : Always use Slack bot account to manage incoming webhooks.An integration/app might fail if the user that added it leaves.
+::: tip
+Always use Slack bot account to manage incoming webhooks. An integration/app might fail if the user who added it leaves.
+:::
 
 - While in your Slack workspace, left-click the name of your workspace, and pick `Administration` > `Manage Apps` from the dropdown Menu.
 - A new browser window should appear in which you can customize your workspace. From here, navigate to browse and then search `Incoming WebHooks` in slack apps.
@@ -30,7 +32,9 @@ The configuration to parse/match/send logs can be specified in the [Application 
 
 We recommend to log as JSON but for some reason if you can't then follow the next step as well.
 
-> Note : If you use a customized format for logs in your application, you can describe your own regex to parse logs. See example in our [log parsing](https://docs.cloud.stakater.com/content/sre/logging/logging.html) section.
+::: tip
+If you use a customized format for logs in your application, you can describe your own regex to parse logs. See example in our [log parsing](https://docs.cloud.stakater.com/content/sre/logging/logging.html) section.
+:::
 
 ### Examples
 

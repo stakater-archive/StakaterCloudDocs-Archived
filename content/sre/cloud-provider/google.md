@@ -3,7 +3,7 @@
 A GCP account is needed to create and manage cluster on GCP. The following criteria must be met
 
 - An account on GCP.
-- A Stakater user (ask Stakater team for the email to use for this user) with admin priviliges on a separate project.
+- A Stakater user (ask Stakater team for the email to use for this user) with admin privileges on a separate project (Recommended). See the [required permissions](https://docs.openshift.com/container-platform/4.9/installing/installing_gcp/installing-gcp-account.html#installation-gcp-permissions_installing-gcp-account) for GCP if you do not want to grant admin privilege.
 - Resource limits must be applied on the account and the following resources must be allowed to be created.
 
   |Type        | Limit |
