@@ -23,13 +23,13 @@ Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
 
 ## Custom Resources
 
-- Tenant
-- Quota
-- Template
-- TemplateInstance
-- TemplateGroupInstance
+1. Tenant
+2. Quota
+3. Template
+4. TemplateInstance
+5. TemplateGroupInstance
 
-#### Tenant CR
+### 1. Tenant
 
 It specifies users list, quota name and  for the tenant.
 
@@ -71,20 +71,7 @@ spec:
 
 - Tenant controller creates a `templateinstance` object whose `spec` is same as `template` mentioned in `namespacetemplate.templateInstances.spec.template` specfied in `Tenant CR`, `templateinstance` will only be applied in those `namespaces` which belong to that `tenant` and which have `matching label`.
 
-#### Namespace
-
-``` yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    stakater.com/tenant: development
-  name: build
-```
-
-- Namespace should have label `stakater.com/tenant` which contains the name of tenant to which it belongs to. The labels and annotationos specified in the operator config, `ocp.labels.project` and `ocp.annotations.project` are inserted in the namespace by the controller.
-
-#### Quota CR
+### 2. Quota CR
 
 ``` yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -105,7 +92,7 @@ spec:
 
 It indicates the resource constraints which is referred to create `ClusterResourceQuota` that limit aggregate resource consumption per `Tenant`.
 
-#### Template
+### 3. Template
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -148,21 +135,27 @@ Templates are used to initialize Namespaces and share common resources across na
 
 Also you can define custom variables in `Template` and `TemplateInstace`. The parameters defined in `TemplateInstance` are overwritten the values defined in `Template`.
 
-(1) Manifest Templates
-
-The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.
-
-(2) Helm Chart Templates
-
-Instead of manifests, a Template can specify a Helm chart that will be installed (using helm template) when the Template is being instantiated.
-
-(3) Mandatory vs. Optional Templates
-
-Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.namespacetemplate.templateInstances` array within the Tenant configuration. All Templates listed in `spec.namespacetemplate.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.
-
+<details>
+  <summary>Manifest Templates</summary>
+  <p>The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.</p>
+</details>
+<details>
+  <summary> Helm Chart Templates</summary>
+  <p>Instead of manifests, a Template can specify a Helm chart that will be installed (using helm template) when the Template is being instantiated.</p>
+</details>
+<details>
+  <summary>Mandatory vs. Optional Templates</summary>
+  <p>Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.namespacetemplate.templateInstances` array within the Tenant configuration. All Templates listed in `spec.namespacetemplate.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.</p>
+</details>
+  
 By adding `LabelSelector` in `spec.namespacetemplate.templateInstances.Selector` field, template can be instantiated within the matching `Namespaces` only.
 
-#### TemplateGroupInstance
+### 4. TemplateInstance
+
+To keep track of resources created from Templates, TemplateInstance for each Template is being instantiated inside a Namespace.
+Generally, a TemplateInstance is created from a Template and then, the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
+
+### 5. TemplateGroupInstance
 
 ``` yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -181,12 +174,18 @@ spec:
 TemplateGroupInstance distributes template across multiple namespaces which are selected by labelSelector.
 It specifies the matching labels and tenant name.
 
-#### TemplateInstance
+### Namespace
 
-To keep track of resources created from Templates, TemplateInstance for each Template is being instantiated inside a Namespace.
-Generally, a TemplateInstance is created from a Template and then, the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
+``` yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    stakater.com/tenant: development
+  name: build
+```
 
-![image](./images/CRs.png)
+- Namespace should have label `stakater.com/tenant` which contains the name of tenant to which it belongs to. The labels and annotationos specified in the operator config, `ocp.labels.project` and `ocp.annotations.project` are inserted in the namespace by the controller.
 
 ## Notes
 
