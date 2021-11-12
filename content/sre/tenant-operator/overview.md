@@ -2,12 +2,11 @@
 
 ## Overview
 
-It enables cluster administrators to host multiple tenants in a single Stakater Agility Platform. i.e.
+The idea of Tenant Operator is to use namespaces as independent sandboxes, where tenant applications can run independently from each other. To minimize cluster admin efforts, cluster admins shall configure Tenant Operator's custom resources, which then become a self-service system for tenants. Tenant Operator enables cluster administrators to host multiple tenants in a single Stakater Agility Platform, i.e.
 
-- enable to share managed applications to multiple tenants
-- enable to share Openshift cluster to multiple tenants
-
-![image](./images/tenant-operator-basic-overview.png)
+* Share an **OpenShift cluster** with multiple tenants
+* Share **managed applications** with multiple tenants
+* Configure and manage tenants and their sandboxes
 
 **Why?**
 
@@ -23,6 +22,8 @@ Tenant limits (Quota) to ensure quality of service and fairness when sharing a c
 
 Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
 
+![image](./images/tenant-operator-basic-overview.png)
+
 ## Custom Resources
 
 1. Tenant
@@ -35,7 +36,7 @@ Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
 
 It specifies users list, quota name and  for the tenant.
 
-``` yaml
+```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Tenant
 metadata:
@@ -58,10 +59,10 @@ spec:
           app: redis
 ```
 
-- Tenant CR has 3 kinds of users:
-  - `Owner`: Are users who will be owners of a tenant. They will have openshift admin-role assigned to their users and they can also create namespaces.
-  - `Edit`: Are user who will be editors of a tenant. They will have openshift edit-role assigned to their users.
-  - `View`: Are user who will be viewers of a tenant. They will have openshift view-role assigned to their users.
+* Tenant CR has 3 kinds of users:
+  + `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users and they can also create namespaces.
+  + `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
+  + `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
 
   |Role|Description|
   | -- | -- |
@@ -69,13 +70,13 @@ spec:
   | edit | edit role on namespace + CRUDS on CR in the namespace except Role and RoleBinding |
   | view | view role on namespace + RS on CR in the namespace |
 
-- Tenant controller creates a `clusterresourcequotas.quota.openshift.io` object whose `spec` is same with the quota's specfied in `Tenant CR`.
+* Tenant controller creates a `clusterresourcequotas.quota.openshift.io` object whose `spec` is same with the quota's specfied in `Tenant CR`.
 
-- Tenant controller creates a `templateinstance` object whose `spec` is same as `template` mentioned in `namespacetemplate.templateInstances.spec.template` specfied in `Tenant CR`, `templateinstance` will only be applied in those `namespaces` which belong to that `tenant` and which have `matching label`.
+* Tenant controller creates a `templateinstance` object whose `spec` is same as `template` mentioned in `namespacetemplate.templateInstances.spec.template` specfied in `Tenant CR`,  `templateinstance` will only be applied in those `namespaces` which belong to that `tenant` and which have `matching label`.
 
 ### 2. Quota CR
 
-``` yaml
+```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Quota
 metadata:
@@ -92,7 +93,7 @@ spec:
     services.loadbalancers: "2"
 ```
 
-It indicates the resource constraints which is referred to create `ClusterResourceQuota` that limit aggregate resource consumption per `Tenant`.
+It indicates the resource constraints which is referred to create `ClusterResourceQuota` that limit aggregate resource consumption per `Tenant` .
 
 ### 3. Template
 
@@ -131,11 +132,11 @@ resources:
 
 Templates are used to initialize Namespaces and share common resources across namespaces (e.g. secrets).
 
-- They either contains one or more Kubernetes manifests or alternatively a Helm chart.
-- They are being tracked by TemplateInstances in each Namespace they are applied to.
-- They can contain pre-defined parameters such as ${namespace} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.
+* They either contains one or more Kubernetes manifests or alternatively a Helm chart.
+* They are being tracked by TemplateInstances in each Namespace they are applied to.
+* They can contain pre-defined parameters such as ${namespace} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.
 
-Also you can define custom variables in `Template` and `TemplateInstace`. The parameters defined in `TemplateInstance` are overwritten the values defined in `Template`.
+Also you can define custom variables in `Template` and `TemplateInstace` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
 
 <details>
   <summary>Manifest Templates</summary>
@@ -154,12 +155,24 @@ By adding `LabelSelector` in `spec.namespacetemplate.templateInstances.Selector`
 
 ### 4. TemplateInstance
 
+```yaml
+
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: TemplateInstance
+metadata:
+  name: redis
+  namespace: build
+spec:
+  template: redis
+
+```
+
 To keep track of resources created from Templates, TemplateInstance for each Template is being instantiated inside a Namespace.
 Generally, a TemplateInstance is created from a Template and then, the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
 
 ### 5. TemplateGroupInstance
 
-``` yaml
+```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateGroupInstance
 metadata:
@@ -178,7 +191,7 @@ It specifies the matching labels and tenant name.
 
 ### Namespace
 
-``` yaml
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -187,7 +200,7 @@ metadata:
   name: build
 ```
 
-- Namespace should have label `stakater.com/tenant` which contains the name of tenant to which it belongs to. The labels and annotationos specified in the operator config, `ocp.labels.project` and `ocp.annotations.project` are inserted in the namespace by the controller.
+* Namespace should have label `stakater.com/tenant` which contains the name of tenant to which it belongs to. The labels and annotationos specified in the operator config,  `ocp.labels.project` and `ocp.annotations.project` are inserted in the namespace by the controller.
 
 ## Roles
 
@@ -217,4 +230,4 @@ view role will have view access on there namespace
 
 ## Notes
 
-- `tenant.spec.users.owner`: Can only create *Namespaces* with required *tenant label* and can delete *Projects*. To edit *Namespace* use `GitOps/ArgoCD`
+* `tenant.spec.users.owner`: Can only create *Namespaces* with required *tenant label* and can delete *Projects*. To edit *Namespace* use `GitOps/ArgoCD`
