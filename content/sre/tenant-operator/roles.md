@@ -12,7 +12,7 @@ SAAP Cluster Admin are admins of a cluster. They are responsible for the configu
 ![image](./images/tenant-operator-owner-overview.png)
 fig 2. Shows how tenant owners manage there tenant using Tenant Operator
 
-Owner role will have admin access on there namespaces and they can also create new namespaces.
+Owner role will have admin access on there `Projects` and they can also create new `namespaces`.
 
 ### Access Permissions
 
@@ -62,7 +62,7 @@ Owner role will have admin access on there namespaces and they can also create n
 ![image](./images/tenant-operator-edit-overview.png)
 fig 3. Shows editors role in a tenant using Tenant Operator
 
-Editor role will have edit access on there namespaces, but they wont have access on Roles or RoleBindings.
+Editor role will have edit access on there `Projects`, but they wont have access on Roles or RoleBindings.
 
 ### Access Permissions
 
