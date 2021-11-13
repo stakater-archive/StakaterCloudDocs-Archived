@@ -5,7 +5,7 @@
 ![image](./images/tenant-operator-sca-overview.png)
 fig 1. Shows how SAAP Cluster Admin manages tenants using Tenant Operator
 
-SAAP Cluster Admin are admins of a cluster. They are responsible for the configuration and maintainance of tenants and quotas. More more details [SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/authentication-authorization/saap-authorization-roles.html#_1-saap-cluster-admin-sca)
+SAAP Cluster Admin are admins of a cluster. They are responsible for the configuration and maintainance of tenants and quotas. More details [SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/authentication-authorization/saap-authorization-roles.html#_1-saap-cluster-admin-sca)
 
 ## Owner
 
@@ -162,7 +162,7 @@ Editor role will have edit access on there `Projects`, but they wont have access
   * patch
   * update
 
-*Edit will also inhert `View` role.
+*Editors will also inhert `View` role.
 ## View
 
 ![image](./images/tenant-operator-view-overview.png)
