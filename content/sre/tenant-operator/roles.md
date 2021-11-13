@@ -16,7 +16,7 @@ Owner role will have admin access on there namespaces and they can also create n
 
 ### Access Permissions
 
-* Role and Cluster RoleBindings access in `Project` :
+* Role and RoleBinding access in `Project` :
   * delete
   * create
   * list
@@ -26,12 +26,12 @@ Owner role will have admin access on there namespaces and they can also create n
 
 ### Quotas Permissions
 
-* Limitranges and resourcequotas access in `Project`
+* LimitRange and ResourceQuota access in `Project`
   * get
   * list
   * watch
 
-* daemonsets access in `Project`
+* Daemonset access in `Project`
   * create
   * delete
   * get
@@ -42,18 +42,18 @@ Owner role will have admin access on there namespaces and they can also create n
 
 ### Resources Permissions
 
-* CRUD access on template, template instance and template group instance of Tenant Operator custom resources
-* CRUD access on imagestreamtags in `Project`
-* Get access on customresourcedefinitions in `Project`
-* Get, list, watch access on builds,buildconfigs in `Project`
+* CRUD access on Template, TemplateInstance and TemplateGroupInstance of Tenant Operator custom resources
+* CRUD access on ImageStreamTags in `Project`
+* Get access on CustomResourceDefinitions in `Project`
+* Get, list, watch access on Builds, BuildConfigs in `Project`
 * CRUD access on following resources in `Project`:
-  * prometheuses
-  * prometheusrules
-  * servicemonitors
-  * podmonitors
-  * thanosrulers
-* Permission to create namespaces.
-* Restricted to perform actions on cluster resource quotas and limits.
+  * Prometheuses
+  * Prometheusrules
+  * ServiceMonitors
+  * PodMonitors
+  * ThanosRulers
+* Permission to create Namespaces.
+* Restricted to perform actions on cluster resource Quotas and Limits.
 
 *Owners will also inhert roles from `Edit` and `View`.
 
