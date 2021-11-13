@@ -168,4 +168,61 @@ Editor role will have edit access on there `Projects`, but they wont have access
 ![image](./images/tenant-operator-view-overview.png)
 fig 4. Shows viewers role in a tenant using Tenant Operator
 
-view role will have view access on there namespace
+Viewer role will only have view access on there `Project`.
+
+### Access Permissions 
+
+* ServiceAccount access in `Project`
+  * get
+  * list
+  * watch
+
+### Quotas Permissions
+
+* AppliedClusterResourceQuotas access in `Project`
+  * get
+  * list
+  * watch
+
+### Builds ,Pods , PVC Permissions
+
+* Pod, PodDisruptionBudget and PVC access in `Project`
+  * get
+  * list
+  * watch
+* Build, BuildConfig, BuildLog, DeploymentConfig, ConfigMap, ImageStream, ImageStreamImage and ImageStreamMapping access in `Project`
+  * get
+  * list
+  * watch
+
+### Resources Permissions
+
+* Get, list, view access on Template, TemplateInstance and TemplateGroupInstance of Tenant Operator custom resources
+* Job, CronJob, Task, Trigger and Pipeline access in `Project`
+  * get
+  * list
+  * watch
+* Get access on projects
+* Routes, NetworkPolicies and Daemonset access in `Project`
+  * get
+  * list
+  * watch
+* Template, ReplicaSet, StatefulSet and Daemonset in `Project`
+  * get
+  * list
+  * watch
+* Get,list,watch access on all projects related to
+  * Elasticsearch
+  * Logging
+  * Kibana
+  * Istio
+  * Jaeger
+  * Kiali
+  * Tekton.dev
+* Get, list, watch access on ImageStream, ImageStreamImage and ImageStreamMapping in `Project`
+* Get access on CustomResourceDefinition in `Project`
+* View permission on Jenkins.Build.Openshift.io
+* Subscription, PackageManifest and InstallPlan access in `Project`
+  * get
+  * list
+  * watch
