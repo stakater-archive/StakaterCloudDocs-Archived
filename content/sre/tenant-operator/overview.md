@@ -1,4 +1,4 @@
-# Tenant Operator
+# Tenant-Operator
 
 ## Overview
 
@@ -10,17 +10,11 @@ The idea of Tenant Operator is to use namespaces as independent sandboxes, where
 
 **Why?**
 
-Openshift and all managed applications provide enough primitives to accommodate multiple tenants but it requires professional skills and deep knowledge on them. It gives complexity to the users.
+Kubernetes is designed to support a single tenant platform, hence making it difficult for cluster admins to host multi-tenancy in a single Kubernetes cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster-internal resources among different tenants. Openshift and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of OpenShift and Kubernetes.
 
-Tenant operator provides wrappers on them so users can use it easily at the higher abstract level.
+This is where Tenant Operator comes in and provides easy to manage/configure multi-tenancy. Tenant operator provides wrappers around OpenShift and Kuberetes resources to provide a higher abstract level to the users. With Tenant Operator Network and Security Policies, Resource Quotas, Limit Ranges, RBAC can be defined for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on users role, they are free to operate within their tenants in complete autonomy.
 
-Manage changes via PRs just like a typical workflow, so tenants can request changes; add new user or remove user.
-
-Self-Service provisioning for tenants.
-
-Tenant limits (Quota) to ensure quality of service and fairness when sharing a cluster.
-
-Tenants & Tenant Users to separate tenants in a shared Kubernetes cluster.
+Tenant Operator supports initializing a new tenant under a GitOps management pattern. Changes can be managed via PRs just like a typical GitOps workflow, so tenants can request changes; add new user or remove user.
 
 ![image](./images/tenant-operator-basic-overview.png)
 
@@ -202,32 +196,6 @@ metadata:
 
 * Namespace should have label `stakater.com/tenant` which contains the name of tenant to which it belongs to. The labels and annotationos specified in the operator config,  `ocp.labels.project` and `ocp.annotations.project` are inserted in the namespace by the controller.
 
-## Roles
-
-### SAAP Cluster Admin
-
-![image](./images/tenant-operator-sca-overview.png)
-
-[SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/authentication-authorization/saap-authorization-roles.html#_1-saap-cluster-admin-sca)
-
-### Owner
-
-![image](./images/tenant-operator-owner-overview.png)
-
-Owner role will have admin access on there namespaces + they can also create new namespaces
-
-### Edit
-
-![image](./images/tenant-operator-edit-overview.png)
-
-Edit role will have edit access on there namespaces + except for Role and RoleBinding
-
-### View
-
-![image](./images/tenant-operator-view-overview.png)
-
-view role will have view access on there namespace
-
-## Notes
+## Note
 
 * `tenant.spec.users.owner`: Can only create *Namespaces* with required *tenant label* and can delete *Projects*. To edit *Namespace* use `GitOps/ArgoCD`
