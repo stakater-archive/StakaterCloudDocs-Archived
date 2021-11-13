@@ -12,7 +12,50 @@ SAAP Cluster Admin are admins of a cluster. They are responsible for the configu
 ![image](./images/tenant-operator-owner-overview.png)
 fig 2. Shows how tenant owners manage there tenant using Tenant Operator
 
-Owner role will have admin access on there namespaces + they can also create new namespaces
+Owner role will have admin access on there namespaces and they can also create new namespaces.
+
+### Access Permissions
+
+* Role and Cluster RoleBindings access in `Project` :
+  * delete
+  * create
+  * list
+  * get
+  * update
+  * patch
+
+### Quotas Permissions
+
+* Limitranges and resourcequotas access in `Project`
+  * get
+  * list
+  * watch
+
+* daemonsets access in `Project`
+  * create
+  * delete
+  * get
+  * list
+  * patch
+  * update
+  * watch
+
+### Resources Permissions
+
+* CRUD access on template, template instance and template group instance of Tenant Operator custom resources
+* CRUD access on imagestreamtags in `Project`
+* Get access on customresourcedefinitions in `Project`
+* Get, list, watch access on builds,buildconfigs in `Project`
+* CRUD access on following resources in `Project`:
+  * prometheuses
+  * prometheusrules
+  * servicemonitors
+  * podmonitors
+  * thanosrulers
+* Permission to create namespaces.
+* Restricted to perform actions on cluster resource quotas and limits.
+
+*Owners will also inhert roles from `Edit` and `View`.
 
 ## Edit
 
