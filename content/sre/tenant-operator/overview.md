@@ -2,7 +2,7 @@
 
 ## Overview
 
-The idea of Tenant Operator is to use namespaces as independent sandboxes, where tenant applications can run independently from each other. To minimize cluster admin efforts, cluster admins shall configure Tenant Operator's custom resources, which then become a self-service system for tenants. Tenant Operator enables cluster administrators to host multiple tenants in a single Stakater Agility Platform, i.e.
+The idea of Tenant Operator is to use namespaces as independent sandboxes, where tenant applications can run independently from each other. To minimize cluster admin efforts, cluster admins shall configure Tenant Operator's custom resources, which then become a self-service system for tenants. Tenant Operator enables cluster admins to host multiple tenants in a single Stakater Agility Platform, i.e.
 
 * Share an **OpenShift cluster** with multiple tenants
 * Share **managed applications** with multiple tenants
@@ -17,6 +17,7 @@ This is where Tenant Operator comes in and provides easy to manage/configure mul
 Tenant Operator supports initializing a new tenant under a GitOps management pattern. Changes can be managed via PRs just like a typical GitOps workflow, so tenants can request changes; add new user or remove user.
 
 ![image](./images/tenant-operator-basic-overview.png)
+fig 1. Overview of Tenant Operator architecture
 
 ## Custom Resources
 
@@ -27,8 +28,6 @@ Tenant Operator supports initializing a new tenant under a GitOps management pat
 5. TemplateGroupInstance
 
 ### 1. Tenant
-
-It specifies users list, quota name and  for the tenant.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -53,20 +52,16 @@ spec:
           app: redis
 ```
 
-* Tenant CR has 3 kinds of users:
+Defines the `users`, `quota` and `namespacetemplates` of a tenant.
+
+* Tenant has 3 kinds of `users`:
   + `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users and they can also create namespaces.
   + `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
   + `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
 
-  |Role|Description|
-  | -- | -- |
-  | owner | owner role on namespace + CRUDS on CRs in the namespace |
-  | edit | edit role on namespace + CRUDS on CR in the namespace except Role and RoleBinding |
-  | view | view role on namespace + RS on CR in the namespace |
+* Tenant will have a `Quota` to limit resource consumption.
 
-* Tenant controller creates a `clusterresourcequotas.quota.openshift.io` object whose `spec` is same with the quota's specfied in `Tenant CR`.
-
-* Tenant controller creates a `templateinstance` object whose `spec` is same as `template` mentioned in `namespacetemplate.templateInstances.spec.template` specfied in `Tenant CR`,  `templateinstance` will only be applied in those `namespaces` which belong to that `tenant` and which have `matching label`.
+* Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
 
 ### 2. Quota CR
 
@@ -87,7 +82,7 @@ spec:
     services.loadbalancers: "2"
 ```
 
-It indicates the resource constraints which is referred to create `ClusterResourceQuota` that limit aggregate resource consumption per `Tenant` .
+When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota`, which provides administrators to limit resource consumption per `Tenant`. For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
 
 ### 3. Template
 
@@ -130,7 +125,7 @@ Templates are used to initialize Namespaces and share common resources across na
 * They are being tracked by TemplateInstances in each Namespace they are applied to.
 * They can contain pre-defined parameters such as ${namespace} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.
 
-Also you can define custom variables in `Template` and `TemplateInstace` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
+Also you can define custom variables in `Template` and `TemplateInstance` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
 
 <details>
   <summary>Manifest Templates</summary>
@@ -144,8 +139,6 @@ Also you can define custom variables in `Template` and `TemplateInstace` . The p
   <summary>Mandatory vs. Optional Templates</summary>
   <p>Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.namespacetemplate.templateInstances` array within the Tenant configuration. All Templates listed in `spec.namespacetemplate.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.</p>
 </details>
-  
-By adding `LabelSelector` in `spec.namespacetemplate.templateInstances.Selector` field, template can be instantiated within the matching `Namespaces` only.
 
 ### 4. TemplateInstance
 
@@ -158,11 +151,12 @@ metadata:
   namespace: build
 spec:
   template: redis
+  sync: false
 
 ```
 
-To keep track of resources created from Templates, TemplateInstance for each Template is being instantiated inside a Namespace.
-Generally, a TemplateInstance is created from a Template and then, the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
+TemplateInstance are used to keep track of resources created from Templates, which are being instantiated inside a Namespace.
+Generally, a TemplateInstance is created from a Template and then the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
 
 ### 5. TemplateGroupInstance
 
