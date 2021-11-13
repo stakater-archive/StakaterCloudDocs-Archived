@@ -62,8 +62,107 @@ Owner role will have admin access on there namespaces and they can also create n
 ![image](./images/tenant-operator-edit-overview.png)
 fig 3. Shows editors role in a tenant using Tenant Operator
 
-Edit role will have edit access on there namespaces + except for Role and RoleBinding
+Editor role will have edit access on there namespaces, but they wont have access on Roles or RoleBindings.
 
+### Access Permissions
+
+* ServiceAccount access in `Project`
+  * create
+  * delete
+  * deletecollection
+  * get
+  * list
+  * patch
+  * update
+  * watch
+  * impersonate
+
+### Quotas Permissions
+
+* AppliedClusterResourceQuotas and ResourceQuotaUsages access in `Project`
+  * get
+  * list
+  * watch
+
+### Builds ,Pods , PVC Permissions
+
+* Pod, PodDisruptionBudgets and PVC access in `Project`
+  * get
+  * list
+  * watch
+  * create
+  * delete
+  * deletecollection
+  * patch
+  * update
+* Build, BuildConfig, Buildlog, DeploymentConfig, Deployment, ConfigMap, ImageStream , ImageStreamImage and ImageStreamMapping access in `Project`
+  * get
+  * list
+  * watch
+  * create
+  * delete
+  * deletecollection
+  * patch
+  * update
+
+### Resources Permissions
+
+* CRUD access on Template, TemplateInstance and TemplateGroupInstance of Tenant Operator custom resources
+* Job, CronJob, Task, Trigger and Pipeline access in `Project`
+  * get
+  * list
+  * watch
+  * create
+  * delete
+  * deletecollection
+  * patch
+  * update
+* Get access on projects
+* Route and NetworkPolicies access in `Project`
+  * get
+  * list
+  * watch
+  * create
+  * delete
+  * deletecollection
+  * patch
+  * update
+* Template, ReplicaSet, StatefulSet and DaemonSet access in `Project`
+  * get
+  * list
+  * watch
+  * create
+  * delete
+  * deletecollection
+  * patch
+  * update
+* CRUD access on all Projects related to
+  * Elasticsearch
+  * Logging
+  * Kibana
+  * Istio
+  * Jaeger
+  * Kiali
+  * Tekton.dev
+* Get access on customresourcedefinitions in `Project`
+* Edit and view permission on jenkins.build.openshift.io
+* InstallPlan access in `Project`
+  * get
+  * list
+  * watch
+  * delete
+
+* Subscription and PackageManifest access in `Project`
+  * get
+  * list
+  * watch
+  * create
+  * delete
+  * deletecollection
+  * patch
+  * update
+
+*Edit will also inhert `View` role.
 ## View
 
 ![image](./images/tenant-operator-view-overview.png)
