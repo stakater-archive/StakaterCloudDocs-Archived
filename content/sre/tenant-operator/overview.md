@@ -143,7 +143,6 @@ Also you can define custom variables in `Template` and `TemplateInstance` . The 
 ### 4. TemplateInstance
 
 ```yaml
-
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateInstance
 metadata:
@@ -152,7 +151,6 @@ metadata:
 spec:
   template: redis
   sync: false
-
 ```
 
 TemplateInstance are used to keep track of resources created from Templates, which are being instantiated inside a Namespace.
@@ -174,7 +172,7 @@ spec:
   sync: true
 ```
 
-TemplateGroupInstance distributes template across multiple namespaces which are selected by labelSelector.
+TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.
 It specifies the matching labels and tenant name.
 
 ### Namespace
