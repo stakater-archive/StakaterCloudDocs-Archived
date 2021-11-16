@@ -186,7 +186,7 @@ module.exports = {
         title: "Tenant-Operator",
         children: [
           "/content/sre/tenant-operator/overview.md",
-          "/content/sre/tenant-operator/roles.md"
+          "/content/sre/tenant-operator/user_roles.md"
         ],
       },
       {

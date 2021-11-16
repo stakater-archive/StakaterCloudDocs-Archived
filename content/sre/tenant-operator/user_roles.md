@@ -1,20 +1,27 @@
-# Roles
+# User Roles
 
-## SAAP Cluster Admin
+## Admin Roles
+
+### SAAP Cluster Admin
 
 ![image](./images/tenant-operator-sca-overview.png)
+
 fig 1. Shows how SAAP Cluster Admin manages tenants using Tenant Operator
 
-SAAP Cluster Admin are admins of a cluster. They are responsible for the configuration and maintainance of tenants and quotas. More details [SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/authentication-authorization/saap-authorization-roles.html#_1-saap-cluster-admin-sca)
+SAAP Cluster Admin is a cluster admin with some restrictions. It has privilege to see all resources for all Tenants with some additional privileges. More details [SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/authentication-authorization/saap-authorization-roles.html#_1-saap-cluster-admin-sca)
 
-## Owner
+## Tenant Roles
+
+### Owner
 
 ![image](./images/tenant-operator-owner-overview.png)
 fig 2. Shows how tenant owners manage there tenant using Tenant Operator
 
-Owner role will have admin access on there `Projects` and they can also create new `namespaces`.
+Owner is an admin of a tenant with some restrictions. It has privilege to see all resources in there Tenant with some additional privileges. They can also create new `namespaces`.
 
-### Access Permissions
+*Owners will also inhert roles from `Edit` and `View`.*
+
+#### Access Permissions
 
 * Role and RoleBinding access in `Project` :
   * delete
@@ -24,7 +31,7 @@ Owner role will have admin access on there `Projects` and they can also create n
   * update
   * patch
 
-### Quotas Permissions
+#### Quotas Permissions
 
 * LimitRange and ResourceQuota access in `Project`
   * get
@@ -40,7 +47,7 @@ Owner role will have admin access on there `Projects` and they can also create n
   * update
   * watch
 
-### Resources Permissions
+#### Resources Permissions
 
 * CRUD access on Template, TemplateInstance and TemplateGroupInstance of Tenant Operator custom resources
 * CRUD access on ImageStreamTags in `Project`
@@ -55,16 +62,16 @@ Owner role will have admin access on there `Projects` and they can also create n
 * Permission to create Namespaces.
 * Restricted to perform actions on cluster resource Quotas and Limits.
 
-*Owners will also inhert roles from `Edit` and `View`.
-
-## Edit
+### Edit
 
 ![image](./images/tenant-operator-edit-overview.png)
 fig 3. Shows editors role in a tenant using Tenant Operator
 
-Editor role will have edit access on there `Projects`, but they wont have access on Roles or RoleBindings.
+Edit role will have edit access on there `Projects`, but they wont have access on `Roles` or `RoleBindings`.
 
-### Access Permissions
+*Editors will also inhert `View` role.*
+
+#### Access Permissions
 
 * ServiceAccount access in `Project`
   * create
@@ -77,14 +84,14 @@ Editor role will have edit access on there `Projects`, but they wont have access
   * watch
   * impersonate
 
-### Quotas Permissions
+#### Quotas Permissions
 
 * AppliedClusterResourceQuotas and ResourceQuotaUsages access in `Project`
   * get
   * list
   * watch
 
-### Builds ,Pods , PVC Permissions
+#### Builds ,Pods , PVC Permissions
 
 * Pod, PodDisruptionBudgets and PVC access in `Project`
   * get
@@ -162,29 +169,29 @@ Editor role will have edit access on there `Projects`, but they wont have access
   * patch
   * update
 
-*Editors will also inhert `View` role.
-## View
+
+### View
 
 ![image](./images/tenant-operator-view-overview.png)
 fig 4. Shows viewers role in a tenant using Tenant Operator
 
 Viewer role will only have view access on there `Project`.
 
-### Access Permissions 
+#### Access Permissions 
 
 * ServiceAccount access in `Project`
   * get
   * list
   * watch
 
-### Quotas Permissions
+#### Quotas Permissions
 
 * AppliedClusterResourceQuotas access in `Project`
   * get
   * list
   * watch
 
-### Builds ,Pods , PVC Permissions
+#### Builds ,Pods , PVC Permissions
 
 * Pod, PodDisruptionBudget and PVC access in `Project`
   * get
@@ -195,7 +202,7 @@ Viewer role will only have view access on there `Project`.
   * list
   * watch
 
-### Resources Permissions
+#### Resources Permissions
 
 * Get, list, view access on Template, TemplateInstance and TemplateGroupInstance of Tenant Operator custom resources
 * Job, CronJob, Task, Trigger and Pipeline access in `Project`
