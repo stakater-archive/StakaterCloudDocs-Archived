@@ -2,19 +2,15 @@
 
 ## Overview
 
-The idea of Tenant Operator is to use namespaces as independent sandboxes, where tenant applications can run independently from each other. To minimize cluster admin efforts, cluster admins shall configure Tenant Operator's custom resources, which then become a self-service system for tenants. Tenant Operator enables cluster admins to host multiple tenants in a single Stakater Agility Platform, i.e.
+OpenShift is designed to support a single tenant platform, hence making it difficult for cluster admins to host multi-tenancy in a single OpenShift cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster-internal resources among different tenants. OpenShift and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of OpenShift.
+
+This is where Tenant Operator comes in and provides easy to manage/configure multi-tenancy. Tenant operator provides wrappers around OpenShift resources to provide a higher level of abstraction to the users. With Tenant Operator admins can configure Network and Security Policies, Resource Quotas, Limit Ranges, RBAC for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on users role, they are free to operate within their tenants in complete autonomy. Tenant Operator supports initializing new tenants using GitOps management pattern. Changes can be managed via PRs just like a typical GitOps workflow, so tenants can request changes; add new user or remove user.
+
+The idea of Tenant Operator is to use namespaces as independent sandboxes, where tenant applications can run independently from each other. To minimize cluster admin efforts, cluster admins shall configure Tenant Operator's custom resources, which then become a self-service system for tenants. Tenant Operator enables cluster admins to host multiple tenants in a single OpenShift Cluster, i.e.
 
 * Share an **OpenShift cluster** with multiple tenants
 * Share **managed applications** with multiple tenants
 * Configure and manage tenants and their sandboxes
-
-**Why?**
-
-Kubernetes is designed to support a single tenant platform, hence making it difficult for cluster admins to host multi-tenancy in a single Kubernetes cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster-internal resources among different tenants. Openshift and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of OpenShift and Kubernetes.
-
-This is where Tenant Operator comes in and provides easy to manage/configure multi-tenancy. Tenant operator provides wrappers around OpenShift and Kuberetes resources to provide a higher abstract level to the users. With Tenant Operator Network and Security Policies, Resource Quotas, Limit Ranges, RBAC can be defined for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on users role, they are free to operate within their tenants in complete autonomy.
-
-Tenant Operator supports initializing a new tenant under a GitOps management pattern. Changes can be managed via PRs just like a typical GitOps workflow, so tenants can request changes; add new user or remove user.
 
 ![image](./images/tenant-operator-basic-overview.png)
 fig 1. Overview of Tenant Operator architecture
@@ -55,9 +51,10 @@ spec:
 Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 
 * Tenant has 3 kinds of `users`:
-  + `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users and they can also create namespaces.
+  + `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces aswell.
   + `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
   + `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
+  + For more details [SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/tenant-operator/user_roles.html#tenant-roles)
 
 * Tenant will have a `Quota` to limit resource consumption.
 
@@ -127,18 +124,18 @@ Templates are used to initialize Namespaces and share common resources across na
 
 Also you can define custom variables in `Template` and `TemplateInstance` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
 
-<details>
+<details open>
   <summary>Manifest Templates</summary>
   <p>The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.</p>
 </details>
-<details>
+<details open>
   <summary> Helm Chart Templates</summary>
   <p>Instead of manifests, a Template can specify a Helm chart that will be installed (using helm template) when the Template is being instantiated.</p>
 </details>
-<details>
-  <summary>Mandatory vs. Optional Templates</summary>
-  <p>Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.namespacetemplate.templateInstances` array within the Tenant configuration. All Templates listed in `spec.namespacetemplate.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.</p>
-</details>
+
+#### Mandatory and Optional Templates
+
+ Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.namespacetemplate.templateInstances` array within the Tenant configuration. All Templates listed in `spec.namespacetemplate.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.
 
 ### 4. TemplateInstance
 
