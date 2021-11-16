@@ -54,7 +54,7 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
   + `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces aswell.
   + `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
   + `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
-  + For more details [SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/tenant-operator/user_roles.html#tenant-roles)
+  + For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/user_roles.html#tenant-roles).
 
 * Tenant will have a `Quota` to limit resource consumption.
 
