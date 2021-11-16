@@ -183,6 +183,13 @@ module.exports = {
         children: ["/content/sre/support/support.md"],
       },
       {
+        title: "Tenant-Operator",
+        children: [
+          "/content/sre/tenant-operator/overview.md",
+          "/content/sre/tenant-operator/user_roles.md"
+        ],
+      },
+      {
         title: "Frequently Asked Questions",
         children: [
           "/content/sre/faq/product.md",
