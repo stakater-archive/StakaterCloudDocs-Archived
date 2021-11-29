@@ -22,6 +22,7 @@ spec:
     view:
     - jose@stakater.com
   quota: development
+  sandbox: false
   namespacetemplate:
     templateInstances:
     - spec:
@@ -40,6 +41,8 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
   + For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/tenant_roles.html).
 
 * Tenant will have a `Quota` to limit resource consumption.
+
+* Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*. Sandbox will follow the following naming convention **TenantName**-**UserName**-*sandbox*.
 
 * Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
 
