@@ -1,18 +1,6 @@
-# User Roles
+# Tenant Roles
 
-## Admin Roles
-
-### SAAP Cluster Admin
-
-![image](./images/tenant-operator-sca-overview.png)
-
-fig 1. Shows how SAAP Cluster Admin manages tenants using Tenant Operator
-
-SAAP Cluster Admin is a cluster admin with some restrictions. It has privilege to see all resources for all Tenants with some additional privileges. More details [SAAP ClusterAdmin](https://docs.cloud.stakater.com/content/sre/authentication-authorization/saap-authorization-roles.html#_1-saap-cluster-admin-sca)
-
-## Tenant Roles
-
-### Owner
+## Owner
 
 ![image](./images/tenant-operator-owner-overview.png)
 fig 2. Shows how tenant owners manage there tenant using Tenant Operator
@@ -62,7 +50,7 @@ Owner is an admin of a tenant with some restrictions. It has privilege to see al
 * Permission to create Namespaces.
 * Restricted to perform actions on cluster resource Quotas and Limits.
 
-### Edit
+## Edit
 
 ![image](./images/tenant-operator-edit-overview.png)
 fig 3. Shows editors role in a tenant using Tenant Operator
@@ -170,7 +158,7 @@ Edit role will have edit access on there `Projects`, but they wont have access o
   * update
 
 
-### View
+## View
 
 ![image](./images/tenant-operator-view-overview.png)
 fig 4. Shows viewers role in a tenant using Tenant Operator
