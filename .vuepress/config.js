@@ -171,6 +171,12 @@ module.exports = {
         ],
       },
       {
+        title: "Local Development",
+        children: [
+          "/content/sre/local-development/introduction.md",
+        ],
+      },      
+      {
         title: "Security",
         children: ["/content/sre/security/policies/policies.md"],
       },
