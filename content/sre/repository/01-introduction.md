@@ -7,4 +7,4 @@ Here you can find more details
 1. [Accessing Repository](./06-accessing-repository.md)
 2. [Permissions](./03-permissions.md)
 3. [Routes](./04-routes.md)
-4. [Use Cases](./05-use-cases.md)
+4. [Use Cases](./05-FAQ.md)

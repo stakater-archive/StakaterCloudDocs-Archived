@@ -10,3 +10,6 @@
 
 1. First you should have admin permissions on nexus to upload dependencies from nexus UI. You can ask **Stakater Team** for admin access. 
 2. Then you can follow [this](https://help.sonatype.com/repomanager3/user-interface/uploading-components) guide to upload dependencies from the Nexus UI.
+
+### How to setup Maven Project with nexus repository
+- To setup maven project, follow this link: [Maven Project setup with nexus-repository](./07-maven-setup.md)
