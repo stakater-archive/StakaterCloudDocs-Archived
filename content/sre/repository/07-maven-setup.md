@@ -1,5 +1,6 @@
 ## Maven Project setup with nexus-repository
-### If you are using maven dependencies from nexus repository, make sure to do changes in settings.xml file in `.m2` folder. Below is the sample `settings.xml` file which you can use or refer to.
+If you are using maven dependencies from nexus repository, make sure to do changes in settings.xml file in `.m2` folder. Below is the sample `settings.xml` file which you can use or refer to.
+
     <?xml version="1.0" encoding="UTF-8"?>
     <settings>
     <servers>
@@ -50,7 +51,7 @@
 Before using this file, please make sure to provide values for env variables i.e. `NEXUS_USERNAME` , `NEXUS_PASSWORD` and `MAVEN_MIRROR_URL`.
 On Mac or Linux, one can set these environment values in `.bashrc` or `.bash_profile`. These files live under user's home directory. Use `cd ~` to navigate to home directory. If file is missing, you can create it. Follow below steps to add the environment values:
 
-Open `.bashrc` or `.bash_profile` file. Paste below lines and set your actual environment values.
+Open `.bashrc` or `.bash_profile` file. Paste below lines and set your actual environment values. You can find the credentials from Stakater Vault app. In my case, i am able to find it on this path in Vault: `secrets/managed-addons/nexus`
 ```
 export NEXUS_USERNAME=username
 export NEXUS_PASSWORD=password
