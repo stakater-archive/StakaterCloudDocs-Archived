@@ -21,7 +21,7 @@ oc login --token=<TOKEN> --server=<SERVER>
 oc project <MY-SANDBOX>
 ```
 
-3. Login to Docker
+3. Login to docker registry
 
 **MacOS**
 
@@ -37,15 +37,24 @@ SET HOST=$(oc get route default-route -n openshift-image-registry --template='{{
 docker login -u username -p $(oc whoami -t) $HOST
 ```
 
-4. Add helm chart repos
+4. Add helm chart repos (Optional)
 
-If you reference charts from private registry then you first need to add it
+If you reference helm charts from private registry then you first need to add it
 
 ```bash
 cd deploy;
-helm repo add stakater-nexus <private repo url> --username helm-user-name --password ********; # helm credentials can be taken from vault or secret in build namespace
-helm dependency update
+
+# helm credentials can be found in vault or in a secret in build namespace
+helm repo add stakater-nexus <private repo url> --username helm-user-name --password ********; 
 ```
+
+5. Update helm dependencies
+
+```bash
+helm dependency update
+
+cd ..
+```bash
 
 ### Steps:
 
