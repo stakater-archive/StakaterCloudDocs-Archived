@@ -1,11 +1,6 @@
-# Prerequisites:
-# 1. oc login --token=<TOKEN> --server=<SERVER>
-# 2. HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
-# 3. docker login -u username -p $(oc whoami -t) $HOST
-# docker login -u username -p $(oc whoami -t) image-registry-openshift-image-registry.apps.devtest.41b996e9.kubeapp.cloud
-# 4. cd deploy;
-# helm repo add stakater-nexus <private repo url> --username helm-user --password ********;
-# helm dependency update
+# VERY IMPORTANT NOTES:
+# 1. This Tiltfile is for a Java project - this Tiltfile is being used for this Java based application: https://github.com/stakater-lab/stakater-nordmart-review
+# 2. The Dockerfile must have a specific structure for this Tiltfile to work - for reference look this Dockerfile
 
 # For more on Extensions, see: https://docs.tilt.dev/extensions.html
 load('ext://restart_process', 'docker_build_with_restart')
@@ -26,12 +21,18 @@ if settings.get("allow_k8s_contexts"):
 local_resource(
   'compile',
   'mvn package && ' +
+  ########################################################################################
+  # TODO: update this to match what your pom file produces application-v1-2.0-SNAPSHOT.jar
+  ########################################################################################
   'java -Djarmode=layertools -jar target/application-v1-2.0-SNAPSHOT.jar extract --destination target/jar-extracted && ' +
   'rsync --delete --inplace --checksum -r target/jar-extracted/ target/jar',
   deps=['src', 'pom.xml'])
 
 # Keeps the docker image updated
 docker_build_with_restart(
+  #############################################
+  # TODO: Update to match your application name
+  #############################################
   'stakater/application-v1',
   '.',
   entrypoint=['java', 'org.springframework.boot.loader.JarLauncher'],
@@ -47,6 +48,5 @@ yaml = helm('./deploy/', namespace=namespace, values=['./tilt/values-local.yaml'
 
 k8s_yaml(yaml)
 
-# todo..
-# k8s_resource('review-mongodb', port_forwards=['27017:27017'])
+k8s_resource('review-mongodb', port_forwards=['27017:27017'])
 k8s_resource('application-v1', port_forwards=['9000:8443'], resource_deps=['compile'])
