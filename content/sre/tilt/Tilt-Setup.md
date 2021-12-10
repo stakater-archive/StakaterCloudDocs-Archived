@@ -8,20 +8,38 @@ Tilt can be installed by following the instructions [here](https://docs.tilt.dev
 Tilt can be used just by running the command `tilt up` which will compile the code, build the docker image and deploys it on cluster.
 
 ### Prerequisites
-1. Login to cluster and then change project to your own sandbox project.
+
+1. Login to cluster
 
 ```bash
 oc login --token=<TOKEN> --server=<SERVER>
 ```
 
-2. Docker should be running. Login to Docker
+2. Switch project
+
+```bash
+oc project <MY-SANDBOX>
+```
+
+3. Login to Docker
+
+**MacOS**
 
 ```bash
 HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
 docker login -u username -p $(oc whoami -t) $HOST
 ```
 
-3. Add helm chart repos
+**Windows**
+
+```bash
+SET HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
+docker login -u username -p $(oc whoami -t) $HOST
+```
+
+4. Add helm chart repos
+
+If you reference charts from private registry then you first need to add it
 
 ```bash
 cd deploy;
