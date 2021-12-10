@@ -54,7 +54,7 @@ helm repo add stakater-nexus <private repo url> --username helm-user-name --pass
 helm dependency update
 
 cd ..
-```bash
+```
 
 ### Steps:
 
