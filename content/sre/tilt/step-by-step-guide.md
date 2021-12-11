@@ -1,7 +1,5 @@
 # Step by Step Guide
 
-Tilt can be used just by running the command `tilt up` which will compile the code, build the docker image and deploys it on cluster.
-
 1. Enable creation of sandbox namespaces/environments for your tenant
 
 2. Login to cluster
