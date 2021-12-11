@@ -1,4 +1,4 @@
-## Maven Project setup with nexus-repository
+## Maven Project setup with nexus repository
 If you are using maven dependencies from nexus repository, make sure to do changes in settings.xml file in `.m2` folder. Below is the sample `settings.xml` file which you can use or refer to.
 
     <?xml version="1.0" encoding="UTF-8"?>
