@@ -54,7 +54,7 @@ Make sure the app jar file name under `local_resource` matches with the jar name
  
 9) Add `tilt_options.json` file to your application
 
-Should be created locally by everyone in base directory and it should have following content as per the user
+Should be created locally by everyone in base directory and it should have following content as per the user. User email in `allow_k8s_contexts` should be same email that is allowed to use tilt in gitOps-config.
 
 ```json
 {
@@ -104,8 +104,12 @@ application:
     replicas: 1
 ```
 
+13) Update docker file
+
+To be able to run the sample [Tiltfile](Tiltfile), it needs a docker file in a specific format. [Here](Dockerfile) is a sample dockerfile for Java and springboot based project.
+
 13) Run `tilt up` at base directory 
 
-Press space key to view the progress in web browser. The application should be running in the namespace used in `tilt_options.json` file.
+Press space key to view the progress in Tilt web UI. The application should be running in the namespace used in `tilt_options.json` file.
 
 14) Run `tilt down` to delete the application and related configuration from the namespace
