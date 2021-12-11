@@ -1,6 +1,6 @@
 # Step by Step Guide
 
-1. Enable creation of sandbox namespaces/environments for your tenant
+1. Enable sandbox namespace/project/environment for your tenant
 
 2. Login to cluster
 
