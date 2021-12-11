@@ -46,7 +46,7 @@ cd ..
 
 7) Add Tiltfile to your application 
 
-[Here](Tiltfile) is a sample Tiltfile for a Java based project with a specific Dockerfile.
+[Here](Tiltfile) is a sample Tiltfile for a Java based project with a specific [Dockerfile](Dockerfile).
 
 8) Update `local_resource` in the Tiltfile
 
@@ -103,10 +103,6 @@ application:
     # Tilt live update only supports one replica
     replicas: 1
 ```
-
-13) Update docker file
-
-To be able to run the sample [Tiltfile](Dockerfile), it needs a docker file in a specific format. [Here](Dockerfile) is a sample dockerfile for Java and springboot based project.
 
 13) Run `tilt up` at base directory 
 
