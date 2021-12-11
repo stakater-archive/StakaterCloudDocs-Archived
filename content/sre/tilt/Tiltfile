@@ -17,7 +17,6 @@ if settings.get("allow_k8s_contexts"):
   allow_k8s_contexts(settings.get("allow_k8s_contexts"))
 
 # Watch source code and on change rebuild artifacts and place in target folder
-# todo.. 
 local_resource(
   'compile',
   'mvn package && ' +
@@ -36,6 +35,9 @@ docker_build_with_restart(
   'stakater/application-v1',
   '.',
   entrypoint=['java', 'org.springframework.boot.loader.JarLauncher'],
+  #########################################################
+  # NOTE: Remember Dockerfile must have a particular format
+  #########################################################  
   dockerfile='./Dockerfile',
   live_update=[
     sync('./target/jar/dependencies', '/opt/app'),
@@ -48,6 +50,8 @@ yaml = helm('./deploy/', namespace=namespace, values=['./tilt/values-local.yaml'
 
 k8s_yaml(yaml)
 
-# Note: These are application dependent; so, you will need to update it
+#######################################################################
+# NOTE: These are application dependent; so, you will need to update it
+#######################################################################
 k8s_resource('review-mongodb', port_forwards=['27017:27017'])
 k8s_resource('application-v1', port_forwards=['9000:8443'], resource_deps=['compile'])
