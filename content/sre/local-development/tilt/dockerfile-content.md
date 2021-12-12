@@ -1,3 +1,4 @@
+```dockerfile
 FROM maven:3.8.2-openjdk-11 as  builder
 
 WORKDIR /usr/src/app
@@ -49,3 +50,4 @@ COPY --from=builder /usr/src/app/application/ $HOME/
 
 VOLUME /tmp
 VOLUME ${HOME}/log
+```
