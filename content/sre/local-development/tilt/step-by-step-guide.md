@@ -46,7 +46,7 @@ cd ..
 
 7) Add Tiltfile to your application 
 
-[Here](Tiltfile) is a sample Tiltfile for a Java based project with a specific [Dockerfile](Dockerfile).
+[Here](./tiltfile-content.md) is a sample Tiltfile for a Java based project with a specific [Dockerfile](./dockerfile-content.md).
 
 8) Update `local_resource` in the Tiltfile
 
