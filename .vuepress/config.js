@@ -168,6 +168,7 @@ module.exports = {
           "/content/sre/secrets/introduction.md",
           "/content/sre/secrets/sealed-secrets.md",
           "/content/sre/secrets/vault.md",
+          "/content/sre/secrets/vault-csi.md",
         ],
       },
       {

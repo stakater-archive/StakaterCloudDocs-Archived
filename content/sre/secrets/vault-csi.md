@@ -1,0 +1,108 @@
+# Vault CSI Provider
+
+The Vault CSI Provider allows pods to consume Vault secrets using CSI Secrets Store volumes
+
+At a high level, the CSI Secrets Store driver allows users to create ```SecretProviderClass``` objects. This object defines which secret provider to use and what secrets to retrieve. When pods requesting CSI volumes are created, the CSI Secrets Store driver will send the request to the Vault CSI Provider if the provider is vault. The Vault CSI Provider will then use Secret Provider Class specified and the pod's service account to retrieve the secrets from Vault, and mount them into the pod's CSI volume.
+
+## Authentication with Vault
+
+The pod is authenticated to vault by [kubernetes auth method](https://www.vaultproject.io/docs/auth/kubernetes). In vault, roles are associated with kubernetes service account. Roles, when associated with serviceaccount, permits it to read,update or create secret at particular path in vault. 
+
+In SAAP,policies and roles are automatically created by tenant operator that grants service accounts of namespace to **read** secrets at tenants path. 
+
+Role name is same as **namespace** name 
+
+## Mount files from vault secret
+
+To mount vault secret in volume, you need to do following:
+
+- Enable ```SecretProviderClass``` object in helm values and define key and value path of vault. For example
+
+    ```
+    secretProviderClass:
+      enabled: true
+      name: postgres-secret
+      roleName: '{{.Release.Namespace}}'
+      objects: 
+        - objectName: postgresql-password
+          secretPath: gabbar/data/postgres
+          secretKey: postgresql-password
+    ``` 
+- Define volume in helm values that use above created ```SecretProviderClass```
+  
+    ```
+    deployment:
+       volumes: 
+         - name: postgres-secret
+           csi:
+             driver: secrets-store.csi.k8s.io
+             readOnly: true
+             volumeAttributes:
+               secretProviderClass: postgres-secret
+    ```
+- now mount this volume in container
+  
+  ```
+     volumeMounts:
+     - name: postgres-secret
+       readOnly: true
+       mountPath: /data/db-creds
+  ```
+
+Your secret should be available at the path defined above
+
+## Create kubernetes secret from vault secret
+
+- Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
+
+    ```
+    secretProviderClass:
+      enabled: true
+      name: postgres-secret
+      roleName: '{{.Release.Namespace}}'
+      objects: 
+        - objectName: postgresql-password
+          secretPath: gabbar/data/postgres
+          secretKey: postgresql-password
+      secretObjects:
+        - data:
+          - key: postgres-password
+            objectName: postgresql-password
+          secretName: postgres-secret
+          type: Opaque 
+    ``` 
+   The value of **secretName**  will be the name of kubernetes secret
+
+- Define volume in helm values that use above created ```SecretProviderClass```
+  
+    ```
+    deployment:
+       volumes: 
+         - name: postgres-secret
+           csi:
+             driver: secrets-store.csi.k8s.io
+             readOnly: true
+             volumeAttributes:
+               secretProviderClass: postgres-secret
+    ```
+- now mount this volume in container. 
+  
+  ```
+     volumeMounts:
+     - name: postgres-secret
+       readOnly: true
+       mountPath: /data/db-creds
+  ```
+  
+  Volume mount is required in order to create kubernetes secret. you can mount it any location as its not being used.
+
+- This secret can be used as environment variable 
+
+```
+env:
+   - name: POSTGRES_PASSWORD
+     valueFrom:
+        secretKeyRef:
+            name: postgres-secret
+            key: postgres-password
+```
