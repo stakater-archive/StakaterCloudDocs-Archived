@@ -1,6 +1,6 @@
 # Step by Step Guide
 
-1) Enable sandbox namespace/project/environment for your tenant
+1) Enable sandbox namespace/project/environment for your tenant; you can read more [here](https://docs.cloud.stakater.com/content/sre/tenant-operator/customresources.html#_1-tenant)
 
 2) Login to cluster
 
