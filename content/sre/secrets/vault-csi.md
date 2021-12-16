@@ -8,7 +8,7 @@ At a high level, the CSI Secrets Store driver allows users to create ```SecretPr
 
 The pod is authenticated to vault by [kubernetes auth method](https://www.vaultproject.io/docs/auth/kubernetes). In vault, roles are associated with kubernetes service account. Roles, when associated with serviceaccount, permits it to read,update or create secret at particular path in vault. 
 
-In SAAP,policies and roles are automatically created by tenant operator that grants service accounts of namespace to **read** secrets at tenants path. 
+In SAAP,policies and roles are automatically created by tenant operator that grants service accounts of namespace with label ```stakater.com/vault-access: true``` to **read** secrets at tenants path. 
 
 Role name is same as **namespace** name 
 
@@ -28,6 +28,13 @@ To mount vault secret in volume, you need to do following:
           secretPath: gabbar/data/postgres
           secretKey: postgresql-password
     ``` 
+- Add label in serviceaccount so it can be granted vault read access to secret path
+     ```
+      serviceAccount:
+        enabled: true
+        additionalLabels: 
+          stakater.com/vault-access: "true"
+     ```
 - Define volume in helm values that use above created ```SecretProviderClass```
   
     ```
