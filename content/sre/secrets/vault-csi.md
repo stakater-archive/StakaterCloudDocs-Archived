@@ -15,7 +15,15 @@ Below you can find step by step guide to consume.
 
 To mount vault secret in volume, you need to do following:
 
-- Step 1: Enable ```SecretProviderClass``` object in helm values and define key and value path of vault. For example
+- Step 1: Add label in serviceaccount so it can be granted vault read access to secret path
+     ```
+      serviceAccount:
+        enabled: true
+        additionalLabels: 
+          stakater.com/vault-access: "true"
+     ```
+
+- Step 2: Enable ```SecretProviderClass``` object in helm values and define key and value path of vault. For example
 
     ```
     secretProviderClass:
@@ -27,14 +35,6 @@ To mount vault secret in volume, you need to do following:
           secretPath: gabbar/data/postgres
           secretKey: postgresql-password
     ``` 
-
-- Step 2: Add label in serviceaccount so it can be granted vault read access to secret path
-     ```
-      serviceAccount:
-        enabled: true
-        additionalLabels: 
-          stakater.com/vault-access: "true"
-     ```
 
 - Step 3: Define volume in helm values that use above created ```SecretProviderClass```
   
