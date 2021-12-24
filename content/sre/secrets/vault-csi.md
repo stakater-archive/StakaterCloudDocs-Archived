@@ -116,4 +116,4 @@ env:
             key: postgres-password
 ```
 
-[Here](https://github.com/stakater-lab/stakater-nordmart-review/blob/main/deploy/values.yaml#L24) you can check example of csi configured 
+[Here](https://github.com/stakater-lab/stakater-nordmart-review/blob/main/deploy/values.yaml#L24) is a working example.
