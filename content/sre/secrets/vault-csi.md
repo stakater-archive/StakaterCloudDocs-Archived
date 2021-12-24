@@ -6,12 +6,12 @@ At a high level, the CSI Secrets Store driver allows users to create ```SecretPr
 
 There are two possible ways to consume secrets from vault:
 
-1. Via volume
-2. Via environment variables
+1. Option # 1 - Consume vault secret via a volume
+2. Option # 2 - Consume vault secret via environment variable
 
 Below you can find step by step guide to consume.
 
-## Mount files from vault secret
+## Option # 1 - Consume vault secret via a volume
 
 To mount vault secret in volume, you need to do following:
 
@@ -57,7 +57,7 @@ To mount vault secret in volume, you need to do following:
 
 Your secret should be available at the path defined above
 
-## Create kubernetes secret from vault secret
+## Option # 2 - Consume vault secret via environment variable
 
 - Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
 
