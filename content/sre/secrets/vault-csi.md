@@ -4,14 +4,6 @@ The Vault CSI Provider allows pods to consume Vault secrets using CSI Secrets St
 
 At a high level, the CSI Secrets Store driver allows users to create ```SecretProviderClass``` objects. This object defines which secret provider to use and what secrets to retrieve. When pods requesting CSI volumes are created, the CSI Secrets Store driver will send the request to the Vault CSI Provider if the provider is vault. The Vault CSI Provider will then use Secret Provider Class specified and the pod's service account to retrieve the secrets from Vault, and mount them into the pod's CSI volume.
 
-## Authentication with Vault
-
-The pod is authenticated to vault by [kubernetes auth method](https://www.vaultproject.io/docs/auth/kubernetes). In vault, roles are associated with kubernetes service account. Roles, when associated with serviceaccount, permits it to read,update or create secret at particular path in vault. 
-
-In SAAP,policies and roles are automatically created by tenant operator that grants service accounts of namespace to **read** secrets at tenants path. 
-
-Role name is same as **namespace** name 
-
 ## Mount files from vault secret
 
 To mount vault secret in volume, you need to do following:
