@@ -14,6 +14,7 @@ Below you can find step by step guide to consume.
 To mount vault secret in a volume do following:
 
 - **Step 1**: Add label in serviceaccount so it can be granted vault read access to secret path
+
      ```
       serviceAccount:
         enabled: true
@@ -23,8 +24,8 @@ To mount vault secret in a volume do following:
 
 - **Step 2**: Enable ```SecretProviderClass``` object in helm values and define key and value path of vault. For example
 
-    ```
-    secretProviderClass:
+     ```
+     secretProviderClass:
       enabled: true
       name: postgres-secret
       roleName: '{{.Release.Namespace}}'
@@ -32,12 +33,12 @@ To mount vault secret in a volume do following:
         - objectName: postgresql-password
           secretPath: gabbar/data/postgres
           secretKey: postgresql-password
-    ``` 
+     ``` 
 
 - **Step 3**: Define volume in helm values that use above created ```SecretProviderClass```
   
-    ```
-    deployment:
+     ```
+     deployment:
        volumes: 
          - name: postgres-secret
            csi:
@@ -45,16 +46,16 @@ To mount vault secret in a volume do following:
              readOnly: true
              volumeAttributes:
                secretProviderClass: postgres-secret
-    ```
+     ```
     
 - **Step 4**: Now mount this volume in container
   
-  ```
+     ```
      volumeMounts:
      - name: postgres-secret
        readOnly: true
        mountPath: /data/db-creds
-  ```
+     ```
 
 ## Option # 2 - Consume vault secret via environment variable
 
@@ -62,8 +63,8 @@ To mount vault secret in an environment variable do following:
 
 - **Step 1**: Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
 
-    ```
-    secretProviderClass:
+     ```
+     secretProviderClass:
       enabled: true
       name: postgres-secret
       roleName: '{{.Release.Namespace}}'
@@ -77,14 +78,14 @@ To mount vault secret in an environment variable do following:
             objectName: postgresql-password
           secretName: postgres-secret
           type: Opaque 
-    ``` 
+     ``` 
    
    The value of **secretName** will be the name of kubernetes secret
 
 - **Step 2**: Define volume in helm values that use above created ```SecretProviderClass```
   
-    ```
-    deployment:
+     ```
+     deployment:
        volumes: 
          - name: postgres-secret
            csi:
@@ -92,29 +93,29 @@ To mount vault secret in an environment variable do following:
              readOnly: true
              volumeAttributes:
                secretProviderClass: postgres-secret
-    ```
+     ```
 
 - **Step 3**: Now mount this volume in container. 
   
-  ```
+     ```
      volumeMounts:
      - name: postgres-secret
        readOnly: true
        mountPath: /data/db-creds
-  ```
+     ```
   
   Volume mount is required in order to create kubernetes secret. you can mount it any location as its not being used.
 
 - **Step 4**: This secret can be used as environment variable 
 
-```
-env:
-   - name: POSTGRES_PASSWORD
-     valueFrom:
-        secretKeyRef:
-            name: postgres-secret
-            key: postgres-password
-```
+     ```
+     env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+             secretKeyRef:
+                 name: postgres-secret
+                 key: postgres-password
+     ```
 
 [Here](https://github.com/stakater-lab/stakater-nordmart-review/blob/main/deploy/values.yaml#L24) is a working example.
 
