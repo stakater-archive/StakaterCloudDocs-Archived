@@ -104,7 +104,7 @@ To mount vault secret in an environment variable do following:
        mountPath: /data/db-creds
      ```
   
-  Volume mount is required in order to create kubernetes secret. you can mount it any location as its not being used.
+  Volume mount is required in order to create a kubernetes secret.
 
 - **Step 4**: This secret can be used as environment variable 
 
