@@ -168,6 +168,7 @@ module.exports = {
           "/content/sre/secrets/introduction.md",
           "/content/sre/secrets/sealed-secrets.md",
           "/content/sre/secrets/vault.md",
+          "/content/sre/secrets/vault-csi.md",
         ],
       },
       {
@@ -199,6 +200,7 @@ module.exports = {
           "/content/sre/tenant-operator/customresources.md",
           "/content/sre/tenant-operator/admin_roles.md",
           "/content/sre/tenant-operator/tenant_roles.md",
+          "/content/sre/tenant-operator/vault-authentication.md",
         ],
       },
       {
