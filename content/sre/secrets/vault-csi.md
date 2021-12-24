@@ -1,4 +1,4 @@
-# Vault CSI Provider
+# Consuming secrets from Vault via CSI Provider
 
 The Vault CSI Provider allows pods to consume Vault secrets using CSI Secrets Store volumes
 
