@@ -62,7 +62,7 @@ Your secret should be available at the path defined above
 
 ## Option # 2 - Consume vault secret via environment variable
 
-- Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
+- Step 1: Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
 
     ```
     secretProviderClass:
@@ -80,9 +80,10 @@ Your secret should be available at the path defined above
           secretName: postgres-secret
           type: Opaque 
     ``` 
-   The value of **secretName**  will be the name of kubernetes secret
+   
+   The value of **secretName** will be the name of kubernetes secret
 
-- Define volume in helm values that use above created ```SecretProviderClass```
+- Step 2: Define volume in helm values that use above created ```SecretProviderClass```
   
     ```
     deployment:
@@ -94,7 +95,8 @@ Your secret should be available at the path defined above
              volumeAttributes:
                secretProviderClass: postgres-secret
     ```
-- now mount this volume in container. 
+
+- Step 3: Now mount this volume in container. 
   
   ```
      volumeMounts:
@@ -105,7 +107,7 @@ Your secret should be available at the path defined above
   
   Volume mount is required in order to create kubernetes secret. you can mount it any location as its not being used.
 
-- This secret can be used as environment variable 
+- Step 4: This secret can be used as environment variable 
 
 ```
 env:
