@@ -11,7 +11,7 @@ Below you can find step by step guide to consume.
 
 ## Option # 1 - Consume vault secret via a volume
 
-To mount vault secret in volume, you need to do following:
+To mount vault secret in a volume do following:
 
 - **Step 1**: Add label in serviceaccount so it can be granted vault read access to secret path
      ```
@@ -57,6 +57,8 @@ To mount vault secret in volume, you need to do following:
   ```
 
 ## Option # 2 - Consume vault secret via environment variable
+
+To mount vault secret in an environment variable do following:
 
 - **Step 1**: Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
 
