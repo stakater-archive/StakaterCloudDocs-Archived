@@ -56,8 +56,6 @@ To mount vault secret in volume, you need to do following:
        mountPath: /data/db-creds
   ```
 
-Your secret should be available at the path defined above
-
 ## Option # 2 - Consume vault secret via environment variable
 
 - **Step 1**: Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
@@ -117,3 +115,5 @@ env:
 ```
 
 [Here](https://github.com/stakater-lab/stakater-nordmart-review/blob/main/deploy/values.yaml#L24) is a working example.
+
+Your secret should be available at the path defined above in vault; a change in secret value in vault will automatically restart the application by [Stakater Reloader](https://github.com/stakater/Reloader)
