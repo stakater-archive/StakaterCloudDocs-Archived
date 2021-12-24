@@ -49,7 +49,7 @@ To mount vault secret in volume, you need to do following:
                secretProviderClass: postgres-secret
     ```
     
-- Step 4: now mount this volume in container
+- Step 4: Now mount this volume in container
   
   ```
      volumeMounts:
