@@ -1,4 +1,4 @@
-# Secrets Management using Sealed Secrets Controller
+# Sealed Secrets
 
 ## Overview
 
