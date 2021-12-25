@@ -60,7 +60,7 @@ stringData:
 
 So to handle this case, we need some other tool to handle this.
 
-We recommend 2 tools, and you can use any one or both of them based on your needs.
+SAAP offers two different managed solutions for consuming secrets in more secure fashion:
 
 1. Sealed Secrets
 2. Vault
