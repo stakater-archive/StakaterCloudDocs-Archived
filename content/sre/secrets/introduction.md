@@ -50,9 +50,15 @@ stringData:
     password: password
 ```
 
-## Limitations
+## Limitations of kubernetes secrets
 
-You should not store your Kubernetes secrets in your Git repo as they are easily decodable, and anyone can decode them. So to handle this case, we need some other tool to handle this.
+1. They are not encrypted at rest.
+2. By default, cluster admins can see all the secrets of all the tenants.
+3. When in use (i.e. mounted as tempfs in the node that runs the pod that is using them), they can be seen by a node administrator.
+4. When in use, they can be seen by anyone who has the ability to remote shell into the container.
+5. Can not store Kubernetes secrets in Git repo as they are easily decodable and anyone can decode them. 
+
+So to handle this case, we need some other tool to handle this.
 
 We recommend 2 tools, and you can use any one or both of them based on your needs.
 
