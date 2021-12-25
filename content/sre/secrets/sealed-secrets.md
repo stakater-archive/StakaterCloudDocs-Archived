@@ -4,14 +4,6 @@
 
 [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets) controller solves the problem of storing kubernetes secret data securely by encrypting the configurations. It can only be decrypted by sealed secret controller running in cluster.
 
-### Problem: Downside of Kubernetes Secrets
-
-In Kubernetes Secrets, the data is stored as base64 encoded string, which is easily decryptable.
-
-### Solution
-
-Sealed Secrets resolved the issue by encryting the data which is only decryptable by component of sealed secret running in cluster.
-
 ## Architecutre
 
 SealedSecrets is composed of two components:
