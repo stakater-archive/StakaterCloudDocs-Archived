@@ -5,33 +5,11 @@
 Vault is a tool for securely accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. 
 Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log.
 
-When you create a secret in kubernetes it is stored in etcd as plain text, also the secret is accessible to anyone that has access to your cluster.
+When you create a secret in kubernetes it is stored in etcd as plain text, also the secret is accessible to anyone that has access to your cluster. Vault solves this issue by providing a central secret management store that provides an additional layer of security using it's authentication methods. Secrets are only accessible when you provide a corresponding token
 
-## Limitations of kubernetes secrets
+There are 2 kinds of secrets in the vault:
 
-1. They are not encrypted at rest.
-2. By default, cluster admins can see all the secrets of all the tenants.
-3. When in use (i.e. mounted as tempfs in the node that runs the pod that is using them), they can be seen by a node administrator.
-4. When in use, they can be seen by anyone who has the ability to remote shell into the container.
-
-Vault solves this issue by providing a central secret management store that provides an additional layer of security using it's
-authentication methods. Secrets are only accessible when you provide a corresponding token. Vault is an application written in GO with a with a REST and CLI interface support. For access of secrets vault uses tokens.
-Tokens are created on demand with a specified expiry time and can be revoked at any given time.
-
-## Key features of Vault
-
-1. Centralization
-2. Audit Control
-3. Dynamic Secrets
-4. Encryption as a Service
-5. Leasing, Renewal and Revocation
-
-For detailed documentation: [Vault Documentation](https://learn.hashicorp.com/vault#getting-started)  
-
-# Vault usage
-
-There are 2 kinds of secrets in the vault.
-* Secrets for managed applications provided by Stakater (ex: Nexus repository credential)
+* Secrets for managed applications provided by Stakater (ex: Nexus repository credential, etc.)
   Users only have read permission.
   The path is `managed-addons/*`.
 * Tenant specific secrets.
@@ -40,7 +18,7 @@ There are 2 kinds of secrets in the vault.
 
 Users can manage secrets via vault UI or vault CLI.
 
-## Using Vault UI
+## Manage vault secrets via UI
 
 Users included in any tenants can access to the Vault UI using OIDC authentication.
 
@@ -72,7 +50,7 @@ Once login, users can do all actions on the path `TENANT_NAME/*`.
 
 ![create_secret](./images/create_secret.png)
 
-## Using Vault CLI
+## Manage vault secrets via CLI
 
 To use vault CLI, the token is required. Users can get/renew/revoke the token on the UI. (Click the user account Avatar.)
 
@@ -87,137 +65,124 @@ Once token is fetched, users can use the CLI provided by UI. So there is no need
 vault login token=${TOKEN}
 ```
 
-## Consuming vault secrets in pods
+## Consume vault secrets
 
-There are different ways to consume vault secrets in a pod
+SAAP supports 3 different ways to consume secrets from vault:
 
-1. Vault API
-2. Inject secrets via sidecar
+1. Option # 1 - Consume vault secret via a volume
+2. Option # 2 - Consume vault secret via environment variable
+3. Option # 3 - Consume vault secret via ExternalSecrets
 
-### 1. Vault API
+Below you can find step by step guide to consume via different options.
 
-TBD
+### Option # 1 - Consume vault secret via a volume
 
-### 2. Inject vault secrets in pods
+To mount vault secret in a volume do following:
 
-For consuming secrets that are stored in vault, we leverage on vault agent. Vault agent adds init containers and side-car
-containers for populating secrets and managing token lifecycle.
+- **Step 1**: Add label in serviceaccount so it can be granted vault read access to secret path
 
-![vault-agent-workflow](./images/vault-agent-workflow.png)
+     ```
+      serviceAccount:
+        enabled: true
+        additionalLabels: 
+          stakater.com/vault-access: "true"
+     ```
 
-Let's go through a demonstration:
+- **Step 2**: Enable ```SecretProviderClass``` object in helm values and define key and value path of vault. For example
 
-#### Make vault accessible and set environment variables
+     ```
+     secretProviderClass:
+      enabled: true
+      name: postgres-secret
+      roleName: '{{.Release.Namespace}}'
+      objects: 
+        - objectName: postgresql-password
+          secretPath: gabbar/data/postgres
+          secretKey: postgresql-password
+     ``` 
 
-```shell script
-oc port-forward -n stakater-vault service/vault 8200:8200 &`
+- **Step 3**: Define volume in helm values that use above created ```SecretProviderClass```
+  
+     ```
+     deployment:
+       volumes: 
+         - name: postgres-secret
+           csi:
+             driver: secrets-store.csi.k8s.io
+             readOnly: true
+             volumeAttributes:
+               secretProviderClass: postgres-secret
+     ```
+    
+- **Step 4**: Now mount this volume in container
+  
+     ```
+     volumeMounts:
+     - name: postgres-secret
+       readOnly: true
+       mountPath: /data/db-creds
+     ```
 
-export VAULT_ADDR=https://127.0.0.1:8200
-export KEYS=`cat vault-secrets/unseal-key`
-export ROOT_TOKEN=`cat vault-secrets/root-token`
-export VAULT_TOKEN=$ROOT_TOKEN
-```
+### Option # 2 - Consume vault secret via environment variable
 
-#### Create namespace
+To mount vault secret in an environment variable do following:
 
-Create a namespace to deploy our sample application that consumes secret stored in vault. We need to label the namespace
- with `vault.hashicorp.com/agent-webhook=enabled` to enable the injection of vault sidecars.
- 
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: stakater-vault-demo
-  labels:
-    vault.hashicorp.com/agent-webhook: enabled
-```
+- **Step 1**: Enable ```SecretProviderClass``` object in helm values and define key/value path and secret objects in vault. For example
 
-#### Create service account
+     ```
+     secretProviderClass:
+      enabled: true
+      name: postgres-secret
+      roleName: '{{.Release.Namespace}}'
+      objects: 
+        - objectName: postgresql-password
+          secretPath: gabbar/data/postgres
+          secretKey: postgresql-password
+      secretObjects:
+        - data:
+          - key: postgres-password
+            objectName: postgresql-password
+          secretName: postgres-secret
+          type: Opaque 
+     ``` 
+   
+   The value of **secretName** will be the name of kubernetes secret
 
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: app
-  namespace: stakater-vault-demo
-  labels:
-    app: vault-agent-demo
-```
+- **Step 2**: Define volume in helm values that use above created ```SecretProviderClass```
+  
+     ```
+     deployment:
+       volumes: 
+         - name: postgres-secret
+           csi:
+             driver: secrets-store.csi.k8s.io
+             readOnly: true
+             volumeAttributes:
+               secretProviderClass: postgres-secret
+     ```
 
-#### Create a role in vault for authentication
+- **Step 3**: Now mount this volume in container. 
+  
+     ```
+     volumeMounts:
+     - name: postgres-secret
+       readOnly: true
+       mountPath: /data/db-creds
+     ```
+  
+  Volume mount is required in order to create a kubernetes secret.
 
-```shell script
-# Create a role for binding the policy to a service account
-vault write -tls-skip-verify auth/kubernetes/role/stakater-vault-demo-role \
-        bound_service_account_names=app \
-        bound_service_account_namespaces=stakater-vault-demo \
-        policies=default-policy \
-        ttl=24h
-```
+- **Step 4**: This secret can be used as environment variable 
 
-#### Create a secret
+     ```
+     env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+             secretKeyRef:
+                 name: postgres-secret
+                 key: postgres-password
+     ```
 
-```shell script
-# Write sample secret
-vault kv put -tls-skip-verify secret/helloworld ttl=1m username=test-user password=dummy-pass
-```
+[Here](https://github.com/stakater-lab/stakater-nordmart-review/blob/main/deploy/values.yaml#L24) is a working example.
 
-#### Add Required Annotations
-
-To inject secrets, we must use the following annotations:
-
-- `vault.hashicorp.com/agent-inject`: Enable or disable injection for a pod
-- `vault.hashicorp.com/secret-volume-path`: Specifies the shared volume used by the Vault Agent containers for sharing secrets with the other containers in the pod.
-- `vault.hashicorp.com/role:`: Specifies the role to be used for the Kubernetes auto-auth
-- `vault.hashicorp.com/tls-skip-verify`: Enable or disable TLS verification while communicating with vault
-- `vault.hashicorp.com/agent-pre-populate-only`: Only run init container(no side-cars), useful if secrets are not meant to be updated
-- `vault.hashicorp.com/agent-inject-secret-{path-to-secret}`: Specify the secret to be retrieved
-- `vault.hashicorp.com/agent-inject-template-{path-to-secret}`: Specify template to use for rendering the secrets 
-
-
-#### Deploy the application
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: app
-  namespace: stakater-vault-demo
-  labels:
-    app: vault-agent-demo
-spec:
-  selector:
-    matchLabels:
-      app: vault-agent-demo
-  replicas: 1
-  template:
-    metadata:
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "stakater-vault-demo-role"
-        vault.hashicorp.com/tls-skip-verify: 'true'
-        #vault.hashicorp.com/agent-pre-populate-only: "true"
-        vault.hashicorp.com/secret-volume-path: /vault/secrets/
-        vault.hashicorp.com/agent-inject-secret-helloworld: "secret/helloworld"
-        vault.hashicorp.com/agent-inject-template-helloworld: |
-          {{- with secret "secret/helloworld" -}}
-          postgresql://{{ .Data.username }}:{{ .Data.password }}@postgres:5432/wizard
-          {{- end }}
-      labels:
-        app: vault-agent-demo
-    spec:
-      serviceAccountName: app
-      containers:
-        - image: docker.io/library/busybox
-          name: app
-          command: ["/bin/sh"]
-          args:
-            - -c
-            - |
-              echo "Value of secret is: "
-              cat /vault/secrets/helloworld
-```
-
-#### Verify 
-
-You can verify the workflow through logs of the application pod.
+Your secret should be available at the path defined above in vault; a change in secret value in vault will automatically restart the application by [Stakater Reloader](https://github.com/stakater/Reloader)
