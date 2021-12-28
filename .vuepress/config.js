@@ -176,7 +176,6 @@ module.exports = {
           "/content/sre/local-development/inner-loop.md",
           "/content/sre/local-development/inner-vs-outer-loop.md",
           "/content/sre/local-development/local-development-workflow.md",                              
-          "/content/sre/local-development/prerequisites.md",
           "/content/sre/local-development/tilt/step-by-step-guide.md",
         ],
       },      
