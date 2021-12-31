@@ -148,7 +148,6 @@ metadata:
   name: redis-instance
 spec:
   template: redis
-  tenant: development
   selector:
     matchLabels:
       app: redis
@@ -156,7 +155,6 @@ spec:
 ```
 
 TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.
-It specifies the matching labels and tenant name.
 
 ## Namespace
 
