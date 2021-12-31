@@ -12,7 +12,7 @@
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Tenant
 metadata:
-  name: development
+  name: blue-sky
 spec:
   users:
     owner:
@@ -21,7 +21,7 @@ spec:
     - hanzala@stakater.com
     view:
     - jose@stakater.com
-  quota: development
+  quota: medium
   sandbox: false
   namespacetemplate:
     templateInstances:
@@ -35,10 +35,10 @@ spec:
 Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 
 * Tenant has 3 kinds of `users`:
-  + `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces aswell.
-  + `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
-  + `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
-  + For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/tenant_roles.html).
+  * `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces aswell.
+  * `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
+  * `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
+  * For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/tenant_roles.html).
 
 * Tenant will have a `Quota` to limit resource consumption.
 
@@ -46,13 +46,13 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 
 * Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
 
-## 2. Quota CR
+## 2. Quota
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Quota
 metadata:
-  name: development
+  name: medium
   annotations:
     quota.tenantoperator.stakater.com/is-default: "false"
 spec:
@@ -148,7 +148,6 @@ metadata:
   name: redis-instance
 spec:
   template: redis
-  tenant: development
   selector:
     matchLabels:
       app: redis
@@ -156,7 +155,6 @@ spec:
 ```
 
 TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.
-It specifies the matching labels and tenant name.
 
 ## Namespace
 
@@ -165,7 +163,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    stakater.com/tenant: development
+    stakater.com/tenant: blue-sky
   name: build
 ```
 

@@ -198,6 +198,7 @@ module.exports = {
           "/content/sre/tenant-operator/customresources.md",
           "/content/sre/tenant-operator/admin_roles.md",
           "/content/sre/tenant-operator/tenant_roles.md",
+          "/content/sre/tenant-operator/installation.md",
           "/content/sre/tenant-operator/vault-authentication.md",
         ],
       },
