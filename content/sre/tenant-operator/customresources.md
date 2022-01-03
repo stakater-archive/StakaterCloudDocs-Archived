@@ -1,18 +1,38 @@
 # Custom Resources
 
-1. Tenant
-2. Quota
+1. Quota
+2. Tenant
 3. Template
 4. TemplateInstance
 5. TemplateGroupInstance
 
-## 1. Tenant
+## 1. Quota
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Quota
+metadata:
+  name: medium
+  annotations:
+    quota.tenantoperator.stakater.com/is-default: "false"
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+    services.loadbalancers: "2"
+```
+
+When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota`, which provides administrators to limit resource consumption per `Tenant`. For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
+
+## 2. Tenant
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Tenant
 metadata:
-  name: development
+  name: bluesky
 spec:
   users:
     owner:
@@ -21,7 +41,7 @@ spec:
     - hanzala@stakater.com
     view:
     - jose@stakater.com
-  quota: development
+  quota: medium
   sandbox: false
   namespacetemplate:
     templateInstances:
@@ -35,37 +55,16 @@ spec:
 Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 
 * Tenant has 3 kinds of `users`:
-  + `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces aswell.
-  + `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
-  + `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
-  + For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/tenant_roles.html).
+  * `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces aswell.
+  * `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
+  * `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
+  * For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/tenant_roles.html).
 
 * Tenant will have a `Quota` to limit resource consumption.
 
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*. Sandbox will follow the following naming convention **TenantName**-**UserName**-*sandbox*.
 
 * Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
-
-## 2. Quota CR
-
-```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Quota
-metadata:
-  name: development
-  annotations:
-    quota.tenantoperator.stakater.com/is-default: "false"
-spec:
-  hard:
-    configmaps: "10"
-    persistentvolumeclaims: "4"
-    replicationcontrollers: "20"
-    secrets: "10"
-    services: "10"
-    services.loadbalancers: "2"
-```
-
-When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota`, which provides administrators to limit resource consumption per `Tenant`. For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
 
 ## 3. Template
 
@@ -148,7 +147,6 @@ metadata:
   name: redis-instance
 spec:
   template: redis
-  tenant: development
   selector:
     matchLabels:
       app: redis
@@ -156,7 +154,6 @@ spec:
 ```
 
 TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.
-It specifies the matching labels and tenant name.
 
 ## Namespace
 
@@ -165,7 +162,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    stakater.com/tenant: development
+    stakater.com/tenant: blue-sky
   name: build
 ```
 
