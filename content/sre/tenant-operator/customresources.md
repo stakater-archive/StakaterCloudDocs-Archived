@@ -17,11 +17,10 @@ metadata:
     quota.tenantoperator.stakater.com/is-default: "false"
 spec:
   hard:
-    configmaps: "10"
-    persistentvolumeclaims: "4"
-    replicationcontrollers: "20"
-    secrets: "10"
-    services: "10"
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
     services.loadbalancers: "2"
 ```
 
