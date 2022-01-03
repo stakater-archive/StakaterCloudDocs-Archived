@@ -1,18 +1,39 @@
 # Custom Resources
 
-1. Tenant
-2. Quota
+1. Quota
+2. Tenant
 3. Template
 4. TemplateInstance
 5. TemplateGroupInstance
 
-## 1. Tenant
+## 1. Quota
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Quota
+metadata:
+  name: medium
+  annotations:
+    quota.tenantoperator.stakater.com/is-default: "false"
+spec:
+  hard:
+    configmaps: "10"
+    persistentvolumeclaims: "4"
+    replicationcontrollers: "20"
+    secrets: "10"
+    services: "10"
+    services.loadbalancers: "2"
+```
+
+When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota`, which provides administrators to limit resource consumption per `Tenant`. For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
+
+## 2. Tenant
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Tenant
 metadata:
-  name: blue-sky
+  name: bluesky
 spec:
   users:
     owner:
@@ -45,27 +66,6 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*. Sandbox will follow the following naming convention **TenantName**-**UserName**-*sandbox*.
 
 * Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
-
-## 2. Quota
-
-```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Quota
-metadata:
-  name: medium
-  annotations:
-    quota.tenantoperator.stakater.com/is-default: "false"
-spec:
-  hard:
-    configmaps: "10"
-    persistentvolumeclaims: "4"
-    replicationcontrollers: "20"
-    secrets: "10"
-    services: "10"
-    services.loadbalancers: "2"
-```
-
-When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota`, which provides administrators to limit resource consumption per `Tenant`. For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
 
 ## 3. Template
 

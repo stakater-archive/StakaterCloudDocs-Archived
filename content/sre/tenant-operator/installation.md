@@ -1,6 +1,8 @@
 # Installation
 
-## Requirements
+## Install Tenant Operator using Helm
+
+### Requirements
 
 * An **Openshift** cluster
 * **Helm-Operator**
@@ -8,7 +10,7 @@
 * **Vault** (optional)
 * **RHSSO** (optional)
 
-## 1. Create Namespace
+### 1. Create Namespace
 
 ```bash
 oc create namespace stakater-tenant-operator
@@ -16,7 +18,7 @@ oc create namespace stakater-tenant-operator
 
 Create a new namespace `stakater-tenant-operator`, where Tenant-Operator will be deployed.
 
-## 2. Create Secret
+### 2. Create Secret
 
 ```bash
 oc apply -f -n stakater-tenant-operator docker-secret.yaml
@@ -26,7 +28,7 @@ Create a `docker-secret` in *stakater-tenant-operator* namespace to pull Tenant-
 
 *The secret will be provided by **Stakater***
 
-## 3. Create Tenant-Operator Helm Release
+### 3. Create Tenant-Operator Helm Release
 
 ```yaml
 apiVersion: helm.fluxcd.io/v1
