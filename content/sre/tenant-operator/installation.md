@@ -18,7 +18,7 @@ Create a new namespace `stakater-tenant-operator`, where Tenant-Operator will be
 ### 2. Create Secret
 
 ```bash
-oc apply -f -n stakater-tenant-operator stakater-docker-secret.yaml
+oc apply -f stakater-docker-secret.yaml
 ```
 
 Create a secret called `stakater-docker-secret` in *stakater-tenant-operator* namespace to pull Tenant-Operator image from dockerhub.
