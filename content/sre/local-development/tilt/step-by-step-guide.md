@@ -27,7 +27,7 @@ oc project <MY-SANDBOX>
 
 ```bash
 HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
-docker login -u username -p $(oc whoami -t) $HOST
+docker login -u $(oc whoami) -p $(oc whoami -t) $HOST
 ```
 
 NOTE: If oc command fails then ask SCA (SAAP Cluster Admin) to provide you the route
@@ -61,7 +61,7 @@ Make sure the app jar file name under `local_resource` matches with the jar name
  
 10) Add `tilt_options.json` file to your application
 
-Should be created locally by everyone in base directory and it should have following content as per the user. User email in `allow_k8s_contexts` should be same email that is used as tenant member email.
+Should be created locally by everyone in base directory and it should have following content as per the user. User email in `allow_k8s_contexts` should be same email that is used as tenant member email. Run $(oc whoami -c) to get the current context.
 
 ```json
 {
