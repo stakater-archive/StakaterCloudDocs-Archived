@@ -110,7 +110,7 @@ users:
 
 Red Hat Single Sign-On [RHSSO](https://access.redhat.com/products/red-hat-single-sign-on) is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.
 
-If `RHSSO` is configured on a cluster, than RHSSO configuration can be enabled.
+If `RHSSO` is configured on a cluster, then RHSSO configuration can be enabled.
 
 ```yaml
 rhsso:
@@ -132,7 +132,7 @@ If enabled, than admins have to provide secret and URL of RHSSO.
 
 [Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
 
-If `vault` is configured on a cluster, than vault configuration can be enabled.
+If `vault` is configured on a cluster, then vault configuration can be enabled.
 
 ```yaml
 vault:

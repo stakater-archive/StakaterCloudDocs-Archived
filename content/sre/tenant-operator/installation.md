@@ -39,6 +39,8 @@ Scan the new repository for charts.
 helm repo update
 ```
 
+### 4. Install Tenant Operator
+
 ```bash
 helm install tenant-operator stakater/tenant-operator --namespace stakater-tenant-operator \
 --set image.repository=stakaterdockerhubpullroot/tenant-operator \
@@ -50,6 +52,10 @@ helm install tenant-operator stakater/tenant-operator --namespace stakater-tenan
 ```
 
 Once the image has been pulled `Tenant-Operator` will be ready for use.
+
+### 5. Configuring IntegrationConfig
+
+A default `IntegrationConfig` is installed with tenant-operator, which can be found in `stakater-tenant-operator` namespace under the name `tenant-operator-config`. For more details check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
 
 ## Installation using Helm Release
 
@@ -107,10 +113,14 @@ spec:
         memory: 128Mi
 ```
 
-This helm-release will deploy tenant-operator and a default integration-config in `stakater-tenant-operator` namespace.
+This helm-release will deploy tenant-operator.
 
 Once the image has been pulled `Tenant-Operator` will be ready for use.
 
+### 4. Configuring IntegrationConfig
+
+A default `IntegrationConfig` is installed with tenant-operator, which can be found in `stakater-tenant-operator` namespace under the name `tenant-operator-config`. For more details check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
+
 ## Note
 
-* If tenant-operator is deployed in a newly created namespace. Than restart tenant-operators pod once so that tenant-operator can retrieve `webhook-server-cert` provided by certmanager(if pod started before secret was made).
+* If tenant-operator is deployed in a newly created namespace. Then restart tenant-operators pod once so that tenant-operator can retrieve `webhook-server-cert` provided by certmanager(if pod started before secret was made).
