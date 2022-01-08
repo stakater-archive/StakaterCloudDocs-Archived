@@ -1,6 +1,6 @@
 ### Creating Tenant
 
-Bill, the cluster admin, receives a new request from Acme Corp.'s CTO asking for a new tenant to be onboarded and Anna will be the tenant owner.
+Bill, the cluster admin, receives a new request from Acme Corp.'s CTO asking for a new tenant for Anna's team.
 
 Bill creates a new tenant `bluesky` in the cluster according to the tenant's profile:
 
@@ -14,6 +14,8 @@ spec:
   users:
     owner:
     - anna@acme.org
+    edit:
+    - john@acme.org
   quota: small
   sandbox: false
 EOF
@@ -55,7 +57,7 @@ no
 
 ### Assign multiple users as tenant owner
 
-In the example above, Bill assigned the ownership of `bluesky` tenant to `Anna` user. If another user, e.g. `Anthony` needs to administer the `bluesky` tenant, Bill can assign the ownership of tenant to such user too:
+In the example above, Bill assigned the ownership of `bluesky` tenant to `Anna's` user. If another user, e.g. `Anthony` needs to administer the `bluesky` tenant, Bill can assign the ownership of tenant to such user too:
 
 ```yaml
 kubectl apply -f - << EOF
@@ -68,6 +70,8 @@ spec:
     owner:
     - anna@acme.org
     - anthony@acme.org
+    edit:
+    - john@acme.org
   quota: small
   sandbox: false
 EOF
@@ -108,3 +112,7 @@ NAME                   STATUS   AGE
 bluesky-anna-sandbox      Active   5d5h
 bluesky-anthony-sandbox        Active   5d5h
 ```
+
+### What’s next
+
+See how Bill, the cluster admin, can create tenants. [Enforce Pod Priority Classes](/docs/operator/use-cases/pod-priority-classes)
