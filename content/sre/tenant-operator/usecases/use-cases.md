@@ -2,14 +2,12 @@
 
 ## Creating Quota
 
-## Configuring IntegrationConfig(vault, rhsso, managednamespaces)
+## Creating Tenants
+
+## Creating Namespaces
 
 ## Template
 
-## Deploying Templates to Namespaces (Tenant and TemplateInstance)
+## Deploying Template to Namespaces
 
-## Using TemplateGroupInstance to deploy Templates
-
-## Tenant ownership
-
-## Creating Namespaces
+## Configuring IntegrationConfig(vault, rhsso, managednamespaces)
