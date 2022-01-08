@@ -115,4 +115,4 @@ bluesky-anthony-sandbox        Active   5d5h
 
 ### What’s next
 
-See how Bill, the cluster admin, can create tenants. [Enforce Pod Priority Classes](/docs/operator/use-cases/pod-priority-classes)
+See how Anna, can create namespaces. [Enforce Pod Priority Classes](/docs/operator/use-cases/pod-priority-classes)

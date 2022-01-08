@@ -83,3 +83,7 @@ The said Role Binding resources are automatically created by Tenant Operator whe
 
 Anna can deploy any resource in the namespace, according to the predefined
 [`admin` cluster role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
+
+### What’s next
+
+See how Anna, can create templates. [Enforce Pod Priority Classes](/docs/operator/use-cases/pod-priority-classes)
