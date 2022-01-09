@@ -8,7 +8,7 @@ Anna can either create a template using `Custom Resource Manifests`
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Template
 metadata:
-  name: networkpolicy
+  name: docker-secret
 resources:
   manifests:
     - kind: Secret
@@ -16,7 +16,7 @@ resources:
       metadata:
         name: docker-secret
       data:
-        .dockercfg: SSBzZWUgd2hhdCB5b3VyIHRyeWluZyB0byBkbyBoZXJlLiA7KQ==
+        .dockercfg: eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K
       type: kubernetes.io/dockercfg
 ```
 
