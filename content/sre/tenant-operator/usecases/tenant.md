@@ -1,6 +1,6 @@
-### Creating Tenant
+## Creating Tenant
 
-Bill, the cluster admin, receives a new request from Acme Corp.'s CTO asking for a new tenant for Anna's team.
+Bill the cluster-admin receives a new request from Acme Corp.'s CTO asking for a new tenant for Anna's team.
 
 Bill creates a new tenant `bluesky` in the cluster according to the tenant's profile:
 
@@ -21,7 +21,7 @@ spec:
 EOF
 ```
 
-Bill checks if the new tenant is created and operational:
+Bill checks if the new tenant is created:
 
 ```bash
 kubectl get tenant bluesky
@@ -29,9 +29,9 @@ NAME       STATE    AGE
 bluesky    Active   3m
 ```
 
-Once the new tenant `bluesky` is in place, Bill notifies Anna.
+Once the new tenant `bluesky` has been created, Bill notifies Anna that her teams tenant has been created.
 
-Anna can log-in and check if she can create a namespace
+Anna can now log-in and check if she can create a namespace
 
 ```bash
 kubectl auth can-i create namespaces
@@ -55,9 +55,9 @@ kubectl auth can-i get tenants
 no
 ```
 
-### Assign multiple users as tenant owner
+## Assign multiple users as tenant owner
 
-In the example above, Bill assigned the ownership of `bluesky` tenant to `Anna's` user. If another user, e.g. `Anthony` needs to administer the `bluesky` tenant, Bill can assign the ownership of tenant to such user too:
+In the example above, Bill assigned the ownership of `bluesky` tenant to `Anna's` user. If another user, e.g. `Anthony` needs to administer the `bluesky` tenant, Bill can assign the ownership of tenant to such users too:
 
 ```yaml
 kubectl apply -f - << EOF
@@ -86,7 +86,7 @@ yes
 
 ### Assigning users sandbox namespaces
 
-Bill assigned the ownership of `bluesky` tenant to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, than they'll ask `Bill` to switch on `sandbox` in the tenant custom resource.
+Bill assigned the ownership of `bluesky` tenant to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, than they'll ask `Bill` to switch on `sandbox` functionality in the tenant custom resource.
 
 ```yaml
 kubectl apply -f - << EOF
@@ -104,15 +104,15 @@ spec:
 EOF
 ```
 
-With the configuration above, Anna and Anthony new sandboxes will have been created
+With the above configuration Anna and Anthony will now have new sandboxes created
 
 ```bash
 kubectl get namespaces
-NAME                   STATUS   AGE
-bluesky-anna-sandbox      Active   5d5h
-bluesky-anthony-sandbox        Active   5d5h
+NAME                           STATUS   AGE
+bluesky-anna-acme-sandbox      Active   5d5h
+bluesky-anthony-acme-sandbox   Active   5d5h
 ```
 
 ### What’s next
 
-See how Anna, can create namespaces. [Enforce Pod Priority Classes](/docs/operator/use-cases/pod-priority-classes)
+See how Anna, can create [namespaces](./namespace.html)
