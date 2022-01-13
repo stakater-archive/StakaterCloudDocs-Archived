@@ -56,7 +56,7 @@ spec:
 
 [Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
 
-If Bill, the cluster admin, has vault configured in his cluster, than he can take benefit from Tenant-Operators integration with vault.
+If Bill the cluster admin has vault configured in his cluster, than he can take benefit from Tenant-Operators integration with vault.
 
 Tenant-Operator automatically creates Vault secret paths for tenants where tenant members can securely save their secrets and also authorizes tenant members to access these secrets via OIDC.
 

@@ -1,8 +1,8 @@
 ## Creating Tenant
 
-Bill the cluster-admin receives a new request from Acme Corp.'s CTO asking for a new tenant for Anna's team.
+Bill the cluster-admin receives a new request from Aurora Solutions CTO asking for a new tenant for Anna's team.
 
-Bill creates a new tenant `bluesky` in the cluster according to the tenant's profile:
+Bill creates a new tenant called `bluesky` in the cluster:
 
 ```yaml
 kubectl create -f - << EOF
@@ -13,9 +13,9 @@ metadata:
 spec:
   users:
     owner:
-    - anna@acme.org
+    - anna@aurora.org
     edit:
-    - john@acme.org
+    - john@aurora.org
   quota: small
   sandbox: false
 EOF
@@ -57,7 +57,7 @@ no
 
 ## Assign multiple users as tenant owner
 
-In the example above, Bill assigned the ownership of `bluesky` tenant to `Anna's` user. If another user, e.g. `Anthony` needs to administer the `bluesky` tenant, Bill can assign the ownership of tenant to such users too:
+In the example above, Bill assigned the ownership of `bluesky` to `Anna's`. If another user, e.g. `Anthony` needs to administer `bluesky`, than Bill can assign the ownership of tenant to such users as well:
 
 ```yaml
 kubectl apply -f - << EOF
@@ -68,10 +68,10 @@ metadata:
 spec:
   users:
     owner:
-    - anna@acme.org
-    - anthony@acme.org
+    - anna@aurora.org
+    - anthony@aurora.org
     edit:
-    - john@acme.org
+    - john@aurora.org
   quota: small
   sandbox: false
 EOF
@@ -84,9 +84,9 @@ kubectl auth can-i create namespaces
 yes
 ```
 
-### Assigning users sandbox namespaces
+### Assigning Users Sandbox Namespace
 
-Bill assigned the ownership of `bluesky` tenant to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, than they'll ask `Bill` to switch on `sandbox` functionality in the tenant custom resource.
+Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, than they'll ask `Bill` to switch on `sandbox` functionality for them. To which Bill will just set `sandbax: true`
 
 ```yaml
 kubectl apply -f - << EOF
@@ -97,8 +97,10 @@ metadata:
 spec:
   users:
     owner:
-    - anna@acme.org
-    - anthony@acme.org
+    - anna@aurora.org
+    - anthony@aurora.org
+    edit:
+    - john@aurora.org
   quota: small
   sandbox: true
 EOF
@@ -109,8 +111,8 @@ With the above configuration Anna and Anthony will now have new sandboxes create
 ```bash
 kubectl get namespaces
 NAME                           STATUS   AGE
-bluesky-anna-acme-sandbox      Active   5d5h
-bluesky-anthony-acme-sandbox   Active   5d5h
+bluesky-anna-aurora-sandbox      Active   5d5h
+bluesky-anthony-aurora-sandbox   Active   5d5h
 ```
 
 ### What’s next

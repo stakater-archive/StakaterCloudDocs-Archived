@@ -30,9 +30,9 @@ metadata:
 spec:
   users:
     owner:
-    - anna@acme.org
+    - anna@aurora.org
     edit:
-    - john@acme.org
+    - john@aurora.org
   quota: small
   sandbox: true
   namespacetemplate:
@@ -46,10 +46,10 @@ spec:
 
 Tenant-Operator will deploy `docker-pull-secret` `TemplateInstances` mentioned in `namespacetemplate.templateInstances`, `secrets` will only be applied in those `namespaces` which belong to Anna's `tenant` and which have `matching label`.
 
-So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-acme-sandbox`, after adding the label she see's that the secret has been created.
+So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-aurora-sandbox`, after adding the label she see's that the secret has been created.
 
 ```bash
-kubectl get secret docker-secret -n bluesky-anna-acme-sandbox
+kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
 NAME                  STATE    AGE
 docker-pull-secret    Active   3m
 ```
@@ -83,7 +83,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateInstance
 metadata:
   name: docker-pull-secret-instance
-  namespace: bluesky-anna-acme-sandbox
+  namespace: bluesky-anna-aurora-sandbox
 spec:
   template: docker-pull-secret
   sync: true
@@ -92,7 +92,7 @@ spec:
 Once created Anna can see that the secret has been successfully created.
 
 ```bash
-kubectl get secret docker-secret -n bluesky-anna-acme-sandbox
+kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
 NAME                  STATE    AGE
 docker-pull-secret    Active   3m
 ```
@@ -137,11 +137,95 @@ spec:
 Once created Bill can see that secrets has been successfully created in all matching namespaces.
 
 ```bash
-kubectl get secret docker-secret -n bluesky-anna-acme-sandbox
+kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
 NAME             STATE    AGE
 docker-secret    Active   3m
 
-kubectl get secret docker-secret -n alpha-haseeb-acme-sandbox
+kubectl get secret docker-secret -n alpha-haseeb-aurora-sandbox
 NAME             STATE    AGE
 docker-secret    Active   2m
+```
+
+## Passing Parameters to Template via TemplateInstance or Tenant
+
+Anna wants to deploy a LimitRange resource to certain namespaces.
+
+First Anna asks Bill, the cluster admin, to creates her a template with parameters for LimitRange:
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Template
+metadata:
+  name: namespace-parameterized-restrictions
+parameters:
+  # Name of the parameter
+  - name: DEFAULT_CPU_LIMIT
+    # The default value of the parameter
+    value: "1"
+  - name: DEFAULT_CPU_REQUESTS
+    value: "0.5"
+    # If a parameter is required the template instance will need to set it
+    # required: true
+    # Make sure only values are entered for this parameter
+    validation: "^[0-9]*\\.?[0-9]+$"
+resources:
+  manifests:
+    - apiVersion: v1
+      kind: LimitRange
+      metadata:
+        name: namespace-limit-range-${namespace}
+      spec:
+        limits:
+          - default:
+              cpu: "${{DEFAULT_CPU_LIMIT}}"
+            defaultRequest:
+              cpu: "${{DEFAULT_CPU_REQUESTS}}"
+            type: Container
+```
+
+Once the template has been created, Anna creates a `TemplateInstance` in her namespace referring to the `Template` she wants to deploy:
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: TemplateInstance
+metadata:
+  name: namespace-parameterized-restrictions-instance
+  namespace: bluesky-anna-aurora-sandbox
+spec:
+  template: namespace-parameterized-restrictions
+  parameters:
+  - name: DEFAULT_CPU_LIMIT
+    value: "1.5"
+  - name: DEFAULT_CPU_REQUESTS
+    value: "1"
+  sync: true
+```
+
+Or she can use her tenant
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Tenant
+metadata:
+  name: bluesky
+spec:
+  users:
+    owner:
+    - anna@aurora.org
+    edit:
+    - john@aurora.org
+  quota: small
+  sandbox: true
+  namespacetemplate:
+    templateInstances:
+    - spec:
+        template: namespace-parameterized-restrictions
+      parameters:
+        - name: DEFAULT_CPU_LIMIT
+          value: "1.5"
+        - name: DEFAULT_CPU_REQUESTS
+          value: "1"
+      selector:
+        matchLabels:
+          kind: build
 ```

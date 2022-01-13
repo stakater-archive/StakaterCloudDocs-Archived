@@ -1,6 +1,6 @@
 # Enforcing Resources Quotas
 
-With Tenant Operator Bill the cluster-admin can set and enforce resource quotas and limits for tenants.
+With Tenant-Operator Bill the cluster-admin can set and enforce resource quotas and limits for tenants.
 
 ## Assigning Resource Quotas
 
@@ -30,7 +30,7 @@ NAME       STATE    AGE
 small      Active   3m
 ```
 
-Once the quota has been created, Bill will then proceed to create a tenant for Anna, while also linking the newly created `quota`.
+Once the quota has been created, Bill then proceed to create a tenant for Anna, while also linking the newly created `quota`.
 
 ```yaml
 kubectl create -f - << EOF

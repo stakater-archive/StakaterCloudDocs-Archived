@@ -12,7 +12,7 @@ metadata:
 ```
 
 **Note:**
-Anna is required to add tenant label **stakater.com/tenant: bluesky** which contains the name of her tenant *bluesky*, while creating the namespace. If label is not added or the user does not belong to the tenant, then Tenant-Operator will not allow the creation of that namespace.
+`Anna is required to add tenant label 'stakater.com/tenant: bluesky' which contains the name of her tenant 'bluesky', while creating the namespace. If label is not added or the user does not belong to the tenant, then Tenant-Operator will not allow the creation of that namespace.`
 
 When Anna creates the namespace, Tenant-Operator assigns Anna and other tenant members the following roles based on their user type:
 
@@ -86,4 +86,4 @@ Anna can deploy any resource in the namespace, according to the predefined
 
 ## What’s next
 
-See how Anna, can create [templates](./template.html)
+See how Bill, can create [templates](./template.html)
