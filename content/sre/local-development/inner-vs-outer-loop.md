@@ -34,3 +34,7 @@ Here's a list of steps you might typically follow to deploy from the inner loop:
   - Issue a `kubectl create configmap`.
 9. Configure apps to work together correctly:
   - Issue a `kubectl apply -f my_configmap.yaml`.
+
+That's a lot of steps!
+
+Enter Tilt! which can help make many of those steps easier.
