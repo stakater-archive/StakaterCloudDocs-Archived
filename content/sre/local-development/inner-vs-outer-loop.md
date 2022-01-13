@@ -12,7 +12,7 @@ Notice that, while you code, you are constantly iterating through various develo
 
 ## Deploying from the inner loop
 
-You might think that your job stops at local testing and a Git pull request (or a git push)—but that's not usually the case. You will still need to ensure that your code functions correctly in containers, runs in the cluster, and plays nicely with other containerized components. Therefore, you will want some iterations of your inner loop to deploy and debug directly into the Kubernetes cluster.
+You might think that your job stops at local testing and a Git pull request (or a `git push`)—but that's not usually the case. You will still need to ensure that your code functions correctly in containers, runs in the cluster, and plays nicely with other containerized components. Therefore, you will want some iterations of your inner loop to deploy and debug directly into the Kubernetes cluster.
 
 Here's a list of steps you might typically follow to deploy from the inner loop:
 
@@ -27,10 +27,10 @@ Here's a list of steps you might typically follow to deploy from the inner loop:
 5. Write one or more Kubernetes or OpenShift resource files:
   - Write lots of YAML.
 6. Deploy your app to the cluster:
-  - Issue the command: kubectl apply -f my_app.yaml.
+  - Issue the command: `kubectl apply -f my_app.yaml`.
 7. Deploy other services to the cluster:
-  - Issue the command: kubectl apply -f svc*.yaml.
+  - Issue the command: `kubectl apply -f svc*.yaml`.
 8. Write the config (or set ENV) to allow apps to work together:
   - Issue a kubectl create configmap.
 9. Configure apps to work together correctly:
-  - Issue a kubectl apply -f my_configmap.yaml.
+  - Issue a `kubectl apply -f my_configmap.yaml`.
