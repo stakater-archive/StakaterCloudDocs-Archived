@@ -46,10 +46,10 @@ spec:
   namespacetemplate:
     templateInstances:
     - spec:
-        template: redis
+        template: docker-pull-secret
       selector:
         matchLabels:
-          app: redis
+          secret: docker
 ```
 
 Defines the `users`, `quota` and `namespacetemplates` of a tenant.
@@ -72,10 +72,10 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Template
 metadata:
-  name: redis
+  name: redis-instance
 resources:
   helm:
-    releaseName: redis
+    releaseName: redis-instance
     chart:
       repository:
         name: redis
@@ -96,9 +96,32 @@ resources:
       spec:
         podSelector:
           matchLabels:
+            role: db
+        policyTypes:
+        - Ingress
+        - Egress
         ingress:
-          - from:
-              - podSelector: {}
+        - from:
+          - ipBlock:
+              cidr: 172.17.0.0/16
+              except:
+              - 172.17.1.0/24
+          - namespaceSelector:
+              matchLabels:
+                project: myproject
+          - podSelector:
+              matchLabels:
+                role: frontend
+          ports:
+          - protocol: TCP
+            port: 6379
+        egress:
+        - to:
+          - ipBlock:
+              cidr: 10.0.0.0/24
+          ports:
+          - protocol: TCP
+            port: 5978
 ```
 
 Templates are used to initialize Namespaces and share common resources across namespaces (e.g. secrets).

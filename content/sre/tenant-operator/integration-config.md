@@ -182,3 +182,5 @@ namespaceAccessPolicy:
         - system:serviceaccount:openshift-argocd:argocd-application-controller
         - adam@stakater.com
 ```
+
+For more details please refer [use-cases](./usecases/integrationconfig.html)

@@ -43,22 +43,20 @@ Templates for the files:
 
 ### 1. Per Environment
 
-#### Create space per environment
+#### Create namespace per environment
 
-Add space configuation for **each** environment
+Add space configuration for **each** environment
 
 - /\<tenant>/configs/\<env>/\space.yaml
 
-```
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Space
+```yaml
+apiVersion: v1
+kind: Namespace
 metadata:
   name: <tenant>-<environment>
   labels:
-    tenant: <tenant>
+    stakater.com/tenant: <tenant>
     kind: <environment>
-spec:
-  tenant: <tenant>
 ```
 
 #### Create argocd project and application per environment
@@ -123,8 +121,13 @@ metadata:
   name: <tenant>
 spec:
   users:
-  - <user-1>
-  - <user-2>
-  - <user-n>
+    owner:
+      - <user-1>
+    edit:
+      - <user-2>
+    view:
+      - <user-n>
   quota: <quota>
 ```
+
+For more details please refer [custom-resources](../tenant-operator/customresources.html#_2-tenant)

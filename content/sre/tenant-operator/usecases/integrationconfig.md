@@ -1,4 +1,4 @@
-### Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig
+# Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig
 
 Bill the cluster admin can use `IntegrationConfig` to configure how `Tenant-Operator` manages the cluster.
 
@@ -52,7 +52,7 @@ spec:
     - system:serviceaccount:hive
 ```
 
-### Configuring Vault in IntegrationConfig
+## Configuring Vault in IntegrationConfig
 
 [Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
 
@@ -107,13 +107,13 @@ Now Anna sign-in's to vault via OIDC. Anna can see her tenants path and secrets.
 
 Whereas John sign-in's to vault via OIDC. John can't see his tenants path and secrets as he doesn't have the access required to view them.
 
-### Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig
+## Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig
 
 Red Hat Single Sign-On [RHSSO](https://access.redhat.com/products/red-hat-single-sign-on) is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.
 
 If Bill the cluster admin has RHSSO configured in his cluster, than he can take benefit from Tenant-Operators integration with RHSSO and Vault.
 
-Tenant-Operator automatically allow tenant members to access vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securly save their secrets.
+Tenant-Operator automatically allow tenant members to access vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securely save their secrets.
 
 Bill would first have to integrate RHSSO with Tenant-Operator by adding the details in integration config. For more [details](../integration-config.html#rhsso-red-hat-single-sign-on)
 
