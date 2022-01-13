@@ -1,4 +1,4 @@
-### Creating Namespace
+# Creating Namespace
 
 Anna as the tenant owner can create new namespaces for her tenant.
 
@@ -12,9 +12,9 @@ metadata:
 ```
 
 **Note:**
-Anna is required to add tenant label **stakater.com/tenant: bluesky** which contains the name of her tenant e.g. *bluesky*, while creating the namespace. If label is not added or the user does not belong to the tenant, then Tenant Operator will not allow the creation of that namespace.
+Anna is required to add tenant label **stakater.com/tenant: bluesky** which contains the name of her tenant *bluesky*, while creating the namespace. If label is not added or the user does not belong to the tenant, then Tenant-Operator will not allow the creation of that namespace.
 
-When Anna creates the namespace, Tenant Operator assigns Anna and other tenant members the following roles based on their user type:
+When Anna creates the namespace, Tenant-Operator assigns Anna and other tenant members the following roles based on their user type:
 
 Role for tenant owners
 
@@ -79,11 +79,11 @@ roleRef:
 
 As Anna is a tenant owner, that's why she is able to create namespaces.
 
-The said Role Binding resources are automatically created by Tenant Operator when Anna creates a namespace in the tenant.
+The said RoleBinding resources are automatically created by Tenant-Operator when Anna creates a namespace.
 
 Anna can deploy any resource in the namespace, according to the predefined
 [`admin` cluster role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
 
-### What’s next
+## What’s next
 
-See how Anna, can create templates. [Enforce Pod Priority Classes](/docs/operator/use-cases/pod-priority-classes)
+See how Anna, can create [templates](./template.html)
