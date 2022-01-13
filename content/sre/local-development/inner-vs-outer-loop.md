@@ -21,16 +21,16 @@ Here's a list of steps you might typically follow to deploy from the inner loop:
 2. Describe how to package your app into a container image:
   - Update the Dockerfile.
 3. Create a container image:
-  - Issue the commands docker build and docker tag.
+  - Issue the commands `docker build` and `docker tag`.
 4. Upload the container image to a registry:
-  - Issue a docker push.
+  - Issue a `docker push`.
 5. Write one or more Kubernetes or OpenShift resource files:
   - Write lots of YAML.
 6. Deploy your app to the cluster:
   - Issue the command: `kubectl apply -f my_app.yaml`.
 7. Deploy other services to the cluster:
   - Issue the command: `kubectl apply -f svc*.yaml`.
-8. Write the config (or set ENV) to allow apps to work together:
-  - Issue a kubectl create configmap.
+8. Write the config (or set `ENV`) to allow apps to work together:
+  - Issue a `kubectl create configmap`.
 9. Configure apps to work together correctly:
   - Issue a `kubectl apply -f my_configmap.yaml`.
