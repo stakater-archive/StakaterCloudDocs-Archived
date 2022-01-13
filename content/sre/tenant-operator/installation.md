@@ -124,3 +124,4 @@ A default `IntegrationConfig` is installed with tenant-operator, which can be fo
 ## Note
 
 * If tenant-operator is deployed in a newly created namespace. Then restart tenant-operators pod once so that tenant-operator can retrieve `webhook-server-cert` provided by certmanager(if pod started before secret was made).
+* For more details on how to use Tenant-Operator please refer [use-cases](https://docs.cloud.stakater.com/content/sre/tenant-operator/usecases/quota.html).

@@ -62,4 +62,4 @@ Error from server (Cannot exceed Namespace quota: please, reach out to the syste
 
 ## What’s next
 
-See how Bill can create tenants. [Enforce Pod Priority Classes](/docs/operator/use-cases/pod-priority-classes)
+See how Bill can create [tenants](https://docs.cloud.stakater.com/content/sre/tenant-operator/usecases/tenant.html)
