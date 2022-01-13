@@ -16,7 +16,7 @@ You might think that your job stops at local testing and a Git pull request (or 
 
 Here's a list of steps you might typically follow to deploy from the inner loop:
 
-1.Describe how to configure the OS for your container:
+1. Describe how to configure the OS for your container:
   - Write a Dockerfile to set up Linux.
 2. Describe how to package your app into a container image:
   - Update the Dockerfile.
