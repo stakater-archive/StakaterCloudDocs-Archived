@@ -1,6 +1,6 @@
 # Creating Templates
 
-Anna wants to create a Template that she can use to initialize or share common resources across namespaces (e.g. PullSecrets)
+Anna wants to create a Template that she can use to initialize or share common resources across namespaces (e.g. PullSecrets).
 
 Anna can either create a template using `Custom Resource Manifests`
 
@@ -71,8 +71,8 @@ resources:
             type: Container
 ```
 
-Parameters can both be used with `manifests` and `helm charts`
+Parameters can be used with both `manifests` and `helm charts`
 
 ## What’s next
 
-See how Anna, can deploy a [template in a namespace](./deploying_templates.html)
+See how Anna can deploy a [template in a namespace](./deploying_templates.html)

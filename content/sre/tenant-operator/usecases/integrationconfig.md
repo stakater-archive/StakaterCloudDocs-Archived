@@ -1,15 +1,15 @@
 # Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig
 
-Bill the cluster admin can use `IntegrationConfig` to configure how `Tenant-Operator` manages the cluster.
+Bill is a cluster admin who can use `IntegrationConfig` to configure how `Tenant-Operator` manages the cluster.
 
-By default Tenant-Operator watches all namespaces and will enforce all the governing policies on them.
+By default, Tenant-Operator watches all namespaces and will enforce all the governing policies on them.
 
 ```bash
 oc create namespace stakater-test
 Error from server (Cannot Create namespace stakater-test without label stakater.com/tenant. User: Bill): admission webhook "vnamespace.kb.io" denied the request: Cannot CREATE namespace stakater-test without label stakater.com/tenant. User: Bill
 ```
 
-If Bill wants to ignore namespaces with certain prefixes e.g. `openshift`, `kube`, than Bill would simply have to add them in integration config:
+If Bill wants to ignore namespaces with certain prefixes like `openshift`, `kube`, then Bill would simply add them in integration config:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -26,7 +26,7 @@ spec:
     - redhat
 ```
 
-After setting the `managedNamespacePrefixes`, Bill can create namespaces without interference.
+After setting `managedNamespacePrefixes`, Bill can create namespaces without interference.
 
 ```bash
 oc create namespace stakater-test
@@ -82,7 +82,7 @@ spec:
       clientName: vault
 ```
 
-Bill than creates a tenant for Anna and John
+Bill then creates a tenant for Anna and John
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -99,23 +99,19 @@ spec:
   sandbox: false
 ```
 
-Now Bill goes to `Vault` and sees that a path for `tenant` has been made under the name `bluesky/kv`.
+Now Bill goes to `Vault` and sees that a path for `tenant` has been made under the name `bluesky/kv`, confirming that Tenant members with the Owner or Edit roles now have access to the tenant's Vault path.
 
-Owner and Edit tenant members have access to tenants Vault path.
-
-Now Anna sign-in's to vault via OIDC. Anna can see her tenants path and secrets.
-
-Whereas John sign-in's to vault via OIDC. John can't see his tenants path and secrets as he doesn't have the access required to view them.
+Now if Anna sign's in to the vault via OIDC, she can see her tenants path and secrets. Whereas if John sign's in to the vault via OIDC, he can't see his tenants path or secrets as he doesn't have the access required to view them.
 
 ## Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig
 
 Red Hat Single Sign-On [RHSSO](https://access.redhat.com/products/red-hat-single-sign-on) is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.
 
-If Bill the cluster admin has RHSSO configured in his cluster, than he can take benefit from Tenant-Operators integration with RHSSO and Vault.
+If Bill the cluster admin has RHSSO configured in his cluster, than he can take benefit from Tenant-Operator's integration with RHSSO and Vault.
 
-Tenant-Operator automatically allow tenant members to access vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securely save their secrets.
+Tenant-Operator automatically allows tenant members to access vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securely save their secrets.
 
-Bill would first have to integrate RHSSO with Tenant-Operator by adding the details in integration config. For more [details](../integration-config.html#rhsso-red-hat-single-sign-on)
+Bill would first have to integrate RHSSO with Tenant-Operator by adding the details in integration config. [Visit here](../integration-config.html#rhsso-red-hat-single-sign-on) for more details.
 
 
 ```yaml

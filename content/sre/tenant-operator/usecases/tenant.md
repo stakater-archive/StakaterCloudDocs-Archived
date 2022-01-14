@@ -1,6 +1,6 @@
 ## Creating Tenant
 
-Bill the cluster-admin receives a new request from Aurora Solutions CTO asking for a new tenant for Anna's team.
+Bill is a cluster admin who receives a new request from Aurora Solutions CTO asking for a new tenant for Anna's team.
 
 Bill creates a new tenant called `bluesky` in the cluster:
 
@@ -29,9 +29,7 @@ NAME       STATE    AGE
 bluesky    Active   3m
 ```
 
-Once the new tenant `bluesky` has been created, Bill notifies Anna that her teams tenant has been created.
-
-Anna can now log-in and check if she can create a namespace
+Anna can now login to the cluster and check if she can create namespaces
 
 ```bash
 kubectl auth can-i create namespaces
@@ -48,7 +46,7 @@ kubectl auth can-i get persistentvolumes
 no
 ```
 
-Including the `Tenant` resources
+Including the `Tenant` resource
 
 ```bash
 kubectl auth can-i get tenants
@@ -57,7 +55,7 @@ no
 
 ## Assign multiple users as tenant owner
 
-In the example above, Bill assigned the ownership of `bluesky` to `Anna's`. If another user, e.g. `Anthony` needs to administer `bluesky`, than Bill can assign the ownership of tenant to such users as well:
+In the example above, Bill assigned the ownership of `bluesky` to `Anna`. If another user, e.g. `Anthony` needs to administer `bluesky`, than Bill can assign the ownership of tenant to that user as well:
 
 ```yaml
 kubectl apply -f - << EOF
@@ -77,7 +75,7 @@ spec:
 EOF
 ```
 
-With the configuration above, Anthony can log-in and execute
+With the configuration above, Anthony can log-in to the cluster and execute
 
 ```bash
 kubectl auth can-i create namespaces
@@ -86,7 +84,7 @@ yes
 
 ### Assigning Users Sandbox Namespace
 
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, than they'll ask `Bill` to switch on `sandbox` functionality for them. To which Bill will just set `sandbax: true`
+Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. To enable that, Bill will just set `sandbax: true`
 
 ```yaml
 kubectl apply -f - << EOF
@@ -106,15 +104,16 @@ spec:
 EOF
 ```
 
-With the above configuration Anna and Anthony will now have new sandboxes created
+With the above configuration `Anna` and `Anthony` will now have new sandboxes created
 
 ```bash
 kubectl get namespaces
-NAME                           STATUS   AGE
+NAME                             STATUS   AGE
 bluesky-anna-aurora-sandbox      Active   5d5h
 bluesky-anthony-aurora-sandbox   Active   5d5h
+bluesky-john-aurora-sandbox      Active   5d5h
 ```
 
 ### What’s next
 
-See how Anna, can create [namespaces](./namespace.html)
+See how Anna can create [namespaces](./namespace.html)

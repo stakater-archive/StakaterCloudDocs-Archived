@@ -1,8 +1,8 @@
 # Deploying Template to Namespaces via Tenant
 
-Bill the cluster admin wants to deploy a docker-pull-secret in Anna's tenant namespaces where certain labels exists.
+Bill is a cluster admin who wants to deploy a docker-pull-secret in Anna's tenant namespaces where certain labels exists.
 
-Firstly, Bill creates a template:
+First, Bill creates a template:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -20,7 +20,7 @@ resources:
       type: kubernetes.io/dockercfg
 ```
 
-Once the template has been created, Bill edits Anna's tenant and populates `namespacetemplate` field:
+Once the template has been created, Bill edits Anna's tenant and populates the `namespacetemplate` field:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -44,9 +44,9 @@ spec:
           kind: build
 ```
 
-Tenant-Operator will deploy `docker-pull-secret` `TemplateInstances` mentioned in `namespacetemplate.templateInstances`, `secrets` will only be applied in those `namespaces` which belong to Anna's `tenant` and which have `matching label`.
+Tenant-Operator will deploy `TemplateInstances` mentioned in `namespacetemplate.templateInstances`, `TemplateInstances` will only be applied in those `namespaces` which belong to Anna's `tenant` and which have `matching label`.
 
-So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-aurora-sandbox`, after adding the label she see's that the secret has been created.
+So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-aurora-sandbox`, and after adding the label she see's that the secret has been created.
 
 ```bash
 kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
@@ -58,7 +58,7 @@ docker-pull-secret    Active   3m
 
 Anna wants to deploy a docker pull secret in her namespace.
 
-First Anna asks Bill, the cluster admin, to creates her a template of the secret:
+First Anna asks Bill, the cluster admin, to create a template of the secret for her:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -89,7 +89,7 @@ spec:
   sync: true
 ```
 
-Once created Anna can see that the secret has been successfully created.
+Once this is created, Anna can see that the secret has been successfully applied.
 
 ```bash
 kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
@@ -119,7 +119,7 @@ resources:
       type: kubernetes.io/dockercfg
 ```
 
-Once the template has been created, Bill creates a `TemplateGroupInstance` referring to the `Template` he wants to deploy with `MatchLabels`:
+Once the template has been created, Bill makes a `TemplateGroupInstance` referring to the `Template` he wants to deploy with `MatchLabels`:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -134,7 +134,7 @@ spec:
   sync: true
 ```
 
-Once created Bill can see that secrets has been successfully created in all matching namespaces.
+Afterwards, Bill can see that secrets has been successfully created in all matching namespaces.
 
 ```bash
 kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
@@ -150,7 +150,7 @@ docker-secret    Active   2m
 
 Anna wants to deploy a LimitRange resource to certain namespaces.
 
-First Anna asks Bill, the cluster admin, to creates her a template with parameters for LimitRange:
+First Anna asks Bill, the cluster admin, to create template with parameters for LimitRange for her:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -183,7 +183,7 @@ resources:
             type: Container
 ```
 
-Once the template has been created, Anna creates a `TemplateInstance` in her namespace referring to the `Template` she wants to deploy:
+Afterwards, Anna creates a `TemplateInstance` in her namespace referring to the `Template` she wants to deploy:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

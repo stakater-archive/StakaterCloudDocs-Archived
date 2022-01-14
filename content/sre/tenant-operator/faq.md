@@ -1,4 +1,4 @@
-# FAQ
+# FAQs
 
 ## Q. Error received while deleting namespace `Cannot DELETE namespace test-john without label stakater.com/tenant`.
 
