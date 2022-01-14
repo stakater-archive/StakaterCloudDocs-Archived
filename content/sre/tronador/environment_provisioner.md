@@ -34,4 +34,4 @@ Values inside the application section are used to create the helm release that m
 
 ## namespaceLabels
 
-Optional field that contains a map of all labels needed to be placed inside the namespace provisioned by the `EnvironmentProvisioner`. If they are removed from here, they will be removed from the namespace as well. Labels in the namespace that were never in this field will not be affected. A possible application of this field is compatibility with [Tenant Operator](../tenant-operator/overview.html).
+Optional field that contains a map of all labels needed to be placed inside the namespace provisioned by the `EnvironmentProvisioner`. If they are removed from here, they will be removed from the namespace as well. Labels in the namespace that were never in this field will not be affected. A potential use case of this field is to allow compatibility with [Tenant Operator](../tenant-operator/overview.html).

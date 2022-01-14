@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `create-environment-provisioner` Tekton cluster task is used to create the `EnvironmentProvisioner` CR. The `EnvironmentProvisioner` CR will be used to deploy the application to its testing environment within your cluster. The use case of this cluster task is to automate the creation of the `EnvironmentProvisioner` CR, and its updating whenever the application image is updated. This is useful, since you can automate the creation of an image whenever some code is pushed into your branch.
+The `create-environment-provisioner` Tekton cluster task is used to create the `EnvironmentProvisioner` CR. The `EnvironmentProvisioner` CR will be used to deploy the application to its testing environment within your cluster. The use case of this cluster task is to automate the creation of the `EnvironmentProvisioner` CR, and its updating whenever the application's image is updated. This is useful, since you can automate the creation of an image whenever some code is pushed into your branch.
 
 ## Requirements
 
