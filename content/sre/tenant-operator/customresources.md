@@ -75,10 +75,10 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Template
 metadata:
-  name: redis-instance
+  name: redis
 resources:
   helm:
-    releaseName: redis-instance
+    releaseName: redis
     chart:
       repository:
         name: redis
@@ -157,7 +157,7 @@ Also you can define custom variables in `Template` and `TemplateInstance` . The 
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateInstance
 metadata:
-  name: redis
+  name: redis-instance
   namespace: build
 spec:
   template: redis

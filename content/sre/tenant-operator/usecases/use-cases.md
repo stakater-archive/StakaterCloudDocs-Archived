@@ -1,13 +1,13 @@
 # Use cases
 
-## Creating Quota
+- ### [Creating Quota](quota.html)
 
-## Creating Tenants
+- ### [Creating Tenants](tenant.html)
 
-## Creating Namespaces
+- ### [Creating Namespaces](namespace.html)
 
-## Template
+- ### [Creating Templates](template.html)
 
-## Deploying Template to Namespaces
+- ### [Deploying Template to Namespaces](deploying_templates.html)
 
-## Configuring IntegrationConfig(vault, rhsso, managednamespaces)
+- ### [Configuring IntegrationConfig](integrationconfig.html)
