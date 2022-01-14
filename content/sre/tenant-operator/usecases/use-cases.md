@@ -1,4 +1,7 @@
-# Use cases
+---
+sidebarDepth: 2
+---
+## Use cases
 
 - ### [Creating Quota](quota.html)
 
