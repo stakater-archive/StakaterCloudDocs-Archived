@@ -8,6 +8,8 @@
 
 ## 1. Quota
 
+**Cluster scoped resource**
+
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Quota
@@ -27,6 +29,8 @@ spec:
 When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota`, which provides administrators to limit resource consumption per `Tenant`. For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
 
 ## 2. Tenant
+
+**Cluster scoped resource**
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -70,6 +74,8 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 * Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
 
 ## 3. Template
+
+**Cluster scoped resource**
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -153,6 +159,8 @@ Also you can define custom variables in `Template` and `TemplateInstance` . The 
 
 ## 4. TemplateInstance
 
+**Namespace scoped resource**
+
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateInstance
@@ -168,6 +176,8 @@ TemplateInstance are used to keep track of resources created from Templates, whi
 Generally, a TemplateInstance is created from a Template and then the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
 
 ## 5. TemplateGroupInstance
+
+**Cluster scoped resource**
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
