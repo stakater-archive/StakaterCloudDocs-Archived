@@ -29,7 +29,7 @@ data:
           releaseName: ${GIT_BRANCH}
           values:
     ${VALUES_OVERRIDE}
-    namespaceLabels:
+      namespaceLabels:
     ${NAMESPACE_LABELS}
     EOF
 ```

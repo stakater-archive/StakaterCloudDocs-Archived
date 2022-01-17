@@ -18,13 +18,14 @@ Tronador is a utility designed to provision and manage a dynamic testing environ
 
 ## Architecture
 
-![architecture](images/architecture.png)
+![architecture](./images/architecture.png)
 
 Tronador comes with a CRD and a Tekton cluster task. The CRD, `EnvironmentProvisioner` , will be used for creating the environment within your cluster. The Tekton cluster task, `create-environment-provisioner` , will be used for automatically creating the `EnvironmentProvisioner` Custom Resource. The task depends on a [Tronador config file](./config_file.html) to be created in your repository, which will be used to create the CR. The `create-environment-provisioner` task can be used within your own Tekton pipeline, automating the process of creating and deploying the image of your application after changes are made to it. An example of a pipeline doing this would be:
 
-1. Create a new branch in your repository
-2. Create a config file in the branch
-3. Create a PR from that branch
-4. A webhook will trigger the Tekton pipeline
-5. The Tekton pipeline will create an image of that branch, and forward that image to the `EnvironmentProvisioner` CR
-6. The `EnvironmentProvisioner` CR will deploy the application to its testing environment within your cluster
+1. A webhook is created when a PR is opened, and the pipeline containing the `create-environment-provisioner` task is triggered.
+2. The pipeline will first create an image and push it to your container image registry.
+3. The pipeline will then create or update the `EnvironmentProvisioner` CR using that image.
+4. The CR will be pushed to your GitOps repository.
+5. ArgoCD will watch the GitOps repository for changes and synchronize any changes, like the `EnvironmentProvisioner` CR, to the cluster.
+6. The `EnvironmentProvisioner` CR will be watched by the `Tronador` Operator.
+7. Tronador will create a test environment for the application, by creating a HelmRelease for your application and external dependencies inside that environment
