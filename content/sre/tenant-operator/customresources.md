@@ -8,6 +8,8 @@
 
 ## 1. Quota
 
+**Cluster scoped resource**
+
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Quota
@@ -28,6 +30,8 @@ When several tenants share a single cluster with a fixed number of resources, th
 
 ## 2. Tenant
 
+**Cluster scoped resource**
+
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Tenant
@@ -46,16 +50,19 @@ spec:
   namespacetemplate:
     templateInstances:
     - spec:
-        template: redis
+        template: networkpolicy
+      parameters:
+        - name: CIDR_IP
+          value: "172.17.0.0/16"
       selector:
         matchLabels:
-          app: redis
+          policy: network-restriction
 ```
 
 Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 
 * Tenant has 3 kinds of `users`:
-  * `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces aswell.
+  * `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces as well.
   * `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
   * `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
   * For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/tenant_roles.html).
@@ -67,6 +74,8 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 * Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
 
 ## 3. Template
+
+**Cluster scoped resource**
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -87,6 +96,9 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Template
 metadata:
   name: networkpolicy
+parameters:
+  - name: CIDR_IP
+    value: "172.17.0.0/16"
 resources:
   manifests:
     - kind: NetworkPolicy
@@ -96,16 +108,39 @@ resources:
       spec:
         podSelector:
           matchLabels:
+            role: db
+        policyTypes:
+        - Ingress
+        - Egress
         ingress:
-          - from:
-              - podSelector: {}
+        - from:
+          - ipBlock:
+              cidr: "${{CIDR_IP}}"
+              except:
+              - 172.17.1.0/24
+          - namespaceSelector:
+              matchLabels:
+                project: myproject
+          - podSelector:
+              matchLabels:
+                role: frontend
+          ports:
+          - protocol: TCP
+            port: 6379
+        egress:
+        - to:
+          - ipBlock:
+              cidr: 10.0.0.0/24
+          ports:
+          - protocol: TCP
+            port: 5978
 ```
 
 Templates are used to initialize Namespaces and share common resources across namespaces (e.g. secrets).
 
 * They either contains one or more Kubernetes manifests or alternatively a Helm chart.
 * They are being tracked by TemplateInstances in each Namespace they are applied to.
-* They can contain pre-defined parameters such as ${namespace} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.
+* They can contain pre-defined parameters such as ${namespace}/${tenant} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.
 
 Also you can define custom variables in `Template` and `TemplateInstance` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
 
@@ -124,11 +159,13 @@ Also you can define custom variables in `Template` and `TemplateInstance` . The 
 
 ## 4. TemplateInstance
 
+**Namespace scoped resource**
+
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateInstance
 metadata:
-  name: redis
+  name: redis-instance
   namespace: build
 spec:
   template: redis
@@ -139,6 +176,8 @@ TemplateInstance are used to keep track of resources created from Templates, whi
 Generally, a TemplateInstance is created from a Template and then the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set `spec.sync: true` in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to helm upgrade).
 
 ## 5. TemplateGroupInstance
+
+**Cluster scoped resource**
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

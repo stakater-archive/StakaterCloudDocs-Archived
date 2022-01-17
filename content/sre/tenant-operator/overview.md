@@ -10,5 +10,8 @@ The idea of Tenant Operator is to use namespaces as independent sandboxes, where
 * Share **managed applications** with multiple tenants
 * Configure and manage tenants and their sandboxes
 
+![image](./images/tenant-operator-arch.png)
+fig 1.1 Overview of Tenant Operator architecture
+
 ![image](./images/tenant-operator-basic-overview.png)
-fig 1. Overview of Tenant Operator architecture
+fig 1.2 Overview of Tenant Operator
