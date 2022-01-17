@@ -69,7 +69,7 @@ module.exports = {
           "/content/sre/onboarding/application-onboarding.md",
           "/content/sre/onboarding/environment-onboarding.md",
           "/content/sre/onboarding/cluster-onboarding.md",
-          "/content/sre/onboarding/quota-onboarding.md",          
+          "/content/sre/onboarding/quota-onboarding.md",
           "/content/sre/onboarding/developer-training.md"
         ],
       },
@@ -121,7 +121,7 @@ module.exports = {
         title: "Monitoring",
         children: [
           "/content/sre/monitoring/01-introduction.md",
-          "/content/sre/monitoring/02-maturity-model.md",          
+          "/content/sre/monitoring/02-maturity-model.md",
           "/content/sre/monitoring/app-uptime.md",
           "/content/sre/monitoring/app-alerts.md",
           "/content/sre/monitoring/goldilocks.md",
@@ -144,11 +144,11 @@ module.exports = {
       {
         title: "Backup & Restore",
         children: [
-          "/content/sre/backup-restore/01-introduction.md",          
+          "/content/sre/backup-restore/01-introduction.md",
           "/content/sre/backup-restore/velero-cli.md",
           "/content/sre/backup-restore/backup-restore.md",
           "content/sre/backup-restore/troubleshoot.md",
-          "content/sre/backup-restore/cleanup.md",          
+          "content/sre/backup-restore/cleanup.md",
           "/content/sre/backup-restore/stateful-app-example.md",
           "/content/sre/backup-restore/restore-with-gitops.md",
           "/content/sre/backup-restore/02-limitations.md"
@@ -175,10 +175,10 @@ module.exports = {
         children: [
           "/content/sre/local-development/inner-loop.md",
           "/content/sre/local-development/inner-vs-outer-loop.md",
-          "/content/sre/local-development/local-development-workflow.md",                              
+          "/content/sre/local-development/local-development-workflow.md",
           "/content/sre/local-development/tilt/step-by-step-guide.md",
         ],
-      },      
+      },
       {
         title: "Security",
         children: ["/content/sre/security/policies/policies.md"],
@@ -204,6 +204,15 @@ module.exports = {
           "/content/sre/tenant-operator/vault-authentication.md",
           "/content/sre/tenant-operator/faq.md",
         ],
+      },
+      {
+         title:"Tronador",
+         children: [
+            "/content/sre/tronador/overview.md",
+            "/content/sre/tronador/environment_provisioner.md",
+            "/content/sre/tronador/config_file.md",
+            "/content/sre/tronador/cluster_task.md",
+         ]
       },
       {
         title: "Frequently Asked Questions",
