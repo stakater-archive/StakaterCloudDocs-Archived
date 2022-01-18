@@ -26,7 +26,11 @@ data:
             git: ${GIT_URL}
             ref: ${GIT_BRANCH}
             path: ${CHART_PATH}
+            secretRef:
+    ${SECRET_REF}
           releaseName: ${GIT_BRANCH}
+          valuesFrom:
+    ${VALUES_FROM}
           values:
     ${VALUES_OVERRIDE}
       namespaceLabels:

@@ -12,7 +12,21 @@ spec:
         git: https://github.com/stakater-lab/stakater-nordmart-promotion
         ref: add-tronador-yaml
         path: "deploy/"
+        secretRef:
+          name: secret-name
+          namespace: secret-namespace
       releaseName: add-tronador-yaml
+      valuesFrom:
+        - configMapKeyRef:
+            name: default-values
+            namespace: my-ns
+            key: values.yaml
+            optional: false
+        - secretKeyRef:
+            name: default-values
+            namespace: my-ns
+            key: values.yaml
+            optional: true
       values:
         application:
           deployment:
@@ -28,9 +42,10 @@ spec:
 
 Values inside the application section are used to create the helm release that manages deployment of the application into the cluster. The important fields here are:
 
-- **release.chart**: The chart that will be deployed. Must contain its git repo path, the branch to deploy, and the path to the chart within the git repo
+- **release.chart**: The chart that will be deployed. Must contain its git repo path, the branch to deploy, and the path to the chart within the git repo. If the chart is placed inside a private repo, then its secret must also be specified.
 - **release.releaseName**: The name of the helm release that will be deployed.
 - **release.values**: The values that to override within the helm release. THese need to be updated whenever a new image is created for testing. Using the `create-environment-provisioner` cluster task is recommended here
+- **release.valuesFrom**: Values from external sources, such as configMaps or secrets. For more details, see the [Official HelmRelease docs](https://fluxcd.io/legacy/helm-operator/helmrelease-guide/values/)
 
 ## namespaceLabels
 
