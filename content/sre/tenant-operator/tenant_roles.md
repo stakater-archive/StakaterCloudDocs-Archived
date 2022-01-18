@@ -1,6 +1,6 @@
 # Tenant Roles
 
-tenant-operator tenant members can have one of following 3 roles:
+Tenant Operator tenant members can have one of following 3 roles:
 
 1. Owner
 2. Editor
