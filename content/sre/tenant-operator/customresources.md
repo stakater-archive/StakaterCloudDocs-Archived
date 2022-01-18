@@ -1,6 +1,6 @@
 # Custom Resources
 
-tenant-operator defines following 5 custom resources:
+Tenant Operator defines following 5 custom resources:
 
 1. Quota
 2. Tenant
