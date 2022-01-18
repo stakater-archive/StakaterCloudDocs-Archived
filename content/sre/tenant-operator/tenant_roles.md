@@ -1,5 +1,11 @@
 # Tenant Roles
 
+Tenant Operator tenant members can have one of following 3 roles:
+
+1. Owner
+2. Editor
+3. Viewer
+
 ## Owner
 
 ![image](./images/tenant-operator-owner-overview.png)
