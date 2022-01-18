@@ -14,7 +14,6 @@ The `create-environment-provisioner` cluster task requires the following:
 ```yaml
 data:
   environmentProvisionerTemplate.yml: |
-    cat <<EOF
     apiVersion: tronador.stakater.com/v1alpha1
     kind: EnvironmentProvisioner
     metadata:
@@ -26,12 +25,15 @@ data:
             git: ${GIT_URL}
             ref: ${GIT_BRANCH}
             path: ${CHART_PATH}
+            secretRef:
+    ${SECRET_REF}
           releaseName: ${GIT_BRANCH}
+          valuesFrom:
+    ${VALUES_FROM}
           values:
     ${VALUES_OVERRIDE}
       namespaceLabels:
     ${NAMESPACE_LABELS}
-    EOF
 ```
 
 ## Parameters
