@@ -14,7 +14,6 @@ The `create-environment-provisioner` cluster task requires the following:
 ```yaml
 data:
   environmentProvisionerTemplate.yml: |
-    cat <<EOF
     apiVersion: tronador.stakater.com/v1alpha1
     kind: EnvironmentProvisioner
     metadata:
@@ -35,7 +34,6 @@ data:
     ${VALUES_OVERRIDE}
       namespaceLabels:
     ${NAMESPACE_LABELS}
-    EOF
 ```
 
 ## Parameters
