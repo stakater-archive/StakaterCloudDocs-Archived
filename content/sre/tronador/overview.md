@@ -29,3 +29,6 @@ Tronador comes with a CRD and a Tekton cluster task. The CRD, `EnvironmentProvis
 5. ArgoCD will watch the GitOps repository for changes and synchronize any changes, like the `EnvironmentProvisioner` CR, to the cluster.
 6. The `EnvironmentProvisioner` CR will be watched by the `Tronador` Operator.
 7. Tronador will create a test environment for the application, by creating a HelmRelease for your application and external dependencies inside that environment
+
+## Dependencies
+- **Helm Operator**: Tronador requires the Helm Operator to be installed in your cluster. The Helm Operator is a Kubernetes operator that manages the lifecycle of Helm releases. Tronador's `EnvironmentProvisioner` Custom Resource creates helm releases that are managed by the Helm Operator.
