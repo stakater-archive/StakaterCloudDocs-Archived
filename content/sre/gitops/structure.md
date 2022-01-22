@@ -174,11 +174,11 @@ Each type of tenant follows different structure.
 
 ```
 
+It contains 2 type of folders.
+
 ### Application
 
 Inside application tenants folder, there is a separate folder of each application that belongs to a tenant. The name of the folder should match repository name in SCM.
-
-It contains 2 type of folders.
 
 #### Environments
 
