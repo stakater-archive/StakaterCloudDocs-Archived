@@ -174,11 +174,11 @@ Each type of tenant follows different structure.
 
 ```
 
-### Application
+It contains 2 type of folders.
+
+### 1. Applications
 
 Inside application tenants folder, there is a separate folder of each application that belongs to a tenant. The name of the folder should match repository name in SCM.
-
-It contains 2 type of folders.
 
 #### Environments
 
@@ -186,7 +186,7 @@ Inside each appication folder, there is a separate folder of each environment wh
 
 Deployment files can only be vanilla yaml files, helm chart and kustomize repository that are supported by argocd.
 
-### Config
+### 2. Configs
 
 Inside config folder there is a folder for each environment. In each environment folder there are 2 entities.
 
