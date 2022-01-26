@@ -1,16 +1,16 @@
 ---
 sidebarDepth: 2
 ---
-## Use cases
+# Use cases
 
-- ### [Creating Quota](quota.html)
+- ## [Creating Quota](quota.html)
 
-- ### [Creating Tenants](tenant.html)
+- ## [Creating Tenants](tenant.html)
 
-- ### [Creating Namespaces](namespace.html)
+- ## [Creating Namespaces](namespace.html)
 
-- ### [Creating Templates](template.html)
+- ## [Creating Templates](template.html)
 
-- ### [Deploying Template to Namespaces](deploying_templates.html)
+- ## [Deploying Template to Namespaces](deploying_templates.html)
 
-- ### [Configuring IntegrationConfig](integrationconfig.html)
+- ## [Configuring IntegrationConfig](integrationconfig.html)
