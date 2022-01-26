@@ -71,7 +71,9 @@ Defines the `users`, `quota` and `namespacetemplates` of a tenant.
 
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*. Sandbox will follow the following naming convention **TenantName**-**UserName**-*sandbox*.
 
-* Tenant will deploy `template` resources mentioned in `namespacetemplate.templateInstances`, `template` resources will only be applied in those `namespaces` which belong to the `tenant` and which have `matching label`.
+* Tenant automatically deploys `template` resource mentioned in `namespacetemplate.templateInstances` to matching tenant namespaces.
+  * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
+  * `Template` resources are created in all `namespaces` of a `tenant` if `selector` field is empty.
 
 ## 3. Template
 
