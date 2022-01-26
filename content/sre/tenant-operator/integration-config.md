@@ -18,6 +18,8 @@ spec:
         role: customer-reader
       project:
         workload-monitoring: 'true'
+      sandbox:
+        stakater.com/kind: sandbox
   rhsso:
     enabled: true
     endpoint:
@@ -74,7 +76,11 @@ openshift:
       role: customer-reader
     project:
       workload-monitoring: 'true'
+    sandbox:
+        stakater.com/kind: sandbox
 ```
+
+If we want to add default labels/annotations to sandbox projects of tenants than we just simply add them in `openshift.labels`/`openshift.annotations` respectively.
 
 Whenever a project is made it will have the labels and annotations as mentioned above.
 
