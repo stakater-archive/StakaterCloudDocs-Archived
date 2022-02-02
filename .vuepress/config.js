@@ -205,6 +205,14 @@ module.exports = {
         ],
       },
       {
+        title: "External Secret Operator",
+        children: [
+          "/content/sre/external-secret-operator/introduction.md",
+          "/content/sre/external-secret-operator/workflow.md",
+          "/content/sre/external-secret-operator/getting-started.md",
+        ],
+      },
+      {
          title:"Tronador",
          children: [
             "/content/sre/tronador/overview.md",
