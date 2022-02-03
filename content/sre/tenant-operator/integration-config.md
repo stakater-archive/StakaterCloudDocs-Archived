@@ -10,77 +10,106 @@ metadata:
   namespace: stakater-tenant-operator
 spec:
   openshift:
-    annotations:
-      project:
+    project:
+      labels:
+        stakater.com/workload-monitoring: "true"
+      annotations:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
-    labels:
-      group:
+    group:
+      labels:
         role: customer-reader
-      project:
-        workload-monitoring: 'true'
-      sandbox:
+    sandbox:
+      labels:
         stakater.com/kind: sandbox
+    clusterAdminGroups:
+      - cluster-admins
+    privilegedNamespaces:
+      - default
+      - ^openshift-*
+      - ^kube-*
+    privilegedServiceAccounts:
+      - ^system:serviceaccount:openshift-*
+      - ^system:serviceaccount:kube-*
+    namespaceAccessPolicy:
+      deny:
+        privilegedNamespaces:
+          users:
+            - system:serviceaccount:openshift-argocd:argocd-application-controller
+            - adam@stakater.com
+          groups:
+            - cluster-admins
   rhsso:
     enabled: true
     endpoint:
+      url: https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/
       secretReference:
         name: auth-secrets
         namespace: openshift-auth
-      url: >-
-        https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/
   vault:
     enabled: true
     endpoint:
+      url: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
       secretReference:
         name: vault-root-token
         namespace: vault
-      url: >-
-        https://vault.apps.prod.abcdefghi.kubeapp.cloud/
     sso:
-      accessorID: auth_oidc_aa6aa9aa
       clientName: vault
-  clusterAdminGroups:
-    - cluster-admins
-  managedNamespacePrefixes:
-    - default
-    - openshift
-    - stakater
-    - kube
-  managedServiceAccountPrefixes:
-    - 'system:serviceaccount:openshift'
-    - 'system:serviceaccount:stakater'
-    - 'system:serviceaccount:kube'
-  namespaceAccessPolicy:
-    deny:
-      managedNamespaces:
-        groups:
-          - cluster-admins
-        users:
-          - system:serviceaccount:openshift-argocd:argocd-application-controller
-          - adam@stakater.com
+      accessorID: <ACCESSOR_ID_TOKEN>
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via tenant operator.
 
 ## Openshift
-
-We can use `openshift.annotations` and `openshift.labels` to automatically add `labels` and `annotations` to  **Openshift.Projects** and **Openshift.Groups** which are managed via `tenant operator`.
+``` yaml
+openshift:
+  project:
+    labels:
+      stakater.com/workload-monitoring: "true"
+    annotations:
+      openshift.io/node-selector: node-role.kubernetes.io/worker=
+  group:
+    labels:
+      role: customer-reader
+  sandbox:
+    labels:
+      stakater.com/kind: sandbox
+  clusterAdminGroups:
+    - cluster-admins
+  privilegedNamespaces:
+    - default
+    - ^openshift-*
+    - ^kube-*
+  privilegedServiceAccounts:
+    - ^system:serviceaccount:openshift-*
+    - ^system:serviceaccount:kube-*
+  namespaceAccessPolicy:
+    deny:
+      privilegedNamespaces:
+        users:
+          - system:serviceaccount:openshift-argocd:argocd-application-controller
+          - adam@stakater.com
+        groups:
+          - cluster-admins
+```
+### Project, group and sandbox
+We can use the `openshift.project`, `openshift.group` and `openshift.sandbox` fields to automatically add `labels` and `annotations` to  the **Projects** and **Groups** managed via `tenant operator`.
 
 ```yaml
-openshift:
-  annotations:
+  openshift:
     project:
-      openshift.io/node-selector: node-role.kubernetes.io/worker=
-  labels:
+      labels:
+        stakater.com/workload-monitoring: "true"
+      annotations:
+        openshift.io/node-selector: node-role.kubernetes.io/worker=
     group:
-      role: customer-reader
-    project:
-      workload-monitoring: 'true'
+      labels:
+        role: customer-reader
     sandbox:
+      labels:
         stakater.com/kind: sandbox
 ```
 
-If we want to add default *labels/annotations* to sandbox namespaces of tenants than we just simply add them in `openshift.labels`/`openshift.annotations` respectively.
+If we want to add default *labels/annotations* to sandbox namespaces of tenants than we just simply add them in `openshift.project.labels`/`openshift.project.annotations` respectively.
 
 Whenever a project is made it will have the labels and annotations as mentioned above.
 
@@ -110,6 +139,32 @@ metadata:
     role: customer-reader
 users:
   - andrew@stakater.com
+```
+
+### Cluster Admin Groups
+
+`clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without the tenant-operator getting in their way
+### Privileged Namespaces
+
+`privilegedNamespaces:` Contains the list of `namespaces` ignored by the tenant-operator. The tenant-operator will not manage the `namespaces` in this list. Values in this list can also have regex patterns. For example, to ignore all `namespaces` starting with `openshift-`, we can use `^openshift-*`
+
+### Privileged ServiceAccounts
+
+`privilegedServiceAccounts:` Contains the list of `ServiceAccounts` ignored by the tenant-operator. The tenant-operator will not manage the `ServiceAccounts` in this list. Values in this list can also have regex patterns. For example, to ignore all `ServiceAccounts` starting with `system:serviceaccount:openshift-`, we can use `^system:serviceaccount:openshift-*`
+
+### Namespace Access Policy
+
+`namespaceAccessPolicy.Deny:` Can be used to restrict privileged *users/groups* CRUD operation over managed namespaces.
+
+```yaml
+namespaceAccessPolicy:
+  deny:
+    privilegedNamespaces:
+      groups:
+        - cluster-admins
+      users:
+        - system:serviceaccount:openshift-argocd:argocd-application-controller
+        - adam@stakater.com
 ```
 
 ## RHSSO (Red Hat Single Sign-On)
@@ -150,7 +205,7 @@ vault:
     url: >-
       https://vault.apps.prod.abcdefghi.kubeapp.cloud/
   sso:
-    accessorID: auth_oidc_aa6aa9aa
+    accessorID: <ACCESSOR_ID_TOKEN>
     clientName: vault
 ```
 
@@ -161,32 +216,5 @@ If enabled, than admins have to provide secret, URL and sso accessorID of vault.
 - `url:` Will contain the URL of vault.
 - `sso.accessorID:` Will contain the sso accessorID.
 - `sso.clientName:` Will contain the clientname.
-
-## Cluster Admin Groups
-
-`clusterAdminGroups:` Contains `group` names which Tenant Operator will ignore during CRUD operation of namespaces(but a valid tenant label must be present).
-
-## Managed Namespace Prefixes
-
-`managedNamespacePrefixes:` Contains namespace prefixes which Tenant Operator will ignore.
-
-## Managed ServiceAccount Prefixes
-
-`managedServiceAccountPrefixes:` Contains ServiceAccount prefixes which Tenant Operator will ignore during namespace CRUD operation
-
-## Namespace Access Policy
-
-`namespaceAccessPolicy.Deny:` Can be used to restrict privileged *users/groups* CRUD operation over managed namespaces.
-
-```yaml
-namespaceAccessPolicy:
-  deny:
-    managedNamespaces:
-      groups:
-        - cluster-admins
-      users:
-        - system:serviceaccount:openshift-argocd:argocd-application-controller
-        - adam@stakater.com
-```
 
 For more details please refer [use-cases](./usecases/integrationconfig.html)
