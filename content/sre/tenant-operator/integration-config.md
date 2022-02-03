@@ -9,10 +9,6 @@ metadata:
   name: tenant-operator-config
   namespace: stakater-tenant-operator
 spec:
-  nexus:
-    enabled: true
-    sso:
-      clientName: nexus3
   openshift:
     project:
       labels:
@@ -22,46 +18,43 @@ spec:
     group:
       labels:
         role: customer-reader
+    sandbox:
+      labels:
+        stakater.com/kind: sandbox
     clusterAdminGroups:
-      - saap-cluster-admins
-      - stakater-team
+      - cluster-admins
     privilegedNamespaces:
       - default
       - ^openshift-*
-      - ^stakater-*
       - ^kube-*
-      - ^redhat-*
-      - ^hive-*
     privilegedServiceAccounts:
       - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:stakater-*
       - ^system:serviceaccount:kube-*
-      - ^system:serviceaccount:redhat-*
-      - ^system:serviceaccount:hive-*
     namespaceAccessPolicy:
       deny:
         privilegedNamespaces:
           users:
-            - system:serviceaccount:openshift-stakater-argocd:argocd-argocd-application-controller
+            - system:serviceaccount:openshift-argocd:argocd-application-controller
+            - adam@stakater.com
           groups:
-            - saap-cluster-admins
+            - cluster-admins
   rhsso:
     enabled: true
     endpoint:
-      url: https://iam-keycloak-openshift-stakater-auth.apps.binero-test.8sdzwd1l.kubeapp.cloud/
+      url: https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/
       secretReference:
         name: auth-secrets
-        namespace: stakater-auth
+        namespace: openshift-auth
   vault:
     enabled: true
     endpoint:
-      url: "https://stakater-vault-stakater-vault.apps.binero-test.8sdzwd1l.kubeapp.cloud/"
+      url: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
       secretReference:
         name: vault-root-token
-        namespace: stakater-vault
+        namespace: vault
     sso:
       clientName: vault
-      accessorID: "auth_oidc_058b5e09"
+      accessorID: <ACCESSOR_ID_TOKEN>
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via tenant operator.
@@ -81,28 +74,22 @@ openshift:
     labels:
       stakater.com/kind: sandbox
   clusterAdminGroups:
-    - saap-cluster-admins
-    - stakater-team
+    - cluster-admins
   privilegedNamespaces:
     - default
     - ^openshift-*
-    - ^stakater-*
     - ^kube-*
-    - ^redhat-*
-    - ^hive-*
   privilegedServiceAccounts:
     - ^system:serviceaccount:openshift-*
-    - ^system:serviceaccount:stakater-*
     - ^system:serviceaccount:kube-*
-    - ^system:serviceaccount:redhat-*
-    - ^system:serviceaccount:hive-*
   namespaceAccessPolicy:
     deny:
       privilegedNamespaces:
         users:
-          - system:serviceaccount:openshift-stakater-argocd:argocd-argocd-application-controller
+          - system:serviceaccount:openshift-argocd:argocd-application-controller
+          - adam@stakater.com
         groups:
-          - saap-cluster-admins
+          - cluster-admins
 ```
 ### Project, group and sandbox
 We can use the `openshift.project`, `openshift.group` and `openshift.sandbox` fields to automatically add `labels` and `annotations` to  the **Projects** and **Groups** managed via `tenant operator`.
@@ -218,7 +205,7 @@ vault:
     url: >-
       https://vault.apps.prod.abcdefghi.kubeapp.cloud/
   sso:
-    accessorID: auth_oidc_aa6aa9aa
+    accessorID: <ACCESSOR_ID_TOKEN>
     clientName: vault
 ```
 
