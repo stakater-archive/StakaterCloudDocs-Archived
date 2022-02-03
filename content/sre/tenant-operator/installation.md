@@ -5,7 +5,6 @@
 ### Requirements
 
 * An **Openshift** cluster
-* **Cert-Manager**
 
 ### 1. Create Namespace
 
@@ -63,7 +62,6 @@ A default `IntegrationConfig` is installed with tenant-operator, which can be fo
 
 * An **Openshift** cluster
 * **Helm-Operator**
-* **Cert-Manager**
 
 ### 1. Create Namespace
 
@@ -123,5 +121,5 @@ A default `IntegrationConfig` is installed with tenant-operator, which can be fo
 
 ## Note
 
-* If tenant-operator is deployed in a newly created namespace. Then restart tenant-operators pod once so that tenant-operator can retrieve `webhook-server-cert` provided by certmanager(if pod started before secret was made).
+* If tenant-operator is deployed in a newly created namespace, restart its pod once so tenant-operator can retrieve webhook-server-cert provided by openshift(if the pod is started before the secret was made).
 * For more details on how to use Tenant-Operator please refer [use-cases](../tenant-operator/usecases/quota.html).
