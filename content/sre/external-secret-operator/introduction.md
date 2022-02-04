@@ -24,9 +24,9 @@ spec:
         version: "v2"
         auth:
         kubernetes:
-            mountPath: "kubernetes"
-            role: "gabbar-dev"
-            serviceAccountRef:
+          mountPath: "kubernetes"
+          role: "gabbar-dev"
+          serviceAccountRef:
             name: "tenant-vault-access"
             namespace: "gabbar-dev"
 ```
