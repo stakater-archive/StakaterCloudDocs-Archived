@@ -20,7 +20,6 @@ Service account `tenant-vault-access` being referred by `SecretStore` is already
 
 Vault verifies if the defined service account has access to `role` and `role` has an attached `policy` that grants access to requested path.
 
-
 ### Step 5
 
 After authentication is successful, external secrets get data from the path requested from the vault.
