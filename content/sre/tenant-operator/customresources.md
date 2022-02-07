@@ -35,45 +35,50 @@ When several tenants share a single cluster with a fixed number of resources, th
 **Cluster scoped resource**
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
-  name: bluesky
+  name: alpha
 spec:
-  users:
-    owner:
-    - haseeb@stakater.com
-    edit: 
-    - hanzala@stakater.com
-    view:
-    - jose@stakater.com
+  owners:
+    users:
+      - haseeb@stakater.com
+    groups:
+      - alpha
+  editors: 
+    users:
+      - hanzala@stakater.com
+  viewers:
+    users:
+      - jose@stakater.com
   quota: medium
   sandbox: false
-  namespacetemplate:
-    templateInstances:
-    - spec:
-        template: networkpolicy
-      parameters:
-        - name: CIDR_IP
-          value: "172.17.0.0/16"
-      selector:
-        matchLabels:
-          policy: network-restriction
+  templateInstances:
+  - spec:
+      template: networkpolicy
+    parameters:
+      - name: CIDR_IP
+        value: "172.17.0.0/16"
+    selector:
+      matchLabels:
+        policy: network-restriction
 ```
 
-Defines the `users`, `quota` and `namespacetemplates` of a tenant.
-
-* Tenant has 3 kinds of `users`:
-  * `Owner:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces as well.
-  * `Edit:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
-  * `View:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
+* Tenant has 3 kinds of `Members`:
+  * `Owners:` Users who will be owners of a tenant. They will have openshift admin-role assigned to their users, with additional access to create namespaces as well.
+  * `Editors:` Users who will be editors of a tenant. They will have openshift edit-role assigned to their users.
+  * `Viewers:` Users who will be viewers of a tenant. They will have openshift view-role assigned to their users.
   * For more [details](https://docs.cloud.stakater.com/content/sre/tenant-operator/tenant_roles.html).
+
+* `Users` can be linked to the tenant by specifying there username in `owners.users`, `editors.users` and `viewers.users` respectively.
+
+* `Groups` can be linked to the tenant by specifying the group name in `owners.groups`, `editors.groups` and `viewers.groups` respectively.  
 
 * Tenant will have a `Quota` to limit resource consumption.
 
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*. Sandbox will follow the following naming convention **TenantName**-**UserName**-*sandbox*.
 
-* Tenant automatically deploys `template` resource mentioned in `namespacetemplate.templateInstances` to matching tenant namespaces.
+* Tenant automatically deploys `template` resource mentioned in `templateInstances` to matching tenant namespaces.
   * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
   * `Template` resources are created in all `namespaces` of a `tenant` if `selector` field is empty.
 
@@ -159,7 +164,7 @@ Also you can define custom variables in `Template` and `TemplateInstance` . The 
 
 ### Mandatory and Optional Templates
 
- Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.namespacetemplate.templateInstances` array within the Tenant configuration. All Templates listed in `spec.namespacetemplate.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.
+ Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.templateInstances` array within the Tenant configuration. All Templates listed in `spec.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.
 
 ## 4. TemplateInstance
 

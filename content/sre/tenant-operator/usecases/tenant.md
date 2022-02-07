@@ -6,16 +6,19 @@ Bill creates a new tenant called `bluesky` in the cluster:
 
 ```yaml
 kubectl create -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
+    groups:
+    - alpha
   quota: small
   sandbox: false
 EOF
@@ -59,17 +62,20 @@ In the example above, Bill assigned the ownership of `bluesky` to `Anna`. If ano
 
 ```yaml
 kubectl apply -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
     - anthony@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
+    groups:
+    - alpha
   quota: small
   sandbox: false
 EOF
@@ -84,21 +90,24 @@ yes
 
 ### Assigning Users Sandbox Namespace
 
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. To enable that, Bill will just set `sandbax: true`
+Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. To enable that, Bill will just set `sandbox: true`
 
 ```yaml
 kubectl apply -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
     - anthony@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
+    groups:
+    - alpha
   quota: small
   sandbox: true
 EOF
