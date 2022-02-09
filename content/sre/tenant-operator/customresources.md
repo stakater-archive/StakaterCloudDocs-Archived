@@ -51,8 +51,12 @@ spec:
   viewers:
     users:
       - jose@stakater.com
-  quota: medium
   sandbox: false
+  quota: medium
+  namespaces:
+  - dev
+  - build
+  - preview
   templateInstances:
   - spec:
       template: networkpolicy
@@ -76,7 +80,12 @@ spec:
 
 * Tenant will have a `Quota` to limit resource consumption.
 
-* Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*. Sandbox will follow the following naming convention **TenantName**-**UserName**-*sandbox*.
+* Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*.
+  * Sandbox will follow the following naming convention **{TenantName}**-**{UserName}**-*sandbox*.
+
+* Namespaces can also be created via tenant CR by *specifying names* in `namespaces`.
+  * Tenant-Operator will append *tenant name* prefix while creating namespaces, so the format will be **{TenantName}**-**{Name}**.
+  * `stakater.com/kind: {Name}` label will also be added to the namespaces.
 
 * Tenant automatically deploys `template` resource mentioned in `templateInstances` to matching tenant namespaces.
   * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
