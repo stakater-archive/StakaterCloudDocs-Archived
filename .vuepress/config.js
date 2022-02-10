@@ -126,6 +126,7 @@ module.exports = {
           "/content/sre/monitoring/app-alerts.md",
           "/content/sre/monitoring/goldilocks.md",
           "/content/sre/monitoring/kube-resource-report.md",
+          "/content/sre/monitoring/grafana-dashboard.md",
         ],
       },
       {
