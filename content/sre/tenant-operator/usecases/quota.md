@@ -34,13 +34,13 @@ Bill then proceeds to create a tenant for Anna, while also linking the newly cre
 
 ```yaml
 kubectl create -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@stakater.com
   quota: small
   sandbox: false

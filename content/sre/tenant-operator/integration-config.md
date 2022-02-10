@@ -1,6 +1,6 @@
 # Integration Config
 
-Integration config is used to configure settings of muti-tenancy for tenant operator.
+Integration config is used to configure settings of multi-tenancy for tenant operator.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -91,6 +91,7 @@ openshift:
         groups:
           - cluster-admins
 ```
+
 ### Project, group and sandbox
 We can use the `openshift.project`, `openshift.group` and `openshift.sandbox` fields to automatically add `labels` and `annotations` to  the **Projects** and **Groups** managed via `tenant operator`.
 
@@ -144,6 +145,7 @@ users:
 ### Cluster Admin Groups
 
 `clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without the tenant-operator getting in their way
+
 ### Privileged Namespaces
 
 `privilegedNamespaces:` Contains the list of `namespaces` ignored by the tenant-operator. The tenant-operator will not manage the `namespaces` in this list. Values in this list can also have regex patterns. For example, to ignore all `namespaces` starting with `openshift-`, we can use `^openshift-*`
@@ -215,6 +217,6 @@ If enabled, than admins have to provide secret, URL and sso accessorID of vault.
 - `secretReference.namespace:` Will contain the namespace of the secret.
 - `url:` Will contain the URL of vault.
 - `sso.accessorID:` Will contain the sso accessorID.
-- `sso.clientName:` Will contain the clientname.
+- `sso.clientName:` Will contain the client name.
 
 For more details please refer [use-cases](./usecases/integrationconfig.html)

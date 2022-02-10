@@ -6,16 +6,19 @@ Bill creates a new tenant called `bluesky` in the cluster:
 
 ```yaml
 kubectl create -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
+    groups:
+    - alpha
   quota: small
   sandbox: false
 EOF
@@ -59,17 +62,20 @@ In the example above, Bill assigned the ownership of `bluesky` to `Anna`. If ano
 
 ```yaml
 kubectl apply -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
     - anthony@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
+    groups:
+    - alpha
   quota: small
   sandbox: false
 EOF
@@ -84,21 +90,24 @@ yes
 
 ### Assigning Users Sandbox Namespace
 
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. To enable that, Bill will just set `sandbax: true`
+Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. To enable that, Bill will just set `sandbox: true`
 
 ```yaml
 kubectl apply -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
     - anthony@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
+    groups:
+    - alpha
   quota: small
   sandbox: true
 EOF
@@ -112,6 +121,44 @@ NAME                             STATUS   AGE
 bluesky-anna-aurora-sandbox      Active   5d5h
 bluesky-anthony-aurora-sandbox   Active   5d5h
 bluesky-john-aurora-sandbox      Active   5d5h
+```
+
+### Creating Namespaces via Tenant Custom Resource
+
+Bill now wants to create namespaces for `dev`, `build` and `production` environments for the tenant members. To create those namespaces Bill will just add those names into the `namespaces` list in the tenant CR.
+
+```yaml
+kubectl apply -f - << EOF
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: Tenant
+metadata:
+  name: bluesky
+spec:
+  owners:
+    users:
+    - anna@aurora.org
+    - anthony@aurora.org
+  editors:
+    users:
+    - john@aurora.org
+    groups:
+    - alpha
+  quota: small
+  namespaces:
+  - dev
+  - build
+  - prod
+EOF
+```
+
+With the above configuration tenant members will now see new namespaces have been created.
+
+```bash
+kubectl get namespaces
+NAME             STATUS   AGE
+bluesky-dev      Active   5d5h
+bluesky-build    Active   5d5h
+bluesky-prod     Active   5d5h
 ```
 
 ### What’s next

@@ -85,15 +85,16 @@ spec:
 Bill then creates a tenant for Anna and John
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@acme.org
-    view:
+  viewers:
+    users:
     - john@acme.org
   quota: small
   sandbox: false
@@ -112,7 +113,6 @@ If Bill the cluster admin has RHSSO configured in his cluster, than he can take 
 Tenant-Operator automatically allows tenant members to access vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securely save their secrets.
 
 Bill would first have to integrate RHSSO with Tenant-Operator by adding the details in integration config. [Visit here](../integration-config.html#rhsso-red-hat-single-sign-on) for more details.
-
 
 ```yaml
 rhsso:

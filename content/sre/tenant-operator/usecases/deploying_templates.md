@@ -23,28 +23,28 @@ resources:
 Once the template has been created, Bill edits Anna's tenant and populates the `namespacetemplate` field:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
   quota: small
   sandbox: true
-  namespacetemplate:
-    templateInstances:
-    - spec:
-        template: docker-pull-secret
-      selector:
-        matchLabels:
-          kind: build
+  templateInstances:
+  - spec:
+      template: docker-pull-secret
+    selector:
+      matchLabels:
+        kind: build
 ```
 
-Tenant-Operator will deploy `TemplateInstances` mentioned in `namespacetemplate.templateInstances`, `TemplateInstances` will only be applied in those `namespaces` which belong to Anna's `tenant` and which have `matching label`.
+Tenant-Operator will deploy `TemplateInstances` mentioned in `templateInstances`, `TemplateInstances` will only be applied in those `namespaces` which belong to Anna's `tenant` and which have `matching label`.
 
 So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-aurora-sandbox`, and after adding the label she see's that the secret has been created.
 
@@ -204,28 +204,28 @@ spec:
 Or she can use her tenant
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  users:
-    owner:
+  owners:
+    users:
     - anna@aurora.org
-    edit:
+  editors:
+    users:
     - john@aurora.org
   quota: small
   sandbox: true
-  namespacetemplate:
-    templateInstances:
-    - spec:
-        template: namespace-parameterized-restrictions
-      parameters:
-        - name: DEFAULT_CPU_LIMIT
-          value: "1.5"
-        - name: DEFAULT_CPU_REQUESTS
-          value: "1"
-      selector:
-        matchLabels:
-          kind: build
+  templateInstances:
+  - spec:
+      template: namespace-parameterized-restrictions
+    parameters:
+      - name: DEFAULT_CPU_LIMIT
+        value: "1.5"
+      - name: DEFAULT_CPU_REQUESTS
+        value: "1"
+    selector:
+      matchLabels:
+        kind: build
 ```

@@ -13,7 +13,7 @@ fig 2. Shows how tenant owners manage there tenant using Tenant Operator
 
 Owner is an admin of a tenant with some restrictions. It has privilege to see all resources in there Tenant with some additional privileges. They can also create new `namespaces`.
 
-*Owners will also inhert roles from `Edit` and `View`.*
+*Owners will also inherit roles from `Edit` and `View`.*
 
 #### Access Permissions
 
@@ -162,7 +162,6 @@ Edit role will have edit access on there `Projects`, but they wont have access o
   * deletecollection
   * patch
   * update
-
 
 ## View
 
