@@ -1,24 +1,36 @@
 # Enforcing Resources Quotas
 
-Using Tenant-Operator, the cluster-admin can set and enforce resource quotas and limits for tenants.
+Using Tenant-Operator, the cluster-admin can set and enforce resource quotas and limit ranges for tenants.
 
 ## Assigning Resource Quotas
 
 Bill is a cluster admin who will first creates a resource quota where he sets the maximum resource limits that Anna's tenant will have.
+Here `limitrange` is an optional field, cluster admin can skip it if not needed.
 
 ```yaml
 kubectl create -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Quota
 metadata:
   name: small
 spec:
-  hard:
-    requests.cpu: "1"
-    requests.memory: 1Gi
-    limits.cpu: "2"
-    limits.memory: 2Gi
-    services.loadbalancers: "2"
+  resourcequota:
+    hard:
+      requests.cpu: '5'
+      requests.memory: '5Gi'
+      configmaps: "10"
+      secrets: "10"
+      services: "10"
+      services.loadbalancers: "2"
+  limitrange:
+    limits:
+      - type: "Pod"
+        max:
+          cpu: "2" 
+          memory: "1Gi" 
+        min:
+          cpu: "200m" 
+          memory: "100Mi" 
 EOF
 ```
 
@@ -47,7 +59,7 @@ spec:
 EOF
 ```
 
-Now that the quota is linked with Anna's tenant, Anna can create any resource.
+Now that the quota is linked with Anna's tenant, Anna can create any resource within the values of resource quota and limit range.
 
 ```bash
 kubectl -n bluesky-production create deployment nginx --image nginx:latest --replicas 4

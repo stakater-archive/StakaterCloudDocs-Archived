@@ -13,22 +13,53 @@ Tenant Operator defines following 5 custom resources:
 **Cluster scoped resource**
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Quota
 metadata:
   name: medium
   annotations:
     quota.tenantoperator.stakater.com/is-default: "false"
 spec:
-  hard:
-    requests.cpu: "1"
-    requests.memory: 1Gi
-    limits.cpu: "2"
-    limits.memory: 2Gi
-    services.loadbalancers: "2"
+  resourcequota:
+    hard:
+      requests.cpu: '5'
+      limits.cpu: '10'
+      requests.memory: '5Gi'
+      limits.memory: '10Gi'
+      configmaps: "10"
+      persistentvolumeclaims: "4"
+      replicationcontrollers: "20"
+      secrets: "10"
+      services: "10"
+      services.loadbalancers: "2"
+  limitrange:
+    limits:
+      - type: "Pod"
+        max:
+          cpu: "2" 
+          memory: "1Gi" 
+        min:
+          cpu: "200m" 
+          memory: "100Mi" 
+      - type: "Container"
+        max:
+          cpu: "2" 
+          memory: "1Gi" 
+        min:
+          cpu: "100m" 
+          memory: "50Mi" 
+        default:
+          cpu: "300m" 
+          memory: "200Mi" 
+        defaultRequest:
+          cpu: "200m" 
+          memory: "100Mi" 
+        maxLimitRequestRatio:
+          cpu: "10" 
 ```
 
-When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota`, which provides administrators to limit resource consumption per `Tenant`. For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
+When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota` and `LimitRange` which provides administrators to limit resource consumption per `Tenant`. 
+For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/) , [LimitRange.Spec](https://kubernetes.io/docs/concepts/policy/limit-range/)
 
 ## 2. Tenant
 
