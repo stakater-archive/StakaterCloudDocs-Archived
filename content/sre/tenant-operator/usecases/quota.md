@@ -7,11 +7,15 @@ Using Tenant-Operator, the cluster-admin can set and enforce resource quotas and
 Bill is a cluster admin who will first creates a resource quota where he sets the maximum resource limits that Anna's tenant will have.
 Here `limitrange` is an optional field, cluster admin can skip it if not needed.
 
+The annotation `quota.tenantoperator.stakater.com/is-default: "true"` sets the quota as default quota. 
+
 ```yaml
 kubectl create -f - << EOF
 apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Quota
 metadata:
+  annotations:
+    quota.tenantoperator.stakater.com/is-default: "false"
   name: small
 spec:
   resourcequota:
@@ -42,7 +46,7 @@ NAME       STATE    AGE
 small      Active   3m
 ```
 
-Bill then proceeds to create a tenant for Anna, while also linking the newly created `quota`.
+Bill then proceeds to create a tenant for Anna, while also linking the newly created `quota`. 
 
 ```yaml
 kubectl create -f - << EOF
@@ -58,6 +62,8 @@ spec:
   sandbox: false
 EOF
 ```
+
+When no quota is mentioned in the `quota` field of Tenant CR, Tenant Operator looks for quota with the following annotation `quota.tenantoperator.stakater.com/is-default: "true"` and links that quota with the tenant.
 
 Now that the quota is linked with Anna's tenant, Anna can create any resource within the values of resource quota and limit range.
 
