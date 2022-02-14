@@ -1,6 +1,6 @@
 # Add new tenant
 
-To onborad a new tenant in gitops structure, you need to do following.
+To onboard a new tenant in gitops structure, you need to do following.
 
 We broadly categorize tenants into two types:
 
@@ -10,7 +10,7 @@ We broadly categorize tenants into two types:
 Adding new tenant can be divided into parts
 
 1. Create folders with `.gitkeep` files
-2. Create `tenant`, `space` and `argocd` files
+2. Create `tenant` and `argocd` files
 
 ## Step 1 - Create folders
 
@@ -45,7 +45,7 @@ Templates for the files:
 
 #### Create namespace per environment
 
-Add space configuration for **each** environment
+Add namespace configuration for **each** environment
 
 - /\<tenant>/configs/\<env>/\space.yaml
 
@@ -66,7 +66,7 @@ Create argocd project and argocd application per environment that will watch fol
 Add this file for **each** environment
 
 - \<sre>/\<cluster>/\<env>/\<tenant>.yaml
-```
+``` yaml
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -114,18 +114,22 @@ Add tenants configuration inside sre tenant configuration
 
 - \<sre>/\<cluster>/tenant-operator/tenants/\<tenant>.yaml
 
-```
+``` yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Tenant
 metadata:
   name: <tenant>
 spec:
-  users:
-    owner:
+  owners:
+    users:
       - <user-1>
-    edit:
+    groups:
+      - <group-1>
+  editors:
+    users:
       - <user-2>
-    view:
+  viewers:
+    users:
       - <user-n>
   quota: <quota>
 ```
