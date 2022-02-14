@@ -38,6 +38,8 @@ spec:
             - adam@stakater.com
           groups:
             - cluster-admins
+  argocd:
+    namespace: openshift-operators
   rhsso:
     enabled: true
     endpoint:
@@ -168,6 +170,11 @@ namespaceAccessPolicy:
         - system:serviceaccount:openshift-argocd:argocd-application-controller
         - adam@stakater.com
 ```
+
+## ArgoCD
+### Namespace
+
+`argocd.namespace` is an optional field used to specify the namespace where argocd applications and app projects are deployed. The field should be populated when you want to create an ArgoCD AppProject for each tenant
 
 ## RHSSO (Red Hat Single Sign-On)
 
