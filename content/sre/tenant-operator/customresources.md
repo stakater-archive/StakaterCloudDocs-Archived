@@ -45,7 +45,7 @@ spec:
       - haseeb@stakater.com
     groups:
       - alpha
-  editors: 
+  editors:
     users:
       - hanzala@stakater.com
   viewers:
@@ -53,6 +53,9 @@ spec:
       - jose@stakater.com
   sandbox: false
   quota: medium
+  argocd:
+    sourceRepos:
+      - https://github.com/stakater/gitops-config
   namespaces:
   - dev
   - build
@@ -76,12 +79,15 @@ spec:
 
 * `Users` can be linked to the tenant by specifying there username in `owners.users`, `editors.users` and `viewers.users` respectively.
 
-* `Groups` can be linked to the tenant by specifying the group name in `owners.groups`, `editors.groups` and `viewers.groups` respectively.  
+* `Groups` can be linked to the tenant by specifying the group name in `owners.groups`, `editors.groups` and `viewers.groups` respectively.
 
 * Tenant will have a `Quota` to limit resource consumption.
 
+* `argocd` can be used to list `sourceRepos` that point to your gitops repositories. The field is required if you want to create an ArgoCD AppProject for the tenant.
+
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*.
   * Sandbox will follow the following naming convention **{TenantName}**-**{UserName}**-*sandbox*.
+  * In case of groups, the sandbox namespaces will be created for each member of the group.
 
 * Namespaces can also be created via tenant CR by *specifying names* in `namespaces`.
   * Tenant-Operator will append *tenant name* prefix while creating namespaces, so the format will be **{TenantName}**-**{Name}**.
