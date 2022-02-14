@@ -9,7 +9,7 @@ oc create namespace stakater-test
 Error from server (Cannot Create namespace stakater-test without label stakater.com/tenant. User: Bill): admission webhook "vnamespace.kb.io" denied the request: Cannot CREATE namespace stakater-test without label stakater.com/tenant. User: Bill
 ```
 
-If Bill wants to ignore namespaces with certain prefixes like `openshift`, `kube`, then Bill would simply add them in integration config:
+If Bill wants to ignore namespaces like `default`, or namespaces with prefixes like `openshift`, `kube`, then Bill would simply add them in integration config like:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -18,15 +18,14 @@ metadata:
   name: tenant-operator-config
   namespace: stakater-tenant-operator
 spec:
-  managedNamespacePrefixes:
-    - default
-    - openshift
-    - stakater
-    - kube
-    - redhat
+  openshift:
+    privilegedNamespaces:
+      - default
+      - ^openshift*
+      - ^kube*
 ```
 
-After setting `managedNamespacePrefixes`, Bill can create namespaces without interference.
+After setting `privilegedNamespaces`, Bill can create namespaces without interference.
 
 ```bash
 oc create namespace stakater-test
@@ -44,12 +43,28 @@ metadata:
   name: tenant-operator-config
   namespace: stakater-tenant-operator
 spec:
-  managedServiceAccountPrefixes:
-    - system:serviceaccount:openshift
-    - system:serviceaccount:stakater
-    - system:serviceaccount:kube
-    - system:serviceaccount:redhat
-    - system:serviceaccount:hive
+  openshift:
+    privilegedServiceAccounts:
+      - system:serviceaccount:openshift
+      - system:serviceaccount:stakater
+      - system:serviceaccount:kube
+      - system:serviceaccount:redhat
+      - system:serviceaccount:hive
+```
+
+Bill can also use regex patterns to ignore a set of service accounts:
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: IntegrationConfig
+metadata:
+  name: tenant-operator-config
+  namespace: stakater-tenant-operator
+spec:
+  openshift:
+    privilegedServiceAccounts:
+      - ^system:serviceaccount:openshift*
+      - ^system:serviceaccount:stakater*
 ```
 
 ## Configuring Vault in IntegrationConfig
