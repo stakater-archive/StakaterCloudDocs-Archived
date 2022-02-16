@@ -26,7 +26,7 @@ oc project <MY-SANDBOX>
 **MacOS**
 
 ```bash
-HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
+HOST=$(oc get route image-registry -n openshift-image-registry --template='{{ .spec.host }}')
 docker login -u $(oc whoami) -p $(oc whoami -t) $HOST
 ```
 
