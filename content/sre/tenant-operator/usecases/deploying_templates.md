@@ -229,3 +229,7 @@ spec:
       matchLabels:
         kind: build
 ```
+
+## What’s next
+
+See how Bill can configure [multi-tenant isolation with network policies using templates](./configuring-multitenant-network-isolation.html)

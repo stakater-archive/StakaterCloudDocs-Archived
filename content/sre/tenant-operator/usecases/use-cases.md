@@ -13,4 +13,6 @@ sidebarDepth: 2
 
 - ## [Deploying Template to Namespaces](deploying_templates.html)
 
+- ## [Configuring Multi-Tenant Isolation with Network Policy Template](configuring-multitenant-network-isolation.html)
+
 - ## [Configuring IntegrationConfig](integrationconfig.html)
