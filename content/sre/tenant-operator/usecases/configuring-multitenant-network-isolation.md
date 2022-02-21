@@ -61,7 +61,7 @@ spec:
     project:
       labels:
         stakater.com/workload-monitoring: "true"
-        tenant/network-restriction: "true"
+        tenant-network-policy: "true"
       annotations:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
     sandbox:
@@ -76,7 +76,7 @@ spec:
       - ^system:serviceaccount:kube-*
 ```
 
-Bill has added a new label `tenant/network-restriction: "true"` for tenant projects, now Tenant-Operator will add that label in all projects of tenants.
+Bill has added a new label `tenant-network-policy: "true"` for tenant projects, now Tenant-Operator will add that label in all projects of tenants.
 
 Finally Bill creates a `TemplateGroupInstance` which will deploy the network policies using the newly created project label and template.
 
@@ -84,12 +84,12 @@ Finally Bill creates a `TemplateGroupInstance` which will deploy the network pol
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateGroupInstance
 metadata:
-  name: tenant-network-isolation-policy
+  name: tenant-network-policy-group
 spec:
   template: tenant-network-policy
   selector:
     matchLabels:
-       tenant/network-restriction: true
+      tenant-network-policy: true
   sync: true
 ```
 
