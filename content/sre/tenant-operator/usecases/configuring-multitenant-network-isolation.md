@@ -89,7 +89,7 @@ spec:
   template: tenant-network-policy
   selector:
     matchLabels:
-      tenant-network-policy: true
+      tenant-network-policy: "true"
   sync: true
 ```
 
