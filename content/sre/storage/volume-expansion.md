@@ -2,7 +2,7 @@ The purpose of the volume-expander is to expand volumes when they are running ou
 
 Volume expander works based on the following annotations to PersistentVolumeClaim resources:
 | Annotation               | Default                    | Description                                                                                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| -------------------- | --------------------------------|----------------------------------------------------------------------------- |
 |volume-expander-operator.redhat-cop.io/autoexpand|N/A|if set to "true" enables the volume-expander to watch on this PVC|
 |volume-expander-operator.redhat-cop.io/polling-frequency|"30s"|How frequently to poll the volume metrics|
 |volume-expander-operator.redhat-cop.io/expand-threshold-percent|"80"|the percentage of used storage after which the volume will be expanded. This must be a positive integer|
