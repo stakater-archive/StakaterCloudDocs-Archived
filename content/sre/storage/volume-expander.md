@@ -11,13 +11,12 @@ Volume expander works based on the following annotations to PersistentVolumeClai
 
 Example:
 
-Consider the example where the below annotations configured on persistent volume claim.
-    `volume-expander-operator.redhat-cop.io/autoexpand: 'true'`
-    `volume-expander-operator.redhat-cop.io/expand-threshold-percent: "85"`
-    `volume-expander-operator.redhat-cop.io/expand-by-percent: "20"`
-    `volume-expander-operator.redhat-cop.io/polling-frequency: "10m"`
-    `volume-expander-operator.redhat-cop.io/expand-up-to: "1Ti"`
+Consider the example where below annotations configured on persistent volume claim.
+    `volume-expander-operator.redhat-cop.io/autoexpand: 'true'` ### Enables the volume-expander to watch on this PVC
+    `volume-expander-operator.redhat-cop.io/expand-threshold-percent: "85"` ### Volume expanded will expand the volume when 85 percent of storage will be used
+    `volume-expander-operator.redhat-cop.io/expand-by-percent: "20"` ### Volume expander will expand PVC by 20 percent when 85 percent of storage will be used
+    `volume-expander-operator.redhat-cop.io/polling-frequency: "10m"` ### Volume expander poll the volume metrics after every 10 minutes
+    `volume-expander-operator.redhat-cop.io/expand-up-to: "1Ti"` ### The upper bound for the volume to be expanded is 1TB
 
-When the pvc that is configured with the above annotations is mounted on a pod then volume expander watch the PVC because of the annotation `volume-expander-operator.redhat-cop.io/autoexpand` and will expand PVC by 20 percent relevant to the current size on reaching the threshold of 85 percent. Volume expander poll the volume metrics after every 10 minutes and then on the bases of `kubelet_volume_stats_used_bytes` and `kubelet_volume_stats_capacity_bytes` takes volume expansion decision. When mounted PVC expanded to 1TB then volume expander will not expand PVC further with the error `"no space left on device"` due to the annotation configured on PVC `"volume-expander-operator.redhat-cop.io/expand-up-to: "1Ti"` which means that upper bound for this volume is 1TB.
 
 
