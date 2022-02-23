@@ -1,9 +1,11 @@
-The purpose of the volume-expander is to expand persistent volumes when they are running out of space. This resolves the problem of persistent volumes troubleshooting on passing the set threshold. Volume expander periodically checks the `kubelet_volume_stats_used_bytes` and `kubelet_volume_stats_capacity_bytes` published by the kubelets to decide when to expand a volume. These metrics are generated only when a volume is mounted to a pod. Also the kubelet takes a minute or two to start generating accurate values for these metrics. 
+# Volume Expansion
 
-Volume expander works based on the following annotations to PersistentVolumeClaim resources:
+Stakater App Agility Platform offers volume expansion to expand volumes when they are running out of space. Volume expansion periodically checks the `kubelet_volume_stats_used_bytes` and `kubelet_volume_stats_capacity_bytes` published by the kubelets to decide when to expand a volume. These metrics are generated only when a volume is mounted to a pod. Also the kubelet takes a minute or two to start generating accurate values for these metrics. 
+
+Volume expansion works based on the following annotations to PersistentVolumeClaim resources:
 | Annotation               | Default                    | Description                                                                                                   |
 | -------------------- | --------------------------------|----------------------------------------------------------------------------- |
-|`volume-expander-operator.redhat-cop.io/autoexpand`|N/A|if set to "true" enables the volume-expander to watch on this PVC|
+|`volume-expander-operator.redhat-cop.io/autoexpand`|N/A|if set to "true" enables the volume-expansion to watch on this PVC|
 |`volume-expander-operator.redhat-cop.io/polling-frequency`|"30s"|How frequently to poll the volume metrics|
 |`volume-expander-operator.redhat-cop.io/expand-threshold-percent`|"80"|the percentage of used storage after which the volume will be expanded. This must be a positive integer|
 |`volume-expander-operator.redhat-cop.io/expand-by-percent`|"25"|the percentage by which the volume will be expanded, relative to the current size. This must be an integer between 0 and 100|
@@ -12,11 +14,13 @@ Volume expander works based on the following annotations to PersistentVolumeClai
 Example:
 
 Consider the example where below annotations configured on persistent volume claim.
-    `volume-expander-operator.redhat-cop.io/autoexpand: 'true'` ### Enables the volume-expander to watch on this PVC
-    `volume-expander-operator.redhat-cop.io/expand-threshold-percent: "85"` ### Volume expanded will expand the volume when 85 percent of storage will be used
-    `volume-expander-operator.redhat-cop.io/expand-by-percent: "20"` ### Volume expander will expand PVC by 20 percent when 85 percent of storage will be used
-    `volume-expander-operator.redhat-cop.io/polling-frequency: "10m"` ### Volume expander poll the volume metrics after every 10 minutes
-    `volume-expander-operator.redhat-cop.io/expand-up-to: "1Ti"` ### The upper bound for the volume to be expanded is 1TB
+```
+volume-expander-operator.redhat-cop.io/autoexpand: 'true'             # Enables the volume-expansion to watch on this PVC
+volume-expander-operator.redhat-cop.io/expand-threshold-percent: "85" # Volume expansion will expand the volume when 85 percent of storage is consumed
+volume-expander-operator.redhat-cop.io/expand-by-percent: "20"        # Volume expansion will expand PVC by 20 percent when 85 percent of storage is consumed
+volume-expander-operator.redhat-cop.io/polling-frequency: "10m"       # Volume expansion poll the volume metrics after every 10 minutes
+volume-expander-operator.redhat-cop.io/expand-up-to: "1Ti"            # Volume will be expanded no more than 1TB
+```
 
 
 

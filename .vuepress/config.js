@@ -143,6 +143,10 @@ module.exports = {
         children: ["/content/sre/autoscaling/autoscaling.md"],
       },
       {
+        title: "Storage",
+        children: ["/content/sre/storage/volume-expander.md"],
+      },
+      {
         title: "Backup & Restore",
         children: [
           "/content/sre/backup-restore/01-introduction.md",
