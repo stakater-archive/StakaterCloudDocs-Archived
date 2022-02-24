@@ -36,29 +36,29 @@ spec:
     limits:
       - type: "Pod"
         max:
-          cpu: "2" 
-          memory: "1Gi" 
+          cpu: "2"
+          memory: "1Gi"
         min:
-          cpu: "200m" 
-          memory: "100Mi" 
+          cpu: "200m"
+          memory: "100Mi"
       - type: "Container"
         max:
-          cpu: "2" 
-          memory: "1Gi" 
+          cpu: "2"
+          memory: "1Gi"
         min:
-          cpu: "100m" 
-          memory: "50Mi" 
+          cpu: "100m"
+          memory: "50Mi"
         default:
-          cpu: "300m" 
-          memory: "200Mi" 
+          cpu: "300m"
+          memory: "200Mi"
         defaultRequest:
-          cpu: "200m" 
-          memory: "100Mi" 
+          cpu: "200m"
+          memory: "100Mi"
         maxLimitRequestRatio:
-          cpu: "10" 
+          cpu: "10"
 ```
 
-When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota` and `LimitRange` which provides administrators to limit resource consumption per `Tenant`. 
+When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift `ClusterResourceQuota` and `LimitRange` which provides administrators to limit resource consumption per `Tenant`.
 For more details [Quota.Spec](https://kubernetes.io/docs/concepts/policy/resource-quotas/) , [LimitRange.Spec](https://kubernetes.io/docs/concepts/policy/limit-range/)
 
 ## 2. Tenant
