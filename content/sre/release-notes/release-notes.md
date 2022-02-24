@@ -1,6 +1,6 @@
 # Release Notes
 
-Below is a monthly report published alongside new or updated software that details the technical features of the Stakater Agility Platform. For new releases, these notes provide end-users with a brief summary of the features. For updates to existing products, the notes educate end-users on how the new version of the software improves upon the former.
+Below is a monthly report published alongside new or updated software that details the technical features of the Stakater App Agility Platform. For new releases, these notes provide end-users with a brief summary of the features. For updates to existing products, the notes educate end-users on how the new version of the software improves upon the former.
 
 ## February2022
 
