@@ -9,9 +9,13 @@ Below is a monthly report published alongside new or updated software that detai
 As part of re-organizing our add-on tools chain we updated nexus URL. Update in urls was as below
 
 https://nexus-stakater-nexus.apps.<BASE_DOMAIN>
+
 https://nexus-docker-stakater-nexus.apps.<BASE_DOMAIN>
+
 https://nexus-docker-proxy-stakater-nexus.apps.<BASE_DOMAIN>
+
 https://nexus-helm-stakater-nexus.apps.<BASE_DOMAIN>/repository/helm-charts/
+
 https://nexus-repository-stakater-nexus.apps.<BASE_DOMAIN>/repository/
 
 Following updates required to be done on workflows
