@@ -236,6 +236,10 @@ module.exports = {
           "/content/sre/faq/developers.md",
         ],
       },
+      {
+        title: "Release Notes",
+        children: ["/content/sre/release-notes/release-notes.md"],
+      },
     ],
     repo: "stakater/stakaterclouddocs",
     editLinks: true,
