@@ -11,12 +11,12 @@ As part of re-organizing our add-on tools chain we updated nexus URLs.
 
 | Updated Urls                                                                 |
 |------------------------------------------------------------------------------|
-| https://nexus-stakater-nexus.apps.<BASE_DOMAIN>                              |
-| https://nexus-docker-stakater-nexus.apps.<BASE_DOMAIN>                       |
-| https://nexus-docker-proxy-stakater-nexus.apps.<BASE_DOMAIN>                 |
-| https://nexus-helm-stakater-nexus.apps.<BASE_DOMAIN>/repository/helm-charts/ |
-| https://nexus-repository-stakater-nexus.apps.<BASE_DOMAIN>/repository/       |
-| https://nexus-stakater-nexus.apps.<BASE_DOMAIN>                              |
+| "https://nexus-stakater-nexus.apps.<BASE_DOMAIN>"                            |
+| "https://nexus-docker-stakater-nexus.apps.<BASE_DOMAIN>"                       |
+| "https://nexus-docker-proxy-stakater-nexus.apps.<BASE_DOMAIN>"                 |
+| "https://nexus-helm-stakater-nexus.apps.<BASE_DOMAIN>/repository/helm-charts/" |
+| "https://nexus-repository-stakater-nexus.apps.<BASE_DOMAIN>/repository/"       |
+| "https://nexus-stakater-nexus.apps.<BASE_DOMAIN>"                              |
 
 
 Following updates required to be done on workflows
