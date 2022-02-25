@@ -200,6 +200,7 @@ module.exports = {
         title: "Tenant-Operator",
         children: [
           "/content/sre/tenant-operator/overview.md",
+          "/content/sre/tenant-operator/argocd.md",
           "/content/sre/tenant-operator/customresources.md",
           "/content/sre/tenant-operator/tenant_roles.md",
           "/content/sre/tenant-operator/installation.md",
