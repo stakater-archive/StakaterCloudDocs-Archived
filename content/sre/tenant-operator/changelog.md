@@ -70,7 +70,7 @@
 
 ### Changes
 
-- Restructure Quota CR, more details in [relevant docs](./customresources.html#_1-tenant)
+- Restructure Quota CR, more details in [relevant docs](./customresources.html#_1-quota)
 - Add support for adding LimitRanges in Quota
 - Add conversion webhook to convert existing v1alpha1 versions of quota to v1beta1
 
