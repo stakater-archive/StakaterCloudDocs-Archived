@@ -16,3 +16,5 @@ sidebarDepth: 2
 - ## [Configuring Multi-Tenant Isolation with Network Policy Template](configuring-multitenant-network-isolation.html)
 
 - ## [Configuring IntegrationConfig](integrationconfig.html)
+
+- ## [Creating ArgoCD AppProjects](argocd.html)

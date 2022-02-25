@@ -40,6 +40,9 @@ spec:
             - cluster-admins
   argocd:
     namespace: openshift-operators
+    namespaceResourceBlacklist:
+      - group: '' # all groups
+        kind: ResourceQuota
   rhsso:
     enabled: true
     endpoint:
@@ -172,9 +175,25 @@ namespaceAccessPolicy:
 ```
 
 ## ArgoCD
+
 ### Namespace
 
 `argocd.namespace` is an optional field used to specify the namespace where argocd applications and app projects are deployed. The field should be populated when you want to create an ArgoCD AppProject for each tenant
+
+### NamespaceResourceBlacklist
+
+```yaml
+argocd:
+  namespaceResourceBlacklist:
+  - group: '' # all resource groups
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+```
+
+`argocd.namespaceResourceBlacklist` prevents ArgoCD from syncing the listed resources from your gitops repo.
 
 ## RHSSO (Red Hat Single Sign-On)
 

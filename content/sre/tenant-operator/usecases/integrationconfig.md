@@ -138,3 +138,7 @@ rhsso:
       namespace: openshift-auth
     url: https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/
 ```
+
+## What’s next
+
+See how Bill can create [ArgoCD AppProjects](./argocd.html) for their tenants
