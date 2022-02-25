@@ -45,8 +45,8 @@ Now Bill can see an AppProject will be created for the tenant
 
 ```bash
 oc get AppProject -A
-NAMESPACE             NAME                 AGE
-openshift-operators   sigma              5d15h
+NAMESPACE             NAME           AGE
+openshift-operators   sigma        5d15h
 ```
 
 The following AppProject is created:
