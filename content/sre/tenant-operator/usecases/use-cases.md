@@ -5,16 +5,16 @@ sidebarDepth: 2
 
 - ## [Creating Quota](quota.html)
 
-- ## [Creating Tenants](tenant.html)
+- ## [Creating Tenant](tenant.html)
 
-- ## [Creating Namespaces](namespace.html)
+- ## [Creating Namespace](namespace.html)
 
-- ## [Creating Templates](template.html)
+- ## [Creating Template](template.html)
 
-- ## [Deploying Template to Namespaces](deploying_templates.html)
+- ## [Deploying Template to Namespace](deploying_templates.html)
 
 - ## [Configuring Multi-Tenant Isolation with Network Policy Template](configuring-multitenant-network-isolation.html)
 
 - ## [Configuring IntegrationConfig](integrationconfig.html)
 
-- ## [Creating ArgoCD AppProjects](argocd.html)
+- ## [Creating ArgoCD AppProject](argocd.html)
