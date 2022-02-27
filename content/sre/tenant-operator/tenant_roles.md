@@ -6,7 +6,7 @@ Tenant Operator tenant members can have one of following 3 roles:
 2. Editor
 3. Viewer
 
-## Owner
+## 1. Owner
 
 ![image](./images/tenant-operator-owner-overview.png)
 fig 2. Shows how tenant owners manage there tenant using Tenant Operator
@@ -56,7 +56,7 @@ Owner is an admin of a tenant with some restrictions. It has privilege to see al
 * Permission to create Namespaces.
 * Restricted to perform actions on cluster resource Quotas and Limits.
 
-## Edit
+## 2. Editor
 
 ![image](./images/tenant-operator-edit-overview.png)
 fig 3. Shows editors role in a tenant using Tenant Operator
@@ -163,7 +163,7 @@ Edit role will have edit access on there `Projects`, but they wont have access o
   * patch
   * update
 
-## View
+## 3. Viewer
 
 ![image](./images/tenant-operator-view-overview.png)
 fig 4. Shows viewers role in a tenant using Tenant Operator
