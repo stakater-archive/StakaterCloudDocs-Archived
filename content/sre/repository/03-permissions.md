@@ -21,7 +21,7 @@ For human users which login via SSO we have following roles available.
 | nexus-oauth-viewer  |nx-repository-view-*-*-browse, nx-repository-view-*-*-read |
 | nexus-oauth-editor  |nx-datastores-all, nx-blobstores-all, nx-analytics-all, nx-repository-admin-*-*-* |
 
-On first login you automatically get `nexus-oauth-viewer`
+On first login you automatically get `nexus-oauth-viewer`. See [Granting Admin privilege to user for nexus on Keycloak](../repository/08-grant-nexus-admin-keycloak.md) on how to configure admin role with keycloak for nexus.
 
 #### 2. Machine Users
 
