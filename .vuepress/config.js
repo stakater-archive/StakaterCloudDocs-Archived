@@ -209,6 +209,7 @@ module.exports = {
           "/content/sre/tenant-operator/integration-config.md",
           "/content/sre/tenant-operator/vault-authentication.md",
           "/content/sre/tenant-operator/faq.md",
+          "/content/sre/tenant-operator/changelog.md",
         ],
       },
       {

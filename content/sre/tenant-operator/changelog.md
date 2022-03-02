@@ -1,0 +1,127 @@
+# Changelog
+
+## v0.3.16
+
+### Changes
+
+- fix: Add groups mentioned in Tenant CR to ArgoCD App Project manifests' rbac
+
+## v0.3.15
+
+### Changes
+
+- feat: Add validation webhook for TemplateInstance & TemplateGroupInstance to prevent their creation in case the Template they reference does not exist
+
+## v0.3.14
+
+### Changes
+
+- feat: Added Validation Webhook for Quota to prevent its deletion when a reference to it exists in any Tenant
+- feat: Added Validation Webhook for Template to prevent its deletion when a reference to it exists in any Tenant, TemplateGroupInstance or TemplateInstance
+- fix: Fixed a crash that occurred in case Integration Config was not found
+
+## v0.3.13
+
+### Changes
+
+- feat: Tenant Operator will now consider all namespaces to be managed if any default Integration Config is not found
+
+## v0.3.12
+
+### Changes
+
+- fix: General enhancements and improvements
+
+## v0.3.11
+
+### Changes
+
+- fix: Fix Quota's conversion webhook converting the wrong LimitRange field
+
+## v0.3.10
+
+### Changes
+
+- fix: Fix Quota's LimitRange to its intended design by being an optional field
+
+## v0.3.9
+
+### Changes
+
+- feat: Add ability to prevent certain resources from syncing via ArgoCD
+
+## v0.3.8
+
+### Changes
+
+- feat: Add default annotation to OpenShift Projects that show description about the Project
+
+## v0.3.7
+
+### Changes
+
+- fix: Fix a typo in Tenant Operator's helm release
+
+## v0.3.6
+
+### Changes
+
+- fix: Fix ArgoCD's `destinationNamespaces` created by Tenant Operator
+
+## v0.3.5
+
+### Changes
+
+- fix: Change sandbox creation from 1 for each group to 1 for each user in a group
+
+## v0.3.4
+
+### Changes
+
+- feat: Support creation of sandboxes for each group
+
+## v0.3.3
+
+### Changes
+
+- feat: Add ability to create namespaces from a list of namespace prefixes listed in the Tenant CR
+
+## v0.3.2
+
+### Changes
+
+- refactor: Restructure Quota CR, more details in [relevant docs](./customresources.html#_1-quota)
+- feat: Add support for adding LimitRanges in Quota
+- feat: Add conversion webhook to convert existing v1alpha1 versions of quota to v1beta1
+
+## v0.3.1
+
+### Changes
+
+- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./argocd.html)
+
+## v0.3.0
+
+### Changes
+
+- feat: Add support to add groups in addition to users as tenant members
+
+## v0.2.33
+
+### Changes
+
+- refactor: Restructure Tenant spec, more details in [relevant docs](./customresources.html#_2-tenant)
+- feat: Add conversion webhook to convert existing v1alpha1 versions of tenant to v1beta1
+
+## v0.2.32
+
+### Changes
+
+- refactor: Restructure integration config spec, more details in [relevant docs](./integration-config.html)
+- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./integration-config.html#openshift)
+
+## v0.2.31
+
+### Changes
+
+- feat: Add limit range for kube-rbac-proxy
