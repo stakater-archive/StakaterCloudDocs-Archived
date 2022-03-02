@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.16
+
+### Changes
+
+- fix: Add groups mentioned in Tenant CR to ArgoCD App Project manifests' rbac
+
 ## v0.3.15
 
 ### Changes
