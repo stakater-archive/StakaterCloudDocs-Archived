@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.3.15
+
+### Changes
+
+- feat: Add validation webhook for TemplateInstance & TemplateGroupInstance to prevent their creation in case the Template they reference does not exist
+
+## v0.3.14
+
+### Changes
+
+- feat: Added Validation Webhook for Quota to prevent its deletion when a reference to it exists in any Tenant
+- feat: Added Validation Webhook for Template to prevent its deletion when a reference to it exists in any Tenant, TemplateGroupInstance or TemplateInstance
+- fix: Fixed a crash that occurred in case Integration Config was not found
+
 ## v0.3.13
 
 ### Changes
