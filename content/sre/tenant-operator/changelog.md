@@ -1,5 +1,33 @@
 # Changelog
 
+## v0.3.19
+
+### Changes
+
+- feat: Namespace webhook FailurePolicy is now set to Ignore instead of Fail
+- fix: Fixed config not being updated in namespace webhook when Integration Config is updated
+- fix: Fixed a crash that occurred in case of ArgoCD in Integration Config was not set during deletion of Tenant resource
+
+::: warning Note:
+
+ApiVersion `v1alpha1` of Tenant and Quota custom resources has been deprecated and is scheduled to be removed in the future. The following links contain the updated structure of both resources
+
+- [Quota v1beta1](./customresources.html#_1-quota)
+- [Tenant v1beta1](./customresources.html#_2-tenant)
+:::
+
+## v0.3.18
+
+### Changes
+
+- fix: Add ArgoCD namespace to destination namespaces for App Projects
+
+## v0.3.17
+
+### Changes
+
+- fix: Cluster administrator's permission will now have higher precedence on privileged namespaces
+
 ## v0.3.16
 
 ### Changes
