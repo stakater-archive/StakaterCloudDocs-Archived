@@ -4,9 +4,9 @@
 
 ### Changes
 
-- feat: Namespace webhook `FailurePolicy` is now set to `Ignore` instead of `Fail`
-- fix: Fixed config not being updated in namespace webhook when Integration config is updated
-- fix: Fixed a crash that occurred in case ArgoCD in Integration Config was not set during deletion of Tenant resource
+- feat: Namespace webhook FailurePolicy is now set to Ignore instead of Fail
+- fix: Fixed config not being updated in namespace webhook when Integration Config is updated
+- fix: Fixed a crash that occurred in case of ArgoCD in Integration Config was not set during deletion of Tenant resource
 
 ## v0.3.18
 
