@@ -8,6 +8,14 @@
 - fix: Fixed config not being updated in namespace webhook when Integration Config is updated
 - fix: Fixed a crash that occurred in case of ArgoCD in Integration Config was not set during deletion of Tenant resource
 
+::: warning Note:
+
+ApiVersion `v1alpha1` of Tenant and Quota custom resources has been deprecated and is scheduled to be removed in the future. The following links contain the updated structure of both resources
+
+- [Quota v1beta1](./customresources.html#_1-quota)
+- [Tenant v1beta1](./customresources.html#_2-tenant)
+:::
+
 ## v0.3.18
 
 ### Changes
