@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.18
+
+### Changes
+
+- fix: Add ArgoCD namespace to destination namespaces for App Projects 
+
 ## v0.3.16
 
 ### Changes
