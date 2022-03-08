@@ -226,6 +226,9 @@ spec:
         value: "1.5"
       - name: DEFAULT_CPU_REQUESTS
         value: "1"
+    selector:
+      matchLabels:
+        kind: build
 ```
 
 ## What’s next
