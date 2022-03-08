@@ -193,12 +193,12 @@ metadata:
   namespace: bluesky-anna-aurora-sandbox
 spec:
   template: namespace-parameterized-restrictions
-  parameters:
+  sync: true
+parameters:
   - name: DEFAULT_CPU_LIMIT
     value: "1.5"
   - name: DEFAULT_CPU_REQUESTS
     value: "1"
-  sync: true
 ```
 
 Or she can use her tenant
@@ -220,14 +220,12 @@ spec:
   templateInstances:
   - spec:
       template: namespace-parameterized-restrictions
+      sync: true
     parameters:
       - name: DEFAULT_CPU_LIMIT
         value: "1.5"
       - name: DEFAULT_CPU_REQUESTS
         value: "1"
-    selector:
-      matchLabels:
-        kind: build
 ```
 
 ## What’s next
