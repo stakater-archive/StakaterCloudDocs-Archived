@@ -41,13 +41,16 @@ helm repo update
 ### 4. Install Tenant Operator
 
 ```bash
+helm repo update
+
 helm install tenant-operator stakater/tenant-operator --namespace stakater-tenant-operator \
 --set image.repository=stakaterdockerhubpullroot/tenant-operator \
 --set imagePullSecrets[0].name=stakater-docker-secret \
 --set resources.limits.cpu=1000m \
 --set resources.limits.memory=2Gi \
 --set resources.requests.cpu=100m \
---set resources.requests.memory=128Mi
+--set resources.requests.memory=128Mi \
+--set integrationConfig.create=true
 ```
 
 Once the image has been pulled `Tenant-Operator` will be ready for use.
@@ -96,6 +99,8 @@ spec:
     name: tenant-operator
     version: 0.2.24
   values:
+    integrationConfig:
+      create: true
     image:
       repository: stakaterdockerhubpullroot/tenant-operator
       tag:  v0.2.24
