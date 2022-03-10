@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.21
+
+### Changes
+
+- feat: Added ClusterRole manager rules extention
+
 ## v0.3.19
 
 ### Changes

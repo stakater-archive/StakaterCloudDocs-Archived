@@ -18,3 +18,5 @@ sidebarDepth: 2
 - ## [Configuring IntegrationConfig](integrationconfig.html)
 
 - ## [Creating ArgoCD AppProject](argocd.html)
+
+- ## [Extending Manager ClusterRole](manager-clusterrole.html)
