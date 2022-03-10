@@ -2,7 +2,7 @@
 
 Before upgrading, it helps to understand how SonarQube version numbers work. Version numbers have up to three digits with each digit representing part of the release cycle:
 
-![Sonarqube-version-format](./images/Sonarqube-version-format.png)
+                 ![Sonarqube-version-format](./images/Sonarqube-version-format.png)
 
 ## Migration Path
 
@@ -18,11 +18,11 @@ Please refer to the [Link](https://docs.sonarqube.org/8.9/setup/upgrade-notes/) 
 
 - After upgrade configurations applied on openshift-cluster, pod will restart and once the pod status came back to running, sonarqube route will direct us to installation of plugins page.
 
-![installation-of-plugins](./images/installation-of-plugins.png)
+                  ![installation-of-plugins](./images/installation-of-plugins.png)
 
 - After selecting `I understand the risk` option, it will direct us to the page `SonarQube is under maintenance`.
 
-![sonarqube-maintenance](./images/sonarqube-maintenance.png)
+                  ![sonarqube-maintenance](./images/sonarqube-maintenance.png)
 
 - On `SonarQube is under maintenance` page add `/setup` on address bar which will direct us to `Upgrade Database` page.
 
