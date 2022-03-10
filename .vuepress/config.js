@@ -103,7 +103,7 @@ module.exports = {
           "/content/sre/repository/06-accessing-repository.md",
           "/content/sre/repository/03-permissions.md",
           "/content/sre/repository/04-routes.md",
-           "/content/sre/repository/08-grant-nexus-admin-keycloak.md",
+          "/content/sre/repository/08-grant-nexus-admin-keycloak.md",
           "/content/sre/repository/05-FAQ.md"
         ],
       },
@@ -174,6 +174,12 @@ module.exports = {
           "/content/sre/secrets/introduction.md",
           "/content/sre/secrets/sealed-secrets.md",
           "/content/sre/secrets/vault.md",
+        ],
+      },
+      {
+        title: "Certificate Management",
+        children: [
+          "/content/sre/certificates/cert-manager.md",
         ],
       },
       {
