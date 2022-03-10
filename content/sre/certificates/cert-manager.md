@@ -8,7 +8,9 @@ It will ensure certificates are valid and up to date, and attempt to renew certi
 Before you start creating Cerificates, you will have to first define a `Issuer`(namespace scoped) or `ClusterIssuer`(cluster scoped).
 
 ::: warning Note:
-Any secret that is referred by ClusterIssuer/Issuer would have to be present only in the project `stakater-cert-manager-operator`. So create CA,DNS credentials secrets in this project. 
+Any secret that is referred by ClusterIssuer would have to be present only in the project `stakater-cert-manager-operator`. So create CA,DNS credentials secrets in this project.
+
+Secret can reside in the same namespace for Issuer
 :::
 
 ::: tip
