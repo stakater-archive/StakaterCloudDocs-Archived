@@ -1,6 +1,7 @@
 # SonarQube Upgrade
 
 Before upgrading, it helps to understand how SonarQube version numbers work. Version numbers have up to three digits with each digit representing part of the release cycle:
+
 ![Sonarqube-version-format](./images/Sonarqube-version-format.png)
 
 ## Major version number
@@ -35,11 +36,17 @@ In order to upgrade sonarqube from 7.9.1 to 8.9.7 LTS below steps need to be fol
   `SONAR_AUTOCREATE_USERS` is depreciated and needs to be updated to `SONAR_AUTHENTICATOR_CREATEUSERS`.
   `SONAR_SEARCH_JAVA_ADDITIONAL_OPTS` is depreciated and needs to be updated to `SONAR_SEARCH_JAVAADDITIONALOPTS`.
 
-- Once the above changes applied on openshift-cluster, pod will restart and after the pod status came back to running, access the sonarqube route which will direct us to installation of plugins page ![installation-of-plugins](./images/installation-of-plugins)
+- Once the above changes applied on openshift-cluster, pod will restart and after the pod status came back to running, access the sonarqube route which will direct us to installation of plugins page.
 
-- After selecting `I understand the risk` option, it will direct us to the page `SonarQube is under maintenance`  ![sonarqube-maintenance](./images/sonarqube-maintenance)
+![installation-of-plugins](./images/installation-of-plugins.png)
 
-- Once `SonarQube is under maintenance` option is selected , it will direct us to `Upgrade Database` page ![upgrade-database](./images/upgrade-database).
+- After selecting `I understand the risk` option, it will direct us to the page `SonarQube is under maintenance`.
+
+![sonarqube-maintenance](./images/sonarqube-maintenance)
+
+- Once `SonarQube is under maintenance` option is selected , it will direct us to `Upgrade Database` page.
+
+![upgrade-database](./images/upgrade-database).
 
 - After selecting the Upgrade option, it takes some time and after that sonarqube window appears.
 
