@@ -128,3 +128,4 @@ A default `IntegrationConfig` is installed with tenant-operator, which can be fo
 
 * If tenant-operator is deployed in a newly created namespace, restart its pod once so tenant-operator can retrieve webhook-server-cert provided by openshift(if the pod is started before the secret was made).
 * For more details on how to use Tenant-Operator please refer [use-cases](../tenant-operator/usecases/quota.html).
+* For more details on how to extend your Tenant-Operator manager ClusterRole please refer [use-cases](../tenant-operator/usecases/manager-clusterrole.html).
