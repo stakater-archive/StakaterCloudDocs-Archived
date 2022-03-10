@@ -42,11 +42,11 @@ In order to upgrade sonarqube from 7.9.1 to 8.9.7 LTS below steps need to be fol
 
 - After selecting `I understand the risk` option, it will direct us to the page `SonarQube is under maintenance`.
 
-![sonarqube-maintenance](./images/sonarqube-maintenance)
+![sonarqube-maintenance](./images/sonarqube-maintenance.png)
 
 - Once `SonarQube is under maintenance` option is selected , it will direct us to `Upgrade Database` page.
 
-![upgrade-database](./images/upgrade-database).
+![upgrade-database](./images/upgrade-database.png).
 
 - After selecting the Upgrade option, it takes some time and after that sonarqube window appears.
 
