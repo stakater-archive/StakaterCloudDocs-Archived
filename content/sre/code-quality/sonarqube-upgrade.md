@@ -48,7 +48,7 @@ In order to upgrade sonarqube from 7.9.1 to 8.9.7 LTS below steps need to be fol
 
 ![upgrade-database](./images/upgrade-database.png).
 
-- After selecting the Upgrade option, it takes some time and after that sonarqube window appears.
+- After selecting the Upgrade option, it takes some time and after that sonarqube will be updated and sonarqube window appears.
 
 
 
