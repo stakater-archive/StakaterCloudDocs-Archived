@@ -6,6 +6,12 @@
 
 - feat: Added ClusterRole manager rules extention
 
+## v0.3.20
+
+### Changes
+
+- fix: Fixed the recreation of underlying template resources, if resources were deleted
+
 ## v0.3.19
 
 ### Changes
