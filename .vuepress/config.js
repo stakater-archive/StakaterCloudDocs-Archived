@@ -109,7 +109,10 @@ module.exports = {
       },
       {
         title: "Code Quality",
-        children: ["/content/sre/code-quality/01-introduction.md"],
+        children: [
+          "/content/sre/code-quality/01-introduction.md",
+          "/content/sre/code-quality/sonarqube-upgrade.md"
+        ],
       },
       {
         title: "Logging",
