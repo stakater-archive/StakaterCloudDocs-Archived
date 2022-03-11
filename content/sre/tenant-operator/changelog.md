@@ -11,7 +11,7 @@
 
 ::: warning Known Issues:
 
-- `caBundle` field in validation webhooks is not being populated for newly added webhooks. A temporary fix is to delete and recreate the webhook manifest without the `caBundle` field added in any webhook, so the operator can add it to all fields simultaneously.  
+- `caBundle` field in validation webhooks is not being populated for newly added webhooks. A temporary fix is to delete and recreate the webhook manifest without the `caBundle` field added in any webhook, so openshift can add it to all fields simultaneously.  
 
 :::
 
