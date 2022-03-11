@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.3.22
+
+### Changes
+
+- feat: Added validation webhook to prevent Tenant owners from creating RoleBindings with kind 'Group' or 'User'
+- fix: Removed redundant logs for namespace webhook
+- fix: Added missing check for users in a tenant owner's groups in namespace validation webhook
+- fix: General enhancements and improvements
+
+::: warning Known Issues:
+
+- `caBundle` field in validation webhooks not being populated for newly added webhooks
+:::
+
 ## v0.3.21
 
 ### Changes
