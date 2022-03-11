@@ -1,10 +1,31 @@
 # Changelog
 
+## v0.3.22
+
+### Changes
+
+- feat: Added validation webhook to prevent Tenant owners from creating RoleBindings with kind 'Group' or 'User'
+- fix: Removed redundant logs for namespace webhook
+- fix: Added missing check for users in a tenant owner's groups in namespace validation webhook
+- fix: General enhancements and improvements
+
+::: warning Known Issues:
+
+- `caBundle` field in validation webhooks is not being populated for newly added webhooks. A temporary fix is to delete and recreate the webhook manifest without the `caBundle` field added in any webhook, so openshift can add it to all fields simultaneously.  
+
+:::
+
 ## v0.3.21
 
 ### Changes
 
 - feat: Added ClusterRole manager rules extention
+
+## v0.3.20
+
+### Changes
+
+- fix: Fixed the recreation of underlying template resources, if resources were deleted
 
 ## v0.3.19
 
