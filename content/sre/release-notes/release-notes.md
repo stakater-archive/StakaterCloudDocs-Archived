@@ -2,6 +2,12 @@
 
 Below is a monthly report published alongside new or updated software that details the technical features of the Stakater App Agility Platform. For new releases, these notes provide end-users with a brief summary of the features. For updates to existing products, the notes educate end-users on how the new version of the software improves upon the former.
 
+## March2022
+
+### Nexus Upgraded from 3.28.1 to 3.8.0 Version
+
+Nexus upgraded to latest version , to keep customer cluster tools up to date.
+
 ## February2022
 
 ### Nexus urls updated
