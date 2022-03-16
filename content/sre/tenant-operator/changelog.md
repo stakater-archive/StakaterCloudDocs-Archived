@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.23
+
+### Changes
+
+- feat: Added concurrent reconcilers for template instance controller
+
 ## v0.3.22
 
 ### Changes
