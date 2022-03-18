@@ -25,16 +25,20 @@ oc login --token=<TOKEN> --server=<SERVER>
 oc project <MY-SANDBOX>
 ```
 
-5) Login to docker registry
+5) Login to OpenShift internal docker registry
 
-**MacOS**
+First get the OpenShift internal docker registry URL and set in HOST variable name
 
 ```bash
-HOST=$(oc get route image-registry -n openshift-image-registry --template='{{ .spec.host }}')
+HOST=image-registry-openshift-image-registry.apps.[CLUSTER-NAME].[CLUSTER-ID].kubeapp.cloud
+```
+NOTE: Ask SCA (SAAP Cluster Admin) or cluster-admin to provide you the OpenShift internal registry route
+
+Then login into docker registry with following command
+
+```bash
 docker login -u $(oc whoami) -p $(oc whoami -t) $HOST
 ```
-
-NOTE: If the first `oc` command fails then ask SCA (SAAP Cluster Admin) to provide you the image-registry route
 
 If you get this error `x509: certificate signed by unknown authority` then you need to update your `/etc/docker/daemon.json` file and add the insecure registry
 
@@ -49,7 +53,7 @@ If you get this error `x509: certificate signed by unknown authority` then you n
 If you reference helm charts from private registry then you first need to add it
 
 ```bash
-cd deploy;
+cd deploy
 
 # helm credentials can be found in vault or in a secret in build namespace
 helm repo add stakater-nexus <private repo url> --username helm-user-name --password ********; 
