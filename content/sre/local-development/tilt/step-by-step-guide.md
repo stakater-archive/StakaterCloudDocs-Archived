@@ -12,7 +12,7 @@
 
 And this sample application please install these tools as well `java 11` and `maven 3`
 
-3) Enable sandbox namespace/project/environment for your tenant; you can read more [here](https://docs.cloud.stakater.com/content/sre/tenant-operator/customresources.html#_1-tenant)
+3) You should have a namespace in remote/local cluster; If you are in SAAP then enable sandbox namespace/project/environment for your tenant; you can read more [here](https://docs.cloud.stakater.com/content/sre/tenant-operator/customresources.html#_1-tenant)
 
 4) Login to cluster
 
