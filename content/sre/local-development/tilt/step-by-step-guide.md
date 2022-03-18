@@ -32,6 +32,14 @@ docker login -u $(oc whoami) -p $(oc whoami -t) $HOST
 
 NOTE: If the first `oc` command fails then ask SCA (SAAP Cluster Admin) to provide you the image-registry route
 
+If you get this error `x509: certificate signed by unknown authority` then you need to update your `/etc/docker/daemon.json` file and add the insecure registry
+
+```bash
+{
+    "insecure-registries" : [ "HOST" ]
+}
+```
+
 6) Add helm chart repos (Optional)
 
 If you reference helm charts from private registry then you first need to add it
