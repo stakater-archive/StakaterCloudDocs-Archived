@@ -11,7 +11,7 @@ sidebarDepth: 2
 
 - ## [Creating Template](template.html)
 
-- ## [Deploying Template to Namespace](deploying_templates.html)
+- ## [Deploying Template to Namespace](deploying-templates.html)
 
 - ## [Configuring Multi-Tenant Isolation with Network Policy Template](configuring-multitenant-network-isolation.html)
 
