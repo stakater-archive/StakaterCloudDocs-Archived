@@ -78,11 +78,15 @@ cd deploy
 
 # helm credentials can be found in vault or in a secret in build namespace
 helm repo add stakater-nexus <private repo url> --username helm-user-name --password ********; 
+
+cd ..
 ```
 
 8) Update helm dependencies
 
 ```bash
+cd deploy
+
 helm dependency update
 
 cd ..
@@ -101,7 +105,7 @@ Remove `.template` from the file named `tilt_options.json.template`
 And then fill up all three things
 
 1. `namespace`: your sandbox environment name
-2. `default_registry`: the openshift internal registry route (you have set in step # 6 in HOST above)
+2. `default_registry`: the openshift internal registry route (you have set in step # 6 in HOST above) and then add your namespace name after `/`
 3. `allow_k8s_contexts`: given you are logged in the cluster; then run `oc config current-context` to get the value for `allow_k8s_contexts`
 
 e.g.
@@ -109,7 +113,7 @@ e.g.
 ```json
 {
     "namespace": "tilt-username-sandbox",
-    "default_registry": "image-registry-openshift-image-registry.apps.[CLUSTER-NAME].[CLUSTER-ID].kubeapp.cloud/{}",
+    "default_registry": "image-registry-openshift-image-registry.apps.[CLUSTER-NAME].[CLUSTER-ID].kubeapp.cloud/tilt-username-sandbox",
     "allow_k8s_contexts": "tilt-username-sandbox/api-[CLUSTER-NAME]-[CLUSTER-ID]-kubeapp-cloud:6443/user@email.com"
 }
 ```
@@ -148,7 +152,8 @@ application:
     image:
       tag: null
 ```
-15) Validate nothing is running in your namespace already
+
+15) Validate this application is not running already
 
 ![sandbox namespace](./images/sandbox-env-b4-tilt-up.png)
 
