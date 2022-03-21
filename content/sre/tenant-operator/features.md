@@ -18,11 +18,11 @@ Also by leveraging Tenant-Operators templating mechanism, namespaces can be prov
 
 ## HashiCorp Vault Multi Tenancy
 
-Tenant-Operator is not only providing string Multi Tenanacy for the OpenShift internals but also extends the tenants permission model to HashiCorp Vault where it can create vault paths and greatly ease the overhead of managing RBAC in Vault.
+Tenant-Operator is not only providing strong Multi Tenanacy for the OpenShift internals but also extends the tenants permission model to HashiCorp Vault where it can create vault paths and greatly ease the overhead of managing RBAC in Vault.
 
 ## ArgoCD Multitenancy 
 
-Tenant-Operator is not only providing string Multi Tenanacy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
+Tenant-Operator is not only providing strong Multi Tenanacy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
 
 ## Cost/Resource Optimization 
 
