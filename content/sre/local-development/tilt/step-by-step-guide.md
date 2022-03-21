@@ -179,6 +179,8 @@ Click on the review route
 
 ![review-route](./images/review-route.png)
 
+In the end of the route add `/api/review/329199`
+
 Review the json output
 
 ![product review](./images/product-review-json-b4-change.png)
