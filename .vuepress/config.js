@@ -212,7 +212,7 @@ module.exports = {
           "/content/sre/tenant-operator/overview.md",
           "/content/sre/tenant-operator/features.md",
           "/content/sre/tenant-operator/installation.md",
-          "/content/sre/tenant-operator/tenant_roles.md",
+          "/content/sre/tenant-operator/tenant-roles.md",
           "/content/sre/tenant-operator/integration-config.md",
           "/content/sre/tenant-operator/customresources.md",
           "/content/sre/tenant-operator/usecases/use-cases.md",

@@ -1,5 +1,6 @@
-# Tenant-Operator Features
+# Features
 
+Here are the major features of tenant-operator:
 
 ## Access Control
 
