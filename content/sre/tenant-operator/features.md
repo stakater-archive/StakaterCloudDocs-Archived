@@ -31,9 +31,10 @@ Tenant-Operator provides a mechanism for defining Resource Quotas at the tenant 
 
 Tenant-Operator can be configured to automatically provision a namespace for every member of the specific tenant, that will also be pre loaded with any selected templates and consume the same pool of resources from the tenants quota creating safe sandboxed dev spaces that teams can use as scratch space for rapid prototyping and development. 
 
-## Template/Resource replication
+## Templates and Template distribution
 
 Tenant-operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a Space.
+
 Tenant-operator even allows to parameterize these templates for flexibility and ease of use and also with the option to enforce templates that must be present in a tenants or all tenants namespaces for configuring secure defaults. 
  
 ## Everything as Code/GitOps Ready
