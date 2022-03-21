@@ -16,7 +16,7 @@ With Tenant-Operator, you can empower your users to safely provision namespaces 
 
 Also by leveraging Tenant-Operators templating mechanism, namespaces can be provisioned and automatically pre populated with any kind of resource or multiple resources such as network policies, docker pull secrets or even Helm charts etc 
 
-## HashiCorp Vault Multi Tenancy
+## HashiCorp Vault multitenancy
 
 Tenant-Operator is not only providing strong Multi Tenanacy for the OpenShift internals but also extends the tenants permission model to HashiCorp Vault where it can create vault paths and greatly ease the overhead of managing RBAC in Vault.
 
