@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.24
+
+### Changes
+
+- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./integration-config.html#argocd)
+
 ## v0.3.23
 
 ### Changes

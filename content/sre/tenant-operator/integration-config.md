@@ -43,6 +43,9 @@ spec:
     namespaceResourceBlacklist:
       - group: '' # all groups
         kind: ResourceQuota
+    clusterResourceWhitelist:
+      - group: tronador.stakater.com
+        kind: EnvironmentProvisioner
   rhsso:
     enabled: true
     endpoint:
@@ -194,6 +197,17 @@ argocd:
 ```
 
 `argocd.namespaceResourceBlacklist` prevents ArgoCD from syncing the listed resources from your gitops repo.
+
+### ClusterResourceWhitelist:
+
+```yaml
+argocd:
+  clusterResourceWhitelist:
+  - group: tronador.stakater.com
+    kind: EnvironmentProvisioner
+```
+
+`argocd.clusterResourceWhitelist` allows ArgoCD to sync the listed cluster scoped resources from your gitops repo.
 
 ## RHSSO (Red Hat Single Sign-On)
 
