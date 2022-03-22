@@ -73,7 +73,7 @@ ArgoCD is a tool that can be used to watch a repo and push the changes to your c
   <img
   src="./images/argocd.png"
   alt="pipeline">
-  <figcaption>A successful pipeline run</figcaption>
+  <figcaption>Relevant ArgoCD Application synced</figcaption>
 </figure>
 
 ### Environment Provisioner
