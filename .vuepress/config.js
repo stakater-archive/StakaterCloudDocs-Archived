@@ -237,6 +237,8 @@ module.exports = {
             "/content/sre/tronador/environment_provisioner.md",
             "/content/sre/tronador/config_file.md",
             "/content/sre/tronador/cluster_task.md",
+            "/content/sre/tronador/workflow.md",
+            "/content/sre/tronador/troubleshooting.md",
          ]
       },
       {
