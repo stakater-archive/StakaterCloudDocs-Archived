@@ -42,3 +42,8 @@ Tenant-operator even allows to parameterize these templates for flexibility and 
 
 Tenant-Operator is designed and built to be 100% OpenShift native and to be configured and managed the same familiar way as native OpenShift resources so is perfect for modern shops that are dedicated to GitOps as it is fully configurable using Custom Resources 
 
+## Preventing Clusters Sprawl
+Share a single cluster with multiple teams, groups of users, or departments by saving operational and management efforts.
+
+## Native Experience
+Provide multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.
