@@ -203,18 +203,14 @@ module.exports = {
         children: ["/content/sre/cluster-configuration/node-configuration.md"],
       },
       {
-        title: "Support",
-        children: ["/content/sre/support/support.md"],
-      },
-      {
         title: "Tenant-Operator",
         children: [
           "/content/sre/tenant-operator/overview.md",
           "/content/sre/tenant-operator/features.md",
           "/content/sre/tenant-operator/installation.md",
-          "/content/sre/tenant-operator/tenant-roles.md",
           "/content/sre/tenant-operator/integration-config.md",
           "/content/sre/tenant-operator/customresources.md",
+          "/content/sre/tenant-operator/tenant-roles.md",
           "/content/sre/tenant-operator/usecases/use-cases.md",
           "/content/sre/tenant-operator/argocd-multitenancy.md",
           "/content/sre/tenant-operator/vault-multitenancy.md",
@@ -255,6 +251,10 @@ module.exports = {
         title: "Release Notes",
         children: ["/content/sre/release-notes/release-notes.md"],
       },
+      {
+        title: "Support",
+        children: ["/content/sre/support/support.md"],
+      }      
     ],
     repo: "stakater/stakaterclouddocs",
     editLinks: true,
