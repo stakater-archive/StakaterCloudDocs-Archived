@@ -1,4 +1,4 @@
-# Tenant Roles
+# Tenant Member Roles
 
 Tenant Operator tenant members can have one of following 3 roles:
 
