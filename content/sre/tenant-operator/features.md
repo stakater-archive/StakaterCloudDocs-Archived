@@ -28,15 +28,22 @@ Tenant-Operator is not only providing strong Multi Tenanacy for the OpenShift in
 
 Tenant-Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.
 
-## Sandboxed Dev spaces
+## Sandboxed Dev Namespaces
 
-Tenant-Operator can be configured to automatically provision a namespace for every member of the specific tenant, that will also be pre loaded with any selected templates and consume the same pool of resources from the tenants quota creating safe sandboxed dev spaces that teams can use as scratch space for rapid prototyping and development. 
+Tenant-Operator can be configured to automatically provision a namespace for every member of the specific tenant, that will also be pre loaded with any selected templates and consume the same pool of resources from the tenants quota creating safe sandboxed dev namespaces that teams can use as scratch namespace for rapid prototyping and development. 
 
 ## Templates and Template distribution
 
-Tenant-operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a Space.
+Tenant-operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.
 
-Tenant-operator even allows to parameterize these templates for flexibility and ease of use and also with the option to enforce templates that must be present in a tenants or all tenants namespaces for configuring secure defaults. 
+Tenant-operator even allows to parameterize these templates for flexibility and ease of use and also with the option to enforce templates that must be present in a tenants or all tenants namespaces for configuring secure defaults.
+
+Common use cases for namespace templates may be:
+
+- Adding networking policies for multitenancy
+- Adding development tooling to a namespace
+- Deploying pre-populated databases with test data
+- Equipping new namespaces with optional credentials such as image pull secrets
  
 ## Everything as Code/GitOps Ready
 
