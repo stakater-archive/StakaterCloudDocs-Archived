@@ -1,0 +1,33 @@
+title Tronador Workflow
+
+actor Developer
+participant Code Repo
+participant Tekton
+participant Image Registry
+participant GitOps Repo
+participant Argo
+participant K8s Cluster
+participant K8s Build
+participant Tronador
+participant Helm Controller
+participant Tenant Operator
+participant K8s Preview
+
+Developer->Code Repo: git push
+Developer->Code Repo: create pull request
+Code Repo->Tekton: SCM event
+Tekton->Image Registry: upload\nsnapshot image
+note over Tekton: create EP CR
+Tekton->GitOps Repo: push EP CR
+Argo->GitOps Repo: git pull
+Argo->K8s Cluster: sync
+Tronador->K8s Cluster: watch EP
+Tronador->+K8s Preview: create PR namespace
+Tronador->K8s Preview: create helm release
+Helm Controller->K8s Preview: watch helm release
+K8s Build->K8s Preview: sync git secrets
+Code Repo->K8s Preview: pull helm chart
+Helm Controller->K8s Preview: create deployment
+Tenant Operator->K8s Preview: sync image\nregistry secrets
+Image Registry->K8s Preview: pull application snapshot image
+note over K8s Preview: environment provisioning\n           completed
