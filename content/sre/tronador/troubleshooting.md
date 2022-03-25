@@ -1,7 +1,10 @@
 # Troubleshooting
 
+::: warning Note:
 
-Please note: The guide below is written as a SAAP customer's point of view. If you use Tronador independently, the guide below might not be applicable to you. However, you can still use this guide to get an idea of how the process works.
+The guide below is written as a SAAP customer's point of view. If you use Tronador independently, the guide below might not be applicable to you. However, you can still use this guide to get an idea of how the process works.
+
+:::
 
 ## Developer support
 

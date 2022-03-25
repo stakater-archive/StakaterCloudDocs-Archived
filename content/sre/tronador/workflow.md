@@ -1,6 +1,10 @@
 # Workflow guide for Tronador
 
-Please note: The guide below is written as a SAAP customer's point of view. If you use Tronador independently, the guide below might not be applicable to you. However, you can still use this guide to get an idea of how the process works.
+::: warning Note:
+
+The guide below is written as a SAAP customer's point of view. If you use Tronador independently, the guide below might not be applicable to you. However, you can still use this guide to get an idea of how the process works.
+
+:::
 
 For tronador to work, you need to add support for it in your Git Repository by adding a [Tronador config file](./config_file.html). Afterwards, a Tekton pipeline needs to be setup with the [Tronador cluster task](./cluster_task.html), and a cluster task that pushes the output EP to your gitops repository. Test environments should then be created automatically every time a PR is created or updated. The entire Dynamic Test Environment (DTE) creation process is described below.
 
@@ -180,8 +184,8 @@ status:
 
 ### Secrets management
 
-Secrets for the helm chart to be deployed are currently passed along from the tronador config file, to the helm release. You can also use [Tenant Operator's](../tenant-operator/overview.html) [TemplateGroupInstance](../tenant-operator/customresources.html#_5-templategroupinstance) to pass secrets to the namespace that will be provisioned by the EnvironmentProvisioner by setting the proper label in your tronador config file.
+Secrets for the helm chart to be deployed are currently passed along from the tronador config file, to the helm release. You can also use [Tenant Operator's](../tenant-operator/overview.html) [TemplateGroupInstance](../tenant-operator/customresources.html#_5-templategroupinstance) to pass secrets to the namespace that will be provisioned by the EnvironmentProvisioner by setting the proper label in your tronador config file. An example for this workflow is [provided here](../tenant-operator/usecases/deploying-templates.html#deploying-template-to-namespaces-via-templategroupinstances).
 
-### Pods Deployed
+### Application snapshot deployed
 
 After the entire above process is completed, the Helm Release will create a deployment that will deploy the pods for the application and its changes mentioned in the PR to the namespace created by the Environment Provisioner.
