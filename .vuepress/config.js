@@ -235,6 +235,7 @@ module.exports = {
             "/content/sre/tronador/cluster_task.md",
             "/content/sre/tronador/workflow.md",
             "/content/sre/tronador/troubleshooting.md",
+            "/content/sre/tronador/changelog.md",
          ]
       },
       {
@@ -254,7 +255,7 @@ module.exports = {
       {
         title: "Support",
         children: ["/content/sre/support/support.md"],
-      }      
+      }
     ],
     repo: "stakater/stakaterclouddocs",
     editLinks: true,
