@@ -1,5 +1,30 @@
 # Changelog
 
+## v0.3.27
+
+### Changes
+
+- feat: TemplateGroupInstance will create resources instantly whenever a Namespace with matching labels is created
+
+## v0.3.26
+
+### Changes
+
+- fix: Update reconciliation frequency of TemplateGroupInstance
+
+## v0.3.25
+
+### Changes
+
+- feat: TemplateGroupInstance will now directly create template resources instead of creating TemplateInstances
+
+#### Migrating from pervious version
+
+- To migrate to Tenant-Operator:v0.3.25 perform the following steps
+    - Downscale Tenant-Operator deployment by setting the replicas count to 0
+    - Delete TemplateInstances created by TemplateGroupInstance (Naming convention of TemplateInstance created by TemplateGroupInstance is `group-{Template.Name}`)
+    - Update version of Tenant-Operator to v0.3.25 and set the replicas count to 2. After Tenant-Operator pods are up TemplateGroupInstance will create the missing resources
+
 ## v0.3.24
 
 ### Changes
