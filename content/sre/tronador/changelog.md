@@ -1,5 +1,12 @@
 # Changelog
 
+
+## v0.0.8
+
+### Changes
+
+- fix: fix a bug that prevented deletion of EnvironmentProvisioner resources
+
 ## v0.0.7
 
 ### Changes
