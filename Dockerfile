@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nodejs-12
+FROM node:12-alpine
 
 LABEL name="Stakater Cloud Documentation" \
       maintainer="Stakater <hello@stakater.com>" \
