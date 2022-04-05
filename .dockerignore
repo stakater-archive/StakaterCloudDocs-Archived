@@ -6,3 +6,6 @@ node_modules
 
 # Optional NPM cache directory
 .npm
+
+# Generated build
+docs
