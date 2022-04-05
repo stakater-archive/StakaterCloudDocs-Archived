@@ -1,6 +1,6 @@
 # External Secret Operator Workflow
 
-![External-Secrets](./images/external-secret-operator.png)
+![External-Secrets](/content/sre/secrets/external-secret-operator/images/external-secret-operator.png)
 
 ## Workflow
 
