@@ -177,6 +177,9 @@ module.exports = {
           "/content/sre/secrets/introduction.md",
           "/content/sre/secrets/sealed-secrets.md",
           "/content/sre/secrets/vault.md",
+          "/content/sre/secrets/external-secret-operator/introduction.md",
+          "/content/sre/secrets/external-secret-operator/workflow.md",
+          "/content/sre/secrets/external-secret-operator/getting-started.md",
         ],
       },
       {
@@ -216,14 +219,6 @@ module.exports = {
           "/content/sre/tenant-operator/vault-multitenancy.md",
           "/content/sre/tenant-operator/changelog.md",
           "/content/sre/tenant-operator/faq.md",
-        ],
-      },
-      {
-        title: "External Secret Operator",
-        children: [
-          "/content/sre/external-secret-operator/introduction.md",
-          "/content/sre/external-secret-operator/workflow.md",
-          "/content/sre/external-secret-operator/getting-started.md",
         ],
       },
       {

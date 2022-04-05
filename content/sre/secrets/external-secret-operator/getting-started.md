@@ -32,7 +32,7 @@ spec:
 
 Log in to the Vault by selecting OIDC from **Method** dropdown. In the pop up window, enter your Openshift credentials if prompted.
 
-![OIDC Login](./images/OIDC-login.png)
+![OIDC Login](/content/sre/secrets/external-secret-operator/images/OIDC-login.png)
 
 ## Add secret in Vault
 
@@ -42,7 +42,7 @@ Do the following steps to add secret in Vault:
 - Click on **Create Secret** button 
 - Provide key-value pair to add secret
 
-![Add Secret](./images/add-secret.png)
+![Add Secret](/content/sre/secrets/external-secret-operator/images/add-secret.png)
 
 ## Configure ExternalSecrets in Helm values
 
