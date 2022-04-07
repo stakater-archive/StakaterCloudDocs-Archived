@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.29
+
+### Changes
+
+- feat: Controllers are now separated into individual pods.
+
+## v0.3.28
+
+### Changes
+
+- fix: Enhancement of TemplateGroupInstance Namespace event listener.
+
 ## v0.3.27
 
 ### Changes
