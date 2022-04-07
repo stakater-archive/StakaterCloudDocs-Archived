@@ -46,8 +46,8 @@ helm repo update
 helm install tenant-operator stakater/tenant-operator --namespace stakater-tenant-operator \
 --set image.repository=stakaterdockerhubpullroot/tenant-operator \
 --set imagePullSecrets[0].name=stakater-docker-secret \
---set resources.limits.cpu=1000m \
---set resources.limits.memory=2Gi \
+--set resources.limits.cpu=600m \
+--set resources.limits.memory=600Mi \
 --set resources.requests.cpu=100m \
 --set resources.requests.memory=128Mi \
 --set integrationConfig.create=true
@@ -109,8 +109,8 @@ spec:
     - name: stakater-docker-secret
     resources:
       limits:
-        cpu: 1000m
-        memory: 2Gi
+        cpu: 600m
+        memory: 600Mi
       requests:
         cpu: 100m
         memory: 128Mi
