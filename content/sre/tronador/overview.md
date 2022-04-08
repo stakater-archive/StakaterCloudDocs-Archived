@@ -1,8 +1,6 @@
-# Tronador
+# Overview
 
-Dynamic test environments on Kubernetes on demand!
-
-## Overview
+Environment-as-a-Service; Dynamic test environments on Kubernetes on demand!
 
 Traditionally, many software development projects merge changes from developers into the repository, and then identify regressions resulting from those changes, followed by more patches to fix those bugs.
 
