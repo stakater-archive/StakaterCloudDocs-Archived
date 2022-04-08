@@ -21,8 +21,8 @@ Log alerting | [Stakater Konfigurator](https://github.com/stakater/Konfigurator)
 External (downtime) alerting | [Stakater IMC](https://github.com/stakater/IngressMonitorController), UptimeRobot (free tier)
 Automatic application reload | [Stakater Reloader](https://github.com/stakater/Reloader)
 Developer dashboard - Launchpad to discover applications | [Stakater Forecastle](https://github.com/stakater/Forecastle)
-Multi-tenancy | [Stakater Tenant Operator] (https://docs.cloud.stakater.com/content/sre/tenant-operator/overview.html)
-Environments-as-a-Service | [Stakater Tronador] (https://docs.cloud.stakater.com/content/sre/tronador/overview.html)
+Multi-tenancy | [Stakater Tenant Operator](https://docs.cloud.stakater.com/content/sre/tenant-operator/overview.html)
+Environments-as-a-Service | [Stakater Tronador](https://docs.cloud.stakater.com/content/sre/tronador/overview.html)
 Clone secrets, configmaps, etc. | Stakater Replicator
 GitOps Application Manager | Stakater Fabrikate
 Management and issuance of TLS certificates | [cert-manager](https://github.com/jetstack/cert-manager)
