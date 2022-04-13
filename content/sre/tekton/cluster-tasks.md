@@ -3,7 +3,7 @@
 stakater-create-git-tag-v1 cluster task creates semantic versions for appplications.
 
 ## Semantic versioning:
-Given a version number in format 1.1.1 (Major.Minor.Patch)
+Given a version number in format x.y.z (Major.Minor.Patch)
 * MAJOR bump denotes incompatible API changes,
 * MINOR bump denotes backward compatible change or new feature
 * PATCH bump denotes bug fixes.
@@ -11,12 +11,12 @@ Given a version number in format 1.1.1 (Major.Minor.Patch)
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
 ## How
-The task utilizes GitVersion for creating version tags.
+The task utilizes [GitVersion](https://gitversion.net/) for creating version tags.
 
-## Version incrementing in GItversion:
+## Version incrementing in Gitversion:
 
 ### Major Bump:
-To increment Major version **“+semver: major”**  or **“+semver: breaking”** needs to be added in one of the commit messages.*
+To increment Major version **“+semver: major”**  or **“+semver: breaking”** needs to be added in one of the commit messages.
 
 ### Minor Bump:
 To increment Major version **“+semver: minor”**  or **“+semver: feature”** needs to be added in one of the commit messages.
