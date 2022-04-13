@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.31
+
+### Changes
+
+- fix: Execute webhook and controller of matching custom resource in same pod.
+
+## v0.3.30
+
+### Changes
+
+- feat: Namespace controller will now trigger TemplateGroupInstance when a new matching namespace is created
+
 ## v0.3.29
 
 ### Changes
