@@ -96,6 +96,13 @@ module.exports = {
           "/content/sre/argocd/01-introduction.md"
         ],
       },
+
+       { title: "Tekton",
+       children: [
+        "/content/sre/tekton/cluster-tasks.md"
+      ],
+      },
+
       {
         title: "Artifacts Management",
         children: [
