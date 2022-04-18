@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.32
+
+### Changes
+
+- fix: Revert v0.3.29 change till webhook network issue isn't resolved.
+
 ## v0.3.31
 
 ### Changes
@@ -72,7 +78,11 @@
 
 ::: warning Known Issues:
 
-- `caBundle` field in validation webhooks is not being populated for newly added webhooks. A temporary fix is to delete and recreate the webhook manifest without the `caBundle` field added in any webhook, so openshift can add it to all fields simultaneously.  
+- `caBundle` field in validation webhooks is not being populated for newly added webhooks. A temporary fix is to edit the validation webhook configuration manifest without the `caBundle` field added in any webhook, so openshift can add it to all fields simultaneously.  
+    - Edit the `ValidatingWebhookConfiguration` `stakater-tenant-operator-validating-webhook-configuration` by removing all the `caBundle` fields of all webhooks.
+    - Save the manifest.
+    - Verify that all `caBundle` fields have been populated.
+    - Restart Tenant-Operator pods.  
 
 :::
 
