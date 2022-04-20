@@ -128,6 +128,12 @@ spec:
   * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
   * `Template` resources are created in all `namespaces` of a `tenant` if `selector` field is empty.
 
+::: warning Warning:
+
+* If tenant is deleted, then all associated namespace will also be deleted.  
+
+:::
+
 ## 3. Template
 
 **Cluster scoped resource**
