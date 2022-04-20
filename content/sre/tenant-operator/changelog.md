@@ -1,16 +1,22 @@
 # Changelog
 
+## v0.3.33
+
+### Changes
+
+- fix: Optimize namespace reconciliation
+
 ## v0.3.32
 
 ### Changes
 
-- fix: Revert v0.3.29 change till webhook network issue isn't resolved.
+- fix: Revert v0.3.29 change till webhook network issue isn't resolved
 
 ## v0.3.31
 
 ### Changes
 
-- fix: Execute webhook and controller of matching custom resource in same pod.
+- fix: Execute webhook and controller of matching custom resource in same pod
 
 ## v0.3.30
 
@@ -22,13 +28,13 @@
 
 ### Changes
 
-- feat: Controllers are now separated into individual pods.
+- feat: Controllers are now separated into individual pods
 
 ## v0.3.28
 
 ### Changes
 
-- fix: Enhancement of TemplateGroupInstance Namespace event listener.
+- fix: Enhancement of TemplateGroupInstance Namespace event listener
 
 ## v0.3.27
 
