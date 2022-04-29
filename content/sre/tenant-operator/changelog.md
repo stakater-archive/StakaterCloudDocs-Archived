@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.0
+
+### Changes
+
+- feat: Controllers are now separated into individual pods
+
 ## v0.3.33
 
 ### Changes

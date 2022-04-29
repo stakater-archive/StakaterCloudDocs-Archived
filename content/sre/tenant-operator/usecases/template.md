@@ -75,4 +75,4 @@ Parameters can be used with both `manifests` and `helm charts`
 
 ## What’s next
 
-See how Anna can deploy a [template in a namespace](./deploying_templates.html)
+See how Anna can deploy a [template in a namespace](./deploying-templates.html)
