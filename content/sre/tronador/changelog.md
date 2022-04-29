@@ -1,6 +1,37 @@
 # Changelog
 
 
+## v0.0.13
+
+### Changes
+
+- feat: added different reconciliation times depending on the status of DTE's HelmRelease
+- fix: fix for HelmRelease get request
+
+## v0.0.12
+
+### Changes
+
+- fix: fix for kubebuilder lib which displayed logs timer in unix format
+
+## v0.0.11
+
+### Changes
+
+- fix: fix for clusterrolebinding in chart templates
+
+## v0.0.10
+
+### Changes
+
+- fix: fix a bug that didn't grant tronador access to create custom resources
+
+## v0.0.9
+
+### Changes
+
+- feat: added support for TronadorConfig. Resources required in DTEs can now be created by mentioning them in tronador config
+
 ## v0.0.8
 
 ### Changes
