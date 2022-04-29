@@ -1,11 +1,5 @@
 # Changelog
 
-## v0.4.1
-
-### Changes
-
-- fix: Bump dependencies to use latest release
-
 ## v0.4.0
 
 ### Changes
