@@ -91,6 +91,10 @@ spec:
   - dev
   - build
   - preview
+  namespaceLabels:
+    app.kubernetes.io/managed-by: tenant-operator
+  namespaceAnnotations:
+    openshift.io/node-selector: node-role.kubernetes.io/infra=
   templateInstances:
   - spec:
       template: networkpolicy
@@ -116,6 +120,10 @@ spec:
 
 * `argocd` can be used to list `sourceRepos` that point to your gitops repositories. The field is required if you want to create an ArgoCD AppProject for the tenant.
 
+* `namespaceLabels` can be used to distribute common labels among tenant namespaces.
+
+* `namespaceAnnotations` can be used to distribute common annotations among tenant namespaces.
+
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*.
   * Sandbox will follow the following naming convention **{TenantName}**-**{UserName}**-*sandbox*.
   * In case of groups, the sandbox namespaces will be created for each member of the group.
@@ -130,7 +138,7 @@ spec:
 
 ::: warning Warning:
 
-* If tenant is deleted, then all associated namespace will also be deleted.  
+* If tenant is deleted, then all namespaces created by tenant will also be deleted(spec.namespaces and sandbox namespaces).  
 
 :::
 
