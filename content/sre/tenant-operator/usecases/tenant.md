@@ -160,3 +160,7 @@ bluesky-dev      Active   5d5h
 bluesky-build    Active   5d5h
 bluesky-prod     Active   5d5h
 ```
+
+### What’s next
+
+See how Anna can create [namespaces](./namespace.html)
