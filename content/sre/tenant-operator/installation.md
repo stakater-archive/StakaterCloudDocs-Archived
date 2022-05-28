@@ -1,5 +1,21 @@
 # Installation
 
+## Installation using Openshift Marketplace
+
+### Links
+
+* https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126
+
+### 1. Install Tenant-Operator
+
+#### 1.1 Installing using Operator-hub
+
+#### 1.2 Installing using Subscription
+
+### 2. Configuring IntegrationConfig
+
+For more details check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
+
 ## Installation using Helm
 
 ### Requirements
