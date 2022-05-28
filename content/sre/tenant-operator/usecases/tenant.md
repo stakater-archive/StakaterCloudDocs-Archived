@@ -160,3 +160,42 @@ bluesky-dev      Active   5d5h
 bluesky-build    Active   5d5h
 bluesky-prod     Active   5d5h
 ```
+
+### Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
+
+Bill now wants to add labels/annotations to all the namespaces for a tenant. To create those labels/annotations Bill will just add them into `namespaceLabels`/`namespaceAnnotations` field in the tenant CR.
+
+```yaml
+kubectl apply -f - << EOF
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: Tenant
+metadata:
+  name: bluesky
+spec:
+  owners:
+    users:
+    - anna@aurora.org
+    - anthony@aurora.org
+  editors:
+    users:
+    - john@aurora.org
+    groups:
+    - alpha
+  quota: small
+  namespaces:
+  - dev
+  - build
+  - prod
+  namespaceLabels:
+    app.kubernetes.io/managed-by: tenant-operator
+    app.kubernetes.io/part-of: tenant-alpha
+  namespaceAnnotations:
+    openshift.io/node-selector: node-role.kubernetes.io/infra=
+EOF
+```
+
+With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.
+
+### What’s next
+
+See how Anna can create [namespaces](./namespace.html)

@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.4.3
+
+### Changes
+
+- fix: IntegrationConfig will now be synced in all pods
+
+## v0.4.2
+
+### Changes
+
+- feat: Added support to distribute common labels and annotations to tenant namespaces
+
+## v0.4.1
+
+### Changes
+
+- fix: Update dependencies to latest version
+
 ## v0.4.0
 
 ### Changes
