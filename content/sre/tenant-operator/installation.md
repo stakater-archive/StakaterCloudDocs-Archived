@@ -1,26 +1,54 @@
 # Installation
 
-## Installation using Openshift Marketplace
+## Requirements
 
-### Links
+* An **Openshift** cluster
 
-* https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126
+## Openshift Marketplace
 
-### 1. Install Tenant-Operator
+### 1. Installing Tenant-Operator
 
-#### 1.1 Installing using Operator-hub
+#### Using OperatorHub
 
-#### 1.2 Installing using Subscription
+* After opening OpenShift console click on `Operators`, followed by `OperatorHub` from the side menu
+
+![image](./images/operatorHub.png)
+
+* Now search for `tenant-operator` and then click on `tenant-operator`
+
+![image](./images/search_tenant_operator_operatorHub.png)
+
+* Click on the `install` button
+
+![image](./images/to_install_1.png)
+
+* After configuring `Update approval` click on the `install` button
+
+![image](./images/to_install_2.png)
+
+* Wait for the operator to be installed
+
+![image](./images/to_install_wait.png)
+
+* Once Tenant-Operator has been successfully installed, it will be ready to enforce multi-tenancy in your cluster
+
+![image](./images/to_installed_successful.png)
+
+::: warning Note:
+
+* Tenant-Operator will be installed in `openshift-operators` namespace by OperatorHub
+
+:::
+
+* Once the pods are up and `Running` Tenant-Operator is ready to enforce multi-tenancy
+
+#### Using Subscription
 
 ### 2. Configuring IntegrationConfig
 
 For more details check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
 
-## Installation using Helm
-
-### Requirements
-
-* An **Openshift** cluster
+## Helm
 
 ### 1. Create Namespace
 
