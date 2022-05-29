@@ -30,7 +30,7 @@
 
 ![image](./images/to_install_wait.png)
 
-* Once Tenant-Operator has been successfully installed, it will be ready to enforce multi-tenancy in your cluster
+* Once Tenant-Operator has been successfully installed, Tenant-Operator will be ready to enforce multi-tenancy in your cluster
 
 ![image](./images/to_installed_successful.png)
 
@@ -41,6 +41,50 @@
 :::
 
 #### Using Subscription
+
+* Create a subscription yaml for tenant-operator and apply it in `openshift-operators` namespace
+
+```bash
+$ oc create -f - << EOF
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: tenant-operator
+  namespace: openshift-operators
+spec:
+  channel: alpha
+  installPlanApproval: Automatic
+  name: tenant-operator
+  source: certified-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: tenant-operator.v0.3.33
+EOF
+subscription.operators.coreos.com/tenant-operator created
+```
+
+* After creating the `subscription` manifest open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+
+![image](./images/installed-operators.png)
+
+* Wait for the installation to complete
+
+![image](./images/to_sub_installation_wait.png)
+
+* Once the installation is completed we will click on `Workloads`, followed by `Pods` from the side menu
+
+![image](./images/to_sub_installation_successful.png)
+
+* Select `openshift-operators` project
+
+![image](./images/select_openshift_operators_project.png)
+
+* Wait for the pods to start
+
+![image](./images/to_installed_wait_pod.png)
+
+* Once pods are up and running, Tenant-Operator will be ready to enforce multi-tenancy in your cluster
+
+![image](./images/to_installed_successful_pod.png)
 
 ### 2. Configuring IntegrationConfig
 
