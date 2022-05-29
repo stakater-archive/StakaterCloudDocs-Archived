@@ -30,7 +30,7 @@
 
 ![image](./images/to_install_wait.png)
 
-* Once Tenant-Operator has been successfully installed, Tenant-Operator will be ready to enforce multi-tenancy in your cluster
+* Once successfully installed, Tenant-Operator will be ready to enforce multi-tenancy in your cluster
 
 ![image](./images/to_installed_successful.png)
 
@@ -70,7 +70,7 @@ subscription.operators.coreos.com/tenant-operator created
 
 ![image](./images/to_sub_installation_wait.png)
 
-* Once the installation is completed we will click on `Workloads`, followed by `Pods` from the side menu
+* Once the installation is complete click on `Workloads`, followed by `Pods` from the side menu
 
 ![image](./images/to_sub_installation_successful.png)
 
@@ -88,7 +88,35 @@ subscription.operators.coreos.com/tenant-operator created
 
 ### 2. Configuring IntegrationConfig
 
-For more details check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
+* We recommend using the following IntegrationConfig when Tenant-Operator is newly installed
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: IntegrationConfig
+metadata:
+  name: tenant-operator-config
+  namespace: openshift-operators
+spec:
+  openshift:
+    privilegedNamespaces:
+      - default
+      - ^openshift-*
+      - ^kube-*
+      - ^redhat-*
+    privilegedServiceAccounts:
+      - ^system:serviceaccount:default-*
+      - ^system:serviceaccount:openshift-*
+      - ^system:serviceaccount:kube-*
+      - ^system:serviceaccount:redhat-*
+```
+
+For more details and configurations check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
+
+::: warning Note:
+
+* IntegrationConfig with name `tenant-operator-config` should be present in Tenant-Operators installed namespace
+
+:::
 
 ## Helm
 
