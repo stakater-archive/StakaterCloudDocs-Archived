@@ -40,8 +40,6 @@
 
 :::
 
-* Once the pods are up and `Running` Tenant-Operator is ready to enforce multi-tenancy
-
 #### Using Subscription
 
 ### 2. Configuring IntegrationConfig
