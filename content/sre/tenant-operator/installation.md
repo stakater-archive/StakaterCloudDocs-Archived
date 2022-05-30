@@ -43,7 +43,7 @@
 
 ### Using Subscription
 
-* Create a subscription yaml for tenant-operator and apply it in `openshift-operators` namespace
+* Create a subscription YAML for tenant-operator and apply it in `openshift-operators` namespace
 
 ```bash
 $ oc create -f - << EOF
@@ -63,7 +63,7 @@ EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
 
-* After creating the `subscription` manifest open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+* After creating the `subscription` custom resource open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
 ![image](./images/installed-operators.png)
 
@@ -89,7 +89,7 @@ subscription.operators.coreos.com/tenant-operator created
 
 ### 2. Configuring IntegrationConfig
 
-IntegrationConfig is required to configure the settings of multi-tenancy for tenant operator.
+IntegrationConfig is required to configure the settings of multi-tenancy for Tenant-Operator.
 
 * We recommend using the following IntegrationConfig as a starting point
 
@@ -117,7 +117,7 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 
 ::: warning Note:
 
-* IntegrationConfig with name `tenant-operator-config` should be present in Tenant-Operators installed namespace
+* IntegrationConfig with the name `tenant-operator-config` should be present in Tenant-Operators installed namespace
 
 :::
 
