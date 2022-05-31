@@ -1,15 +1,22 @@
 # Installation
 
+This document contains instructions on installing and configuring Tenant-Operator using Openshift MarketPlace or Helm. Following are the 4 different ways available
+
+1. [Openshift OperatorHub](#installing-via-operatorhub)
+
+2. [Subscription](#installing-via-subscription)
+
+3. [Helm](#installing-via-helm)
+
+4. [HelmRelease](#installing-via-helm-release)
+
 ## Requirements
 
-* An **Openshift** cluster
-* **Helm-Operator** (Optional: For installing via helm-release)
+* An **Openshift** cluster [v4.7 - v4.10]
+* [**Helm-CLI**](https://helm.sh/docs/intro/install/) (Optional: *[For installing via helm](#installing-via-helm)*)
+* **Helm-Operator** (Optional: *[For installing via helm-release](#installing-via-helm-release)*)
 
-## Openshift Marketplace
-
-### 1. Installing Tenant-Operator
-
-### Using OperatorHub
+## Installing via OperatorHub
 
 * After opening OpenShift console click on `Operators`, followed by `OperatorHub` from the side menu
 
@@ -41,7 +48,41 @@
 
 :::
 
-### Using Subscription
+### Configuring IntegrationConfig
+
+IntegrationConfig is required to configure the settings of multi-tenancy for Tenant-Operator.
+
+* We recommend using the following IntegrationConfig as a starting point
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: IntegrationConfig
+metadata:
+  name: tenant-operator-config
+  namespace: openshift-operators
+spec:
+  openshift:
+    privilegedNamespaces:
+      - default
+      - ^openshift-*
+      - ^kube-*
+      - ^redhat-*
+    privilegedServiceAccounts:
+      - ^system:serviceaccount:default-*
+      - ^system:serviceaccount:openshift-*
+      - ^system:serviceaccount:kube-*
+      - ^system:serviceaccount:redhat-*
+```
+
+For more details and configurations check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
+
+::: warning Note:
+
+* IntegrationConfig with the name `tenant-operator-config` should be present in Tenant-Operators installed namespace
+
+:::
+
+## Installing via Subscription
 
 * Create a subscription YAML for tenant-operator and apply it in `openshift-operators` namespace
 
@@ -87,7 +128,7 @@ subscription.operators.coreos.com/tenant-operator created
 
 ![image](./images/to_installed_successful_pod.png)
 
-### 2. Configuring IntegrationConfig
+### Configuring IntegrationConfig
 
 IntegrationConfig is required to configure the settings of multi-tenancy for Tenant-Operator.
 
@@ -121,11 +162,9 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 
 :::
 
-## Helm
+## Installing via Helm
 
-### Installing using Helm
-
-#### 1. Create Namespace
+### 1. Create Namespace
 
 ```bash
 oc create namespace stakater-tenant-operator
@@ -133,7 +172,7 @@ oc create namespace stakater-tenant-operator
 
 Create a new namespace `stakater-tenant-operator`, where Tenant-Operator will be deployed.
 
-#### 2. Create Secret
+### 2. Create Secret
 
 ```bash
 oc apply -f stakater-docker-secret.yaml
@@ -143,7 +182,7 @@ Create a secret called `stakater-docker-secret` in *stakater-tenant-operator* na
 
 *The secret will be provided by **Stakater***
 
-#### 3. Add Helm Repository
+### 3. Add Helm Repository
 
 In order to install Tenant Operator with Helm, first add the Stakater Helm repository.
 
@@ -157,7 +196,7 @@ Scan the new repository for charts.
 helm repo update
 ```
 
-#### 4. Install Tenant Operator
+### 4. Install Tenant Operator
 
 ```bash
 helm repo update
@@ -174,13 +213,13 @@ helm install tenant-operator stakater/tenant-operator --namespace stakater-tenan
 
 Once the image has been pulled `Tenant-Operator` will be ready for use.
 
-#### 5. Configuring IntegrationConfig
+### 5. Configuring IntegrationConfig
 
 A default `IntegrationConfig` is installed with tenant-operator, which can be found in `stakater-tenant-operator` namespace under the name `tenant-operator-config`. For more details check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
 
-### Installation using Helm Release
+## Installing via Helm Release
 
-#### 1. Create Namespace
+### 1. Create Namespace
 
 ```bash
 oc create namespace stakater-tenant-operator
@@ -188,7 +227,7 @@ oc create namespace stakater-tenant-operator
 
 Create a new namespace `stakater-tenant-operator`, where Tenant-Operator will be deployed.
 
-#### 2. Create Secret
+### 2. Create Secret
 
 ```bash
 oc apply -f -n stakater-tenant-operator stakater-docker-secret.yaml
@@ -198,7 +237,7 @@ Create a secret called `stakater-docker-secret` in *stakater-tenant-operator* na
 
 *The secret will be provided by **Stakater***
 
-#### 3. Create Tenant-Operator Helm Release
+### 3. Create Tenant-Operator Helm Release
 
 ```yaml
 apiVersion: helm.fluxcd.io/v1
@@ -234,7 +273,7 @@ This helm-release will deploy tenant-operator.
 
 Once the image has been pulled `Tenant-Operator` will be ready for use.
 
-#### 4. Configuring IntegrationConfig
+### 4. Configuring IntegrationConfig
 
 A default `IntegrationConfig` is installed with tenant-operator, which can be found in `stakater-tenant-operator` namespace under the name `tenant-operator-config`. For more details check out [IntegrationConfig](https://docs.cloud.stakater.com/content/sre/tenant-operator/integration-config.html).
 
