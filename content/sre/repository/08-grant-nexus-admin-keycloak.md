@@ -4,7 +4,7 @@
 
   ![Administration Console](./images/keycloak-1.png)
 
-- Select Administration Console. Login credentials are present in secret `rhsso-creds` in `stakater-auth` namespace
+- Select Administration Console. Login credentials are present in secret `rhsso-creds` (previously called `auth-secrets`)  in `stakater-auth` namespace
   
   ![Login Admin Console](./images/keycloak-2.png)
 
