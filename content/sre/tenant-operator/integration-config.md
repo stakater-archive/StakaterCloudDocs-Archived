@@ -24,7 +24,7 @@ spec:
     clusterAdminGroups:
       - cluster-admins
     privilegedNamespaces:
-      - default
+      - ^default$
       - ^openshift-*
       - ^kube-*
     privilegedServiceAccounts:
@@ -84,7 +84,7 @@ openshift:
   clusterAdminGroups:
     - cluster-admins
   privilegedNamespaces:
-    - default
+    - ^default$
     - ^openshift-*
     - ^kube-*
   privilegedServiceAccounts:
@@ -156,11 +156,11 @@ users:
 
 ### Privileged Namespaces
 
-`privilegedNamespaces:` Contains the list of `namespaces` ignored by the tenant-operator. The tenant-operator will not manage the `namespaces` in this list. Values in this list can also have regex patterns. For example, to ignore all `namespaces` starting with `openshift-`, we can use `^openshift-*`
+`privilegedNamespaces:` Contains the list of `namespaces` ignored by the tenant-operator. The tenant-operator will not manage the `namespaces` in this list. Values in this list are regex patterns. For example, to ignore the `default` namespace, we can specify `^default$`; and to ignore all `namespaces` starting with `openshift-`, we can specify `^openshift-*`. 
 
 ### Privileged ServiceAccounts
 
-`privilegedServiceAccounts:` Contains the list of `ServiceAccounts` ignored by the tenant-operator. The tenant-operator will not manage the `ServiceAccounts` in this list. Values in this list can also have regex patterns. For example, to ignore all `ServiceAccounts` starting with `system:serviceaccount:openshift-`, we can use `^system:serviceaccount:openshift-*`
+`privilegedServiceAccounts:` Contains the list of `ServiceAccounts` ignored by the tenant-operator. The tenant-operator will not manage the `ServiceAccounts` in this list. Values in this list are regex patterns. For example, to ignore all `ServiceAccounts` starting with `system:serviceaccount:openshift-`, we can use `^system:serviceaccount:openshift-*`; and to ignore the `system:serviceaccount:builder` service account we can use `^system:serviceaccount:builder$.`  
 
 ### Namespace Access Policy
 
