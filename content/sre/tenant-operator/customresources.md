@@ -92,9 +92,23 @@ spec:
   - build
   - preview
   namespaceLabels:
-    app.kubernetes.io/managed-by: tenant-operator
+    common:
+      app.kubernetes.io/managed-by: tenant-operator
+    specific:
+      - labels:
+          customer-workload-monitoring: 'true'
+        namespaces:
+          - alpha-dev
+          - alpha-build
   namespaceAnnotations:
-    openshift.io/node-selector: node-role.kubernetes.io/infra=
+    common:
+      openshift.io/node-selector: node-role.kubernetes.io/infra=
+    specific:
+      - annotations:
+          stakater.com/current-tenant: alpha
+        namespaces:
+          - alpha-build
+          - alpha-preview
   templateInstances:
   - spec:
       template: networkpolicy
@@ -120,9 +134,13 @@ spec:
 
 * `argocd` can be used to list `sourceRepos` that point to your gitops repositories. The field is required if you want to create an ArgoCD AppProject for the tenant.
 
-* `namespaceLabels` can be used to distribute common labels among tenant namespaces.
+* `namespaceLabels` can be used to distribute labels among tenant namespaces.
+  * `common` distributes labels among all tenant namespaces
+  * `specific` distributes given `labels` among given tenant `namespaces`   
 
-* `namespaceAnnotations` can be used to distribute common annotations among tenant namespaces.
+* `namespaceAnnotations` can be used to distribute annotations among tenant namespaces.
+  * `common` distributes annotations among all tenant namespaces
+  * `specific` distributes given `annotations` among given tenant `namespaces`   
 
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*.
   * Sandbox will follow the following naming convention **{TenantName}**-**{UserName}**-*sandbox*.
