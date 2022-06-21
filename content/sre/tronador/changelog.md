@@ -1,5 +1,58 @@
 # Changelog
 
+## v0.1.4
+
+- fix: fix name of GitRepository resource referenced in HelmRelease object created by Tronador
+
+### Changes
+
+# Changelog
+
+## v0.1.3
+
+### Changes
+
+- feat: add unique error message if tronador config exists but has no spec
+
+# Changelog
+
+## v0.1.2
+
+### Changes
+
+- refactor: restructure tronador config, see [relevant docs](./config_file.html) for more details
+- feat: faster deletion of tronador config
+- fix: fix crash when tronador config exists without a spec
+- fix: fix helm chart failing if `env.showErrorTrace` is set
+
+# Changelog
+
+## v0.1.1
+
+### Changes
+
+- fix: add relevant rbac
+- feat: double the default memory limit
+
+# Changelog
+
+## v0.1.0
+
+### Changes
+
+- refactor: update Tronador's `v1alpha1/EnvironmentProvisioner` to `v1alpha2/Environment`, see [relevant docs](./environment.html) for more details about spec changes
+  - feat: faster provisioning of DTEs
+  - feat: much faster deletion of DTE on deletion of CR
+  - fix: fix all instances of an error that prevented DTE deletion
+  - feat: delete existing `EnvironmentProvisioner` DTE and create one using `Environment` on install
+  - feat: create `GitRepository` and `v2beta1/HelmRelease` objects of flux2 for DTE creation instead of `v1/HelmRelease` object
+-  feat: add `env.showErrorTrace` variable in HelmRelease of Tronador to enable/disable error trace when error is thrown in the controller
+- feat: better reconcile strategy for `Environment` to prevent unnecessary reconciles
+- feat: much better handling of status messages in `Environment`
+- feat: better automated testing
+
+
+# Changelog
 
 ## v0.0.13
 
