@@ -21,6 +21,7 @@
 ### Changes
 
 - refactor: restructure tronador config, see [relevant docs](./config_file.html) for more details
+- refactor: all secrets management is now done via this new TronadorConfig CR.
 - feat: faster deletion of tronador config
 - fix: fix crash when tronador config exists without a spec
 - fix: fix helm chart failing if `env.showErrorTrace` is set
