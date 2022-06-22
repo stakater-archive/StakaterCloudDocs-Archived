@@ -177,6 +177,8 @@ namespaceAccessPolicy:
         - adam@stakater.com
 ```
 
+Note: If you want to use a more complex regex pattern (for the openshift.privilegedNamespaces or openshift.privilegedServiceAccounts field), it is recommended that you test the regex pattern first -  either locally or using a platform such as https://regex101.com/.
+
 ## ArgoCD
 
 ### Namespace
