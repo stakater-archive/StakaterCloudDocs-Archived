@@ -206,7 +206,12 @@ module.exports = {
       },
       {
         title: "Security",
-        children: ["/content/sre/security/policies/policies.md"],
+        children: [
+            "/content/sre/security/policies/policies.md",
+            "/content/sre/security/rhacs/01-introduction.md",
+            "/content/sre/security/rhacs/02-permissions.md",
+            "/content/sre/security/rhacs/03-accessing-rhacs.md",
+         ],
       },
       {
         title: "Cluster Configuration",
