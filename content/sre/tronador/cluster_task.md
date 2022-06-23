@@ -2,38 +2,48 @@
 
 ## Overview
 
-The `create-environment-provisioner` Tekton cluster task is used to create the `EnvironmentProvisioner` CR. The `EnvironmentProvisioner` CR will be used to deploy the application to its testing environment within your cluster. The use case of this cluster task is to automate the creation of the `EnvironmentProvisioner` CR, and its updating whenever the application's image is updated. This is useful, since you can automate the creation of an image whenever some code is pushed into your branch. Note that Tronador, and by extension the `EnvironmentProvisioner` CR, are independent of Tekton. Any CI engine can be used instead for this purpose, and this Tekton cluster task is just an example of it.
+The `create-environment` Tekton cluster task is used to create the `Environment` CR. The `Environment` CR will be used to deploy the application to its testing environment within your cluster. The use case of this cluster task is to automate the creation and updating of the `Environment` CR, whenever the application's image is created on PR create or update events. Note that Tronador, and by extension the `Environment` CR, are independent of Tekton. Any CI engine can be used instead for this purpose, and this Tekton cluster task is just an example of it.
 
 ## Requirements
 
-The `create-environment-provisioner` cluster task requires the following:
+The `create-environment` cluster task requires the following:
 
 - A workspace named `output`
-- a `configMap` within your cluster named `environment-provisioner-template` with the following data:
+- a `configMap` within your cluster named `environment-template` with the following data:
 
 ```yaml
 data:
-  environmentProvisionerTemplate.yml: |
-    apiVersion: tronador.stakater.com/v1alpha1
-    kind: EnvironmentProvisioner
+  environmentTemplate.yml: |
+    apiVersion: tronador.stakater.com/v1alpha2
+    kind: Environment
     metadata:
-      name: $EP_NAME
+      name: $ENVIRONMENT_NAME
     spec:
+      namespaceLabels:
+    ${NAMESPACE_LABELS}
       application:
+        gitRepository:
+          gitImplementation: go-git
+          interval: 1m0s
+          ref:
+            branch: ${GIT_BRANCH}
+          timeout: 20s
+          url: ${GIT_URL}
         release:
           chart:
-            git: ${GIT_URL}
-            ref: ${GIT_BRANCH}
-            path: ${CHART_PATH}
-            secretRef:
-    ${SECRET_REF}
+            spec:
+              chart: ${CHART_PATH}
+              reconcileStrategy: ChartVersion
+              sourceRef:
+                kind: GitRepository
+                name: dte-${GIT_BRANCH}
+              version: '*'
+          interval: 1m0s
           releaseName: ${GIT_BRANCH}
           valuesFrom:
     ${VALUES_FROM}
           values:
     ${VALUES_OVERRIDE}
-      namespaceLabels:
-    ${NAMESPACE_LABELS}
 ```
 
 ## Parameters
@@ -52,4 +62,4 @@ These parameters can be gotten from the github webhook that triggers the Tekton 
 
 ## Outputs
 
-The only output of this task is an `EnvironmentProvisioner` CR, generated from both these values and the Tronador config file, and placed inside `$(workspaces.output.path)/.ep-workspace/environmentProvisioner.yaml`
+The only output of this task is an `Environment` CR, generated from both these values and the Tronador config file, and placed inside `$(workspaces.output.path)/environment/environment.yaml`

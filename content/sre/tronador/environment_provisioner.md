@@ -1,5 +1,11 @@
 # EnvironmentProvisioner
 
+::: warning Warning
+
+`tronador.stakater.com/v1alpha1/EnvironmentProvisioner` has now been deprecated. Please use `tronador.stakater.com/v1alpha2/Environment` instead. See its [relevant docs](./environment.html) for more details.
+
+:::
+
 ```yaml
 apiVersion: tronador.stakater.com/v1alpha1
 kind: EnvironmentProvisioner
@@ -44,7 +50,7 @@ Values inside the application section are used to create the helm release that m
 
 - **release.chart**: The chart that will be deployed. Must contain its git repo path, the branch to deploy, and the path to the chart within the git repo. If the chart is placed inside a private repo, then its secret must also be specified.
 - **release.releaseName**: The name of the helm release that will be deployed.
-- **release.values**: The values that to override within the helm release. THese need to be updated whenever a new image is created for testing. Using the `create-environment-provisioner` cluster task is recommended here
+- **release.values**: The values that to override within the helm release. These need to be updated whenever a new image is created for testing. Using the `create-environment-provisioner` cluster task is recommended here
 - **release.valuesFrom**: Values from external sources, such as configMaps or secrets. For more details, see the [Official HelmRelease docs](https://fluxcd.io/legacy/helm-operator/helmrelease-guide/values/)
 
 ## namespaceLabels

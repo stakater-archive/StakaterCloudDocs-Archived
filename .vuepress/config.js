@@ -233,6 +233,7 @@ module.exports = {
          children: [
             "/content/sre/tronador/overview.md",
             "/content/sre/tronador/environment_provisioner.md",
+            "/content/sre/tronador/environment.md",
             "/content/sre/tronador/tronador_config.md",
             "/content/sre/tronador/config_file.md",
             "/content/sre/tronador/cluster_task.md",

@@ -1,5 +1,11 @@
 # Workflow guide for Tronador
 
+::: warning Note
+
+This Workflow Guide is now outdated after the newest changes to Tronador. The Guide will be updated soon.
+
+:::
+
 ::: warning Note:
 
 The guide below is written as a SAAP customer's point of view. If you use Tronador independently, the guide below might not be applicable to you. However, you can still use this guide to get an idea of how the process works.
@@ -184,8 +190,8 @@ status:
 
 ### Secrets management
 
-Secrets for the helm chart to be deployed are currently passed along from the tronador config file, to the helm release. 
-Secrets for helm chart and other required resources like image pull secret can be brought into Environment Provisioner owned namespaces using [Tronador Config](./tronador_config.html) CR. 
+Secrets for the helm chart to be deployed are currently passed along from the tronador config file, to the helm release.
+Secrets for helm chart and other required resources like image pull secret can be brought into Environment Provisioner owned namespaces using [Tronador Config](./tronador_config.html) CR.
 
 You can also use [Tenant Operator's](../tenant-operator/overview.html) [TemplateGroupInstance](../tenant-operator/customresources.html#_5-templategroupinstance) to pass secrets to the namespace that will be provisioned by the EnvironmentProvisioner by setting the proper label in your tronador config file. An example for this workflow is [provided here](../tenant-operator/usecases/deploying-templates.html#deploying-template-to-namespaces-via-templategroupinstances).
 

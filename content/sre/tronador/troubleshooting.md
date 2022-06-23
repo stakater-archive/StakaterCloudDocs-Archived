@@ -1,5 +1,11 @@
 # Troubleshooting
 
+::: warning Note
+
+This Troubleshooting Guide is now outdated after the newest changes to Tronador. The Guide will be updated soon.
+
+:::
+
 ::: warning Note:
 
 The guide below is written as a SAAP customer's point of view. If you use Tronador independently, the guide below might not be applicable to you. However, you can still use this guide to get an idea of how the process works.
@@ -60,7 +66,7 @@ Environment provisioning takes a few minutes to complete, since there is a lot o
   <figcaption>Check status</figcaption>
 </figure>
 
-* If everything above looks good, then the pods might be in a failing state. Check the pods deployed to your provisioned namespace and view their events to see if there are any failures, and why. Most likely the issue is a lack of imagePullSecrets in the provisioned namespace. 
+* If everything above looks good, then the pods might be in a failing state. Check the pods deployed to your provisioned namespace and view their events to see if there are any failures, and why. Most likely the issue is a lack of imagePullSecrets in the provisioned namespace.
 
 Those secrets can be added using [Tronador Config](./tronador_config.html) by mentioning the resources in the CR, which will deploy those resources in all DTE Namespaces.
 This can also be done by [Tenant Operator's](../tenant-operator/overview.html) [TemplateGroupInstance](../tenant-operator/customresources.html#_5-templategroupinstance) by setting the proper label in your tronador config file.
