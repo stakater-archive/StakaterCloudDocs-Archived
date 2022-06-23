@@ -2,19 +2,15 @@
 
 ## v0.1.4
 
-- fix: fix name of GitRepository resource referenced in HelmRelease object created by Tronador
-
 ### Changes
 
-# Changelog
+- fix: fix name of GitRepository resource referenced in HelmRelease object created by Tronador
 
 ## v0.1.3
 
 ### Changes
 
 - feat: add unique error message if tronador config exists but has no spec
-
-# Changelog
 
 ## v0.1.2
 
@@ -26,16 +22,12 @@
 - fix: fix crash when tronador config exists without a spec
 - fix: fix helm chart failing if `env.showErrorTrace` is set
 
-# Changelog
-
 ## v0.1.1
 
 ### Changes
 
 - fix: add relevant rbac
 - feat: double the default memory limit
-
-# Changelog
 
 ## v0.1.0
 
@@ -51,9 +43,6 @@
 - feat: better reconcile strategy for `Environment` to prevent unnecessary reconciles
 - feat: much better handling of status messages in `Environment`
 - feat: better automated testing
-
-
-# Changelog
 
 ## v0.0.13
 

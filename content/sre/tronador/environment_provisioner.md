@@ -1,7 +1,9 @@
 # EnvironmentProvisioner
 
 ::: warning Warning
+
 `tronador.stakater.com/v1alpha1/EnvironmentProvisioner` has now been deprecated. Please use `tronador.stakater.com/v1alpha2/Environment` instead. See its [relevant docs](./environment.html) for more details.
+
 :::
 
 ```yaml
