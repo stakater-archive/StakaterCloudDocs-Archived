@@ -225,6 +225,7 @@ module.exports = {
           "/content/sre/tenant-operator/argocd-multitenancy.md",
           "/content/sre/tenant-operator/vault-multitenancy.md",
           "/content/sre/tenant-operator/changelog.md",
+          "/content/sre/tenant-operator/troubleshooting.md",
           "/content/sre/tenant-operator/faq.md",
         ],
       },
