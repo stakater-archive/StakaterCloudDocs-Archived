@@ -16,7 +16,7 @@ Description/steps after which this situation occurs:
 
 #### Recommendation
 
-If the user does not exist in RHSSO, then TO does not create the tenant access for Vault in RHSSO (As the user does not exist in RHSSO).
+If the user does not exist in RHSSO, then TO does not create the tenant access for Vault in RHSSO.
 
 The user now needs to go to Vault, and sign up using OIDC. Then the user needs to wait for TO to reconcile the updated tenant (reconciliation period is currently 1 hour). After reconciliation, TO will add relevant access for the user in RHSSO.
 
