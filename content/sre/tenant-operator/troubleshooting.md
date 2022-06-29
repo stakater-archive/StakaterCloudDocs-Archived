@@ -2,11 +2,11 @@
 
 ## Permission Issues
 
-### Vault user permissions not updated immediately if the user is added to Tenant CR, and the user does not exist in RHSSO
+### Vault user permissions are not updated if the user is added to a Tenant, and the user does not exist in RHSSO
 
 #### Problem
 
-If a user is added to tenant resource, and the user does not exist in RHSSO, then Vault is not updated with user's permissions immediately.
+If a user is added to tenant resource, and the user does not exist in RHSSO, then RHSSO is not updated with the user's Vault permission.
 
 Description/steps after which this situation occurs:
 
