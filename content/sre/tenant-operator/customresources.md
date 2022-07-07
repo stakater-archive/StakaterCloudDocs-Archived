@@ -7,6 +7,7 @@ Tenant Operator defines following 5 custom resources:
 3. Template
 4. TemplateInstance
 5. TemplateGroupInstance
+6. ResourceSupervisor
 
 ## 1. Quota
 
@@ -87,6 +88,9 @@ spec:
   argocd:
     sourceRepos:
       - https://github.com/stakater/gitops-config
+  hibernation:
+    sleepSchedule: 23 * * * *
+    wakeSchedule: 26 * * * *
   namespaces:
   - dev
   - build
@@ -120,6 +124,8 @@ spec:
 
 * `argocd` can be used to list `sourceRepos` that point to your gitops repositories. The field is required if you want to create an ArgoCD AppProject for the tenant.
 
+* `hibernation` can be used to create a schedule during which the namespaces belonging to the tenant will be put to sleep. The values of the `sleepSchedule` and `wakeSchedule` fields must be a string in a cron format.
+
 * `namespaceLabels` can be used to distribute common labels among tenant namespaces.
 
 * `namespaceAnnotations` can be used to distribute common annotations among tenant namespaces.
@@ -138,7 +144,7 @@ spec:
 
 ::: warning Warning:
 
-* If tenant is deleted, then all namespaces created by tenant will also be deleted(spec.namespaces and sandbox namespaces).  
+* If tenant is deleted, then all namespaces created by tenant will also be deleted(spec.namespaces and sandbox namespaces).
 
 :::
 
@@ -262,6 +268,27 @@ spec:
 ```
 
 TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.
+
+## 6. ResourceSupervisor
+
+**Cluster scoped resource**
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: ResourceSupervisor
+metadata:
+  name: tenant-sample
+spec:
+  hibernation:
+    sleepSchedule: 23 * * * *
+    wakeSchedule: 26 * * * *
+  tenant: alpha
+status:
+  currentStatus: running
+  nextReconcileTime: '2022-07-07T11:23:00Z'
+```
+
+The `ResourceSupervisor` is a resource created by Tenant Operator in case the [Hibernation](./hibernation.html) feature is enabled. The Resource manages the sleep/wake schedule of the namespaces owned by the tenant, and manages the previous state of any sleeping application. Currently, only StatefulSets and Deployments are put to sleep.
 
 ## Namespace
 

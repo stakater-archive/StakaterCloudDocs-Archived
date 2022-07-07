@@ -227,6 +227,7 @@ module.exports = {
           "/content/sre/tenant-operator/customresources.md",
           "/content/sre/tenant-operator/tenant-roles.md",
           "/content/sre/tenant-operator/usecases/use-cases.md",
+          "/content/sre/tenant-operator/hibernation.md",
           "/content/sre/tenant-operator/argocd-multitenancy.md",
           "/content/sre/tenant-operator/vault-multitenancy.md",
           "/content/sre/tenant-operator/changelog.md",
