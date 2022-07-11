@@ -161,7 +161,3 @@ to
         name: mysql-secrets
         key: USER_PASSWORD
 ```
-
-## References
-
-For more details, you can look at [Stakater Cloud Docs - Sealed Secrets](https://stakaterclouddocs.stakater.com/content/sre/secrets/sealed-secrets.html)
