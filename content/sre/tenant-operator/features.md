@@ -28,9 +28,9 @@ Tenant-Operator is not only providing strong Multi Tenanacy for the OpenShift in
 
 Tenant-Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.
 
-## Sandboxed Dev Namespaces
+## Remote Dev Namespaces
 
-Tenant-Operator can be configured to automatically provision a namespace for every member of the specific tenant, that will also be pre loaded with any selected templates and consume the same pool of resources from the tenants quota creating safe sandboxed dev namespaces that teams can use as scratch namespace for rapid prototyping and development. 
+Tenant-Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be pre loaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a kubernetes-based cloud development environment that feel like working on localhost.
 
 ## Templates and Template distribution
 

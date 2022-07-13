@@ -206,7 +206,12 @@ module.exports = {
       },
       {
         title: "Security",
-        children: ["/content/sre/security/policies/policies.md"],
+        children: [
+            "/content/sre/security/policies/policies.md",
+            "/content/sre/security/rhacs/01-introduction.md",
+            "/content/sre/security/rhacs/02-permissions.md",
+            "/content/sre/security/rhacs/03-accessing-rhacs.md",
+         ],
       },
       {
         title: "Cluster Configuration",
@@ -222,9 +227,11 @@ module.exports = {
           "/content/sre/tenant-operator/customresources.md",
           "/content/sre/tenant-operator/tenant-roles.md",
           "/content/sre/tenant-operator/usecases/use-cases.md",
+          "/content/sre/tenant-operator/hibernation.md",
           "/content/sre/tenant-operator/argocd-multitenancy.md",
           "/content/sre/tenant-operator/vault-multitenancy.md",
           "/content/sre/tenant-operator/changelog.md",
+          "/content/sre/tenant-operator/troubleshooting.md",
           "/content/sre/tenant-operator/faq.md",
         ],
       },
@@ -233,6 +240,7 @@ module.exports = {
          children: [
             "/content/sre/tronador/overview.md",
             "/content/sre/tronador/environment_provisioner.md",
+            "/content/sre/tronador/environment.md",
             "/content/sre/tronador/tronador_config.md",
             "/content/sre/tronador/config_file.md",
             "/content/sre/tronador/cluster_task.md",
