@@ -83,7 +83,7 @@ spec:
   viewers:
     users:
       - jose@stakater.com
-  sandbox: false
+  sandbox: true
   quota: medium
   argocd:
     sourceRepos:
