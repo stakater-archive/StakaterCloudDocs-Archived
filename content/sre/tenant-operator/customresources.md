@@ -151,6 +151,9 @@ spec:
   * `annotations` distributes given annotations among specific tenant namespaces
   * `namespaces` consists a list of specific tenant namespaces across which the labels and annotations will be distributed
 
+#### :memo: Note
+If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `specificMetadata` followed by `commonMetadata` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`
+
 * Tenant automatically deploys `template` resource mentioned in `templateInstances` to matching tenant namespaces.
   * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
   * `Template` resources are created in all `namespaces` of a `tenant` if `selector` field is empty.
