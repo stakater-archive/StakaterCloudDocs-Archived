@@ -83,7 +83,7 @@ spec:
   viewers:
     users:
       - jose@stakater.com
-  sandbox: false
+  sandbox: true
   quota: medium
   argocd:
     sourceRepos:
@@ -95,10 +95,18 @@ spec:
   - dev
   - build
   - preview
-  namespaceLabels:
-    app.kubernetes.io/managed-by: tenant-operator
-  namespaceAnnotations:
-    openshift.io/node-selector: node-role.kubernetes.io/infra=
+  commonMetadata:
+    labels:
+      stakater.com/team: alpha
+    annotations:
+      openshift.io/node-selector: node-role.kubernetes.io/infra=
+  specificMetadata:
+    - annotations:
+        stakater.com/user: haseeb
+      labels:
+        stakater.com/sandbox: true
+      namespaces:
+        - alpha-haseeb-stakater-sandbox
   templateInstances:
   - spec:
       template: networkpolicy
@@ -126,10 +134,6 @@ spec:
 
 * `hibernation` can be used to create a schedule during which the namespaces belonging to the tenant will be put to sleep. The values of the `sleepSchedule` and `wakeSchedule` fields must be a string in a cron format.
 
-* `namespaceLabels` can be used to distribute common labels among tenant namespaces.
-
-* `namespaceAnnotations` can be used to distribute common annotations among tenant namespaces.
-
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*.
   * Sandbox will follow the following naming convention **{TenantName}**-**{UserName}**-*sandbox*.
   * In case of groups, the sandbox namespaces will be created for each member of the group.
@@ -137,6 +141,18 @@ spec:
 * Namespaces can also be created via tenant CR by *specifying names* in `namespaces`.
   * Tenant-Operator will append *tenant name* prefix while creating namespaces, so the format will be **{TenantName}**-**{Name}**.
   * `stakater.com/kind: {Name}` label will also be added to the namespaces.
+
+* `commonMetadata` can be used to distribute common labels and annotations among tenant namespaces.
+  * `labels` distributes provided labels among all tenant namespaces
+  * `annotations` distributes provided annotations among all tenant namespaces
+
+* `specificMetadata` can be used to distribute specific labels and annotations among specific tenant namespaces.
+  * `labels` distributes given labels among specific tenant namespaces
+  * `annotations` distributes given annotations among specific tenant namespaces
+  * `namespaces` consists a list of specific tenant namespaces across which the labels and annotations will be distributed
+
+#### :memo: Note
+If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `specificMetadata` followed by `commonMetadata` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`
 
 * Tenant automatically deploys `template` resource mentioned in `templateInstances` to matching tenant namespaces.
   * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
