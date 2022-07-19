@@ -7,7 +7,23 @@
 - feat: Add hibernation of StatefulSets and Deployments based on a timer
 - feat: [New custom resource](./customresources.html#_6-resourcesupervisor) that handles hibernation
 
-# Changelog
+## v0.4.6
+
+### Changes
+
+- fix: Revert v0.4.4 
+
+## v0.4.5
+
+### Changes
+
+- feat: Add support for applying labels/annotation on specific namespaces
+
+## v0.4.4
+
+### Changes
+
+- fix: Update `privilegedNamespaces` regex
 
 ## v0.4.3
 
