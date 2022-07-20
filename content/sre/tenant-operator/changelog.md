@@ -7,7 +7,7 @@
 - feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./customresources.html#_2-tenant)
 - feat: Add tenant webhook for spec validation
 
-- fix: TemplateGroupInstance now removes created resources if TGI selector namespace label is updated
+- fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
 - fix: Fixed hibernation sync issue
 
 - enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./customresources.html#_2-tenant)
