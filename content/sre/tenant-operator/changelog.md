@@ -4,6 +4,12 @@
 
 ### Changes
 
+- fix: ResourceSupervisor CR no longer requires a field for the Tenant name
+
+## v0.5.0
+
+### Changes
+
 - feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./customresources.html#_2-tenant)
 - feat: Add tenant webhook for spec validation
 
