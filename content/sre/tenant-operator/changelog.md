@@ -4,7 +4,7 @@
 
 ### Changes
 
-- fix: Update services name prefix for webhooks
+- fix: Add service name prefix for webhooks
 
 ## v0.5.1
 
