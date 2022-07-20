@@ -83,8 +83,10 @@ spec:
   viewers:
     users:
       - jose@stakater.com
-  sandbox: true
   quota: medium
+  sandbox: true
+  onDelete:
+    cleanNamespaces: true
   argocd:
     sourceRepos:
       - https://github.com/stakater/gitops-config
@@ -130,13 +132,16 @@ spec:
 
 * Tenant will have a `Quota` to limit resource consumption.
 
-* `argocd` can be used to list `sourceRepos` that point to your gitops repositories. The field is required if you want to create an ArgoCD AppProject for the tenant.
-
-* `hibernation` can be used to create a schedule during which the namespaces belonging to the tenant will be put to sleep. The values of the `sleepSchedule` and `wakeSchedule` fields must be a string in a cron format.
-
 * Tenant will have an option to create *sandbox namespaces* for owners and editors, when `sandbox` is set to *true*.
   * Sandbox will follow the following naming convention **{TenantName}**-**{UserName}**-*sandbox*.
   * In case of groups, the sandbox namespaces will be created for each member of the group.
+
+* `onDelete` is used to tell Tenant-Operator what to do when a Tenant is deleted.
+  * `cleanNamespaces` if the value is set to **true** *Tenant-Operator* deletes all *tenant namespaces* when a `Tenant` is deleted. Default value is **false**.
+
+* `argocd` can be used to list `sourceRepos` that point to your gitops repositories. The field is required if you want to create an ArgoCD AppProject for the tenant.
+
+* `hibernation` can be used to create a schedule during which the namespaces belonging to the tenant will be put to sleep. The values of the `sleepSchedule` and `wakeSchedule` fields must be a string in a cron format.
 
 * Namespaces can also be created via tenant CR by *specifying names* in `namespaces`.
   * Tenant-Operator will append *tenant name* prefix while creating namespaces, so the format will be **{TenantName}**-**{Name}**.
@@ -151,16 +156,13 @@ spec:
   * `annotations` distributes given annotations among specific tenant namespaces
   * `namespaces` consists a list of specific tenant namespaces across which the labels and annotations will be distributed
 
-#### :memo: Note
-If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `specificMetadata` followed by `commonMetadata` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`
-
 * Tenant automatically deploys `template` resource mentioned in `templateInstances` to matching tenant namespaces.
   * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
   * `Template` resources are created in all `namespaces` of a `tenant` if `selector` field is empty.
 
-::: warning Warning:
+::: warning Note:
 
-* If tenant is deleted, then all namespaces created by tenant will also be deleted(spec.namespaces and sandbox namespaces).
+If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `specificMetadata` followed by `commonMetadata` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`
 
 :::
 

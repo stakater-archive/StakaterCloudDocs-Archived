@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.5.0
+
+### Changes
+
+- feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./customresources.html#_2-tenant)
+- feat: Add tenant webhook for spec validation
+
+- fix: TemplateGroupInstance now removes created resources if TGI selector namespace label is updated
+- fix: Fixed hibernation sync issue
+
+- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./customresources.html#_2-tenant)
+- enhance: Add support for multi-pod architecture for Operator-Hub
+
+- chore: Remove conversion webhook for Quota and Tenant
+
 ## v0.4.7
 
 ### Changes
@@ -11,7 +26,7 @@
 
 ### Changes
 
-- fix: Revert v0.4.4 
+- fix: Revert v0.4.4
 
 ## v0.4.5
 
