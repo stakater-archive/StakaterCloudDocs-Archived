@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.1
+
+### Changes
+
+- fix: ResourceSupervisor CR no longer requires a field for the Tenant name
+
 ## v0.5.0
 
 ### Changes
