@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.2
+
+### Changes
+
+- fix: Update services name prefix for webhooks
+
 ## v0.5.1
 
 ### Changes
