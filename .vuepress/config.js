@@ -8,6 +8,10 @@ module.exports = {
       "@vuepress/medium-zoom",
       "@vuepress/back-to-top",
       "vuepress-plugin-container",
+      '@vuepress/google-analytics',
+      {
+        'ga': 'G-TTH1YYW5TX'
+      }
     ],
   ],
   markdown: {
