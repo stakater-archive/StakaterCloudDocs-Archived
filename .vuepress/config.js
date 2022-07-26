@@ -1,17 +1,31 @@
 module.exports = {
   title: "Stakater App Agility Platform Documentation",
   description: "Stakater App Agility Platform Documentation",
-  head: [["link", { rel: "icon", href: "/favicon.png" }]],
+  head: [
+    ["link", { rel: "icon", href: "/favicon.png" }],
+    // Google analytics plugin is not supported for G-XXXXXXXX format
+    // https://github.com/vuejs/vuepress/issues/2713
+    [
+      'script',
+      {
+          async: true,
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-TTH1YYW5TX',
+      },
+  ],
+  [
+      'script',
+      {},
+      [
+          "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-TTH1YYW5TX');",
+      ],
+  ],
+  ],
   plugins: [
     [
       "@vuepress/active-header-links",
       "@vuepress/medium-zoom",
       "@vuepress/back-to-top",
-      "vuepress-plugin-container",
-      '@vuepress/google-analytics',
-      {
-        'ga': 'G-TTH1YYW5TX'
-      }
+      "vuepress-plugin-container"
     ],
   ],
   markdown: {
