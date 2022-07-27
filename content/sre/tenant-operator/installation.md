@@ -82,6 +82,24 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 
 :::
 
+### Uninstall
+
+You can uninstall Tenant-Operator by following these steps
+
+* Decide on whether you want to retain tenant namespaces or not. If yes, please set `spec.onDelete.cleanNamespaces` to `true` for all those tenants whose namespaces you want to retain. For more details check out [onDelete](./usecases/tenant.html#retaining-tenant-namespaces-when-a-tenant-is-being-deleted)
+
+* After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+
+![image](./images/installed-operators.png)
+
+* Now click on uninstall and confirm uninstall.
+
+![image](./images/uninstall-from-ui.jpg)
+
+* Now the operator has been uninstalled.
+
+* `Optional:` you can also manually remove tenant operators CRDs and it's resources from the cluster.  
+
 ## Installing via Subscription
 
 * Create a subscription YAML for tenant-operator and apply it in `openshift-operators` namespace
@@ -161,6 +179,31 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 * A default IntegrationConfig with the name `tenant-operator-config` will be present in Tenant-Operators installed namespace
 
 :::
+
+### Uninstall
+
+You can uninstall Tenant-Operator by following these steps
+
+* Decide on whether you want to retain tenant namespaces or not. If yes, please set `spec.onDelete.cleanNamespaces` to `true` for all those tenants whose namespaces you want to retain. For more details check out [onDelete](./usecases/tenant.html#retaining-tenant-namespaces-when-a-tenant-is-being-deleted)
+
+* Delete the subscription resource
+
+```bash
+haseeb:~$ oc delete subscription tenant-operator -n openshift-operators
+subscription.operators.coreos.com "tenant-operator" deleted
+```
+
+* Now open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+
+![image](./images/installed-operators.png)
+
+* Now click on delete ClusterServiceVersion and confirm delete.
+
+![image](./images/uninstall-from-ui-csv.png)
+
+* Now the operator has been uninstalled.
+
+* `Optional:` you can also manually remove tenant operators CRDs and it's resources from the cluster.  
 
 ## Installing via Helm
 
