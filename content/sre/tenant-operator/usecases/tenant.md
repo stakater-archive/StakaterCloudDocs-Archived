@@ -237,7 +237,7 @@ With the above configuration all tenant namespaces will now contain the mentione
 
 ### Retaining tenant namespaces when a tenant is being deleted
 
-Bill now wants to delete tenant `bluesky` and wants to retain all namespaces of the tenant. To retain the namespaces Bill will set `spec.onDelete.cleanNamespaces` to `true`.
+Bill now wants to delete tenant `bluesky` and wants to retain all namespaces of the tenant. To retain the namespaces Bill will set `spec.onDelete.cleanNamespaces` to `false`.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -256,10 +256,10 @@ spec:
   - build
   - prod
   onDelete:
-    cleanNamespaces: true
+    cleanNamespaces: false
 ```
 
-With the above configuration all tenant namespaces will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is `false`.
+With the above configuration all tenant namespaces will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is also `false`.
 
 ### What’s next
 
