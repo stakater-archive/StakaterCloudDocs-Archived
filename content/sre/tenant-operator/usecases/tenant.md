@@ -235,6 +235,32 @@ EOF
 
 With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.
 
+### Retaining tenant namespaces when a tenant is being deleted
+
+Bill now wants to delete tenant `bluesky` and wants to retain all namespaces of the tenant. To retain the namespaces Bill will set `spec.onDelete.cleanNamespaces` to `false`.
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: Tenant
+metadata:
+  name: bluesky
+spec:
+  owners:
+    users:
+    - anna@aurora.org
+    - anthony@aurora.org
+  quota: small
+  sandbox: true
+  namespaces:
+  - dev
+  - build
+  - prod
+  onDelete:
+    cleanNamespaces: false
+```
+
+With the above configuration all tenant namespaces will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is also `false`.
+
 ### What’s next
 
 See how Anna can create [namespaces](./namespace.html)

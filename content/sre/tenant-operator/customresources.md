@@ -2,12 +2,12 @@
 
 Tenant Operator defines following 5 custom resources:
 
-1. Quota
-2. Tenant
-3. Template
-4. TemplateInstance
-5. TemplateGroupInstance
-6. ResourceSupervisor
+1. [Quota](./customresources.html#_1-quota)
+2. [Tenant](./customresources.html#_2-tenant)
+3. [Template](./customresources.html#_3-template)
+4. [TemplateInstance](./customresources.html#_4-templateinstance)
+5. [TemplateGroupInstance](./customresources.html#_5-templategroupinstance)
+6. [ResourceSupervisor](./customresources.html#_6-resourcesupervisor)
 
 ## 1. Quota
 

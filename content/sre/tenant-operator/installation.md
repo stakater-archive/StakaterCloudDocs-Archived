@@ -78,9 +78,27 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 
 ::: warning Note:
 
-* IntegrationConfig with the name `tenant-operator-config` should be present in Tenant-Operators installed namespace
+* A default IntegrationConfig with the name `tenant-operator-config` will be present in Tenant-Operators installed namespace
 
 :::
+
+### Uninstall
+
+You can uninstall Tenant-Operator by following these steps
+
+* Decide on whether you want to retain tenant namespaces or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain. For more details check out [onDelete](./usecases/tenant.html#retaining-tenant-namespaces-when-a-tenant-is-being-deleted)
+
+* After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+
+![image](./images/installed-operators.png)
+
+* Now click on uninstall and confirm uninstall.
+
+![image](./images/uninstall-from-ui.jpg)
+
+* Now the operator has been uninstalled.
+
+* `Optional:` you can also manually remove tenant operators CRDs and it's resources from the cluster.  
 
 ## Installing via Subscription
 
@@ -99,7 +117,7 @@ spec:
   name: tenant-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.3.33
+  startingCSV: tenant-operator.v0.5.2
 EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
@@ -158,9 +176,34 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 
 ::: warning Note:
 
-* IntegrationConfig with the name `tenant-operator-config` should be present in Tenant-Operators installed namespace
+* A default IntegrationConfig with the name `tenant-operator-config` will be present in Tenant-Operators installed namespace
 
 :::
+
+### Uninstall
+
+You can uninstall Tenant-Operator by following these steps
+
+* Decide on whether you want to retain tenant namespaces or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain. For more details check out [onDelete](./usecases/tenant.html#retaining-tenant-namespaces-when-a-tenant-is-being-deleted)
+
+* Delete the subscription resource
+
+```bash
+haseeb:~$ oc delete subscription tenant-operator -n openshift-operators
+subscription.operators.coreos.com "tenant-operator" deleted
+```
+
+* Now open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+
+![image](./images/installed-operators.png)
+
+* Now click on delete ClusterServiceVersion and confirm delete.
+
+![image](./images/uninstall-from-ui-csv.png)
+
+* Now the operator has been uninstalled.
+
+* `Optional:` you can also manually remove tenant operators CRDs and it's resources from the cluster.  
 
 ## Installing via Helm
 
@@ -250,13 +293,13 @@ spec:
   chart:
     repository: https://stakater.github.io/stakater-charts
     name: tenant-operator
-    version: 0.2.24
+    version: 0.5.2
   values:
     integrationConfig:
       create: true
     image:
       repository: stakaterdockerhubpullroot/tenant-operator
-      tag:  v0.2.24
+      tag:  v0.5.2
       pullPolicy: IfNotPresent
     imagePullSecrets:
     - name: stakater-docker-secret
