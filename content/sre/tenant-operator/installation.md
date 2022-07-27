@@ -78,7 +78,7 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 
 ::: warning Note:
 
-* IntegrationConfig with the name `tenant-operator-config` should be present in Tenant-Operators installed namespace
+* A default IntegrationConfig with the name `tenant-operator-config` will be present in Tenant-Operators installed namespace
 
 :::
 
@@ -99,7 +99,7 @@ spec:
   name: tenant-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.3.33
+  startingCSV: tenant-operator.v0.5.2
 EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
@@ -158,7 +158,7 @@ For more details and configurations check out [IntegrationConfig](https://docs.c
 
 ::: warning Note:
 
-* IntegrationConfig with the name `tenant-operator-config` should be present in Tenant-Operators installed namespace
+* A default IntegrationConfig with the name `tenant-operator-config` will be present in Tenant-Operators installed namespace
 
 :::
 
@@ -250,13 +250,13 @@ spec:
   chart:
     repository: https://stakater.github.io/stakater-charts
     name: tenant-operator
-    version: 0.2.24
+    version: 0.5.2
   values:
     integrationConfig:
       create: true
     image:
       repository: stakaterdockerhubpullroot/tenant-operator
-      tag:  v0.2.24
+      tag:  v0.5.2
       pullPolicy: IfNotPresent
     imagePullSecrets:
     - name: stakater-docker-secret
